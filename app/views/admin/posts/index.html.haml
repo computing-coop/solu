@@ -1,0 +1,31 @@
+.row
+  .small-12.columns
+    %h1 Listing posts
+
+    %table
+      %thead
+        %tr
+          %th Title
+          %th Body
+          %th Published
+          %th User
+          %th Published at
+          %th
+
+      
+      %tbody
+        - @posts.each do |post|
+          %tr
+            %td= post.title
+            %td= post.body
+            %td= post.published
+            %td= post.user.name
+            %td= l post.published_at, format: :long
+            %td
+              = link_to 'Show', post, class: [:button, :small]
+              = link_to 'Edit', edit_admin_post_path(post), class: [:button, :small]
+              = link_to 'Destroy', [:admin, post], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
+
+    %br
+
+    = link_to 'New Post', new_admin_post_path, class: [:button, :small]

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  resources :posts
+
   resources :pages
 
   namespace :admin do
     resources :partners
+    resources :posts
+    
     resources :pages
   end
   resources :partners

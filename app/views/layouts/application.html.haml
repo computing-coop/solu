@@ -21,3 +21,5 @@
       = link_to '[sign in]', new_user_session_path
       
     = yield
+    :javascript
+      $(document).ready(function() { #{yield :jquery} });

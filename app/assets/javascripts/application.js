@@ -15,6 +15,7 @@
 //= require foundation
 //= require foundation-datepicker
 //= require jquery_nested_form
+//= require slick-carousel
 //= require_tree .
   
 $(function() { 
