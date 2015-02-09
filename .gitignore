@@ -45,3 +45,4 @@ bower.json
 config/application.yml
 config/database.yml
 config/mongoid.yml
+config/unicorn.rb
