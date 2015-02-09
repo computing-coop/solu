@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation
+ *= require foundation-datepicker
  */
+
+
+#flash {
+  padding: 0.8rem 0;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: red;
+}

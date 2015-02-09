@@ -1,0 +1,25 @@
+= semantic_form_for [:admin, @partner], html: {multipart: true, :"data-abide" => ''} do |f|
+  - if @partner.errors.any?
+    .row
+      .large-6.small-12.columns#error_explanation
+        %h2= "#{pluralize(@partner.errors.count, "error")} prohibited this admin_partner from being saved:"
+        %ul
+          - @partner.errors.full_messages.each do |msg|
+            %li= msg
+  .row
+    .large-5.small-12.columns= f.input :name, input_html: {required: ''}
+  .row
+    .large-5.small-12.columns= f.input :website
+  .row
+    .large-5.small-12.columns= f.input :logo        
+  .row
+    .large-5.small-12.columns= f.input :description
+  .row
+    .large-5.small-12.columns
+      = f.input :address1
+      = f.input :address2
+      = f.input :city
+      = f.input :country, as: :country, priority_countries: ["FI", "SE", "DK", "NO"]
+      = f.input :postcode
+  .actions
+    = f.submit 'Save', class: [:button, :small]

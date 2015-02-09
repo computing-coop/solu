@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.0'
 #gem 'sdoc', '~> 0.4.0', group: :doc
 
 source 'https://rails-assets.org' do
+  gem 'rails-assets-foundation', '5.4.7'
+  gem 'rails-assets-foundation-datepicker'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-slick-carousel'
 end
@@ -36,11 +38,11 @@ end
 
 # Use Unicorn as the app server
 gem 'unicorn'
-
+gem 'unicorn-rails'
 
 #gem 'bson_ext'
 
-gem 'cancancan'
+gem 'cancancan', '~> 1.10'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-rails', '~> 1.1.0'
@@ -52,6 +54,8 @@ gem 'carrierwave-aws'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
+
+gem 'country_select', github: 'stefanpenner/country_select'
 gem 'devise'
 gem 'figaro'
 gem 'formtastic'
@@ -61,9 +65,10 @@ gem 'handles_sortable_columns'
 gem 'kaminari'
 gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'
+gem 'mongoid-slug'
 gem 'nested_form'
 gem 'rolify'
-
+gem 'truncate_html'
 
 
 group :development, :test do

@@ -1,0 +1,9 @@
+.row
+  .large-10.columns.large-offset-1
+    %h1= @page.title
+- if @page.image?
+  .row
+    .large-10.columns.large-offset-1= image_tag @page.image.url
+.row
+  .large-10.columns.large-offset-1
+    = raw @page.body

@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require foundation
+//= require foundation-datepicker
+//= require jquery_nested_form
 //= require_tree .
+  
+$(function() { 
+  $(document).foundation();  
+});

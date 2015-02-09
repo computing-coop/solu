@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    = display_meta_tags :site => 'HYBRID MATTERs'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    = csrf_meta_tags 
+  %body
+    - unless flash.empty?
+      #flash
+        .row
+          .small-12.columns.text-center
+            - flash.each do |name, msg|
+              - if msg.is_a?(String)
+                = content_tag :div, msg, :id => "flash_#{name}"
+    - if user_signed_in?
+      = "signed in as #{current_user.name} <#{current_user.email}>"
+      = link_to '[sign out]', destroy_user_session_path, :method => :delete
+    - else  
+      = link_to '[sign in]', new_user_session_path
+      
+    = yield

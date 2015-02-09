@@ -1,0 +1,28 @@
+.row
+  .small-12.columns
+    %h1 Listing pages
+.row
+  .small-12.columns
+    %table
+      %thead
+        %tr
+          %th Title
+          %th Body
+          %th Image
+          %th
+      
+      %tbody
+        - @pages.each do |page|
+          %tr
+            %td= page.title
+            %td= truncate_html(page.body, length: 200)
+            %td= image_tag page.image.url(:thumb)
+            %td
+              = link_to 'Show', page, class: [:button, :small]
+              = link_to 'Edit', edit_admin_page_path(page), class: [:button, :small]
+              = link_to 'Destroy', [:admin, page], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :small]
+
+.row
+  .small-12.columns
+
+    = link_to 'New Page', new_admin_page_path, class: [:button, :small]
