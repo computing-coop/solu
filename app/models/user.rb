@@ -33,7 +33,7 @@ class User
   field :confirmed_at,         type: Time
   field :confirmation_sent_at, type: Time
   field :unconfirmed_email,    type: String # Only if using reconfirmable
-
+  
   def self.serialize_from_session(key, salt)
     (key = key.first) if key.kind_of? Array
     (key = BSON::ObjectId.from_string(key['$oid'])) if key.kind_of? Hash
@@ -45,5 +45,4 @@ class User
   def self.serialize_into_session(record)
     [record.id.to_s, record.authenticatable_salt]
   end
-  
 end
