@@ -1,4 +1,4 @@
-= semantic_form_for [:admin, @partner], html: {multipart: true, :"data-abide" => ''} do |f|
+= semantic_nested_form_for [:admin, @partner], html: {multipart: true, :"data-abide" => ''} do |f|
   - if @partner.errors.any?
     .row
       .large-6.small-12.columns#error_explanation
@@ -13,7 +13,7 @@
   .row
     .large-5.small-12.columns= f.input :logo        
   .row
-    .large-5.small-12.columns= f.input :description
+    .large-12.small-12.columns= f.input :description, as: :text, input_html: {class: :ckeditor}
   .row
     .large-5.small-12.columns
       = f.input :address1
@@ -21,5 +21,13 @@
       = f.input :city
       = f.input :country, as: :country, priority_countries: ["FI", "SE", "DK", "NO"]
       = f.input :postcode
-  .actions
-    = f.submit 'Save', class: [:button, :small]
+  .row
+    .small-12.large-7.columns
+      = f.fields_for :photos do |ff|
+        = if ff.object.image?
+          = image_tag ff.object.image.url(:box)
+        = ff.input :image
+        = ff.link_to_remove "Remove this photo"
+      = f.link_to_add "Add a photo", :photos
+  .row
+    .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]

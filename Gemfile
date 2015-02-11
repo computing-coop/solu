@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.0'
 #gem 'sdoc', '~> 0.4.0', group: :doc
 
 source 'https://rails-assets.org' do
+
   gem 'rails-assets-foundation', '5.4.7'
   gem 'rails-assets-foundation-datepicker'
   gem 'rails-assets-jquery-ui'
@@ -54,11 +55,13 @@ gem 'carrierwave-aws'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
+gem 'ckeditor'
 
 gem 'country_select', github: 'stefanpenner/country_select'
 gem 'devise', github: 'plataformatec/devise', branch: :master
 gem 'figaro'
 gem 'formtastic'
+gem 'geocoder'
 gem 'haml'
 gem 'haml-rails'
 gem 'handles_sortable_columns'

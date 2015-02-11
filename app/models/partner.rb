@@ -19,13 +19,23 @@ class Partner
   field :logo_height, type: Integer
   field :logo_content_type, type: String
   
-  field :latitude, type: BigDecimal
-  field :longitude, type: BigDecimal
+  field :coordinates, :type => Array
+  
+  embeds_many :photos, as: :photographic, cascade_callbacks: true
+  accepts_nested_attributes_for :photos, allow_destroy: true
   
   slug :name
   
   index({ name: 1 }, { unique: true, drop_dups: true, name: "name_index" })
   
   mount_uploader :logo, ImageUploader
+  
+  include Geocoder::Model::Mongoid
+  geocoded_by :full_address
+  after_validation :geocode   
+  
+  def full_address
+    [address1, address2, [postcode, city].compact.join(' '), country].compact.join(', ')
+  end
   
 end

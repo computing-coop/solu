@@ -1,0 +1,38 @@
+.row
+  .large-10.columns.large-offset-1
+    %h1= @partner.name
+- if @partner.logo?
+  .row
+    .large-4.columns.large-offset-1= image_tag @partner.logo.url(:standard)
+- unless @partner.full_address.blank?
+  .row
+    .large-4.columns
+      %h6= @partner.full_address
+
+- unless @partner.photos.empty?
+  .row
+    .large-10.columns.large-offset-1.image_carousel
+      - @partner.photos.each do |i|
+        .slide= image_tag i.image.url
+.row
+  .large-10.columns.large-offset-1
+    = raw @partner.description
+- unless @partner.coordinates.empty?
+  = render :partial => 'small_map', locals: {place: @partner}
+  
+  
+- if can? :edit, @partner
+  .row
+    .small-12.columns= link_to 'Edit partner', edit_admin_partner_path(@partner), class: [:button, :tiny, :secondary]
+    
+- if @partner.photos.size > 1
+  = content_for :jquery do
+    :plain
+      $('.image_carousel').slick({infinite: true,
+        arrows: false,
+        slide: '.slide',
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 2400,
+        slidesToScroll: 1,
+      });

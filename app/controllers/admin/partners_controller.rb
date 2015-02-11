@@ -5,6 +5,7 @@ class Admin::PartnersController < Admin::BaseController
 
   def index
     @admin_partners = Partner.all
+    set_meta_tags title: 'Partners'
     respond_with(@admin_partners)
   end
 
@@ -14,11 +15,13 @@ class Admin::PartnersController < Admin::BaseController
 
   def new
     @admin_partner = Partner.new
+    set_meta_tags title: 'New partner'
     respond_with(@admin_partner)
   end
 
   def edit
     @partner = Partner.find(params[:id])
+    set_meta_tags title: 'Edit partner'
   end
 
   def create
@@ -43,6 +46,6 @@ class Admin::PartnersController < Admin::BaseController
     end
 
     def partner_params
-      params.require(:partner).permit(:name, :website, :address1, :address2, :city, :country, :postcode, :latitude, :longitude, :logo, :description)
+      params.require(:partner).permit(:name, :website, :address1, :address2, :city, :country, :postcode, :latitude, :longitude, :logo, :description, photos_attributes:[:image, :id,  :_destroy])
     end
 end

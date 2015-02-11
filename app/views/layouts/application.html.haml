@@ -5,6 +5,8 @@
     = display_meta_tags :site => 'HYBRID MATTERs'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    - if controller.controller_name == 'partners'
+      %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
     = csrf_meta_tags 
   %body
     - unless flash.empty?

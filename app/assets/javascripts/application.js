@@ -16,6 +16,7 @@
 //= require foundation-datepicker
 //= require jquery_nested_form
 //= require slick-carousel
+//= require ckeditor/init
 //= require_tree .
   
 $(function() { 
