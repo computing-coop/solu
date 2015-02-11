@@ -1,0 +1,37 @@
+.row
+  .small-12.columns
+    %h1 Activities
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Activity type
+          %th Description
+          %th Start at
+          %th End at
+          %th
+
+      
+      %tbody
+        - @activities.each do |activity|
+          %tr
+            %td
+              = activity.name
+              - unless activity.responsible_organisations.empty?
+                .partners
+                  - activity.responsible_organisations.each do |ro|
+                    = link_to ro.name, ro, target: :_blank
+          
+            %td= activity.activity_type
+            %td= activity.description
+            %td= activity.start_at
+            %td= activity.end_at
+            %td
+              = link_to 'Show', activity, class: [:button, :tiny], target: :_blank
+              = link_to 'Edit', edit_admin_activity_path(activity), class: [:button, :tiny]
+              = link_to 'Destroy', [:admin, activity], :method => :delete, :data => { :confirm => 'Are you sure?' },  class: [:button, :tiny, :alert]
+
+.row
+  .small-12.columns
+    = link_to 'New Activity', new_activity_path, class: [:button, :tiny]

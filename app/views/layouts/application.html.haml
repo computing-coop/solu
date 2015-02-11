@@ -23,6 +23,8 @@
         %ul.admin_top
           %li= link_to 'Partners', admin_partners_path
           %li= link_to 'Blog', admin_posts_path
+          %li= link_to 'Activities', admin_activities_path
+          %li= link_to 'Static pages', admin_pages_path
           
     - else  
       = link_to '[sign in]', new_user_session_path

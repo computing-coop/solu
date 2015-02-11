@@ -1,0 +1,40 @@
+.row
+  .small-12.columns
+    %h2= @activity.name
+- unless @activity.responsible_organisations.empty?
+  .row
+    .small-12.columns
+      %strong Responsible Organisations:
+      - @activity.responsible_organisations.each do |ro|
+        = link_to ro.name, ro, target: :_blank
+        
+  .row
+    .small-12.columns
+      = l @activity.start_at
+      - unless @activity.end_at.blank?
+        = " - #{l @activity.end_at}"
+        
+- unless @activity.photos.empty?
+  .row
+    .large-10.columns.large-offset-1.image_carousel
+      - @activity.photos.each do |i|
+        .slide= image_tag i.image.url
+.row
+  .large-10.columns.large-offset-1
+    = raw @activity.description
+
+- if can? :edit, @activity
+  .row
+    .small-12.columns= link_to 'Edit activity', edit_admin_activity_path(@activity), class: [:button, :tiny, :secondary]
+    
+- if @activity.photos.size > 1
+  = content_for :jquery do
+    :plain
+      $('.image_carousel').slick({infinite: true,
+        arrows: false,
+        slide: '.slide',
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 2400,
+        slidesToScroll: 1,
+      });

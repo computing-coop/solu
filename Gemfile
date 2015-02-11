@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.0'
 #gem 'sdoc', '~> 0.4.0', group: :doc
 
 source 'https://rails-assets.org' do
-
+  gem 'rails-assets-chosen'
   gem 'rails-assets-foundation', '5.4.7'
   gem 'rails-assets-foundation-datepicker'
   gem 'rails-assets-jquery-ui'

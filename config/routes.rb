@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :activities
+
   resources :posts
 
   resources :pages
 
   namespace :admin do
+    resources :activities
     resources :partners
     resources :posts
     
