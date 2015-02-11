@@ -19,6 +19,11 @@
     - if user_signed_in?
       = "signed in as #{current_user.name} <#{current_user.email}>"
       = link_to '[sign out]', destroy_user_session_path, :method => :delete
+      - if current_user.has_role? :admin
+        %ul.admin_top
+          %li= link_to 'Partners', admin_partners_path
+          %li= link_to 'Blog', admin_posts_path
+          
     - else  
       = link_to '[sign in]', new_user_session_path
       

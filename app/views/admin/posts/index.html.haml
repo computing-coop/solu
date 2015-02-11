@@ -17,10 +17,10 @@
         - @posts.each do |post|
           %tr
             %td= post.title
-            %td= post.body
+            %td= raw truncate_html(post.body, length: 300)
             %td= post.published
-            %td= post.user.name
-            %td= l post.published_at, format: :long
+            %td= post.user.try(:name)
+            %td= post.published_at.blank? ? '' : l(post.published_at, format: :long)
             %td
               = link_to 'Show', post, class: [:button, :small]
               = link_to 'Edit', edit_admin_post_path(post), class: [:button, :small]

@@ -6,6 +6,7 @@ class Admin::PostsController < Admin::BaseController
 
   def index
     @posts = Post.all
+    set_meta_tags title: 'Posts'
     respond_with(@posts)
   end
 
@@ -15,10 +16,12 @@ class Admin::PostsController < Admin::BaseController
 
   def new
     @post = Post.new
+    set_meta_tags title: 'New post'
     respond_with(@post)
   end
 
   def edit
+    set_meta_tags title: 'Edit post'
   end
 
   def create

@@ -10,11 +10,13 @@
   .row
     .small-12.large-6.columns= f.input :title, input_html: {required: ''}
   .row
-    .small-12.large-6.columns= f.input :body, as: :text, input_html: {required: ''}
+    .small-12.columns= f.input :body, as: :ckeditor, input_html: {required: ''}
   .row
-    .small-12.large-6.columns= f.input :published
+    .small-12.large-6.columns= f.input :published, as: :boolean
   .row
-    .small-12.large-6.columns= f.collection_select :user, User.all, :id, :email, input_html: {required: ''}
+    .small-12.large-6.columns
+      %label.label Posted by:
+      = f.collection_select :user_id, User.all, :id, :email, input_html: {required: ''}, label: 'Posted as:'
   .row
     .small-12.large-7.columns
       = f.fields_for :photos do |ff|
@@ -24,6 +26,9 @@
         = ff.link_to_remove "Remove this photo"
       = f.link_to_add "Add a photo", :photos
   .row
-    .small-12.large-6.columns= f.input :published_at
+    .small-12.large-6.columns= f.input :published_at, as: :string,  :input_html => { :class => "fdatepicker"}
   .row
     .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]
+= content_for :jquery do 
+  :plain  
+    $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});

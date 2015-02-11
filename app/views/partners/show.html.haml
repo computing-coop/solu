@@ -6,7 +6,7 @@
     .large-4.columns.large-offset-1= image_tag @partner.logo.url(:standard)
 - unless @partner.full_address.blank?
   .row
-    .large-4.columns
+    .large-4.columns.large-offset-1
       %h6= @partner.full_address
 
 - unless @partner.photos.empty?

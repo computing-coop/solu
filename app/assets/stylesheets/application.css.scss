@@ -25,3 +25,23 @@
   text-align: center;
   background-color: red;
 }
+
+ul.admin_top {
+  li {
+    float: left;
+    list-style-type: none;
+    padding: 0.1rem 2rem;
+    border-right: 1px dotted #333;
+  }
+}
+
+form {
+  li {
+    list-style-type: none;
+  }
+  label.label {
+    background-color: initial;
+    color: #666;
+    font-size: 1.1rem;
+  }
+}
