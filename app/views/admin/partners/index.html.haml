@@ -17,6 +17,6 @@
             %td{colspan: 3}
               = link_to 'Show', admin_partner, class: [:button, :small]
               = link_to 'Edit', edit_admin_partner_path(admin_partner), class: [:button, :small]
-              = link_to 'Destroy', admin_partner, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
+              = link_to 'Destroy',[:admin, admin_partner], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
 .row
   .small-12.columns= link_to 'New Partner', new_admin_partner_path, class: [:button, :small]
