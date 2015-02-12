@@ -11,7 +11,7 @@
   .row
     .small-12.large-8.columns= f.input :activity_type, input_html: {:required => ''}
   .row
-    .small-12.columns= f.input :description, as: :ckeditor
+    .small-12.columns= f.input :description, as: :text, input_html: {class: :ckeditor}
   .row
     .small-12.large-8.columns= f.input :start_at, as: :string, input_html: {:required => '', class: :fdatepicker}
   .row

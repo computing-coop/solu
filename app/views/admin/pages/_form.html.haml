@@ -11,7 +11,7 @@
   .row
     .large-5.small-12.columns= f.input :title
   .row
-    .large-5.small-12.columns= f.input :body
+    .large-5.small-12.columns= f.input :body, as: :text, input_html: {class: :ckeditor}
   .row
     .large-5.small-12.columns
       - if f.object.image?
