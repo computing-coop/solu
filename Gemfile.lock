@@ -152,6 +152,9 @@ GEM
       thor (~> 0.14)
     formtastic (2.3.1)
       actionpack (>= 3.0)
+    foundation-rails (5.5.1.0)
+      railties (>= 3.1.0)
+      sass (>= 3.3.0, < 3.5)
     geocoder (1.2.6)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
@@ -232,23 +235,11 @@ GEM
       railties (= 4.2.0)
       sprockets-rails
     rails-assets-chosen (1.3.0)
-    rails-assets-fastclick (1.0.6)
-    rails-assets-foundation (5.4.7)
-      rails-assets-fastclick (>= 0.6.11)
-      rails-assets-jquery (>= 2.1.0)
-      rails-assets-jquery-placeholder (~> 2.0.7)
-      rails-assets-jquery.cookie (~> 1.4.0)
-      rails-assets-modernizr (>= 2.7.2)
     rails-assets-foundation-datepicker (1.1.0)
     rails-assets-jquery (2.1.3)
-    rails-assets-jquery-placeholder (2.0.9)
+    rails-assets-jquery-ui (1.11.3)
       rails-assets-jquery (>= 1.6)
-    rails-assets-jquery-ui (1.11.2)
-      rails-assets-jquery (>= 1.6)
-    rails-assets-jquery.cookie (1.4.1)
-      rails-assets-jquery (>= 1.2)
-    rails-assets-modernizr (2.8.3)
-    rails-assets-slick-carousel (1.4.0)
+    rails-assets-slick-carousel (1.4.1)
       rails-assets-jquery (>= 1.7)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -339,6 +330,7 @@ DEPENDENCIES
   execjs
   figaro
   formtastic
+  foundation-rails (= 5.5.1.0)
   geocoder
   haml
   haml-rails
@@ -357,7 +349,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   rails-assets-chosen!
-  rails-assets-foundation (= 5.4.7)!
   rails-assets-foundation-datepicker!
   rails-assets-jquery-ui!
   rails-assets-slick-carousel!

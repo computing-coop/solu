@@ -1,0 +1,21 @@
+@media only screen and (max-width: 40em)  { 
+  
+  header {
+    height: 280px;
+    .logo-container {
+      height: 260px;
+
+      .logo {
+        margin: 1.625rem auto 1.2rem auto;
+      }
+    }
+    
+    .top-bar {
+      a {
+        font-size:  0.8rem;
+      }
+    }
+  }
+  
+  
+}

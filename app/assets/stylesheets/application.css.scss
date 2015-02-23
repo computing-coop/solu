@@ -10,13 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
- *= require foundation
  *= require foundation-datepicker
  *= require slick-carousel
+ *= require partners
+ *= require pages
+ *= require scaffolds
+ *= require activities
+ *= require mobile
  */
 
+@import 'foundation_and_overrides';
 
 #flash {
   padding: 0.8rem 0;
@@ -44,4 +48,56 @@ form {
     color: #666;
     font-size: 1.1rem;
   }
+}
+
+// header
+.grid-container {
+  margin: 0.688em 0.688em 0 0.688em;
+  border-top: 3px solid black;
+  border-right: 3px solid black;
+  height: 100%;
+  border-left: 3px solid black;
+}
+
+header {
+  background: url(image_path('backdrop-top.png')) repeat-x top center;
+  background-color: $pastel-blue;
+  .logo-container {
+    height: 405px;
+  }
+  top: 0;
+  position: absolute;
+  width: 100%;
+  
+  .logo {
+    margin: 5.625rem 0 2.5rem 0;
+  }
+  
+  .top-bar {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    margin: 0 0.688em;
+//    margin-top: 24px;
+    a {
+      text-transform: uppercase;
+      font-size: 1rem;
+      &:hover {
+        color: $monsoon;
+      }
+    }
+  }
+  
+}
+
+.main-container {
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  margin: 0 0.688em 0.688em 0.688em;
+  height: 100%;
+}
+
+footer {
+  background-color: $pastel-blue;
+  padding: 5.3rem 0 5.6rem 0;
 }

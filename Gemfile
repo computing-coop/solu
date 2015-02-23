@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 2.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
-  gem 'rails-assets-foundation', '5.4.7'
   gem 'rails-assets-foundation-datepicker'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-slick-carousel'
@@ -61,6 +60,7 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'devise', github: 'plataformatec/devise', branch: :master
 gem 'figaro'
 gem 'formtastic'
+gem 'foundation-rails', '5.5.1.0'
 gem 'geocoder'
 gem 'haml'
 gem 'haml-rails'
