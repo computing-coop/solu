@@ -70,6 +70,7 @@ gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'
 gem 'mongoid-slug'
 gem 'nested_form'
+gem 'recaptcha'
 gem 'rolify'
 gem 'truncate_html'
 

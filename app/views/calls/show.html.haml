@@ -1,0 +1,79 @@
+.row
+  .small-12.columns
+    %h1= @call.name
+
+.image_carousel
+  - @call.photos.each do |photo|
+    .slide= image_tag photo.image.url
+    
+.row
+  .small-12.columns
+    = raw @call.overview
+
+.row
+  .small-12.columns
+    %h4
+      Deadline for applying:
+      = l @call.end_at, format: :short
+.row 
+  .small-12.columns
+    = link_to "Apply to #{@call.name}", '#', onclick: "$('.application').slideDown();"
+.application
+  = semantic_form_for @call, html: {multipart: true, :"data-abide" => '' } do |form|
+    .row
+      .small-12.columns
+        %h3= "Application to #{form.object.name}"
+
+    = form.fields_for @submission do |f|
+      %fieldset
+        %label Who are you?
+        .row
+          .small-6.medium-3.columns= f.input :first_name, input_html: {required: ''}
+          .small-6.medium-3.end.columns= f.input :last_name, input_html: {required: '' }
+        .row
+          .small-12.medium-6.columns= f.input :organisation_name
+        .row
+          .small-12.medium-6.columns= f.input :address, input_html: {required: ''}
+        .row
+          .small-6.columns= f.input :city, input_html: {required: ''}
+        .row
+          .small-6.columns= f.input :country, as: :country, priority_countries: ["FI", "SE", "DK", "NO"], input_html: {required: ''}
+        
+        .row
+          .small-6.columns= f.input :date_of_birth,  :input_html => { :class => "fdatepicker", required: ''}, label: 'Your date of birth'
+        .row
+          .small-6.columns= f.input :nationality,  as: :country, priority_countries: ["FI", "SE", "DK", "NO"], input_html: {required: ''}
+        .row
+          .small-12.medium-6.columns= f.input :email, input_html: {required: ''}
+        .row
+          .small-12.medium-6.columns= f.input :website
+      %fieldset
+        %label Your project:
+        
+        = f.fields_for :answers do |ff|
+          .row
+            .small-12.columns
+              - if ff.object.question.question_type.to_sym == :file
+                = ff.input :attachment, label: ff.object.question.question
+              - elsif ff.object.question.question_type.to_sym == :boolean
+                = ff.input :answer_boolean, label: ff.object.question.question, as: :boolean
+              - else
+                = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: ff.object.question.question
+
+    .row
+      .small-12.columns= form.submit "Submit", class: [:button ]
+  
+        
+= content_for :jquery do
+  :plain
+    $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});  
+  - if @call.photos.size > 1
+    :plain
+      $('.image_carousel').slick({infinite: true,
+        arrows: false,
+        slide: '.slide',
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 2400,
+        slidesToScroll: 1,
+      });        

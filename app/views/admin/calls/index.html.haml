@@ -1,0 +1,22 @@
+.row
+  .small-12.columns
+    %h1 Open calls
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Deadline
+          %th Actions
+      
+      %tbody
+        - @calls.each do |call|
+          %tr
+            %td= call.name
+            %td= l call.end_at, format: :short
+            %td{colspan: 3}
+              = link_to 'Show', call, class: [:button, :small]
+              = link_to 'Edit', edit_admin_call_path(call), class: [:button, :small]
+              = link_to 'Destroy',[:admin, call], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
+.row
+  .small-12.columns= link_to 'New call', new_admin_call_path, class: [:button, :small]

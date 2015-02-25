@@ -1,6 +1,6 @@
 CKEDITOR.editorConfig = function( config ) {
     config.language = 'en';
-    config.uiColor = '#AADC6E';
+    config.uiColor = '#bbf2e5';
     config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
 
     // The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Flash dialog.

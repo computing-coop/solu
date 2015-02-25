@@ -17,21 +17,19 @@
             - flash.each do |name, msg|
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
-    %header
-      .grid-container.logo-container
-        .row
-          .logo.small-8.small-centered.medium-3.medium-centered.large-2.columns= link_to image_tag('hm_logo.png'), '/'
-      %nav.top-bar.sticky
-        .row
-          .medium-1.column.hide-for-small-only= image_tag 'circles.png'
-          .medium-6.large-4.small-centered.columns
-            .row
-              .small-4.columns= link_to 'About', page_path('about')
-              .small-4.columns= link_to 'Partners', partners_path
-              .small-4.columns.end= link_to 'Programme', '#'
-
-      
-    .main-container= yield
+    - if user_signed_in?
+      = "signed in as #{current_user.name} <#{current_user.email}>"
+      = link_to '[sign out]', destroy_user_session_path, :method => :delete
+      - if current_user.has_role? :admin
+        %ul.admin_top
+          %li= link_to 'Partners', admin_partners_path
+          %li= link_to 'Blog', admin_posts_path
+          %li= link_to 'Activities', admin_activities_path
+          %li= link_to 'Static pages', admin_pages_path
+          %li= link_to 'Open calls', admin_calls_path
+    - else
+      = link_to '[sign in]', new_user_session_path                
+    = yield
     %footer
       .row
         .small-4.medium-2.columns= link_to image_tag('sbs_logo.png'), 'http://www.bioart.fi/', target: :_blank
