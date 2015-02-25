@@ -12,8 +12,10 @@ class CallsController < ApplicationController
   
   def update
     @call = Call.find(params[:id])
-    @call.submissions << Submission.new(submission_params)
+    @submission = Submission.new(submission_params)
+    @call.submissions << @submission
     if @call.save
+      SubmissionMailer.submission_received(@submission).deliver
       flash[:notice] = 'Thank you for your submission.'
     else
       flash[:error] = 'There was an error with your submission: ' + @call.errors.full_messages.join('; ')
