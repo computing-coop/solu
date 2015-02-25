@@ -1,0 +1,64 @@
+.row
+  .small-12.columns
+    %h1= @call.name
+    
+.row
+  .small-12.columns
+    %h2 
+      Submission by
+      = @submission.name
+      - unless @submission.organisation_name.blank?
+        = " (#{@submission.organisation_name}"
+    %h6= "submitted at #{l @submission.created_at, format: :long}"
+    
+.row
+  .small-12.medium-6.columns
+    %fieldset
+      %legend Contact details
+      .row
+        .small-12.columns
+          %strong= @submission.name
+      - unless @submission.organisation_name.blank?
+        .row
+          .small-12.columns= @submission.organisation_name
+      .row
+        .small-12.columns
+          = @submission.address
+          %br/
+          = [@submission.city, Country[@submission.country].name].join(', ')
+      .row
+        .small-12.columns= l @submission.date_of_birth
+      .row
+        .small-12.columns
+          Nationality:
+          = Country[@submission.nationality].name
+      .row
+        .small-12.columns
+          = link_to @submission.email, "mailto:#{@submission.email}"
+          
+
+  .small-12.medium-6.columns
+    %fieldset
+      %legend Files
+      - @submission.answers.each do |a|
+        - next unless a.question.question_type == 'file'
+        - if a.attachment?
+          = link_to a[:attachment], a.attachment.url
+        
+
+- @submission.answers.each do |a|
+  - next if a.question.question_type == 'file'
+  .row
+    .small-12.columns
+      - if a.question.question_type == 'text'
+        %fieldset
+          %legend= a.question.question
+          = raw a.answer_text
+      - else
+        %em= a.question.question
+        %br/
+        = raw a.answer_text
+        = raw a.answer_boolean.to_s
+          
+          
+      

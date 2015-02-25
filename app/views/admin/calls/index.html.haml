@@ -7,6 +7,7 @@
         %tr
           %th Name
           %th Deadline
+          %th Submissions
           %th Actions
       
       %tbody
@@ -14,9 +15,13 @@
           %tr
             %td= call.name
             %td= l call.end_at, format: :short
+            %td
+              = call.submissions.count
+              = link_to 'View all', admin_call_submissions_path(call), class: [:button, :small]
             %td{colspan: 3}
               = link_to 'Show', call, class: [:button, :small]
               = link_to 'Edit', edit_admin_call_path(call), class: [:button, :small]
               = link_to 'Destroy',[:admin, call], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
+              
 .row
   .small-12.columns= link_to 'New call', new_admin_call_path, class: [:button, :small]

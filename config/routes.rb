@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :activities
     resources :partners
     resources :posts
-    resources :calls
+    resources :calls do
+      resources :submissions
+    end
     resources :pages
   end
   resources :partners

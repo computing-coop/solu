@@ -34,7 +34,7 @@ class Admin::CallsController < Admin::BaseController
 
   def destroy
     @call.destroy
-    redirect_to admin_call_path
+    redirect_to admin_calls_path
   end
 
   private

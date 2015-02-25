@@ -55,7 +55,7 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
 gem 'ckeditor'
-
+gem 'countries'
 gem 'country_select', github: 'stefanpenner/country_select'
 gem 'devise', github: 'plataformatec/devise', branch: :master
 gem 'figaro'

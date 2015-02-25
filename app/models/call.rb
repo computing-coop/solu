@@ -11,8 +11,9 @@ class Call
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true,  reject_if: :all_blank
   
-  embeds_many :questions, cascade_callbacks: true
+  has_many :questions
   accepts_nested_attributes_for :questions, allow_destroy: true,  reject_if: :all_blank
   
   embeds_many :submissions,  cascade_callbacks: true
+  
 end
