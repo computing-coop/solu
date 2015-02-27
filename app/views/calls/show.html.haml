@@ -14,54 +14,54 @@
   .small-12.columns
     %h4
       Deadline for applying:
-      = l @call.end_at, format: :short
-.row 
-  .small-12.columns
-    = link_to "Apply to #{@call.name}", '#', onclick: "$('.application').slideDown();"
+      = l @call.end_at, format: :long
+
 .application
   = semantic_form_for @call, html: {multipart: true, :"data-abide" => '' } do |form|
     .row
       .small-12.columns
-        %h3= "Application to #{form.object.name}"
+        %h3= "Apply to #{@call.name}"
 
     = form.fields_for @submission do |f|
-      %fieldset
-        %label Who are you?
+      .row
+        .small-12.columns
+          %h5 Who are you?
+      .row
+        .small-6.medium-3.columns= f.input :first_name, input_html: {required: ''}
+        .small-6.medium-3.end.columns= f.input :last_name, input_html: {required: '' }
+      .row
+        .small-12.medium-6.columns= f.input :organisation_name
+      .row
+        .small-12.medium-6.columns= f.input :address, input_html: {required: ''}
+      .row
+        .small-6.columns= f.input :city, input_html: {required: ''}
+      .row
+        .small-6.columns= f.input :country, as: :country,priority_countries: [], only: ["AX", "DK", "FI", "FO",  "GL","IS", "NO", "SE" ], input_html: {required: ''}
+      
+      .row
+        .small-6.columns= f.input :date_of_birth,  :input_html => { :class => "fdatepicker", required: ''}, label: 'Your date of birth'
+      .row
+        .small-6.columns= f.input :nationality,  as: :country, priority_countries: ["AX", "DK", "FI", "FO",  "GL","IS", "NO", "SE" ], input_html: {required: ''}
+      .row
+        .small-6.columns= f.input :short_biography, label: "Short biography", hint: "1500 char. max"
+      .row
+        .small-12.medium-6.columns= f.input :email, input_html: {required: ''}
+      .row
+        .small-12.medium-6.columns= f.input :website
+      .row
+        .small-12.columns
+          %h5 Your submission:
+      
+      = f.fields_for :answers do |ff|
         .row
-          .small-6.medium-3.columns= f.input :first_name, input_html: {required: ''}
-          .small-6.medium-3.end.columns= f.input :last_name, input_html: {required: '' }
-        .row
-          .small-12.medium-6.columns= f.input :organisation_name
-        .row
-          .small-12.medium-6.columns= f.input :address, input_html: {required: ''}
-        .row
-          .small-6.columns= f.input :city, input_html: {required: ''}
-        .row
-          .small-6.columns= f.input :country, as: :country, priority_countries: ["FI", "SE", "DK", "NO"], input_html: {required: ''}
-        
-        .row
-          .small-6.columns= f.input :date_of_birth,  :input_html => { :class => "fdatepicker", required: ''}, label: 'Your date of birth'
-        .row
-          .small-6.columns= f.input :nationality,  as: :country, priority_countries: ["FI", "SE", "DK", "NO"], input_html: {required: ''}
-        .row
-          .small-6.columns= f.input :short_biography, label: "Short biography", hint: "1500 char. max"
-        .row
-          .small-12.medium-6.columns= f.input :email, input_html: {required: ''}
-        .row
-          .small-12.medium-6.columns= f.input :website
-      %fieldset
-        %label Your submission:
-        
-        = f.fields_for :answers do |ff|
-          .row
-            .small-12.columns
-              = ff.input :question_id, as: :hidden
-              - if ff.object.question.question_type.to_sym == :file
-                = ff.input :attachment, label: ff.object.question.question
-              - elsif ff.object.question.question_type.to_sym == :boolean
-                = ff.input :answer_boolean, label: ff.object.question.question, as: :boolean
-              - else
-                = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: ff.object.question.question
+          .small-12.columns
+            = ff.input :question_id, as: :hidden
+            - if ff.object.question.question_type.to_sym == :file
+              = ff.input :attachment, label: ff.object.question.question
+            - elsif ff.object.question.question_type.to_sym == :boolean
+              = ff.input :answer_boolean, label: ff.object.question.question, as: :boolean
+            - else
+              = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: ff.object.question.question
 
     .row
       .small-12.columns= form.submit "Submit", class: [:button ]
