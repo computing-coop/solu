@@ -37,11 +37,22 @@
     .main-container= yield
     %footer
       .row
-        .small-4.medium-2.columns= link_to image_tag('sbs_logo.png'), 'http://www.bioart.fi/', target: :_blank
-        .small-4.medium-2.columns= link_to image_tag('tuk_logo.png'), 'http://www.itu.dk/', target: :_blank        
-        .small-4.medium-2.columns= link_to image_tag('fb_logo.png'), 'http://www.forumbox.fi/', target: :_blank
-        .small-4.medium-2.columns= link_to image_tag('grenland_logo.png'), 'http://kunsthallgrenland.no/', target: :_blank        
-        .small-4.medium-2.columns= link_to image_tag('nk_logo.png'), 'http://www.nikolajkunsthal.dk/', target: :_blank
-        .small-4.medium-2.columns= link_to image_tag('mu_logo.png'), 'http://www.mah.se/', target: :_blank        
+        .medium-3.columns
+          .row
+            .small-12.columns.footer_title Nordic Cultural Event of the Year
+          .row
+            .small-12.columns= link_to image_tag('logo_norden.png'), 'http://norden.org/'
+        .medium-9.columns.end
+          .row
+            .small-12.columns.footer_title.small-text-center Partners
+          .row
+            .small-12.columns.partners.small-text-center 
+              = link_to image_tag('logo_bioarts.png'), 'http://www.bioart.fi/', target: :_blank
+              = link_to image_tag('logo_copenhagen_uni.png'), 'http://www.itu.dk/', target: :_blank  
+              = link_to image_tag('logo_forumbox.png'), 'http://www.forumbox.fi/', target: :_blank
+              = link_to image_tag('logo_greenland.png'), 'http://kunsthallgrenland.no/', target: :_blank        
+              = link_to image_tag('logo_nikolaj_kunsthall.png'), 'http://www.nikolajkunsthal.dk/', target: :_blank
+              = link_to image_tag('logo_malmo_uni.png'), 'http://www.mah.se/', target: :_blank  
+                     
     :javascript
       $(document).ready(function() { #{yield :jquery} });

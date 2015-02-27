@@ -30,13 +30,6 @@
     - else
       = link_to '[sign in]', new_user_session_path                
     = yield
-    %footer
-      .row
-        .small-4.medium-2.columns= link_to image_tag('sbs_logo.png'), 'http://www.bioart.fi/', target: :_blank
-        .small-4.medium-2.columns= link_to image_tag('tuk_logo.png'), 'http://www.itu.dk/', target: :_blank        
-        .small-4.medium-2.columns= link_to image_tag('fb_logo.png'), 'http://www.forumbox.fi/', target: :_blank
-        .small-4.medium-2.columns= link_to image_tag('grenland_logo.png'), 'http://kunsthallgrenland.no/', target: :_blank        
-        .small-4.medium-2.columns= link_to image_tag('nk_logo.png'), 'http://www.nikolajkunsthal.dk/', target: :_blank
-        .small-4.medium-2.columns= link_to image_tag('mu_logo.png'), 'http://www.mah.se/', target: :_blank        
+    
     :javascript
       $(document).ready(function() { #{yield :jquery} });

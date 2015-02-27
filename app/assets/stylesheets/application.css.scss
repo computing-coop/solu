@@ -111,8 +111,9 @@ header {
   border-right: 3px solid black;
   border-bottom: 3px solid black;
   margin: 0 0.688em 0.688em 0.688em;
-  height: 100%;
+
   padding-bottom: 3rem;
+  padding-top: 80px;
   
 }
 
@@ -120,4 +121,13 @@ footer {
   clear: both;
   background-color: $beige;
   padding: 5.3rem 0 5.6rem 0;
+  .footer_title {
+    padding: 1.5rem 0;
+  }
+  .partners {
+    
+    a {
+      padding: 0 1rem;
+    }
+  }
 }
