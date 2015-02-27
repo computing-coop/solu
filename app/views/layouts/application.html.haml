@@ -18,17 +18,20 @@
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
     %header
-      .grid-container.logo-container
-        .row
-          .logo.small-8.small-centered.medium-3.medium-centered.large-2.columns= link_to image_tag('hm_logo.png'), '/'
+      .before
+      .grid-container
+
       %nav.top-bar.sticky
-        .row
-          .medium-1.column.hide-for-small-only= image_tag 'circles.png'
-          .medium-6.large-4.small-centered.columns
-            .row
-              .small-4.columns= link_to 'About', page_path('about')
-              .small-4.columns= link_to 'Partners', partners_path
-              .small-4.columns.end= link_to 'Programme', '#'
+        .hor-container
+          .row
+
+            .medium-1.column.hide-for-small-only
+              //= image_tag 'circles.png'
+            .medium-6.large-4.small-centered.columns
+              .row
+                .small-4.columns= link_to 'About', page_path('about')
+                .small-4.columns= link_to 'Partners', partners_path
+                .small-4.columns.end= link_to 'Programme', '#'
 
       
     .main-container= yield

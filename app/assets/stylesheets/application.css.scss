@@ -21,6 +21,7 @@
  */
 
 @import 'foundation_and_overrides';
+@import 'variables';
 
 #flash {
   padding: 0.8rem 0;
@@ -57,14 +58,19 @@ form {
   border-right: 3px solid black;
   height: 100%;
   border-left: 3px solid black;
+  z-index: 999;
 }
 
 header {
-  background: url(image_path('backdrop-top.png')) repeat-x top center;
-  background-color: $pastel-blue;
-  .logo-container {
-    height: 405px;
+  .before {
+    height: 1px;
   }
+  
+  background: url(image_path('top_image1.png')) no-repeat top center;
+  background-color: $pastel-blue;
+  background-size: cover;
+  height: 400px;
+
   top: 0;
   // position: absolute;
   width: 100%;
@@ -74,10 +80,11 @@ header {
   }
   
   .top-bar {
-    border-left: 3px solid black;
-    border-right: 3px solid black;
-    margin: 0 0.688em;
-//    margin-top: 24px;
+    background: url(image_path('menu_module.png')) repeat-x;
+
+    margin-top: -37px;
+    height: 75px;
+
     a {
       text-transform: uppercase;
       font-size: 1rem;
@@ -89,6 +96,16 @@ header {
   
 }
 
+.hor-container {
+  z-index: 999;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  margin: 0 0.688em;
+  height: 75px;
+  .row {
+    padding-top: 0.8rem;
+  }
+}
 .main-container {
   border-left: 3px solid black;
   border-right: 3px solid black;
@@ -96,10 +113,11 @@ header {
   margin: 0 0.688em 0.688em 0.688em;
   height: 100%;
   padding-bottom: 3rem;
+  
 }
 
 footer {
   clear: both;
-  background-color: $pastel-blue;
+  background-color: $beige;
   padding: 5.3rem 0 5.6rem 0;
 }
