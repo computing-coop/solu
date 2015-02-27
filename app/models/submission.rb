@@ -12,6 +12,7 @@ class Submission
   field :date_of_birth, type: Date
   field :organisation_name, type: String
   field :nationality, type: String
+  field :short_biography, type: String
   field :email, type: String
   field :website, type: String
   

@@ -44,6 +44,8 @@
         .row
           .small-6.columns= f.input :nationality,  as: :country, priority_countries: ["FI", "SE", "DK", "NO"], input_html: {required: ''}
         .row
+          .small-6.columns= f.input :short_biography, label: "Short biography", hint: "1500 char. max"
+        .row
           .small-12.medium-6.columns= f.input :email, input_html: {required: ''}
         .row
           .small-12.medium-6.columns= f.input :website
