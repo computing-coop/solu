@@ -59,8 +59,8 @@
           .medium-2.small-offset-1.small-4.columns.text-left.left_form
             .form_label= counter.to_s + ". " + ff.object.question.question
             = ff.input :question_id, as: :hidden
-            - if ff.object.question.question_type.to_sym == :file
-              .hint PDF format only, 3MB limit please
+            - unless ff.object.question.hint.blank?
+              .hint= ff.object.question.hint
           .small-7.medium-4.end.columns{class: ff.object.question.question_type }
             - if ff.object.question.question_type.to_sym == :file
               %label.file
