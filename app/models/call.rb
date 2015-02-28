@@ -17,4 +17,12 @@ class Call
   
   embeds_many :submissions,  cascade_callbacks: true
   
+  def headings
+    Nokogiri::HTML(self.overview).search('a[name]').map{|x| [x['name'], x.text] }.delete_if{|x| x.first.blank? }
+  end
+  
+  def chunks
+    Nokogiri::HTML(self.overview).at('body').inner_html.split(/<a\s+(?!href=).*?name=.*?<\/a>/i).drop(1)
+  end
+  
 end

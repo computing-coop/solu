@@ -1,11 +1,20 @@
 class CallsController < ApplicationController
   
-  def show
+  def apply
     @call = Call.find(params[:id])
     @submission = Submission.new(call: @call)
     @call.questions.each do |qs|
       @submission.answers.build(question: qs)
     end
+    set_meta_tags title: @call.name
+  end
+  
+  def show
+    @call = Call.find(params[:id])
+    # @submission = Submission.new(call: @call)
+    # @call.questions.each do |qs|
+    #   @submission.answers.build(question: qs)
+    # end
     set_meta_tags title: @call.name
   end
   

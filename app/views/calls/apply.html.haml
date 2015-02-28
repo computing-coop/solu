@@ -1,0 +1,76 @@
+.application
+  = semantic_form_for @call, html: {multipart: true, :"data-abide" => '' } do |form|
+    .row
+      .medium-10.medium-offset-3.columns
+        %h3= "Apply to #{@call.name}"
+
+    = form.fields_for @submission do |f|
+      .row
+        .medium-2.medium-offset-1.small-12.columns.left_form
+          .form_label.text-left 1. First name
+        .small-12.medium-4.end.columns= f.input :first_name, input_html: {required: ''}, label: false
+      .row
+        .medium-2.medium-offset-1.small-12.columns.form_label.text-left.left_form 2. Last name
+        .small-12.medium-4.end.columns= f.input :last_name, input_html: {required: '' }, label: false
+        
+      .row
+        .medium-2.medium-offset-1.small-12.columns.text-left.left_form
+          .form_label.text-left 3. Organisation name
+          .hint.text-left Optional
+        .small-12.medium-4.end.columns= f.input :organisation_name, label: false
+        
+      .row
+        .medium-2.medium-offset-1.small-12.columns.form_label.text-left.left_form 4. Address
+        .small-12.medium-4.end.columns= f.input :address, input_html: {required: ''}, label: false
+        
+      .row
+        .medium-2.medium-offset-1.small-12.columns.form_label.text-left.left_form 5. City
+        .small-12.medium-4.end.columns= f.input :city, input_html: {required: ''}, label: false
+        
+      .row
+        .medium-2.medium-offset-1.small-12.columns.form_label.text-left.left_form 6. Country of residence
+        .small-12.medium-4.end.columns= f.input :country, as: :country,priority_countries: [], only: ["AX", "DK", "FI", "FO",  "GL","IS", "NO", "SE" ], input_html: {required: ''}, label: false
+        
+    
+      .row
+        .medium-2.medium-offset-1.small-12.columns.form_label.text-left.left_form 7. Date of birth
+        .small-12.medium-4.end.columns= f.input :date_of_birth,  :input_html => { :class => "fdatepicker", required: ''}, label: false
+      .row
+        .medium-2.medium-offset-1.small-12.columns.form_label.text-left.left_form 8. Nationality
+        .small-12.medium-4.end.columns= f.input :nationality,  as: :country, priority_countries: ["AX", "DK", "FI", "FO",  "GL","IS", "NO", "SE" ], input_html: {required: ''}, label: false
+        
+      .row
+        .medium-2.medium-offset-1.small-12.columns.text-left.left_form
+          .form_label 9. Short biography
+          .hint 1500 char. max
+        .small-12.medium-4.end.columns= f.input :short_biography, label: false, as: :text
+        
+      .row
+        .medium-2.medium-offset-1.small-12.columns.text-left.form_label.left_form 10. Email address
+        .small-12.medium-4.end.columns= f.input :email, input_html: {required: ''}, label: false
+        
+      .row
+        .medium-2.medium-offset-1.small-12.columns.form_label.text-left.left_form 11. Website
+        .small-12.medium-4.end.columns= f.input :website, label: false
+        
+      - counter = 12
+      = f.fields_for :answers do |ff|
+        .row
+          .medium-2.medium-offset-1.small-12.columns.text-left.form_label.left_form
+            = counter.to_s + ". " + ff.object.question.question
+            = ff.input :question_id, as: :hidden
+            - if ff.object.question.question_type.to_sym == :file
+              = ff.input :attachment, label: false
+            - elsif ff.object.question.question_type.to_sym == :boolean
+              = ff.input :answer_boolean, label: false,  as: :boolean
+            - else
+              = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false
+        - counter += 1
+
+    .row
+      .small-12.columns= form.submit "Submit", class: [:button ]
+
+      
+= content_for :jquery do
+  :plain
+    $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});  

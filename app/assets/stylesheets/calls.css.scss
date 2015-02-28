@@ -1,0 +1,90 @@
+@import 'variables';
+
+.call_container {
+  margin: 1rem 0;
+  
+  .small_heading {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    line-height: 1.2rem;
+    color: $turq;
+  }
+  
+  .navigator {
+    ol {
+      margin: 0; padding: 0;
+      color: $turq;
+      li {
+        color: $turq ;
+        margin-bottom: 0.3rem;
+        a {
+          font-size: 0.8rem;
+          padding-bottom: 0.2rem;
+          line-height: 1.5rem;
+          color: $turq;
+        }
+        border-bottom: 1px solid $turq;
+      }
+      
+    }
+  }
+  
+  .call_text, .call_text p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding-top: 0.4rem;
+  }
+  
+  .left_heading {
+    font-size: 0.8rem;
+    padding-bottom: 0.2rem;
+    line-height: 1.5rem;
+    color: $turq;
+    border-bottom: 1px solid $turq;
+  }
+
+  .just_border {
+    border-bottom: 1px solid #222;
+    padding-bottom: 0rem;
+    line-height: 1.4rem;
+  }
+}
+
+.application {
+  
+  .form_label {
+    font-size: 0.8rem;
+    padding-bottom: 0.2rem;
+    line-height: 1.5rem;
+    color: $turq;
+    border-bottom: 1px solid $turq;
+  }
+  .left_form {
+    padding-left: 0;
+  }
+  .hint {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #b6b6b6;
+    padding-top: 0.4rem;
+  }
+  
+  form {
+    .row {
+      margin-bottom: 1.8rem;
+    }
+    
+  
+    input[type=text] {
+      background-color: $formpink;
+      border: none;
+      outline: none;
+      &:outline, &:active, &:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+  
+}

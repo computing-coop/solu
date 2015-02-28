@@ -18,8 +18,18 @@
 //= require slick-carousel
 //= require ckeditor/init
 //= require_tree .
+
+  function scrollTo(target) { 
+    $('html, body').stop().animate({
+        'scrollTop': $(target).offset().top - 40
+    }, 900, 'swing', function () {
+        //window.location.hash = target;
+    });
+    return false;
+  }
+
   
 $(function() { 
   $(document).foundation();  
 });
-$(function(){ $(document).foundation(); });
+

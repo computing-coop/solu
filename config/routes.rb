@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   end
   resources :partners
   resources :home
-  resources :calls 
+  resources :calls do
+    member do
+      get :apply
+    end
+  end
   resources :submissions
   
   devise_for :users

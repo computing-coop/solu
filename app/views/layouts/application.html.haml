@@ -37,8 +37,10 @@
                 .small-4.columns= link_to 'Partners', partners_path
                 .small-4.columns.end= link_to 'Programme', page_path('programme')
           .row.down_arrow
-            .medium-2.columns.hide-for-small-only &nbsp;
-              
+            .medium-2.columns.hide-for-small-only
+              &nbsp;
+              - if controller.controller_name == 'calls'
+                = image_tag 'selected_down.png'
               
             .medium-6.large-4.small-centered.columns
               .row.down_arrow
