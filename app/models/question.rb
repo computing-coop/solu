@@ -3,6 +3,7 @@ class Question
   include Mongoid::Timestamps
   field :question, type: String
   field :question_type, type: String
+  field :hint, type: String
   field :required, type: Mongoid::Boolean
   belongs_to :call
   

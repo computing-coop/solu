@@ -25,6 +25,8 @@
           = "#{ff.object.question_type}: #{ff.object.question}"
         .row
           .small-12.columns.medium-8= ff.input :question
+        .row
+          .medium-8.small-12.columns= ff.input :hint
           .small-8.columns.medium-3= ff.input :question_type, as: :select, collection: ['string', 'text', 'file', 'boolean']
           .small-4.columns.medium-1= ff.input :required, as: :boolean
         = ff.link_to_remove "Remove this question"

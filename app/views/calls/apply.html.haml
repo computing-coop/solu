@@ -56,11 +56,17 @@
       - counter = 12
       = f.fields_for :answers do |ff|
         .row
-          .medium-2.medium-offset-1.small-12.columns.text-left.form_label.left_form
-            = counter.to_s + ". " + ff.object.question.question
+          .medium-2.medium-offset-1.small-12.columns.text-left.left_form
+            .form_label= counter.to_s + ". " + ff.object.question.question
             = ff.input :question_id, as: :hidden
             - if ff.object.question.question_type.to_sym == :file
-              = ff.input :attachment, label: false
+              .hint PDF format only, 3MB limit please
+          .small-12.medium-4.end.columns{class: ff.object.question.question_type }
+            - if ff.object.question.question_type.to_sym == :file
+              %label.file
+                = ff.input :attachment, label: false
+                %span Upload
+                .selected_file
             - elsif ff.object.question.question_type.to_sym == :boolean
               = ff.input :answer_boolean, label: false,  as: :boolean
             - else
@@ -68,9 +74,12 @@
         - counter += 1
 
     .row
-      .small-12.columns= form.submit "Submit", class: [:button ]
+      .small-12.medium-4.end.columns.medium-offset-3.submit_container= form.submit "Submit", class: [:button, :application ]
 
       
 = content_for :jquery do
   :plain
     $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});  
+    $('input[type=file]').change(function(e){
+      $(this).parents('label.file').find('.selected_file').text(e.target.files[0].name);
+    });

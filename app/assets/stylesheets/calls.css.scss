@@ -75,7 +75,7 @@
     }
     
   
-    input[type=text] {
+    input[type=text], textarea, select {
       background-color: $formpink;
       border: none;
       outline: none;
@@ -85,6 +85,46 @@
         box-shadow: none;
       }
     }
+
+    label.file {
+      position: relative;
+      margin: 10px 0px;
+      display: inline-block;
+      span {
+        border: 3px solid $turq;
+        background-color: white;
+        padding: 9px 25px;
+        text-transform: uppercase;
+        color: $turq;
+        font-weight: 300;
+        font-size: 1.2rem;
+      }
+      input[type=file] {
+        position: fixed;
+        top: -1000px;
+
+      } 
+      .selected_file {
+        float: right;
+        margin-left: 15px;
+        font-weight: 300;
+      }
+    }
+    
+    .submit_container {
+      margin-top: 2rem;
+    }
+   
+    input[type=submit].application {
+    
+      border: 3px solid $turq;
+      background-color: white;
+      padding: 9px 25px;
+      text-transform: uppercase;
+      color: $turq;
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+    
   }
-  
 }
