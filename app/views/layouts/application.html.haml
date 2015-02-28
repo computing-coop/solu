@@ -8,7 +8,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
     - if controller.controller_name == 'partners'
       %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
-    = csrf_meta_tags 
+    = csrf_meta_tags
+    %link{:href => "http://fonts.googleapis.com/css?family=Roboto:400italic,300,300italic,400", :rel => "stylesheet", :type => "text/css"}/
   %body
     - unless flash.empty?
       #flash
@@ -34,7 +35,7 @@
               .row
                 .small-4.columns= link_to 'About', page_path('about')
                 .small-4.columns= link_to 'Partners', partners_path
-                .small-4.columns.end= link_to 'Programme', '#'
+                .small-4.columns.end= link_to 'Programme', page_path('programme')
           .row.down_arrow
             .medium-2.columns.hide-for-small-only &nbsp;
               
@@ -42,13 +43,17 @@
             .medium-6.large-4.small-centered.columns
               .row.down_arrow
                 .small-4.columns
+                  &nbsp;
                   - if controller.controller_name == 'pages'
                     - if @page.slug == 'about'
                       = image_tag 'selected_down.png'
+
                 .small-4.columns
+                  &nbsp;
                   - if controller.controller_name == 'partners'
                     = image_tag 'selected_down.png'
-                .small-4.columns
+                .small-4.columns 
+                  &nbsp;
                   - if controller.controller_name == 'pages'
                     - if @page.slug == 'programme'
                       = image_tag 'selected_down.png'

@@ -1,6 +1,7 @@
 class Call
   include Mongoid::Document
   include Mongoid::Slug
+  include Mongoid::Timestamps
   field :name, type: String
   field :start_at, type: Date
   field :end_at, type: Date

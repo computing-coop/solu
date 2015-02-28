@@ -1,5 +1,6 @@
 class Answer
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :answer_text, type: String
   field :attachment, type: String
   field :attachment_content_type, type: String

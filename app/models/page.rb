@@ -1,6 +1,7 @@
 class Page
   include Mongoid::Document
   include Mongoid::Slug
+  include Mongoid::Timestamps
   include Imageable
   validates_uniqueness_of :title
   before_save :update_image_attributes

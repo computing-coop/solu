@@ -1,7 +1,7 @@
 class Activity
   include Mongoid::Document
   include Mongoid::Slug
-  
+  include Mongoid::Timestamps
   field :name, type: String
   field :activity_type, type: String
   field :description, type: String

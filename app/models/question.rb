@@ -1,5 +1,6 @@
 class Question
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :question, type: String
   field :question_type, type: String
   field :required, type: Mongoid::Boolean

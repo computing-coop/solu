@@ -1,6 +1,6 @@
 .partner_container
-  - @partners.each do |partner|
-    .partner
+  - @partners.each_with_index do |partner, index|
+    .partner{class: index == (@partners.size - 1) ? :last : false}
       .row
         .medium-3.columns.medium-offset-1.text-left
           - if partner.hmlogo?
