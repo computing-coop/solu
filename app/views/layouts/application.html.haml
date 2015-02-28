@@ -25,14 +25,35 @@
         .hor-container
           .row
 
-            .medium-1.column.hide-for-small-only
-              //= image_tag 'circles.png'
+            .medium-2.columns.hide-for-small-only.social_icons
+              = link_to image_tag('icon_fb.png'), 'https://www.facebook.com/groups/437255773056631/', target: :_blank
+              = link_to image_tag('icon_twitter.png'), 'http://twitter.com/hybridmatters', target: :_blank
+              = link_to image_tag('icon_post.png'), 'mailto:info@hybridmatters.net'
+              
             .medium-6.large-4.small-centered.columns
               .row
                 .small-4.columns= link_to 'About', page_path('about')
                 .small-4.columns= link_to 'Partners', partners_path
                 .small-4.columns.end= link_to 'Programme', '#'
-
+          .row.down_arrow
+            .medium-2.columns.hide-for-small-only &nbsp;
+              
+              
+            .medium-6.large-4.small-centered.columns
+              .row.down_arrow
+                .small-4.columns
+                  - if controller.controller_name == 'pages'
+                    - if @page.slug == 'about'
+                      = image_tag 'selected_down.png'
+                .small-4.columns
+                  - if controller.controller_name == 'partners'
+                    = image_tag 'selected_down.png'
+                .small-4.columns
+                  - if controller.controller_name == 'pages'
+                    - if @page.slug == 'programme'
+                      = image_tag 'selected_down.png'
+                
+                
       
     .main-container= yield
     %footer

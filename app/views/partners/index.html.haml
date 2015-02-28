@@ -1,0 +1,13 @@
+.partner_container
+  - @partners.each do |partner|
+    .partner
+      .row
+        .medium-3.columns.medium-offset-1.text-left
+          - if partner.hmlogo?
+            = image_tag partner.hmlogo.url
+        .medium-7.columns.partner_info.end
+          .country= Country[partner.country].name
+          .name= partner.name
+          .web= link_to partner.website, partner.website, target: :_blank
+          .description= raw partner.description
+      

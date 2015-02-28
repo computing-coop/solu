@@ -11,11 +11,12 @@
   .row
     .large-5.small-12.columns= f.input :title
   .row
-    .large-5.small-12.columns= f.input :body, as: :text, input_html: {class: :ckeditor}
+    .large-8.small-12.columns= f.input :body, as: :text, input_html: {class: :ckeditor}
   .row
     .large-5.small-12.columns
       - if f.object.image?
         = image_tag f.object.image.url(:box)
+        = f.input :remove_image, as: :boolean
       = f.input :image
   = f.fields_for :photos do |ff|
     = if ff.object.image?

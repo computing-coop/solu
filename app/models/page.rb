@@ -9,6 +9,7 @@ class Page
   field :title, type: String
   field :body, type: String
   field :image, type: String
+  
   field :image_size, type: Integer
   field :image_width, type: Integer
   field :image_height, type: Integer

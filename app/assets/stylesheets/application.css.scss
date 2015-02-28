@@ -84,6 +84,7 @@ header {
 
     margin-top: -37px;
     height: 75px;
+    
 
     a {
       text-transform: uppercase;
@@ -104,6 +105,15 @@ header {
   height: 75px;
   .row {
     padding-top: 0.8rem;
+    &.down_arrow {
+      padding-top: 0; 
+      img {
+        vertical-align: top;
+      }
+    }
+    .social_icons {
+      padding-top: 0.8rem;
+    }
   }
 }
 .main-container {

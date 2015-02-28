@@ -6,6 +6,7 @@ class Admin::PagesController < Admin::BaseController
 
   def index
     @pages = Page.all
+    set_meta_tags title: 'Pages'
     respond_with(@pages)
   end
 
@@ -15,10 +16,12 @@ class Admin::PagesController < Admin::BaseController
 
   def new
     @page = Page.new
+    set_meta_tags title: 'New page'
     respond_with(@page)
   end
 
   def edit
+    set_meta_tags title: 'Edit page - ' + @page.try(:title)
   end
 
   def create

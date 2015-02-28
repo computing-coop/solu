@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 35aea60b285afce7a1d1f22602b14b21e91c08fa
+  revision: 6632302e7fc88f99aa7cff24719b95e6347048f7
   specs:
-    mongoid (4.0.1)
+    mongoid (4.0.2)
       activemodel (~> 4.0)
       moped (~> 2.0.0)
       origin (~> 2.1)
@@ -203,7 +203,7 @@ GEM
     mongoid-slug (4.0.0)
       mongoid (>= 3.0)
       stringex (~> 2.0)
-    moped (2.0.3)
+    moped (2.0.4)
       bson (~> 2.2)
       connection_pool (~> 2.0)
       optionable (~> 0.2.0)

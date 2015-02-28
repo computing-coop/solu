@@ -1,9 +1,10 @@
-.row
-  .large-10.columns.large-offset-1
-    %h1= @page.title
-- if @page.image?
+.page_container
   .row
-    .large-10.columns.large-offset-1= image_tag @page.image.url
-.row
-  .large-10.columns.large-offset-1
-    = raw @page.body
+    .medium-7.columns.medium-offset-2
+      %h2= @page.title
+  - if @page.image?
+    .row
+      .medium-7.columns.medium-offset-2= image_tag @page.image.url
+  .row
+    .medium-7.columns.medium-offset-2.body
+      = raw @page.body
