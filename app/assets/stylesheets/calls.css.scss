@@ -89,6 +89,11 @@
       margin-bottom: 1.8rem;
     }
     
+    li.error {
+      input {
+        border: 2px solid red;
+      }
+    }
   
     input[type=text], textarea, select {
       background-color: $formpink;
