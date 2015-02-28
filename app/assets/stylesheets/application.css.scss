@@ -66,7 +66,15 @@ header {
     height: 1px;
   }
   
-  background: url(image_path('top_image1.png')) no-repeat top center;
+  &.type1 {
+    background: url(image_path('top_image1.png')) no-repeat top center;
+  }
+  &.type2 {
+    background: url(image_path('top_image2.png')) no-repeat top center;
+  }
+  &.type3 {
+    background: url(image_path('top_image3.png')) no-repeat top center;
+  }
   background-color: $pastel-blue;
 //  background-size: cover;
   height: 400px;

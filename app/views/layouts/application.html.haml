@@ -18,7 +18,7 @@
             - flash.each do |name, msg|
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
-    %header
+    %header{class: "type" + [1,2,3].sample.to_s }
       .before
       .grid-container
 

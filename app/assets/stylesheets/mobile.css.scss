@@ -1,9 +1,18 @@
 @media only screen and (max-width: 40em)  { 
   
   header {
-    height: 280px;
+    &.type1 {
+      background: url(image_path('mobile_top_image1.png')) no-repeat top center;
+    }
+    &.type2 {
+      background: url(image_path('mobile_top_image2.png')) no-repeat top center;
+    }
+    &.type3 {
+      background: url(image_path('mobile_top_image3.png')) no-repeat top center;
+    }
+    height: 175px;
     .logo-container {
-      height: 260px;
+
 
       .logo {
         margin: 1.625rem auto 1.2rem auto;
