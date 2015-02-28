@@ -33,9 +33,9 @@
               
             .medium-6.large-4.small-centered.columns
               .row
-                .small-4.columns= link_to 'About', page_path('about')
-                .small-4.columns= link_to 'Partners', partners_path
-                .small-4.columns.end= link_to 'Programme', page_path('programme')
+                .small-4.columns.small-text-center= link_to 'About', page_path('about')
+                .small-4.columns.small-text-center= link_to 'Partners', partners_path
+                .small-4.columns.small-text-center.end= link_to 'Programme', page_path('programme')
           .row.down_arrow
             .medium-2.columns.hide-for-small-only
               &nbsp;
@@ -65,7 +65,7 @@
     .main-container= yield
     %footer
       .row
-        .medium-3.columns
+        .medium-3.small-8.small-centered.medium-left.columns
           .row
             .small-12.columns.footer_title Nordic Cultural Event of the Year
           .row

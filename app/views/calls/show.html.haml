@@ -25,12 +25,10 @@
           .left_heading
             = "#{index+1}. #{@call.headings[index].last}"
         .small-12.columns.medium-8.end.call_text
-          %a{name: @call.headings[index].first } 
-          - if index == 0
-          
-            %br/
-          - else
-            .just_border
+          %a{name: @call.headings[index].first }
+          .left_heading.show-for-small-only= "#{index+1}. #{@call.headings[index].last}"
+          - unless index == 0
+            .just_border.hide-for-small-only
               &nbsp;
           = raw chunk
             

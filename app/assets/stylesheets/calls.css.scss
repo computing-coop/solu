@@ -33,6 +33,7 @@
     font-size: 1rem;
     line-height: 1.5rem;
     padding-top: 0.4rem;
+
   }
   
   .left_heading {
@@ -48,6 +49,18 @@
     padding-bottom: 0rem;
     line-height: 1.4rem;
   }
+  
+  a.button.application {
+    margin-top: 1rem;
+    border: 3px solid $turq;
+    background-color: white;
+    padding: 9px 25px;
+    text-transform: uppercase;
+    color: $turq;
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+  
 }
 
 .application {
@@ -68,6 +81,8 @@
     color: #b6b6b6;
     padding-top: 0.4rem;
   }
+  
+
   
   form {
     .row {

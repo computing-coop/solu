@@ -20,8 +20,15 @@
     }
     
     .top-bar {
+      height: 50px;
       a {
         font-size:  0.8rem;
+      }
+      .hor-container {
+        height: 50px;
+        .row {
+          padding-top: 0.45rem;
+        }
       }
     }
   }
