@@ -19,8 +19,9 @@
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
     %header{class: "type" + [1,2,3].sample.to_s }
-      .before
-      .grid-container
+      = link_to '/' do
+        .before
+        .grid-container
 
       %nav.top-bar.sticky
         .hor-container
