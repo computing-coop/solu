@@ -87,12 +87,27 @@
   form {
     .row {
       margin-bottom: 1.8rem;
+      &.has_topline {
+        .left_form {
+          padding-top: 0.8rem;
+        }
+        .end {
+          li.text {
+            padding-top: 2.5rem;
+            border-top: 1px solid black;
+          }
+        }
+      }
     }
     
+    textarea {
+      height: 135px;
+    }
     li.error {
-      input {
+      input, textarea  {
         border: 2px solid red;
       }
+
     }
   
     input[type=text], textarea, select {
@@ -105,7 +120,7 @@
         box-shadow: none;
       }
     }
-
+    
     label.file {
       position: relative;
       margin: 10px 0px;
@@ -121,7 +136,7 @@
       }
       input[type=file] {
         position: fixed;
-        top: -1000px;
+        left: -1000px;
 
       } 
       .selected_file {

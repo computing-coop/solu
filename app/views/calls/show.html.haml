@@ -8,7 +8,7 @@
       &nbsp;
       %ol
         - @call.headings.each do |heading|
-          %li.heading= link_to heading.last, '#', onclick: "scrollTo('a[name=#{heading.first}]');"
+          %li.heading= link_to heading.last, '#', onclick: "scrollTo('a[name=#{heading.first}]');return false;"
           
   .image_carousel
     - @call.photos.each do |photo|
