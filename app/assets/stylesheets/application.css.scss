@@ -55,10 +55,10 @@ form {
 // header
 .grid-container {
   margin: 0.688em 0.688em 0 0.688em;
-  border-top: 3px solid black;
-  border-right: 3px solid black;
+  border-top: 2px solid #444;
+  border-right: 2px solid #444;
   height: 100%;
-  border-left: 3px solid black;
+  border-left: 2px solid #444;
   z-index: 999;
 }
 
@@ -98,9 +98,9 @@ header {
     a {
       text-transform: uppercase;
       font-size: 1rem;
-      color: #333;
+      color: #444;
       &:hover {
-        color: $monsoon;
+        color: $blue_hover;
       }
     }
   }
@@ -109,8 +109,8 @@ header {
 
 .hor-container {
   z-index: 999;
-  border-left: 3px solid black;
-  border-right: 3px solid black;
+  border-left: 2px solid #444;
+  border-right: 2px solid #444;
   margin: 0 0.688em;
   height: 75px;
   .row {
@@ -127,9 +127,9 @@ header {
   }
 }
 .main-container {
-  border-left: 3px solid black;
-  border-right: 3px solid black;
-  border-bottom: 3px solid black;
+  border-left: 2px solid #444;
+  border-right: 2px solid #444;
+  border-bottom: 2px solid #444;
   margin: 0 0.688em 0.688em 0.688em;
 
   padding-bottom: 3rem;
@@ -139,12 +139,12 @@ header {
 
 footer {
   .contact_info {
-    background-color: #f7f3f4;
+    background-color: #fad1cb;
     padding: 1.5rem 0;
   }
   
   clear: both;
-  background-color: #fad1cb;
+  background-color: $beige;
 
   .logo_strips {
     padding: 1.5rem 0;

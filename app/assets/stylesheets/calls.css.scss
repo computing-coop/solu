@@ -4,21 +4,26 @@
   margin: 1rem 0;
   
   .small_heading {
-    font-size: 0.8rem;
+    font-size: 0.938rem;
     text-transform: uppercase;
     line-height: 1.2rem;
     color: $turq;
   }
   
+  h1 {
+    font-size: 2.063rem;
+    color: #444;
+  }
   .navigator {
     ol {
       margin: 0; padding: 0;
       color: $turq;
       li {
+        list-style-position: inside;
         color: $turq ;
         margin-bottom: 0.3rem;
         a {
-          font-size: 0.8rem;
+          font-size: 0.938rem;
           padding-bottom: 0.2rem;
           line-height: 1.5rem;
           color: $turq;
@@ -30,14 +35,15 @@
   }
   
   .call_text, .call_text p {
-    font-size: 1rem;
+    font-size: 0.938rem;
     line-height: 1.5rem;
     padding-top: 0.4rem;
 
+    color: #444;
   }
   
   .left_heading {
-    font-size: 0.8rem;
+    font-size: 0.938rem;
     padding-bottom: 0.2rem;
     line-height: 1.5rem;
     color: $turq;
@@ -47,6 +53,7 @@
   .just_border {
     border-bottom: 1px solid #222;
     padding-bottom: 0rem;
+    margin-bottom: 2.5rem;
     line-height: 1.4rem;
   }
   

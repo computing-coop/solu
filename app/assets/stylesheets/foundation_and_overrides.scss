@@ -118,7 +118,7 @@ $font-family-sans-serif: 'Roboto', sans-serif;
 $pastel-blue    : #bbf2e5;
 
 // We use these as default colors throughout
-$primary-color: #3ec9a8 ;
+$primary-color: #f66060 ;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
@@ -258,7 +258,7 @@ $primary-color: #3ec9a8 ;
 // $anchor-text-decoration: none;
 // $anchor-text-decoration-hover: none;
 // $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
+$anchor-font-color-hover: #3ec9a8; // scale-color($primary-color, $lightness: -14%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;

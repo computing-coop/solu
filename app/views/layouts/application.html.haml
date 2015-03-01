@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = display_meta_tags :site => 'HYBRID MATTERs', og: {image: image_path('hm_logo.png')}
+    = display_meta_tags :site => 'HYBRID MATTERs', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true 
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
     - if controller.controller_name == 'partners'
@@ -28,9 +28,9 @@
           .row
 
             .medium-3.columns.hide-for-small-only.social_icons
-              = link_to image_tag('icon_fb.png'), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
-              = link_to image_tag('icon_twitter.png'), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
-              = link_to image_tag('icon_post.png'), 'mailto:info@hybridmatters.net', class: :maillink
+              = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
+              = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
+              = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@hybridmatters.net', class: :maillink
               
             .medium-6.large-4.small-centered.columns
               .row

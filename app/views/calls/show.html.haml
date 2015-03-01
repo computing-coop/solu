@@ -30,7 +30,7 @@
           - unless index == 0
             .just_border.hide-for-small-only
               &nbsp;
-          = raw chunk
+          = raw Nokogiri::HTML.parse(chunk.gsub(/(<(?!\/)[^>]+>)+(<\/[^>]+>)+/, '')).inner_html
             
     
   .row
