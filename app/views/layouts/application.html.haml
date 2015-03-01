@@ -45,17 +45,17 @@
               
             .medium-6.large-4.small-centered.columns
               .row.down_arrow
-                .small-4.columns
+                .small-4.columns.text-center 
                   &nbsp;
                   - if controller.controller_name == 'pages'
                     - if @page.slug == 'about'
                       = image_tag 'selected_down.png'
 
-                .small-4.columns
+                .small-4.columns.text-center 
                   &nbsp;
                   - if controller.controller_name == 'partners'
                     = image_tag 'selected_down.png'
-                .small-4.columns 
+                .small-4.columns.text-center 
                   &nbsp;
                   - if controller.controller_name == 'pages'
                     - if @page.slug == 'programme'
