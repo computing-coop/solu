@@ -19,7 +19,7 @@ class Answer
     if attachment.present? && attachment_changed?
       if attachment.file.exists?
         self.attachment_content_type = attachment.file.content_type
-        self.attachment_size = File.size(attachment.file)
+        self.attachment_size = attachment.file.size
       end
     end
   end
