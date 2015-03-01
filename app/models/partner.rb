@@ -2,6 +2,7 @@ class Partner
 
   include Mongoid::Document
   include Mongoid::Slug
+  include Mongoid::Timestamps
   
   validates_uniqueness_of :name
 
