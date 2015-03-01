@@ -15,7 +15,7 @@
  *= require slick-carousel
  *= require partners
  *= require pages
- *= require scaffolds
+
  *= require activities
  *= require calls
  *= require mobile
@@ -68,13 +68,13 @@ header {
   }
   
   &.type1 {
-    background: url(image_path('top_image1.png')) no-repeat top center;
+    background: url(image_path('top_image1.jpg')) no-repeat top center;
   }
   &.type2 {
-    background: url(image_path('top_image2.png')) no-repeat top center;
+    background: url(image_path('top_image2.jpg')) no-repeat top center;
   }
   &.type3 {
-    background: url(image_path('top_image3.png')) no-repeat top center;
+    background: url(image_path('top_image3.jpg')) no-repeat top center;
   }
   background-color: $pastel-blue;
 //  background-size: cover;
@@ -98,6 +98,7 @@ header {
     a {
       text-transform: uppercase;
       font-size: 1rem;
+      color: #333;
       &:hover {
         color: $monsoon;
       }
@@ -137,16 +138,25 @@ header {
 }
 
 footer {
-  clear: both;
-  background-color: $beige;
-  padding: 5.3rem 0 5.6rem 0;
-  .footer_title {
+  .contact_info {
+    background-color: #f7f3f4;
     padding: 1.5rem 0;
   }
-  .partners {
+  
+  clear: both;
+  background-color: #fad1cb;
+
+  .logo_strips {
+    padding: 1.5rem 0;
+  
+    .footer_title {
+      padding: 1.5rem 0;
+    }
+    .partners {
     
-    a {
-      padding: 0 1rem;
+      a {
+        padding: 0 1rem;
+      }
     }
   }
 }

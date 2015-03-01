@@ -25,6 +25,7 @@ class CallsController < ApplicationController
     @call.submissions << @submission
     if @call.save
       SubmissionMailer.submission_received(@submission).deliver
+      SubmissionMailer.submission_notification_to_hm(@submission).deliver
       flash[:notice] = 'Thank you for your submission.'
     else
       flash[:error] = 'There was an error with your submission: ' + @call.errors.full_messages.join('; ')
