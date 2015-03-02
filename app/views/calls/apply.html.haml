@@ -43,7 +43,9 @@
         .medium-2.small-offset-1.small-4.columns.text-left.left_form
           .form_label 9. Short biography
           .hint 1500 char. max
-        .small-7.end.columns= f.input :short_biography, label: false, as: :text
+        .small-7.end.columns
+          = f.input :short_biography, label: false, as: :text, :maxlength => 1500
+          %p.counter= f.object.new_record? ? "1500 characters remaining" : "#{1500 - f.object.description.length} characters remaining"
         
       .row
         .medium-2.small-offset-1.small-4.columns.text-left.form_label.left_form 10. Email address
@@ -71,6 +73,8 @@
               = ff.input :answer_boolean, label: false,  as: :boolean
             - else
               = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false, input_html: { required: ff.object.question.required == true ? '' : 'ssss' }
+              - if  ff.object.question.question_type.to_sym == :text
+                %p.counter= ff.object.new_record? ? "1500 characters remaining" : "#{1500 - f.object.description.length} characters remaining"
         - counter += 1
 
     .row
@@ -82,6 +86,14 @@
     $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});  
     $('input[type=file]').change(function(e){
       $(this).parents('label.file').find('.selected_file').text(e.target.files[0].name);
+    });
+    $('textarea').keyup(function () {
+      
+        var left = 1500 - $(this).val().length;
+        if (left < 0) {
+            left = "<span style='color: red;'>" + left + "</span>";
+        }
+        $(this).parents('li').next('.counter').html(left + ' characters remaining');
     });
     $('form')
       .on('invalid.fndtn.abide', function () {

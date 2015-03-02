@@ -115,7 +115,12 @@
         padding-top: 1.5rem;
       }
     }
-    
+    p.counter {
+      float: right;
+      font-size: 0.8rem;
+      color: #999;
+      font-style: italic;
+    }
     textarea {
       height: 135px;
     }

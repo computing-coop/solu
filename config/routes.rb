@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     member do
       get :apply
     end
+    collection do
+      get :thanks
+    end
   end
   resources :submissions
   
