@@ -1,5 +1,5 @@
 class SubmissionMailer < ApplicationMailer
-  default from: 'info@hybridmatters.net'
+  default from: 'info@bioartsociety.fi'
   
   def submission_received(submission)
     @user = submission
@@ -11,7 +11,7 @@ class SubmissionMailer < ApplicationMailer
   def submission_notification_to_hm(submission)
     @user = submission
 
-    mail(to: 'info@hybirdmatters.net', cc: 'eb@randomseed.org', subject: 'HYBRID MATTERs: Application submitted')
+    mail(to: 'info@bioartsociety.fi', subject: 'HYBRID MATTERs: Application submitted')
     
   end
   

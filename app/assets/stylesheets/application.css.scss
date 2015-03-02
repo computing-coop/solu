@@ -160,3 +160,22 @@ footer {
     }
   }
 }
+
+.container_404 {
+  .columns {
+    padding: 7rem 0;
+    margin-bottom: 1rem;
+    img {
+      margin-right: 25px;
+    }
+    h2 {
+      padding-top: 55px;
+      font-size: 2rem;
+      color: #444;
+    }
+    p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+  }
+}
