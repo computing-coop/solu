@@ -32,7 +32,7 @@ class CallsController < ApplicationController
     else
       flash[:error] = 'There was an error with your submission: ' + @call.errors.full_messages.join('; ')
     end
-    redirect_to @call
+    
   end
     
   protected 
