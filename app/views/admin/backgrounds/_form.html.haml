@@ -1,0 +1,24 @@
+= semantic_form_for [:admin, @background], html: {multipart: true, :"data-abide" => '' } do |f|
+  - if @background.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@background.errors.count, "error")} prohibited this background from being saved:"
+      %ul
+        - @background.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    .small-6.columns
+      - if f.object.regular?
+        = image_tag f.object.regular.url, width: 400
+      = f.input :regular, label: 'Full size image', :hint => 'Full size image for header, min. 1920px wide', input_html: {:required => f.object.new_record? ? '' : false }
+  .row
+    .small-6.columns
+      - if f.object.mobile?
+        = image_tag f.object.mobile.url
+      = f.input :mobile, label: 'Mobile version', :hint => 'Mobile/small version of header', input_html: {:required => f.object.new_record? ? '' : false }
+  .row
+    .small-6.columns= f.input :credit
+  .row
+    .small-6.column= f.input :active, as: :boolean,  :hint => 'Untick to keep from being randomly loaded'
+  .row
+    .small-6.columns= f.submit 'Save', class: [:button, :small]

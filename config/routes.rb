@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :backgrounds
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :activities
 
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :activities
+    resources :backgrounds
     resources :partners
     resources :posts
     resources :calls do

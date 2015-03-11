@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  regular: MyString
+  regular_size: 1
+  regular_height: 1
+  regular_width: 1
+  regular_content_type: MyString
+  mobile: MyString
+  mobile_size: 1
+  mobile_height: 1
+  mobile_width: 1
+  mobile_content_type: MyString
+  active: false
+
+two:
+  regular: MyString
+  regular_size: 1
+  regular_height: 1
+  regular_width: 1
+  regular_content_type: MyString
+  mobile: MyString
+  mobile_size: 1
+  mobile_height: 1
+  mobile_width: 1
+  mobile_content_type: MyString
+  active: false

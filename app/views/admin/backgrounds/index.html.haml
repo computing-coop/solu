@@ -1,0 +1,27 @@
+.row
+  .small-12.columns
+    %h1 Listing backgrounds
+
+    %table
+      %thead
+        %tr
+          %th Image
+          %th Credit
+          %th Active
+          %th
+
+      
+      %tbody
+        - @backgrounds.each do |background|
+          %tr
+            %td= image_tag background.mobile.url
+            %td= background.credit
+            %td= background.active
+            %td
+              = link_to 'Show', [:admin, background], class: [:button, :small]
+              = link_to 'Edit', edit_admin_background_path(background), class: [:button, :small]
+              = link_to 'Destroy', [:admin, background], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
+
+    %br
+
+    = link_to 'New Background', new_admin_background_path, class: [:button, :small]

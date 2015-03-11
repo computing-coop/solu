@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Regular:
+  = @background.regular
+%p
+  %b Regular size:
+  = @background.regular_size
+%p
+  %b Regular height:
+  = @background.regular_height
+%p
+  %b Regular width:
+  = @background.regular_width
+%p
+  %b Regular content type:
+  = @background.regular_content_type
+%p
+  %b Mobile:
+  = @background.mobile
+%p
+  %b Mobile size:
+  = @background.mobile_size
+%p
+  %b Mobile height:
+  = @background.mobile_height
+%p
+  %b Mobile width:
+  = @background.mobile_width
+%p
+  %b Mobile content type:
+  = @background.mobile_content_type
+%p
+  %b Active:
+  = @background.active
+
+= link_to 'Edit', edit_background_path(@background)
+\|
+= link_to 'Back', backgrounds_path
