@@ -65,7 +65,13 @@ header {
   .before {
     height: 1px;
   }
-  
+  .staging_overlay {
+    img {
+      margin: 5% 5% 0 0;
+      float: right;
+      z-index: 11;
+    }
+  }
   &.type1 {
     background: url(image_path('top_image1.jpg')) no-repeat top center;
   }

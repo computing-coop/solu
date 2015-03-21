@@ -28,6 +28,8 @@
                 = content_tag :div, msg, :id => "flash_#{name}"
     %header{class: "type" + [1,2,3].sample.to_s }
       = link_to '/' do
+        - if Rails.env.staging?
+          .staging_overlay= image_tag('staging_overlay.png')
         .before
         .grid-container
 
