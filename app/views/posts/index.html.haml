@@ -1,0 +1,4 @@
+.post_container
+  - @posts.each_with_index do |post, index|
+    .post{class: index == (@posts.size - 1) ? :last : false}
+      = render partial: 'post', locals: {post: post}

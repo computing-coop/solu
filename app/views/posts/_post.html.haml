@@ -1,0 +1,12 @@
+.row
+  .small-2.columns.small-offset-1
+    - if post.photos.empty?
+      = image_tag 'hm_logo.png'
+    - else
+      = image_tag post.photos.first.image.url(:blog)
+  .small-9.columns
+    .row
+      .small-9.columns.post_info.end.small-offset-1
+        .title= link_to post.title, post
+        .date= l post.published_at, format: :short
+        .body= raw truncate_html(sanitize(post.body, tags: %w{bold b strong u underline i italic em}), length: 600)

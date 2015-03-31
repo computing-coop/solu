@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :submissions
     end
     resources :pages
+    resources :users
   end
   resources :partners
   resources :home
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
       get :thanks
     end
   end
+  resources :user
   resources :submissions
   
   devise_for :users
@@ -35,6 +37,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'posts#index'
   get '/admin',  to: 'admin/posts#index'
 end

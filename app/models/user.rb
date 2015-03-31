@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Slug
   rolify
   validates_uniqueness_of :email
   belongs_to :partner
@@ -34,6 +35,13 @@ class User
   field :confirmed_at,         type: Time
   field :confirmation_sent_at, type: Time
   field :unconfirmed_email,    type: String # Only if using reconfirmable
+  
+  
+  # custom HM fields
+  field :website,            type: String, default: ""
+  field :biography,         type: String
+
+  slug :name
   
   # def self.serialize_from_session(key, salt)
   #   (key = key.first) if key.kind_of? Array

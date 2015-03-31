@@ -12,6 +12,7 @@ class Post
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   
+  scope :published, -> () { where(published: true)}
   before_save :check_published_date
   
   def check_published_date

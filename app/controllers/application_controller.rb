@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :protect_with_staging_password if Rails.env.staging?
-  
+  before_filter :get_random_background
   
   def protect_with_staging_password
     authenticate_or_request_with_http_basic('Bioart eyes only! (for now)') do |username, password|
@@ -18,11 +18,15 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
+  
+  def get_random_background
+    @background_image = Background.order_by_rand.first 
+  end
+  
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email,  :password, :remember_token, :remember_created_at, :sign_in_count) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email,  :password, :remember_token, :remember_created_at, :sign_in_count, :partner_id) }
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:name, :partner_id, role_ids: [] )}    
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :partner_id, :password, :name,  :password_confirmation ) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :partner_id, :password, :name,  :password_confirmation, :partner_id ) }
   end
     
 end

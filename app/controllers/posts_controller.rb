@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   respond_to :html
 
   def index
-    @posts = Post.all
+    @posts = Post.published.order(published_at: :desc)
     respond_with(@posts)
     set_meta_tags title: "Posts"
   end
