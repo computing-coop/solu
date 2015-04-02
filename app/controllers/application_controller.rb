@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   protected
   
   def get_random_background
-    @background_image = Background.order_by_rand.first 
+    @background_image = Background.active.skip(rand(Background.count)).first
   end
   
   def configure_permitted_parameters

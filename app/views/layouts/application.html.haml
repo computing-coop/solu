@@ -26,7 +26,21 @@
             - flash.each do |name, msg|
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
-    %header{class: "type" + [1,2,3].sample.to_s }
+    - unless @background_image.nil?
+      :css
+        header{
+          background: url(#{@background_image.regular.url}) no-repeat top center;
+        }
+        @media only screen and (max-width: 40em)  { 
+          header {
+            background: url(#{@background_image.mobile .url}) no-repeat top center;
+          }
+        }
+        
+    %header{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
+      - unless @background_image.nil?
+        - unless @background_image.credit.blank?
+          .image_credit= link_to 'IMAGE CREDITS', '#', onclick: "$(this).text('#{escape_javascript(@background_image.credit)}');return false;"
       = link_to '/' do
         - if Rails.env.staging?
           .staging_overlay= image_tag('staging_overlay.png')

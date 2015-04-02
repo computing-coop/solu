@@ -16,6 +16,9 @@ class Background
   mount_uploader :mobile, BackgroundUploader
   before_save :update_image_attributes
   
+  
+  scope :active, -> () { where(active: true) }
+  
   def update_image_attributes
     if regular.present? && regular_changed?
       if regular.file.exists?

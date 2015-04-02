@@ -66,6 +66,14 @@ header {
   .before {
     height: 1px;
   }
+  .image_credit {
+    z-index: 49;
+    position: absolute;
+    margin: 1rem 1.5rem;
+    a { color: black; }
+    font-size: 0.8rem;
+    color: #333;
+  }
   .staging_overlay {
     img {
       margin: 5% 5% 0 0;
