@@ -17,4 +17,3 @@
 //= require jquery_nested_form
 //= require ckeditor/init
 //= require chosen-jquery
-//= require_tree ./admin
