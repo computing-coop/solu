@@ -19,10 +19,12 @@
     float: left;
     border: 3px solid #333;
     color: #333;
-    
+    &.noright {
+      border-right: none;
+    }
     letter-spacing: 0.3rem;
     a { color: #333; &:hover { color: $turq; } }
-    padding: 0.3rem;
+    padding: 0.2rem 0.65rem; 
     text-transform: uppercase;
     font-size: 1rem;
   }

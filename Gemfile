@@ -54,6 +54,7 @@ gem 'carrierwave-aws'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
+gem 'chosen-rails'
 gem 'ckeditor'
 gem 'countries'
 gem 'country_select', github: 'stefanpenner/country_select'

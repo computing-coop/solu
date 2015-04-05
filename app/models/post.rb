@@ -8,6 +8,7 @@ class Post
   field :published_at, type: Time
   belongs_to :user
   has_and_belongs_to_many :postcategories
+  has_and_belongs_to_many :activities
   slug :title
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
@@ -20,6 +21,10 @@ class Post
     if self.published == true
       self.published_at ||= Time.now
     end
+  end
+  
+  def category
+    [activities.map(&:name), postcategories.map(&:name)].flatten.compact.join(' / ')
   end
   
   def previous

@@ -15,21 +15,6 @@
 //= require foundation
 //= require foundation-datepicker
 //= require jquery_nested_form
-//= require slick-carousel
 //= require ckeditor/init
-
-
-function scrollTo(target) { 
-  $('html, body').stop().animate({
-      'scrollTop': $(target).offset().top - 40
-  }, 900, 'swing', function () {
-      //window.location.hash = target;
-  });
-  return false;
-}
-
-
-$(function() { 
-  $(document).foundation();  
-});
-
+//= require chosen-jquery
+//= require_tree ./admin

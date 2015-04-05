@@ -155,6 +155,9 @@ footer {
   .contact_info {
     background-color: #fad1cb;
     padding: 1.5rem 0;
+    .row {
+      margin: 0;
+    }
   }
   
   clear: both;
@@ -165,7 +168,11 @@ footer {
   
     .footer_title {
       padding: 1.5rem 0;
+      font-weight: 300;
+      color: #777;
     }
+    
+    
     .partners {
     
       a {

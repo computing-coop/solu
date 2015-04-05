@@ -10,7 +10,7 @@
             - else
               = image_tag @post.user.partner.hmlogo.url
           .small-10.columns.post_info.end
-            .blue_heading Activity category
+            .blue_heading= @post.category
             .title= @post.title
             .date= l @post.published_at, format: :long
 
@@ -28,13 +28,13 @@
     .row
       .small-10.medium-3.columns.small-centered
         - unless @post.previous.nil?
-          .post_paginator= link_to raw("&#8592; Prev"), @post.previous
+          .post_paginator{class: @post.next.nil? ? false : :noright}= link_to raw("&#8592; Prev"), @post.previous
         - unless @post.next.nil?
           .post_paginator= link_to raw("Next &#8594;"), @post.next        
     - if can? :edit, @post
       .row
         .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
-    
+
 - if @post.photos.size > 1
   = content_for :jquery do
     :plain
