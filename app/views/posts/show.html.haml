@@ -25,6 +25,12 @@
     .row
       .small-10.medium-8.columns.medium-offset-2
         .body= raw sanitize(@post.body, tags: %w{bold b strong u underline i italic em})
+    .row
+      .small-10.medium-3.columns.small-centered
+        - unless @post.previous.nil?
+          .post_paginator= link_to raw("&#8592; Prev"), @post.previous
+        - unless @post.next.nil?
+          .post_paginator= link_to raw("Next &#8594;"), @post.next        
     - if can? :edit, @post
       .row
         .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :activities
     resources :backgrounds
     resources :partners
+    resources :postcategories
     resources :posts
     resources :calls do
       resources :submissions
