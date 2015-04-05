@@ -6,6 +6,8 @@ class Post
   field :body, type: String
   field :published, type: Mongoid::Boolean
   field :published_at, type: Time
+  field :sticky, type: Mongoid::Boolean
+  field :short_abstract, type: String
   belongs_to :user
   has_and_belongs_to_many :postcategories
   has_and_belongs_to_many :activities
@@ -15,6 +17,7 @@ class Post
   accepts_nested_attributes_for :photos, allow_destroy: true
   
   scope :published, -> () { where(published: true)}
+  scope :sticky, ->() { where(published: true, sticky: true) }
   before_save :check_published_date
   
   def check_published_date

@@ -19,6 +19,8 @@
  *= require calls
  *= require mobile
  *= require posts
+ *= require jquery-ui
+ *= require jquery-overrides
  */
 
 @import 'foundation_and_overrides';
@@ -197,6 +199,39 @@ footer {
     p {
       color: #666;
       font-size: 0.9rem;
+    }
+  }
+}
+
+#sticky_blue_box {
+  background-color: $turq;
+  color: black;
+  
+  .heading {
+
+    span.white {
+      color: #FFF;
+    }
+    
+  }
+  .title_box {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    padding: 1.5rem 0;
+    cursor: move;
+    .title {
+      color: #FFF;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+    .date {
+      font-style: italic;
+    }
+  }
+  .blurb {
+    padding: 0.75rem;
+    a {
+      color: #FFF;
     }
   }
 }

@@ -1,0 +1,14 @@
+@import 'variables';
+
+
+.ui-dialog {
+  padding: 0;
+  .ui-dialog-titlebar {
+    display: none;
+  }
+
+}
+
+.ui-widget-content { 
+  border: none;
+}

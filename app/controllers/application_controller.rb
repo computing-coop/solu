@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :protect_with_staging_password if Rails.env.staging?
   before_filter :get_random_background
+  before_filter :get_sticky_posts
   
   def protect_with_staging_password
     authenticate_or_request_with_http_basic('Bioart eyes only! (for now)') do |username, password|
@@ -21,6 +22,10 @@ class ApplicationController < ActionController::Base
   
   def get_random_background
     @background_image = Background.active.skip(rand(Background.count)).first
+  end
+  
+  def get_sticky_posts
+    @sticky = Post.sticky.order(published_at: :desc).limit(2)    
   end
   
   def configure_permitted_parameters

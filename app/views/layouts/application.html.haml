@@ -88,6 +88,23 @@
                 
       
     .main-container= yield
+    - unless @sticky.empty?
+      #sticky_blue_box
+        .heading.ui-draggable-handle
+          IMPORTANT
+          %span.white STUFF
+        
+        - @sticky.each do |post|
+          .title_box.text-center
+            .title= post.title
+            .date= l post.published_at, format: :short
+          .blurb
+            = post.short_abstract.blank? ? truncate_html(post.body, length: 200) : post.short_abstract
+            = link_to '>>>', post
+      = content_for :jquery do
+        :plain  
+          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-20", of: '.hor-container'}}).parent().draggable();
+
     %footer
       .row.contact_info
         .row

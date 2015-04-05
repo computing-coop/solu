@@ -17,7 +17,7 @@
 //= require jquery_nested_form
 //= require slick-carousel
 //= require ckeditor/init
-
+//= require jquery-ui
 
 function scrollTo(target) { 
   $('html, body').stop().animate({
