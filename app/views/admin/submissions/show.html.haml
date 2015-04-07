@@ -27,7 +27,9 @@
           %br/
           = [@submission.city, Country[@submission.country].name].join(', ')
       .row
-        .small-12.columns= l @submission.date_of_birth
+        .small-12.columns
+          Date of birth:
+          = @submission.date_of_birth.strftime('%d %b %Y')
       .row
         .small-12.columns
           Nationality:
@@ -35,7 +37,9 @@
       .row
         .small-12.columns
           = link_to @submission.email, "mailto:#{@submission.email}"
-          
+          - unless @submission.website.blank?
+            %br/
+            = link_to @submission.website, @submission.website, target: :_blank
 
   .small-12.medium-6.columns
     %fieldset
@@ -45,7 +49,11 @@
         - if a.attachment?
           = link_to a[:attachment], a.attachment.url
         
-
+  .small-12.columns
+    %fieldset
+      %legend Short bio
+      = simple_format(@submission.short_biography)
+      
 - @submission.answers.each do |a|
   - next if a.question.question_type == 'file'
   .row
@@ -53,12 +61,32 @@
       - if a.question.question_type == 'text'
         %fieldset
           %legend= a.question.question
-          = raw a.answer_text
+          = raw simple_format(a.answer_text)
       - else
         %em= a.question.question
         %br/
-        = raw a.answer_text
+        = raw simple_format(a.answer_text)
         = raw a.answer_boolean.to_s
-          
-          
+
+.row
+  .small-12.columns
+    %h4 Comments          
+- @submission.comments.order(&:created_at).each do |comment|
+  .row.comment_row{class: cycle('odd', 'even')}
+    .medium-3.columns.metadata
+      Comment by
+      = comment.user.name
+      at
+      = comment.created_at.strftime("%d %b %Y %H:%M")
+      = " (#{time_ago_in_words(comment.created_at)} ago)"
+    .medium-7.columns.end
+      = raw simple_format(comment.comment)
       
+- if can? :create, @comment = @submission.comments.build
+  .row
+    .medium-4.columns
+      = semantic_form_for [:admin, @call, @submission, @comment ] do |f|
+        = f.input :comment, as: :text, label: 'Add a comment'
+        = f.input :user_id, as: :hidden, input_html: {value: current_user.id }
+        = f.submit 'Submit', class: [:tiny, :button, :secondary]
+

@@ -37,6 +37,22 @@
       list-style-type: none;
       padding: 0.1rem 2rem;
       border-right: 1px dotted #333;
+      a {
+        color: #FEF;
+        letter-spacing: 0.1rem;
+      }
     }
+  }
+}
+
+.comment_row {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  &.odd {
+    background-color: #EFEFEF;
+  }
+  .metadata {
+    font-size: .9rem;
+    color: #666;
   }
 }

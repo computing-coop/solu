@@ -21,9 +21,11 @@
                 = content_tag :div, msg, :id => "flash_#{name}"
     - if user_signed_in?
       .sign_in_bar
-        = "signed in as #{current_user.name} <#{current_user.email}>"
-        = link_to '[sign out]', destroy_user_session_path, :method => :delete
-        .right HYBRID MATTERs backoffice
+        %em HYBRID MATTERs backoffice
+        .right
+          = current_user.name
+          = link_to '[sign out]', destroy_user_session_path, :method => :delete
+        .right 
       .row
         .small-12.columns.admin_top
           - if current_user.has_role? :admin        

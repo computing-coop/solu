@@ -16,8 +16,7 @@
             %td= call.name
             %td= l call.end_at, format: :short
             %td
-              = call.submissions.count
-              = link_to 'View all', admin_call_submissions_path(call), class: [:button, :small]
+              = link_to "View all #{call.submissions.count}", admin_call_submissions_path(call), class: [:button, :small]
             %td{colspan: 3}
               = link_to 'Show', call, class: [:button, :small]
               = link_to 'Edit', edit_admin_call_path(call), class: [:button, :small]

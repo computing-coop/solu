@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :postcategories
     resources :posts
     resources :calls do
-      resources :submissions
+      resources :submissions do
+        resources :comments
+      end
     end
     resources :pages
     resources :users
