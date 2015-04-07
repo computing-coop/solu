@@ -34,14 +34,7 @@
   background-color: red;
 }
 
-ul.admin_top {
-  li {
-    float: left;
-    list-style-type: none;
-    padding: 0.1rem 2rem;
-    border-right: 1px dotted #333;
-  }
-}
+
 
 form {
   li {
@@ -210,7 +203,7 @@ footer {
   font-family: Roboto, sans-serif;
   .heading {
    cursor: move;
-   font-size: 0.938em;
+   font-size: 0.875em;
    
     span.white {
       color: #FFF;

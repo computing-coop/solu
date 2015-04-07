@@ -20,19 +20,23 @@
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
     - if user_signed_in?
-      = "signed in as #{current_user.name} <#{current_user.email}>"
-      = link_to '[sign out]', destroy_user_session_path, :method => :delete
-      - if current_user.has_role? :admin
-        %ul.admin_top
-          %li= link_to 'Partners', admin_partners_path
-          %li= link_to 'Blog', admin_posts_path
-          %li= link_to 'Activities', admin_activities_path
-          %li= link_to 'Static pages', admin_pages_path
-          %li= link_to 'Open calls', admin_calls_path
-          %li= link_to 'Header images', admin_backgrounds_path
-          %li= link_to 'Post categories', admin_postcategories_path
-    - else
-      = link_to '[sign in]', new_user_session_path                
+      .sign_in_bar
+        = "signed in as #{current_user.name} <#{current_user.email}>"
+        = link_to '[sign out]', destroy_user_session_path, :method => :delete
+        .right HYBRID MATTERs backoffice
+      .row
+        .small-12.columns.admin_top
+          - if current_user.has_role? :admin        
+            %ul
+              %li= link_to 'Partners', admin_partners_path
+              %li= link_to 'Blog', admin_posts_path
+              %li= link_to 'Activities', admin_activities_path
+              %li= link_to 'Static pages', admin_pages_path
+              %li= link_to 'Open calls', admin_calls_path
+              %li= link_to 'Header images', admin_backgrounds_path
+              %li= link_to 'Post categories', admin_postcategories_path
+          - else
+            = link_to '[sign in]', new_user_session_path                
     = yield
     
     :javascript

@@ -19,3 +19,24 @@
 .button {
   background-color: $darkerturq;
 }
+
+.sign_in_bar {
+  font-size: 0.875rem;
+  padding: 0.4rem;
+  color: #FFF;
+  background-color: $darkerturq;
+}
+
+.admin_top {
+  background-color: $turq;
+  margin: 0 0 1.5rem 0;
+  padding: 0.4rem;
+  ul {
+    li {
+      float: left;
+      list-style-type: none;
+      padding: 0.1rem 2rem;
+      border-right: 1px dotted #333;
+    }
+  }
+}

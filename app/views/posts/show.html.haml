@@ -17,11 +17,14 @@
     - unless @post.photos.empty?
       .row
         .small-10.medium-8.columns.medium-offset-2
+          
           .image_carousel{style: @post.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
+            
             - @post.photos.each do |photo|
               .slide
                 = image_tag photo.image.url(:standard)
                 .thumb= image_tag photo.image.url(:thumb)
+          
     .row
       .small-10.medium-8.columns.medium-offset-2
         .body= raw sanitize(@post.body, tags: %w{bold b strong u underline i italic em})
@@ -39,9 +42,10 @@
   = content_for :jquery do
     :plain
       $('.image_carousel').slick({infinite: true,
-        arrows: false,
+        arrows: true,
         slide: '.slide',
-        adaptiveHeight: true,
+        adaptiveHeight: false,
+
         dots: true,
         customPaging: function(slick,index) {
            return slick.$slides.eq(index).find('.thumb').html();

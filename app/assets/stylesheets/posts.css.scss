@@ -99,4 +99,25 @@
     }
   }
 }
+
+.slick-next, .slick-prev {
+  height: inherit;
+  width: inherit;
+  top: 25%;
+}
+.slick-prev {
+  left: -3rem;
+}
+
+.slick-next {
+  right: -4rem;
+}
+.slick-prev:before, .slick-next:before { font-family: "Roboto"; font-size: 10rem; font-weight: 100; line-height: 1; color: black !important; opacity: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }   
+
+.slick-prev:before { content: "‹"; }
+[dir="rtl"] .slick-prev:before { content: "›"; }
+
+[dir="rtl"] .slick-next { left: -10px; top: 70px; right: auto; }
+.slick-next:before { content: "›"; }
+[dir="rtl"] .slick-next:before { content: "‹"; }
   
