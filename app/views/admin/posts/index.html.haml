@@ -16,7 +16,10 @@
       %tbody
         - @posts.each do |post|
           %tr
-            %td= post.title
+            %td
+              = post.title
+              - if post.sticky == true
+                %strong In Announcement box!
             %td= raw truncate_html(post.body, length: 300)
             %td= post.published
             %td= post.user.try(:name)

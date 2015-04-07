@@ -204,11 +204,14 @@ footer {
 }
 
 #sticky_blue_box {
-  background-color: $turq;
+  background-color: $darkerturq;
   color: black;
-  
+  cursor: pointer;
+  font-family: Roboto, sans-serif;
   .heading {
    cursor: move;
+   font-size: 0.938em;
+   
     span.white {
       color: #FFF;
     }
@@ -216,20 +219,25 @@ footer {
   }
   .title_box {
     border-top: 2px solid #000;
-    border-bottom: 2px solid #000;
-    padding: 1.5rem 0;
-   
+
     .title {
       color: #FFF;
       font-weight: 300;
+      font-size: 0.938em;
       text-transform: uppercase;
     }
     .date {
       font-style: italic;
+      font-size: 0.875rem;
+      color: #777;
     }
   }
   .blurb {
-    padding: 0.75rem;
+    border-top: 2px solid #000;
+    display: none;
+    padding: 1.75rem 0.75;
+    font-size: 0.875rem;
+    
     a {
       color: #FFF;
     }
