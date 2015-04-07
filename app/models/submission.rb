@@ -16,7 +16,7 @@ class Submission
   field :email, type: String
   field :website, type: String
   
-  slug :name
+  slug :name, :scope => :call
   
   embeds_many :comments, as: :commentable, cascade_callbacks: true
   accepts_nested_attributes_for :comments, allow_destroy: true
