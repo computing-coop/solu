@@ -7,6 +7,8 @@
   .small-9.columns
     .row
       .small-9.columns.post_info.end.small-offset-1
+        .blue_heading
+          = raw post.category
         .title= link_to post.title, post
         .date= l post.published_at, format: :short
         .body= raw truncate_html(sanitize(post.body, tags: %w{bold b strong u underline i italic em}), length: 600)

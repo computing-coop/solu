@@ -27,7 +27,7 @@ class Post
   end
   
   def category
-    [activities.map(&:name), postcategories.map(&:name)].flatten.compact.join(' / ')
+    [activities.map(&:name), postcategories.map{|x|  '<a href="category/' + x.slug + '">' + x.name + '</a>'}].flatten.compact.join(' / ')
   end
   
   def previous

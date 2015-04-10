@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :activities
 
   resources :posts
+  get '/category/:id', to: "postcategories#show"
 
   resources :pages
 

@@ -1,4 +1,10 @@
 .post_container
+  - if @category
+    .blue_category_bar
+      .medium-4.columns.small-centered
+        Showing all posts in category
+        = @category.name
+
   - @posts.each_with_index do |post, index|
     .post{class: index == (@posts.size - 1) ? :last : false}
-      = render partial: 'post', locals: {post: post}
+      = render partial: 'posts/post', locals: {post: post}
