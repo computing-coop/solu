@@ -4,16 +4,18 @@
 
       .small-10.medium-8.columns.medium-offset-2
         .row
-          .small-2.columns
+          .medium-2.columns.hide-for-small-only
             - if @post.user.partner.nil?
               = image_tag 'hm_logo.png'
             - else
               = image_tag @post.user.partner.hmlogo.url
-          .small-10.columns.post_info.end
-            .blue_heading= @post.category
+          .small-12.medium-10.columns.post_info.end
+            .blue_heading= raw @post.category
             .title= @post.title
-            .date= l @post.published_at, format: :long
-
+            .date= @post.published_at.strftime("%d %B %Y")
+            - if can? :edit, @post
+              .row
+                .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
     - unless @post.photos.empty?
       .row
         .small-10.medium-8.columns.medium-offset-2
@@ -27,16 +29,14 @@
           
     .row
       .small-10.medium-8.columns.medium-offset-2
-        .body= raw sanitize(@post.body, tags: %w{bold b strong u underline i italic em})
+        .body= raw sanitize(@post.body, tags: %w{bold b strong a u underline i italic em})
     .row
       .small-10.medium-3.columns.small-centered
         - unless @post.previous.nil?
           .post_paginator{class: @post.next.nil? ? false : :noright}= link_to raw("&#8592; Prev"), @post.previous
         - unless @post.next.nil?
           .post_paginator= link_to raw("Next &#8594;"), @post.next        
-    - if can? :edit, @post
-      .row
-        .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
+
 
 - if @post.photos.size > 1
   = content_for :jquery do

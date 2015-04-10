@@ -19,7 +19,13 @@
   
 .post {
   padding: 3.75rem 0;
-  
+  .body, .body p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: #222;
+    font-weight: 300;
+
+  }
   .post_paginator {
     margin-top: 1rem;
     float: left;
@@ -102,13 +108,7 @@
       font-size: 1rem;
       margin-bottom: 1.5rem;
     }
-    .body, .body p {
-      
-      font-size: 0.938rem;
-      line-height: 1.5rem;
-      padding-top: 0.4rem;
-      color: #444;
-    }
+
   }
 }
 

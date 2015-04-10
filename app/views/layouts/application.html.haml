@@ -41,6 +41,10 @@
       - unless @background_image.nil?
         - unless @background_image.credit.blank?
           .image_credit= link_to 'IMAGE CREDITS', '#', onclick: "$(this).text('#{escape_javascript(@background_image.credit)}');return false;"
+      - if user_signed_in?  
+        - if current_user.has_role?(:partner) || current_user.has_role?(:admin)
+          .right
+            = link_to 'Back office', '/admin', class: [:button, :tiny]
       = link_to '/' do
         - if Rails.env.staging?
           .staging_overlay= image_tag('staging_overlay.png')
@@ -51,16 +55,17 @@
         .hor-container
           .row
 
-            .medium-3.columns.hide-for-small-only.social_icons
+            .medium-2.large-3.columns.hide-for-small-only.social_icons
               = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
               = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
               = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               
-            .medium-6.large-4.small-centered.columns
+            .medium-10.large-6.large-centered.columns.medium-left
               .row
-                .small-4.columns.small-text-center= link_to 'About', page_path('about')
-                .small-4.columns.small-text-center= link_to 'Partners', partners_path
-                .small-4.columns.small-text-center.end= link_to 'Programme', page_path('programme')
+                .small-3.columns.small-text-center= link_to 'About', page_path('about')
+                .small-3.columns.small-text-center= link_to 'News', posts_path
+                .small-3.columns.small-text-center= link_to 'Partners', partners_path
+                .small-3.columns.small-text-center.end= link_to 'Programme', page_path('programme')
           .row.down_arrow
             .medium-3.columns.hide-for-small-only
               &nbsp;
@@ -87,9 +92,23 @@
                 
                 
       
-    .main-container= yield
+    .main-container
+      .blue_announcements.show-for-small-only
+        .row
+          .small-12.columns.text-center.small-centered.heading ANNOUNCEMENTS
+        
+        - @sticky.each do |post|
+          .row
+            .small-6.columns.title_box.text-left
+              .title= link_to post.title, post
+              .date= post.published_at.strftime("%d %b %Y")
+            .small-6.columns.blurb
+              = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 100) : post.short_abstract
+              = link_to '>>>', post
+            
+      = yield
     - unless @sticky.empty?
-      #sticky_blue_box
+      #sticky_blue_box.hide-for-small-only
         .heading.ui-draggable-handle
           ANNOUNCEMENTS
         
@@ -98,11 +117,11 @@
             .title= post.title
             .date= post.published_at.strftime("%d %b %Y")
           .blurb{style: "padding: #{2.75 - @sticky.size }rem 0;"}
-            = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 200) : post.short_abstract
+            = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 120) : post.short_abstract
             = link_to '>>>', post
       = content_for :jquery do
         :plain  
-          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-20", of: '.hor-container'}}).parent().draggable();
+          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           $('#sticky_blue_box .title_box').mouseenter(function() {
             $('#sticky_blue_box .blurb').css('display', 'none');

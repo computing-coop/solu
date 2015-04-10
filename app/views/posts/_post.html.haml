@@ -1,12 +1,12 @@
 .row
-  .small-2.columns.small-offset-1
+  .medium-2.columns.medium-offset-1.hide-for-small-only
     - if post.photos.empty?
       = link_to  image_tag('hm_logo.png'), post
     - else
       = link_to image_tag(post.photos.first.image.url(:blog)), post
-  .small-9.columns
+  .medium-9.small-12.columns
     .row
-      .small-9.columns.post_info.end.small-offset-1
+      .small-12.medium-9.columns.post_info.end.medium-offset-1
         .blue_heading
           = raw post.category
         .title= link_to post.title, post
