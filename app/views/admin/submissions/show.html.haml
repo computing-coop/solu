@@ -70,6 +70,25 @@
 
 .row
   .small-12.columns
+    - if @vote.vote.blank?
+      %h4 Your vote?
+    
+    - else
+      %h4 
+        You voted: 
+        = @vote.vote
+      
+    .row
+      = form_for [:admin, @call, @submission, @vote] do |f|
+        .small-3.columns  
+          %p 1 is worst, 5 is best
+          = f.select :vote, [1, 2, 3, 4, 5], include_blank: true
+          = f.hidden_field :user_id, value: current_user.id
+          = f.submit (@vote.new_record? ? '' : "Change ") + 'Vote', class: [:tiny, :secondary, :button]
+
+    
+.row
+  .small-12.columns
     %h4 Comments          
 - @submission.comments.order(&:created_at).each do |comment|
   .row.comment_row{class: cycle('odd', 'even')}
@@ -82,6 +101,8 @@
         = " (#{time_ago_in_words(comment.created_at)} ago)"
       - if comment.user.avatar?
         = image_tag comment.user.avatar.url(:thumb)
+      - if !@submission.votes.find_by(user: comment.user).nil?
+        .vote_tally= "Voted: #{@submission.votes.find_by(user: comment.user).vote}"
     .medium-7.columns.end
       = raw simple_format(comment.comment)
       
@@ -93,3 +114,6 @@
         = f.input :user_id, as: :hidden, input_html: {value: current_user.id }
         = f.submit 'Submit', class: [:tiny, :button, :secondary]
 
+%hr
+.row
+  .small-12.columns= link_to 'Back to submissions', admin_call_submissions_path(@call), class: [:button, :small]

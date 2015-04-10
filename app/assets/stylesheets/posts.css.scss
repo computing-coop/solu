@@ -26,6 +26,11 @@
     font-weight: 300;
 
   }
+  .front_icon {
+    img {
+      border: 2px solid black;
+    }
+  }
   .post_paginator {
     margin-top: 1rem;
     float: left;

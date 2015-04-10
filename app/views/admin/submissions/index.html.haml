@@ -10,8 +10,9 @@
       %table
         %thead
           %th Received?
-          %th Submitted by
-          %th Comments
+          %th= sortable_column "Submitted by"
+          %th= "Score"
+          %th= sortable_column "Comments"
           %th Actions
         %tbody
           - @submissions.each do |sub|
@@ -21,6 +22,13 @@
                 = sub.name
                 - unless sub.organisation_name.blank?
                   .organisation= sub.organisation_name
+              %td
+                - if sub.votes.empty?
+                  %em -
+                - else
+                  = (sub.votes.sum(:vote) / sub.votes.size).to_f.to_s
+                  %br/
+                  %small= pluralize(sub.votes.size, 'vote')
               %td= sub.comments.size
               %td
                 = link_to 'View/comment', admin_call_submission_path(@call, sub), class: [:button, :small]

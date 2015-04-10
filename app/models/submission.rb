@@ -15,12 +15,15 @@ class Submission
   field :short_biography, type: String
   field :email, type: String
   field :website, type: String
-  
+  field :vote_count
+  field :comment_count
+  field :comment_count
   slug :name, :scope => :call
   
   embeds_many :comments, as: :commentable, cascade_callbacks: true
   accepts_nested_attributes_for :comments, allow_destroy: true
   
+  embeds_many :votes, cascade_callbacks: true
   embeds_many :answers, cascade_callbacks: true
   accepts_nested_attributes_for :answers
   

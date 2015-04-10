@@ -226,6 +226,9 @@ GEM
     mongoid-slug (4.0.0)
       mongoid (>= 3.0)
       stringex (~> 2.0)
+    mongoid_magic_counter_cache (1.1.1)
+      mongoid
+      rake
     moped (2.0.4)
       bson (~> 2.2)
       connection_pool (~> 2.0)
@@ -374,6 +377,7 @@ DEPENDENCIES
   mongoid!
   mongoid-grid_fs!
   mongoid-slug
+  mongoid_magic_counter_cache
   nested_form
   nifty-generators
   quiet_assets

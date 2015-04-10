@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :calls do
       resources :submissions do
         resources :comments
+        resources :votes
       end
     end
     resources :pages
