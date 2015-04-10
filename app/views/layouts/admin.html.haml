@@ -24,21 +24,29 @@
         %em HYBRID MATTERs backoffice
         .right
           = current_user.name
-          = link_to '[sign out]', destroy_user_session_path, :method => :delete
+          = link_to ' [Edit profile]', edit_admin_user_path(current_user)
+          = link_to ' [sign out]', destroy_user_session_path, :method => :delete
         .right 
       .row
         .small-12.columns.admin_top
-          - if current_user.has_role? :admin        
-            %ul
+          %ul
+            - if can? :edit, Partner
               %li= link_to 'Partners', admin_partners_path
+            - if can? :edit, Post              
               %li= link_to 'Blog', admin_posts_path
+            - if can? :edit, Activity              
               %li= link_to 'Activities', admin_activities_path
+            - if can? :edit, Page              
               %li= link_to 'Static pages', admin_pages_path
+            - if can? :read, Submission              
               %li= link_to 'Open calls', admin_calls_path
+            - if can? :edit, Background           
               %li= link_to 'Header images', admin_backgrounds_path
+            - if can? :edit, Postcategory           
               %li= link_to 'Post categories', admin_postcategories_path
-          - else
-            = link_to '[sign in]', new_user_session_path                
+            - if can? :edit, User
+              %li= link_to 'Users', admin_users_path
+          
     = yield
     
     :javascript

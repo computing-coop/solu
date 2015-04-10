@@ -5,7 +5,7 @@ class Admin::CommentsController < Admin::BaseController
     @submission = @call.submissions.find(params[:submission_id])
     @comment = @submission.comments << Comment.new(comment_params)
     if @submission.save
-      flash[:notice] = 'Thank you for your thoughts..'
+      flash[:notice] = 'Thank you for your thoughts.'
     else
       flash[:error] = 'There was an error with your comment: ' + @comment.errors.full_messages.join('; ')
     end

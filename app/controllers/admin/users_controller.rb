@@ -12,13 +12,13 @@ class Admin::UsersController < Admin::BaseController
   
   def update
     @user.update(user_params)
-    respond_with([:admin, @user])
+    redirect_to [:admin, @user]
   end
 
   protected
   
   def user_params
-     params.require(:user).permit(:name, :website, :biography, :partner_id, :email)
+     params.require(:user).permit(:name, :website, :biography, :partner_id, :email, role_ids: [] )
   end
   
 end

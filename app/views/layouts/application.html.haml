@@ -99,10 +99,10 @@
         
         - @sticky.each do |post|
           .row
-            .small-6.columns.title_box.text-left
+            .small-6.columns.titlex.text-left
               .title= link_to post.title, post
               .date= post.published_at.strftime("%d %b %Y")
-            .small-6.columns.blurb
+            .small-6.columns.blurb_mobile
               = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 100) : post.short_abstract
               = link_to '>>>', post
             

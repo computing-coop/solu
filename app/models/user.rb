@@ -4,6 +4,7 @@ class User
   rolify
   validates_uniqueness_of :email
   belongs_to :partner
+  accepts_nested_attributes_for :roles
   #has_many :comments
   
   # Include default devise modules. Others available are:

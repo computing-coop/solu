@@ -12,6 +12,11 @@
     .large-5.small-12.columns= f.input :email, input_html: {required: ''}    
   .row
     .large-5.small-12.columns= f.input :website
+  - if current_user.has_role? :admin
+    .row
+      .large-5.small-12.columns
+        %label Permissions:
+        = f.select :role_ids,  Role.all.map{|x| [x.name, x.id]}, {}, {:multiple => true}
   .row
     .large-5.small-12.columns
       = f.input :partner, as: :select, collection: Partner.all, input_html: {required: ''}

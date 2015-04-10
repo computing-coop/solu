@@ -8,8 +8,11 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :partner
+      can :read, Submission
+      can :read, Call
       can :manage, Comment
       can :manage, Post
+      can :manage, user
     else
       cannot :read, :all
 
