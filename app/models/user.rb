@@ -43,7 +43,15 @@ class User
   field :biography,         type: String
 
   slug :name
+
+  field :avatar, type: String
+  field :avatar_size, type: Integer
+  field :avatar_width, type: Integer
+  field :avatar_height, type: Integer
+  field :avatar_content_type, type: String
   
+  
+  mount_uploader :avatar, ImageUploader
   # def self.serialize_from_session(key, salt)
   #   (key = key.first) if key.kind_of? Array
   #   (key = BSON::ObjectId.from_string(key['$oid'])) if key.kind_of? Hash

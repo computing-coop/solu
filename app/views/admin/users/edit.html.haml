@@ -24,6 +24,14 @@
   .row
     .large-12.small-12.columns= f.input :biography, as: :ckeditor
 
+  .row
+    .large-6.small-12.columns
+      - if f.object.avatar?
+        = image_tag f.object.avatar.url(:box)
+        = f.input :remove_avatar, as: :boolean, label: 'Remove this photo'
+      = f.input :avatar, label: "Profile photo"
+      
+
 
   .row
     .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]
