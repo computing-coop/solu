@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  respond_to :html
+  respond_to :html, :rss
 
   def index
     @posts = Post.published.order(published_at: :desc)
