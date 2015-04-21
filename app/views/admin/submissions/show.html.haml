@@ -45,9 +45,13 @@
     %fieldset
       %legend Files
       - @submission.answers.each do |a|
-        - next unless a.question.question_type == 'file'
+        -#- next unless a.question.question_type == 'file'
+
         - if a.attachment?
           = link_to a[:attachment], a.attachment.url
+          %br/
+        - else
+          - next
         
   .small-12.columns
     %fieldset
@@ -55,18 +59,20 @@
       = simple_format(@submission.short_biography)
       
 - @submission.answers.each do |a|
-  - next if a.question.question_type == 'file'
+  - next if a.attachment?
   .row
     .small-12.columns
-      - if a.question.question_type == 'text'
-        %fieldset
-          %legend= a.question.question
-          = raw simple_format(a.answer_text)
-      - else
-        %em= a.question.question
-        %br/
+      %fieldset
         = raw simple_format(a.answer_text)
-        = raw a.answer_boolean.to_s
+      / - if a.question.question_type == 'text'
+      /   %fieldset
+      /     %legend= a.question.question
+      /     = raw simple_format(a.answer_text)
+      / - else
+      /   %em= a.question.question
+      /   %br/
+      /   = raw simple_format(a.answer_text)
+      /   = raw a.answer_boolean.to_s
 
 .row
   .small-12.columns

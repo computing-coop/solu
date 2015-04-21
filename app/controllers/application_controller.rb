@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :protect_with_staging_password if Rails.env.staging?
   before_filter :get_random_background
   before_filter :get_sticky_posts
+  before_filter :configure_devise_params, if: :devise_controller?
   
   def protect_with_staging_password
     authenticate_or_request_with_http_basic('Bioart eyes only! (for now)') do |username, password|
@@ -28,10 +29,10 @@ class ApplicationController < ActionController::Base
     @sticky = Post.sticky.order(published_at: :desc).limit(2)    
   end
   
-  def configure_permitted_parameters
+  def configure_devise_params
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email,  :password, :remember_token, :remember_created_at, :sign_in_count, :partner_id) }
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:name, :partner_id, role_ids: [] )}    
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :partner_id, :password, :name,  :password_confirmation, :partner_id ) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :partner_id, :password, :name,  :password_confirmation ) }
   end
     
 end

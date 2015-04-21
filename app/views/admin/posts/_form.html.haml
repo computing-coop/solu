@@ -1,5 +1,5 @@
 = semantic_nested_form_for [:admin, @post], html: {multipart: true, :"data-abide" =>''} do |f|
-  - if @post.errors.any?
+
     .row
       .small-12.large-6.columns#error_explanation
         %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
