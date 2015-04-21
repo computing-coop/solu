@@ -8,7 +8,7 @@
       Submission by
       = @submission.name
       - unless @submission.organisation_name.blank?
-        = " (#{@submission.organisation_name}"
+        = " (#{@submission.organisation_name})"
     %h6= "submitted at #{l @submission.created_at, format: :long}"
     
 .row
