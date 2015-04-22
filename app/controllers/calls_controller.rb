@@ -7,8 +7,15 @@ class CallsController < ApplicationController
       @submission.answers.build(question: qs)
     end
     if @call.end_at.to_date < Time.now.to_date
-      flash[:error] = "We're sorry, this open call has now closed."
-      redirect_to @call
+      if user_signed_in?
+        unless current_user.has_role? :admin
+          flash[:error] = "We're sorry, this open call has now closed."
+          redirect_to @call
+        end
+      else
+        flash[:error] = "We're sorry, this open call has now closed."
+        redirect_to @call
+      end
     end
     set_meta_tags title: @call.name
   end
@@ -30,7 +37,9 @@ class CallsController < ApplicationController
     @submission = Submission.new(submission_params)
     @call.submissions << @submission
     if @call.save
-      SubmissionMailer.submission_received(@submission).deliver
+      unless @call.end_at.to_date < Time.now.to_date
+        SubmissionMailer.submission_received(@submission).deliver
+      end
       SubmissionMailer.submission_notification_to_hm(@submission).deliver
       redirect_to thanks_calls_path
     else
