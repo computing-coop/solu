@@ -1,15 +1,15 @@
 .row
   .small-12.columns
-    %h1= @call.name
+    %h3= @call.name
     
 .row
   .small-12.columns
-    %h2 
+    %h4 
       Submission by
       = @submission.name
       - unless @submission.organisation_name.blank?
         = " (#{@submission.organisation_name})"
-    %h6= "submitted at #{l @submission.created_at, format: :long}"
+    %h6= "submitted: #{l @submission.created_at, format: :long}"
     
 .row
   .small-12.medium-6.columns
@@ -60,19 +60,24 @@
       
 - @submission.answers.each do |a|
   - next if a.attachment?
+  - next if a.nil? || (a.attachment.blank? && a.answer_text.blank? && a.answer_boolean.blank? )
   .row
     .small-12.columns
-      %fieldset
-        = raw simple_format(a.answer_text)
-      / - if a.question.question_type == 'text'
-      /   %fieldset
-      /     %legend= a.question.question
-      /     = raw simple_format(a.answer_text)
-      / - else
-      /   %em= a.question.question
-      /   %br/
-      /   = raw simple_format(a.answer_text)
-      /   = raw a.answer_boolean.to_s
+      - if a.question.nil?
+        
+        %fieldset
+          %legend= a.question_id.to_s
+          = raw simple_format(a.answer_text)
+      - else
+        - if a.question.question_type == 'string' || a.question.question_type == 'text'
+          %fieldset
+            %legend= a.question.question
+            = raw simple_format(a.answer_text)
+        - else
+          %em= a.question.question
+          %br/
+          = raw simple_format(a.answer_text)
+          = raw a.answer_boolean.to_s
 
 .row
   .small-12.columns
@@ -107,7 +112,7 @@
         = " (#{time_ago_in_words(comment.created_at)} ago)"
       - if comment.user.avatar?
         = image_tag comment.user.avatar.url(:thumb)
-      - if !@submission.votes.find_by(user: comment.user).nil?
+      - if !@submission.votes.find_by(user: comment.user).vote.nil?
         .vote_tally= "Voted: #{@submission.votes.find_by(user: comment.user).vote}"
     .medium-7.columns.end
       = raw simple_format(comment.comment)
