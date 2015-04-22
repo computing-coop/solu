@@ -26,20 +26,36 @@
   padding: 0.4rem;
   color: #FFF;
   background-color: $darkerturq;
+
+  a {
+    padding: 0.2rem 1rem;
+    color: #CCC;
+    &:hover {
+      color: #FEF;
+    }
+  }
 }
 
 .admin_top {
-  background-color: $turq;
+  background-color: #FEF;
   margin: 0 0 1.5rem 0;
   padding: 0.4rem;
   ul {
     li {
       float: left;
       list-style-type: none;
+      font-size: 0.9rem;
+
       padding: 0.1rem 2rem;
       border-right: 1px dotted #333;
+      &:hover {
+        background-color: #FFF;
+      }
+      &.last {
+        border-right: none;
+      }
       a {
-        color: #FEF;
+        color: $darkerturq;
         letter-spacing: 0.1rem;
       }
     }

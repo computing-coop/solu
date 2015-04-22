@@ -18,7 +18,7 @@
             %td
               = link_to "View all #{call.submissions.count}", admin_call_submissions_path(call), class: [:button, :small]
             %td{colspan: 3}
-              = link_to 'Show', call, class: [:button, :small]
+              = link_to 'Show', call, class: [:button, :small], target: :_blank
               = link_to 'Edit', edit_admin_call_path(call), class: [:button, :small]
               = link_to 'Destroy',[:admin, call], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
               

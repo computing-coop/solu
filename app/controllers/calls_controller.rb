@@ -6,6 +6,10 @@ class CallsController < ApplicationController
     @call.questions.each do |qs|
       @submission.answers.build(question: qs)
     end
+    if @call.end_at.to_date < Time.now.to_date
+      flash[:error] = "We're sorry, this open call has now closed."
+      redirect_to @call
+    end
     set_meta_tags title: @call.name
   end
   

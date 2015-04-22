@@ -45,7 +45,7 @@
             - if can? :edit, Postcategory           
               %li= link_to 'Post categories', admin_postcategories_path
             - if can? :edit, User
-              %li= link_to 'Users', admin_users_path
+              %li.last= link_to 'Users', admin_users_path
           
     = yield
     

@@ -39,7 +39,10 @@
       %h4
         Deadline for applying:
         = l @call.end_at, format: :long
-      = link_to 'Apply now', apply_call_path(@call), class: [:button, :application]
+      - if @call.end_at.to_date < Time.now.to_date
+        %p This call is now closed. Thank you for participating!
+      - else
+        = link_to 'Apply now', apply_call_path(@call), class: [:button, :application]
 
     - if @call.photos.size > 1
       :plain
