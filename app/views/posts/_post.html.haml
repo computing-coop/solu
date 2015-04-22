@@ -11,5 +11,5 @@
           = raw post.category
         .title= link_to post.title, post
         .date= post.published_at.strftime("%d %B %Y")
-        .body= raw truncate_html(sanitize(post.body, tags: %w{bold b strong u underline i italic em}), length: 600)
+        .body= raw truncate_html(sanitize(post.body, tags: %w{bold b strong u br p underline i italic em}), length: 600)
         
