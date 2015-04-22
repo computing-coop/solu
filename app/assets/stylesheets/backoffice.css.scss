@@ -81,3 +81,13 @@ form {
   }
   
 }
+
+table {
+  td {
+    vertical-align: top;
+    &.body {
+      font-size: 0.8rem;
+
+    }
+  }
+}

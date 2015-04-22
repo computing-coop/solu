@@ -1,11 +1,14 @@
 class Admin::PostsController < Admin::BaseController
-  
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @posts = Post.all
+    sortable_column_order do |column, direction|
+      @posts = Post.sort_by(column, direction)
+    end
+    @posts ||= Post.desc(:published_at)
     set_meta_tags title: 'Posts'
     respond_with(@posts)
   end

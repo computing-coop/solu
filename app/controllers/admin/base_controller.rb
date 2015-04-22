@@ -1,5 +1,7 @@
 class Admin::BaseController < ApplicationController
-
+  handles_sortable_columns do |conf|
+    conf.sort_param = "sort_by"
+  end
   before_filter :authenticate_user!
   layout 'admin'
   check_authorization

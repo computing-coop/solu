@@ -20,6 +20,8 @@ class Post
   scope :sticky, ->() { where(published: true, sticky: true) }
   before_save :check_published_date
   
+  validates_presence_of :title, :body, :user_id
+  
   def check_published_date
     if self.published == true
       self.published_at ||= Time.now
