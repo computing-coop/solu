@@ -12,7 +12,10 @@
           .small-12.medium-10.columns.post_info.end
             .blue_heading= raw @post.category
             .title= @post.title
-            .date= @post.published_at.strftime("%d %B %Y")
+            - if @post.published == true
+              .date= @post.published_at.strftime("%d %B %Y")
+            - else 
+              .date NOT YET PUBLISHED
             - if can? :edit, @post
               .row
                 .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
