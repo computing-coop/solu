@@ -6,10 +6,12 @@ class Admin::CallsController < Admin::BaseController
 
   def index
     @calls = Call.all
+    set_meta_tags title: 'Open calls'
     respond_with(@calls)
   end
 
   def show
+    set_meta_tags title: @call.name
     redirect_to @call
   end
 

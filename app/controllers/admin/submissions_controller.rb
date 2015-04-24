@@ -26,12 +26,14 @@ class Admin::SubmissionsController < Admin::BaseController
   def show
     @call = Call.find(params[:call_id])
     @submission = @call.submissions.find(params[:id])
+
     begin
       @vote = @submission.votes.find_by(user: current_user) 
     rescue
 
       @vote = @submission.votes.build(user: current_user)
     end
+
     set_meta_tags title: @call.name + ": " + @submission.name
   end
 
