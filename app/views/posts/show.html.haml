@@ -26,9 +26,9 @@
           .image_carousel{style: @post.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
             
             - @post.photos.each do |photo|
-              .slide
-                = image_tag photo.image.url(:standard)
-                .thumb= image_tag photo.image.url(:thumb)
+              .slide[photo]
+                = image_tag photo.image.url(:standard).gsub(/development/, 'production')
+                .thumb= image_tag photo.image.url(:thumb).gsub(/development/, 'production')
           
     .row
       .small-10.medium-8.columns.medium-offset-2
@@ -51,7 +51,7 @@
 
         dots: true,
         customPaging: function(slick,index) {
-           return slick.$slides.eq(index).find('.thumb').html();
+           return slick.$slides.eq(index).find('.thumb').html() ;
         },
         variableWidth: false,
         autoplay: true,

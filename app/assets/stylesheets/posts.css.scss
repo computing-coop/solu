@@ -56,17 +56,19 @@
     .thumb {
       display: none;
     }
-
+    &.slick-slider {
+      margin-bottom: 1rem !important;
+    }
     ul.slick-dots {
-      bottom: -110px;
-      height: 100px;
+      position: relative  ;
       text-align: left;
-      margin: 0;
+      margin: 0.5rem 0 0 0;
+      bottom: 0;
       padding: 0;
       li {
         width: 100px;
         height: 100px;
-        margin: 0 0.5rem 0px 0px;
+        margin: 0 0.5rem 0.5rem 0px;
         border: 2px solid #333;
         &.slick-active {
           border: 2px solid #999;
