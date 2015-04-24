@@ -2,7 +2,7 @@
   .post
     .row
 
-      .small-10.medium-8.columns.medium-offset-2
+      .small-12.medium-8.columns.medium-offset-2
         .row
           .medium-2.columns.hide-for-small-only
             - if @post.user.partner.nil?
@@ -21,20 +21,20 @@
                 .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
     - unless @post.photos.empty?
       .row
-        .small-10.medium-8.columns.medium-offset-2
+        .small-12.medium-8.columns.medium-offset-2
           
           .image_carousel{style: @post.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
             
             - @post.photos.each do |photo|
               .slide[photo]
-                = image_tag photo.image.url(:standard).gsub(/development/, 'production')
-                .thumb= image_tag photo.image.url(:thumb).gsub(/development/, 'production')
+                = image_tag photo.image.url(:standard)
+                .thumb= image_tag photo.image.url(:thumb)
           
     .row
-      .small-10.medium-8.columns.medium-offset-2
+      .small-12.medium-8.columns.medium-offset-2
         .body= raw sanitize(@post.body, tags: %w{bold b strong a u p br underline i italic em})
     .row
-      .small-10.medium-3.columns.small-centered
+      .small-12.medium-3.columns.small-centered
         - unless @post.previous.nil?
           .post_paginator{class: @post.next.nil? ? false : :noright}= link_to raw("&#8592; Prev"), @post.previous
         - unless @post.next.nil?

@@ -27,10 +27,43 @@
         font-size: 0.8rem;
       }
     }
-  }
-  
-  .post {
-    padding: 1rem 0;
+
+    
+    .post_single_container, .post_container {
+      
+      .post {
+
+        .post_info {
+          .title {
+            font-size: 1.4rem;
+            line-height: 1.9rem;
+          }
+        }
+        padding: 1rem 0;
+        .image_carousel {
+          .slick-next, .slick-prev {
+            display: none !important;
+          }
+          ul.slick-dots {
+            position: relative  ;
+            text-align: left;
+            margin: 0.5rem 0 0 0;
+            bottom: 0;
+            padding: 0;
+            li {
+              width: 45px;
+              height: 45px;
+              margin: 0 0.5rem 0.5rem 0px;
+              border: 2px solid #333;
+              &.slick-active {
+                border: 2px solid #999;
+              }
+            }
+          }
+        }
+      }
+    }
+    
   }
   header {
     .image_credit {
@@ -57,7 +90,7 @@
     .top-bar {
       height: 50px;
       a {
-        font-size:  0.8rem;
+        font-size:  0.65rem;
       }
       .hor-container {
         height: 50px;
@@ -67,6 +100,5 @@
       }
     }
   }
-  
   
 }
