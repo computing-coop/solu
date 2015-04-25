@@ -114,6 +114,9 @@
         = image_tag comment.user.avatar.url(:thumb)
       - if !@submission.votes.find_by(user: comment.user).vote.nil?
         .vote_tally= "Voted: #{@submission.votes.find_by(user: comment.user).vote}"
+      - if comment.user == current_user
+        .vote_tally= link_to 'Edit comment', edit_admin_call_submission_comment_path(@call, @submission, comment)
+        .vote_tally= link_to 'Delete comment', [:admin, @call, @submission, comment ], method: :delete, :data => {confirm: 'Are you sure?'}
     .medium-7.columns.end
       = raw simple_format(comment.comment)
       

@@ -4,6 +4,7 @@ class Submission
   include Mongoid::Slug
   
   embedded_in :call
+  
   field :first_name, type: String
   field :last_name, type: String
   field :address, type: String
@@ -20,7 +21,7 @@ class Submission
 
   slug :name, :scope => :call
   
-  embeds_many :comments, as: :commentable, cascade_callbacks: true
+  embeds_many :comments #, as: :commentable, cascade_callbacks: true
   accepts_nested_attributes_for :comments, allow_destroy: true
   
   embeds_many :votes, cascade_callbacks: true

@@ -15,7 +15,7 @@ class Call
   has_many :questions
   accepts_nested_attributes_for :questions, allow_destroy: true,  reject_if: :all_blank
   
-  embeds_many :submissions,  cascade_callbacks: true
+  embeds_many :submissions #,  cascade_callbacks: true
   
   def headings
     Nokogiri::HTML(self.overview).search('a[name]').map{|x| [x['name'], x.text] }.delete_if{|x| x.first.blank? }

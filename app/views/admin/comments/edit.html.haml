@@ -1,0 +1,10 @@
+.row
+  .small-12.columns
+    %h3 Editing your comment....
+  
+.row
+  .medium-4.columns
+    = semantic_form_for [:admin, @call, @submission, @comment ] do |f|
+      = f.input :comment, as: :text, label: 'Your comment'
+      = f.input :user_id, as: :hidden, input_html: {value: current_user.id }
+      = f.submit 'Submit', class: [:tiny, :button, :secondary]
