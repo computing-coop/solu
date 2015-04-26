@@ -130,4 +130,9 @@
 
 %hr
 .row
-  .small-12.columns= link_to 'Back to submissions', admin_call_submissions_path(@call), class: [:button, :small]
+  .small-12.columns
+    - unless @submission.previous.nil?
+      = link_to "Previous submission (#{@submission.previous.name})", admin_call_submission_path(@call, @submission.previous), class: [:button, :small]
+    = link_to 'Back to submissions', admin_call_submissions_path(@call), class: [:button, :small]
+    - unless @submission.next.nil?
+      = link_to "Next submission (#{@submission.next.name})", admin_call_submission_path(@call, @submission.next), class: [:button, :small]

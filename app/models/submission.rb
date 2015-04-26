@@ -32,5 +32,14 @@ class Submission
   def name
     [first_name, last_name].join(' ')
   end
+
   
+  def previous
+     call.submissions.where(:created_at.lt => created_at).order_by([:created_at, :asc]).last
+  end
+
+  def next
+    call.submissions.where(:created_at.gt => created_at).order_by([:created_at, :asc]).first
+  end
+    
 end
