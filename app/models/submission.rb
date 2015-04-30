@@ -32,7 +32,7 @@ class Submission
   
   def update_average
     unless self.votes.empty?
-      self.vote_average = (self.votes.sum(:vote) / self.votes.size).to_f
+      self.vote_average = (self.votes.sum(:vote).to_f / self.votes.size.to_f)
     end
   end
   

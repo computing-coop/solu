@@ -80,7 +80,7 @@
           = raw a.answer_boolean.to_s
 
 .row
-  .small-12.columns
+  .small-12.medium-6.columns
     - if @vote.vote.blank?
       %h4 Your vote?
       -#- @vote = @submission.votes.build(user: current_user)
@@ -91,16 +91,31 @@
       
     .row
       = form_for [:admin, @call, @submission, @vote] do |f|
-        .small-3.columns  
+        .small-12.columns  
           %p 1 is worst, 5 is best
           = f.select :vote, [1, 2, 3, 4, 5], include_blank: true
           = f.hidden_field :user_id, value: current_user.id
           = f.submit (@vote.new_record? ? '' : "Change ") + 'Vote', class: [:tiny, :secondary, :button]
 
-    
+  - unless @submission.votes.empty?
+
+    .small-12.columns.medium-6
+      %h4 
+        Current score:
+        = @submission.vote_average
+      %p
+        %strong All votes:
+        - @submission.votes.each do |vote|
+          - next if vote.vote.blank? || vote.new_record?
+          .vote
+            = vote.user.try(:name)
+            = ": #{vote.vote}"
+      
 .row
   .small-12.columns
-    %h4 Comments          
+    %h4 Comments   
+    %p Please vote above, and only add comments on your vote if necessary here.
+           
 - @submission.comments.order(&:created_at).each do |comment|
   .row.comment_row{class: cycle('odd', 'even')}
     .medium-3.columns.metadata
