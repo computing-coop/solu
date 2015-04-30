@@ -18,7 +18,7 @@ class Submission
   field :website, type: String
   field :vote_count
   field :comment_count
-
+  field :vote_average, type: Float
   slug :name, :scope => :call
   
   embeds_many :comments #, as: :commentable, cascade_callbacks: true
@@ -28,6 +28,13 @@ class Submission
   embeds_many :answers, cascade_callbacks: true
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :votes, allow_destroy: true
+  before_save :update_average
+  
+  def update_average
+    unless self.votes.empty?
+      self.vote_average = (self.votes.sum(:vote) / self.votes.size).to_f
+    end
+  end
   
   def name
     [first_name, last_name].join(' ')

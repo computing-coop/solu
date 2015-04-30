@@ -1,15 +1,15 @@
 class Admin::VotesController < Admin::BaseController
-  skip_load_resource :only => [:update]
+  skip_load_resource  #:only => [:update]
   
   def create
     @call = Call.find(params[:call_id])
     @submission = @call.submissions.find(params[:submission_id])
     @vote = @submission.votes << Vote.new(vote_params)
 
-    if @call.save
+    if @submission.save
       flash[:notice] = 'Thank you for your thoughts.'
     else
-      flash[:error] = 'There was an error with your vote: ' + @vote.errors.full_messages.join('; ')
+      flash[:error] = 'There was an error with your vote: ' + @call.errors.full_messages.join('; ')
     end
     redirect_to [:admin, @call, @submission]
   end
@@ -24,7 +24,7 @@ class Admin::VotesController < Admin::BaseController
     
     @vote.vote = params[:vote].permit(:vote)[:vote]
 
-    if @call.save
+    if @submission.save
       flash[:notice] = 'Thank you for your thoughts.'
     else
       flash[:error] = 'There was an error with changing your vote: ' + @call.errors.full_messages.join('; ')

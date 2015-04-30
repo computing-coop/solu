@@ -83,7 +83,7 @@
   .small-12.columns
     - if @vote.vote.blank?
       %h4 Your vote?
-    
+      -#- @vote = @submission.votes.build(user: current_user)
     - else
       %h4 
         You voted: 
@@ -112,8 +112,9 @@
         = " (#{time_ago_in_words(comment.created_at)} ago)"
       - if comment.user.avatar?
         = image_tag comment.user.avatar.url(:thumb)
-      - if !@submission.votes.find_by(user: comment.user).vote.nil?
-        .vote_tally= "Voted: #{@submission.votes.find_by(user: comment.user).vote}"
+      -# @vote = @submission.votes.find_by(user: comment.user) rescue nil
+      - if !@vote.nil?
+        .vote_tally= "Voted: #{@vote.vote}"
       - if comment.user == current_user
         .vote_tally= link_to 'Edit comment', edit_admin_call_submission_comment_path(@call, @submission, comment)
         .vote_tally= link_to 'Delete comment', [:admin, @call, @submission, comment ], method: :delete, :data => {confirm: 'Are you sure?'}
@@ -123,8 +124,8 @@
 - if can? :create, @comment = @submission.comments.build
   .row
     .medium-4.columns
-      = semantic_form_for [:admin, @call, @submission, @comment ] do |f|
-        = f.input :comment, as: :text, label: 'Add a comment'
+      = semantic_form_for [:admin, @call, @submission, @comment ], html: {:"data-abide" => ''} do |f|
+        = f.input :comment, as: :text, label: 'Add a comment', input_html: {"required" => ''}
         = f.input :user_id, as: :hidden, input_html: {value: current_user.id }
         = f.submit 'Submit', class: [:tiny, :button, :secondary]
 

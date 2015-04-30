@@ -14,6 +14,8 @@ class Admin::SubmissionsController < Admin::BaseController
       case column
       when "received"
         "created_at #{direction}"
+      when "vote_average"
+        "vote_average #{direction}"
       when "submitted_by"
         "last_name #{direction}"
       end
@@ -28,7 +30,7 @@ class Admin::SubmissionsController < Admin::BaseController
     @submission = @call.submissions.find(params[:id])
 
     begin
-      @vote = @submission.votes.find_by(user: current_user) 
+      @vote = @submission.votes.find_by(user: current_user)
     rescue
 
       @vote = @submission.votes.build(user: current_user)

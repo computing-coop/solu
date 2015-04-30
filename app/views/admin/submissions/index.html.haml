@@ -11,7 +11,7 @@
         %thead
           %th= sortable_column "Received?"
           %th= sortable_column "Submitted by"
-          %th= "Score"
+          %th= sortable_column "Score", column: :vote_average
           %th= sortable_column "Comments"
           %th Actions
         %tbody
@@ -23,10 +23,8 @@
                 - unless sub.organisation_name.blank?
                   .organisation= sub.organisation_name
               %td
-                - if sub.votes.empty?
-                  %em -
-                - else
-                  = (sub.votes.sum(:vote) / sub.votes.size).to_f.to_s
+                - unless sub.vote_average.nil?
+                  = sub.vote_average.to_s
                   %br/
                   %small= pluralize(sub.votes.size, 'vote')
               %td= sub.comments.size
