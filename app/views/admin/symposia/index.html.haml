@@ -1,0 +1,31 @@
+.row
+  .small-12.columns
+    %h1
+      Symposia, laboratories, and other activities
+      
+- unless @symposia.empty?
+  .row
+    .small-12.columns
+      %table
+        %thead
+          %th= sortable_column "Name"
+          %th= sortable_column "When", column: :start_at
+          %th Actions
+        %tbody
+          - @symposia.each do |sym|
+            %tr
+              
+              %td
+                = sym.name
+
+              %td
+                = sym.start_at.strftime("%d %B %Y")
+                = " - "
+                = sym.end_at.strftime("%d %B %Y")
+
+              %td
+                = link_to 'Edit', edit_admin_symposium_path(sym), class: [:button, :small]
+                = link_to 'Delete', [:admin, sym], method: :delete, data: {confirm: 'Are you sure?' }, class: [:button, :alert, :small]
+              
+.row
+  .small-12.columns= link_to 'New symposium', new_admin_symposium_path, class: [:button, :small]                

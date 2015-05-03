@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :partners
     resources :postcategories
     resources :posts
+    resources :symposia do
+      resources :groups
+    end
+    
     resources :calls do
       resources :submissions do
         resources :comments

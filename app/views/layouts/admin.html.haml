@@ -40,12 +40,15 @@
               %li= link_to 'Static pages', admin_pages_path
             - if can? :read, Submission              
               %li= link_to 'Open calls', admin_calls_path
+            - if can? :edit, Symposium
+              %li= link_to 'Symposia', admin_symposia_path
             - if can? :edit, Background           
               %li= link_to 'Header images', admin_backgrounds_path
             - if can? :edit, Postcategory           
               %li= link_to 'Post categories', admin_postcategories_path
             - if can? :edit, User
               %li.last= link_to 'Users', admin_users_path
+              
           
     = yield
     

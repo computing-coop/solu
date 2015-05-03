@@ -76,6 +76,14 @@
 
 form {
   
+  .fields {
+    position: relative;
+    width: 50%;
+    float: left;
+    padding: 0.8rem;
+    border: 1px dotted #666;
+    margin-bottom: 1.5rem;
+  }
   select[multiple=multiple] {
     height: 100px;
   }
