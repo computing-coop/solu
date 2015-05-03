@@ -25,7 +25,7 @@
         .small-12.columns
           = @submission.address
           %br/
-          = [@submission.city, Country[@submission.country].name].join(', ')
+          = [@submission.city, (@submission.country.nil? ? nil : Country[@submission.country].name)].compact.join(', ')
       .row
         .small-12.columns
           Date of birth:
@@ -74,10 +74,19 @@
             %legend= a.question.question
             = raw simple_format(a.answer_text)
         - else
-          %em= a.question.question
-          %br/
-          = raw simple_format(a.answer_text)
-          = raw a.answer_boolean.to_s
+          %fieldset
+            %legend= a.question.question
+            - if a.question.question_type.to_sym == :group_select
+              - if @call
+                - if @call.symposium
+                  = @call.symposium.groups.find(a.answer_text).name rescue 'error'
+                - else 
+                  no symposium defined
+              - else
+                no call defined
+            - else
+              = raw simple_format(a.answer_text)
+              = raw a.answer_boolean.to_s
 
 .row
   .small-12.medium-6.columns
