@@ -18,8 +18,8 @@
           
           - @call.photos.each do |photo|
             .slide[photo]
-              = image_tag photo.image.url(:standard)
-              .thumb= image_tag photo.image.url(:thumb)
+              = image_tag photo.image.url(:standard).gsub(/development/, 'production')
+              .thumb= image_tag photo.image.url(:thumb).gsub(/development/, 'production')
       
   - if @call.headings.empty? || (@call.chunks.size != @call.headings.size)
     .row
