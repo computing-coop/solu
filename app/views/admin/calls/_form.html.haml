@@ -8,7 +8,8 @@
             %li= msg
   .row
     .large-5.small-12.columns= f.input :name, input_html: {required: ''}
-    
+  .row
+    .large-5.small-12.columns= f.input :symposium, label: 'Is this connected to an event?', as: :select
   .row
     .large-5.small-12.columns= f.input :start_at, as: :string,  :input_html => { :class => "fdatepicker", required: ''} 
   .row

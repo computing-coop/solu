@@ -4,15 +4,17 @@
     .small-12.columns.medium-8
       .small_heading Call For Artworks
       %h1= @call.name
+
     .medium-2.columns.hide-for-small-only.navigator
       &nbsp;
-      %ol
-        - @call.headings.each do |heading|
-          %li.heading= link_to heading.last, '#', onclick: "scrollTo('a[name=#{heading.first}]');return false;"
+      - if @call.photos.empty?
+        %ol
+          - @call.headings.each do |heading|
+            %li.heading= link_to heading.last, '#', onclick: "scrollTo('a[name=#{heading.first}]');return false;"
         
   - unless @call.photos.empty?
     .row
-      .small-12.medium-8.columns.medium-offset-2
+      .small-12.medium-7.columns.medium-offset-2
         
         .image_carousel{style: @call.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
           
@@ -20,7 +22,12 @@
             .slide[photo]
               = image_tag photo.image.url(:standard).gsub(/development/, 'production')
               .thumb= image_tag photo.image.url(:thumb).gsub(/development/, 'production')
-      
+      .medium-2.columns.hide-for-small-only.navigator
+        &nbsp;
+
+        %ol
+          - @call.headings.each do |heading|
+            %li.heading= link_to heading.last, '#', onclick: "scrollTo('a[name=#{heading.first}]');return false;"
   - if @call.headings.empty? || (@call.chunks.size != @call.headings.size)
     .row
       .small-12.columns.medium-8.medium-offset-2.call_text
