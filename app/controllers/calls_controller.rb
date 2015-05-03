@@ -3,7 +3,7 @@ class CallsController < ApplicationController
   def apply
     @call = Call.find(params[:id])
     @submission = Submission.new(call: @call)
-    @call.questions.each do |qs|
+    @call.questions.sort_by(&:created_at).each do |qs|
       @submission.answers.build(question: qs)
     end
     if @call.end_at.to_date < Time.now.to_date
