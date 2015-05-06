@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :partners
     resources :postcategories
     resources :posts
+    resources :subsites
     resources :symposia do
       resources :groups
     end

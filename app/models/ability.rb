@@ -13,6 +13,7 @@ class Ability
       can :manage, Comment
       can :manage, Post
       can :manage, user
+      cannot :manage, Subsite
     else
       cannot :read, :all
 

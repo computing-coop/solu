@@ -47,7 +47,9 @@
             - if can? :edit, Postcategory           
               %li= link_to 'Post categories', admin_postcategories_path
             - if can? :edit, User
-              %li.last= link_to 'Users', admin_users_path
+              %li= link_to 'Users', admin_users_path
+            - if can? :manage, Subsite
+              %li.last= link_to 'Subdomains', admin_subsites_path
               
           
     = yield
