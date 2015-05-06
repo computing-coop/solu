@@ -20,6 +20,8 @@ class Page
   
   mount_uploader :image, ImageUploader
     
+  belongs_to :subsite
+  
   slug :title
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
