@@ -1,0 +1,8 @@
+= semantic_nested_form_for [:admin, @subsite], html: {:"data-abide" => ''} do |f|
+  .row
+    .small-12.medium-7.columns= f.input :name, :input_html => {required: ''}, label: 'Internal name'
+  .row
+    .medium-7.small-12.columns= f.input :subdomains, as: :string,  :input_html => {  required: ''} , label: 'Subdomains (separate with commas)'
+  .row
+    .small-12.medium-3.columns= f.submit 'Save', class: [:button, :small]
+    

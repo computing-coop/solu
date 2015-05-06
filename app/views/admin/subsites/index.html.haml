@@ -1,0 +1,29 @@
+.row
+  .small-12.columns
+    %h1
+      Subdomains
+      
+- unless @subsites.empty?
+  .row
+    .small-12.columns
+      %table
+        %thead
+          %th= sortable_column "Name"
+          %th= sortable_column "Subdomains"
+          %th Actions
+        %tbody
+          - @subsites.each do |s|
+            %tr
+              
+              %td
+                = s.name
+
+              %td
+                = s.subdomains
+
+              %td
+                = link_to 'Edit', edit_admin_subsite_path(s), class: [:button, :small]
+                = link_to 'Delete', [:admin, s], method: :delete, data: {confirm: 'Are you sure?' }, class: [:button, :alert, :small]
+              
+.row
+  .small-12.columns= link_to 'New subdomain', new_admin_subsite_path, class: [:button, :small]                
