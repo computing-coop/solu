@@ -2,7 +2,7 @@
 @import 'variables';
 
 nav.top-bar {
-  .menu_wrapper {
+  .menu_wrapper, .down_arrow_wrapper {
     float:right;
     position:relative;
     left:-50%;
@@ -24,7 +24,15 @@ nav.top-bar {
       }
     }
   }
-  
+  .down_arrow_wrapper {
+    margin-top: 0;
+    ul.top-bar-menu {
+      li {
+        span { display: none; color: transparent; }
+        &.active { background: url('/assets/selected_down.png') no-repeat center center; }
+      }
+    }
+  }
 }
 #sticky_field_notes_box {
   background-color: #8F7BAF;

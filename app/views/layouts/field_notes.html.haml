@@ -68,30 +68,20 @@
                 %li= link_to 'Blog', posts_path
                 %li= link_to 'Groups', partners_path
                 %li= link_to 'Participants', page_path('programme')
-          .row.down_arrow
-            .medium-3.columns.hide-for-small-only
-              &nbsp;
-              - if controller.controller_name == 'calls'
-                = image_tag 'selected_down.png'
-              
-            .medium-6.large-4.small-centered.columns
-              .row.down_arrow
-                .small-4.columns.text-center 
-                  &nbsp;
-                  - if controller.controller_name == 'pages'
-                    - if @page.slug == 'about'
-                      = image_tag 'selected_down.png'
-
-                .small-4.columns.text-center 
-                  &nbsp;
-                  - if controller.controller_name == 'partners'
-                    = image_tag 'selected_down.png'
-                .small-4.columns.text-center 
-                  &nbsp;
-                  - if controller.controller_name == 'pages'
-                    - if @page.slug == 'programme'
-                      = image_tag 'selected_down.png'
-                
+          .row
+            .down_arrow_wrapper
+              %ul.top-bar-menu
+                %li
+                  %span Home
+                %li
+                  %span About
+                %li
+                  %span Blog
+                %li
+                  %span Groups
+                %li
+                  %span Participants
+      
                 
       
     .main-container
