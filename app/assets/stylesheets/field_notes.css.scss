@@ -1,0 +1,64 @@
+
+@import 'variables';
+
+nav.top-bar {
+  .menu_wrapper {
+    float:right;
+    position:relative;
+    left:-50%;
+    text-align:left;
+    margin-top: 1.45rem;
+  }
+  ul.top-bar-menu {
+    list-style:none;
+    position:relative;
+    left:50%;
+    
+    li {
+      float: left;
+      position: relative;
+      padding: 0 1.4rem;
+      a {
+        float: left;
+        white-space: nowrap;
+      }
+    }
+  }
+  
+}
+#sticky_field_notes_box {
+  background-color: #8F7BAF;
+  color: black;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+  .heading {
+   cursor: move;
+   font-size: 0.875em;
+   
+    span.white {
+      color: #FFF;
+    }
+    
+  }
+  .title_box {
+    border-top: 2px solid #000;
+
+    .title {
+      a { color: #FFF; }
+      font-weight: 300;
+      font-size: 0.938em;
+      padding: 2.25rem  0 0 0;
+      text-transform: uppercase;
+    }
+
+  }
+  .blurb {
+    padding: 1rem 0.75rem;
+    font-size: 0.65rem;
+
+    a {
+      color: #FFF;
+    }
+  }
+}

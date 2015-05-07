@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_random_background
   before_filter :get_sticky_posts
   before_filter :configure_devise_params, if: :devise_controller?
+  before_filter :check_subdomain
   
   def protect_with_staging_password
     authenticate_or_request_with_http_basic('Bioart eyes only! (for now)') do |username, password|
@@ -20,6 +21,18 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  
+  def check_subdomain
+    # get all possible subdomains
+    sites = Subsite.all
+    return if sites.empty?
+    subdomains = sites.map(&:subdomain_list).flatten.uniq.compact
+    fronturl = request.host.split(/\./).first
+    if subdomains.include?(fronturl)
+      @site = sites.delete_if{|x| x.subdomains !~ /#{fronturl}/ }
+    end
+    
+  end
   
   def get_random_background
     @background_image = Background.active.skip(rand(Background.count)).first

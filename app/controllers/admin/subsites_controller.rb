@@ -46,7 +46,7 @@ class Admin::SubsitesController < Admin::BaseController
     end
 
     def subsite_params
-      params.require(:subsite).permit(:name, :subdomains)
+      params.require(:subsite).permit(:name, :layout, :subdomains)
     end
     
     
