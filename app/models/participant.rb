@@ -18,7 +18,7 @@ class Participant
   
   belongs_to :user
   
-  slug :name, scope: :group
+  slug :name, scope: :group, history: true
   
   mount_uploader :avatar, ImageUploader
   

@@ -19,5 +19,22 @@
             %td= group.participants.size.to_s
             %td
               = link_to 'Add participant', new_admin_symposium_group_participant_path(@symposium, group), class: [:button, :small]
-            
-      
+          - unless group.participants.empty?
+            %tr
+              %td &nbsp;
+              %td{colspan: 3}
+                %table
+                  %thead
+                    %th Name
+                    %th Host?
+                    %th Approved?
+                    %th actions
+                  %tbody
+                    - group.participants.each do |p|
+                      %tr
+                        %td= p.name
+                        %td= p.is_host == true ? 'yes' : 'no'
+                        %td= p.approved == true ? 'approved' : 'not approved'
+                        %td
+                          = link_to 'Edit', edit_admin_symposium_group_participant_path(@symposium, group, p), class: [:button, :tiny]
+                          = link_to 'Delete', [:admin, @symposium, group, p], method: :delete, :data => {confirm: 'Are you sure?'}, class: [:button, :alert, :tiny]
