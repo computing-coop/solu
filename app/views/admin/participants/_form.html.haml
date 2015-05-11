@@ -1,0 +1,20 @@
+.row
+  .small-12.columns
+    %h3
+      Group:
+      = @group.name
+
+= semantic_form_for [:admin, @symposium, @group, @participant], html: {:"data-abide" => '', multipart: true} do |f|
+  .row
+    .small-6.medium-4.columns= f.input :first_name
+    .small-6.medium-4.end.columns= f.input :last_name, input_html: {required: ''}
+
+  .row
+    .small-12.columns.medium-8= f.input :bio, as: :ckeditor
+  .row
+    .small-10.columns.medium-6= f.input :avatar, label: 'Photo: '
+  .row
+    .small-6.medium-3.columns= f.input :is_host, as: :boolean, label: 'Host of this group?'
+    .small-6.medium-3.end.columns= f.input :approved, as: :boolean, label: 'Approved?', hint: 'Must be checked for them to appear on site'
+  .row
+    .small-6.medium-6.columns= f.submit 'Save', class: [:button, :small]

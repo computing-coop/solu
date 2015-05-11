@@ -17,7 +17,8 @@
               
               %td
                 = sym.name
-
+                %br/
+                = link_to 'Participants', admin_symposium_groups_path(sym), class: [:button, :secondary, :tiny]     
               %td
                 = sym.start_at.strftime("%d %B %Y")
                 = " - "

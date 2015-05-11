@@ -11,6 +11,8 @@ class Symposium
 
   slug :name
   
+  has_one :subsite
+  
   
   has_many :calls
   embeds_many :groups, cascade_callbacks: true

@@ -1,0 +1,23 @@
+.row
+  .small-12.columns
+    %h2
+      Groups for
+      = @symposium.name
+.row
+  .small-12.columns
+    %table
+      %thead
+        %th Name
+        %th Hosts
+        %th Participants
+        %th Actions
+      %tbody
+        - @groups.each do |group|
+          %tr
+            %td= group.name
+            %td= group.host
+            %td= group.participants.size.to_s
+            %td
+              = link_to 'Add participant', new_admin_symposium_group_participant_path(@symposium, group), class: [:button, :small]
+            
+      
