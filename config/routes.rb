@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get '/category/:id', to: "postcategories#show"
 
   resources :pages
-
+  resources :groups
+  
   namespace :admin do
     resources :activities
     resources :backgrounds
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
     resources :posts
     resources :subsites
     resources :symposia do
-      resources :groups
+      resources :groups do
+        resources :participants
+      end
     end
     
     resources :calls do

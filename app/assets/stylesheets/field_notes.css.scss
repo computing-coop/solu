@@ -28,7 +28,7 @@ nav.top-bar {
     margin-top: 0;
     ul.top-bar-menu {
       li {
-        span { display: none; color: transparent; }
+        span { color: transparent; }
         &.active { background: url('/assets/selected_down.png') no-repeat center center; }
       }
     }
@@ -67,6 +67,38 @@ nav.top-bar {
 
     a {
       color: #FFF;
+    }
+  }
+}
+
+.group_container {
+  border-bottom: 2px solid black;
+}
+.group_container, .group_detail {
+  padding: 2.5rem 0;
+  h2 {
+    font-size: 2.063rem;
+    color: #444;
+    a { color: #444;
+    }
+  }
+  .navigator {
+    ol {
+      margin: 0; padding: 0;
+      color: $turq;
+      li {
+        list-style-position: inside;
+        color: $turq ;
+        margin-bottom: 0.3rem;
+        a {
+          font-size: 0.938rem;
+          padding-bottom: 0.2rem;
+          line-height: 1.5rem;
+          color: $turq;
+        }
+        border-bottom: 1px solid $turq;
+      }
+      
     }
   }
 }

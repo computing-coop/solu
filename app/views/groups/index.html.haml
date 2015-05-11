@@ -1,0 +1,19 @@
+- @groups.each_with_index do |group,index|
+  .row.group_container
+    .columns.medium-offset-2{class: index == 0 ? "medium-8"  : "small-12"}
+      %a{name: group.slug }
+      %h2= group.name
+      %p
+        %em Hosts:
+        = group.host
+      %p
+        %em Place:
+        = group.place
+      .short_description
+        = raw group.short_description
+        = link_to ">>>", group
+    - if index == 0
+      .medium-2.columns.navigator
+        %ol.groups_list
+          - @groups.each do |g|
+            %li= link_to g.name, '#', onclick: "scrollTo('a[name=#{g.slug}]');return false;"

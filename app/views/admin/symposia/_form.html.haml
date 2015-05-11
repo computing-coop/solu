@@ -19,7 +19,11 @@
     .row
       .small-12.column= g.input :host_url
     .row
-      .small-12.column= g.input :short_description
+      .small-12.columns= g.input :place, input_html: {required: ''}
+    .row
+      .small-12.column= g.input :short_description, input_html: {required: ''}
+    .row
+      .small-12.column= g.input :description, as: :ckeditor, input_html: {required: ''}
     .row
       .small-12.column= g.link_to_remove 'Delete this group', class: [:button, :tiny, :alert]
   .row

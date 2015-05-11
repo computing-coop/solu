@@ -49,6 +49,6 @@ class Admin::PostsController < Admin::BaseController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :sticky, :short_abstract, :published, :user_id, :published_at, photos_attributes: [:image, :id,  :_destroy], activity_ids: [], postcategory_ids: [] )
+      params.require(:post).permit(:title, :body, :sticky, :subsite_id, :short_abstract, :published, :user_id, :published_at, photos_attributes: [:image, :id,  :_destroy], activity_ids: [], postcategory_ids: [] )
     end
 end

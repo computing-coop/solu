@@ -4,8 +4,14 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.published.order(published_at: :desc)
-    respond_with(@posts)
     set_meta_tags title: "Posts"
+    if @site
+      @posts = Post.by_subsite(@site.id).published.order(published_at: :desc)
+      render layout: @site.layout
+    else
+      @posts = Post.published.order(published_at: :desc)
+    end
+    
   end
 
   def show

@@ -8,11 +8,12 @@ class Symposium
   field :end_at, type: Date
   field :location, type: String
   field :location_url, type: String
-  
+
   slug :name
   
+  
   has_many :calls
-  embeds_many :groups
+  embeds_many :groups, cascade_callbacks: true
   accepts_nested_attributes_for :groups, allow_destroy: true,  reject_if: :all_blank
   
   validates_presence_of :start_at, :name, :end_at

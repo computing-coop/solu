@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     subdomains = sites.map(&:subdomain_list).flatten.uniq.compact
     fronturl = request.host.split(/\./).first
     if subdomains.include?(fronturl)
-      @site = sites.delete_if{|x| x.subdomains !~ /#{fronturl}/ }
+      @site = sites.delete_if{|x| x.subdomains !~ /#{fronturl}/ }.first
     end
     
   end

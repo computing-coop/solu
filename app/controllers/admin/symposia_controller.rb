@@ -46,7 +46,7 @@ class Admin::SymposiaController < Admin::BaseController
     end
 
     def symposium_params
-      params.require(:symposium).permit(:name, :start_at, :end_at, :location, :location_url, groups_attributes: [:id, :_destroy, :name, :host, :host_url, :short_description, :description])
+      params.require(:symposium).permit(:name, :start_at, :end_at, :location, :location_url, groups_attributes: [:id, :_destroy, :name, :host, :host_url, :place, :short_description, :description])
     end
     
     

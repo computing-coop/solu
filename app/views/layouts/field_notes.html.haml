@@ -46,7 +46,7 @@
         - if current_user.has_role?(:partner) || current_user.has_role?(:admin)
           .right
             = link_to 'Back office', '/admin', class: [:button, :tiny]
-      = link_to '/' do
+      = link_to 'http://hybridmatters.net/' do
         - if Rails.env.staging?
           .staging_overlay= image_tag('staging_overlay.png')
         .before
@@ -63,23 +63,23 @@
               
             .menu_wrapper
               %ul.top-bar-menu
-                %li= link_to 'Home', page_path('about')
-                %li= link_to 'About', page_path('about')
-                %li= link_to 'Blog', posts_path
-                %li= link_to 'Groups', partners_path
-                %li= link_to 'Participants', page_path('programme')
+                %li= link_to 'Home', 'http://hybridmatters.net/'
+                %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about')
+                %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
+                %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
+                %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', page_path('programme')
           .row
             .down_arrow_wrapper
               %ul.top-bar-menu
                 %li
                   %span Home
-                %li
+                %li{class: controller.controller_name == 'pages' ? :active : false}
                   %span About
-                %li
+                %li{class: controller.controller_name == 'posts' ? :active : false}
                   %span Blog
-                %li
+                %li{class: controller.controller_name == 'groups' ? :active : false}
                   %span Groups
-                %li
+                %li{class: controller.controller_name == 'participants' ? :active : false}
                   %span Participants
       
                 

@@ -9,6 +9,7 @@ class Post
   field :sticky, type: Mongoid::Boolean
   field :short_abstract, type: String
   belongs_to :user
+  belongs_to :subsite
   has_and_belongs_to_many :postcategories
   has_and_belongs_to_many :activities
   slug :title
@@ -18,6 +19,8 @@ class Post
   
   scope :published, -> () { where(published: true)}
   scope :sticky, ->() { where(published: true, sticky: true) }
+  scope :by_subsite, -> (x) { where(subsite_id: x).where(published: true)}
+  
   before_save :check_published_date
   
   validates_presence_of :title, :body, :user_id

@@ -1,0 +1,12 @@
+.row.group_detail
+  .columns.medium-offset-2.medium-8.small-12
+    %h2= @group.name
+    %p
+      %em Hosts:
+      = @group.host
+    %p
+      %em Place:
+      = @group.place
+    .description
+      = raw @group.description
+
