@@ -13,12 +13,16 @@ class Participant
   field :avatar_height, type: Integer
   field :avatar_content_type, type: String
   field :avatar_size, type: Integer
-  field :approved, type: Mongoid::Boolean
+  field :accepted, type: Boolean, default: false
   field :is_host, type: Mongoid::Boolean
   
   belongs_to :user
   
   slug :name, scope: :group, history: true
+  
+  scope :approved, -> () { where(accepted: true) }
+  scope :hosts, -> () { where(is_host: true) }
+  scope :not_hosts, -> () { where(is_host: false) }
   
   mount_uploader :avatar, ImageUploader
   

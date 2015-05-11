@@ -15,6 +15,6 @@
     .small-10.columns.medium-6= f.input :avatar, label: 'Photo: '
   .row
     .small-6.medium-3.columns= f.input :is_host, as: :boolean, label: 'Host of this group?'
-    .small-6.medium-3.end.columns= f.input :approved, as: :boolean, label: 'Approved?', hint: 'Must be checked for them to appear on site'
+    .small-6.medium-3.end.columns= f.input :accepted, as: :boolean, label: 'Accepted?', hint: 'Must be checked for them to appear on site'
   .row
     .small-6.medium-6.columns= f.submit 'Save', class: [:button, :small]

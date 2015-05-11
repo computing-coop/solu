@@ -34,7 +34,7 @@
                       %tr
                         %td= p.name
                         %td= p.is_host == true ? 'yes' : 'no'
-                        %td= p.approved == true ? 'approved' : 'not approved'
+                        %td= p.accepted == true ? 'accepted' : 'not accepted'
                         %td
                           = link_to 'Edit', edit_admin_symposium_group_participant_path(@symposium, group, p), class: [:button, :tiny]
                           = link_to 'Delete', [:admin, @symposium, group, p], method: :delete, :data => {confirm: 'Are you sure?'}, class: [:button, :alert, :tiny]

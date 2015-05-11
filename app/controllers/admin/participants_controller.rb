@@ -14,6 +14,16 @@ class Admin::ParticipantsController < Admin::BaseController
     redirect_to admin_symposium_groups_path(@symposium)
   end
   
+  def destroy
+    @symposium = Symposium.find(params[:symposium_id])
+    @group = @symposium.groups.find(params[:group_id])
+    @participant = @group.participants.find(params[:id])
+    if @participant.delete
+      flash[:notice] = 'The participant has been deleted.'
+    end
+    redirect_to admin_symposium_groups_path(@symposium)
+  end
+  
   def edit
     @symposium = Symposium.find(params[:symposium_id])
     @group = @symposium.groups.find(params[:group_id])
@@ -32,8 +42,9 @@ class Admin::ParticipantsController < Admin::BaseController
     @symposium = Symposium.find(params[:symposium_id])
     @group = @symposium.groups.find(params[:group_id])
     @participant = @group.participants.find(params[:id])  
+
     # hack because there appears to be a bug in mongoid!!!
-    @participant.update(participant_params)
+    @participant.update(participant_params)   
     if @symposium.save
       flash[:notice] = 'The participant has been edited'
     else
@@ -45,7 +56,7 @@ class Admin::ParticipantsController < Admin::BaseController
   protected
   
   def participant_params
-    params.require(:participant).permit(:first_name, :avatar, :last_name, :bio, :is_host, :approved)
+    params.require(:participant).permit(:first_name, :avatar, :last_name, :bio, :is_host, :accepted)
   end
   
 end
