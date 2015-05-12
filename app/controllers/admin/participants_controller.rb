@@ -56,7 +56,7 @@ class Admin::ParticipantsController < Admin::BaseController
   protected
   
   def participant_params
-    params.require(:participant).permit(:first_name, :avatar, :last_name, :bio, :is_host, :accepted)
+    params.require(:participant).permit(:first_name, :avatar, :last_name, :website, :bio, :is_host, :accepted)
   end
   
 end

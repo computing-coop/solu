@@ -77,15 +77,25 @@ nav.top-bar {
 
 .participants_container {
   border-top: 2px solid black;
-  .host_container, .participant_container {
+  .host_container, .participant_container, .participant {
     padding: 2.5rem 0;
     border-bottom: 2px solid black;
     &.last {
       border-bottom: none;
     }
-    .name {
+    
+    .group_name {
+      a {
+        color: $turq;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 300;
+      }
+    }
+    .name, .participant_name {
       font-size: 2.063rem;
       margin-bottom: 1.5rem;
+      line-height: 2.063rem;
       color: #444;
     }
     .bio, .bio p {

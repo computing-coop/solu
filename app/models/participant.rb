@@ -15,7 +15,7 @@ class Participant
   field :avatar_size, type: Integer
   field :accepted, type: Boolean, default: false
   field :is_host, type: Mongoid::Boolean
-  
+  field :website, type: String
   belongs_to :user
   
   slug :name, scope: :group, history: true
@@ -43,4 +43,15 @@ class Participant
     [first_name, last_name].compact.join(' ')
   end
   
+  
+  def website_formatted
+    if website.blank?
+      return nil
+    elsif website =~ /^http(s*):\/\//i 
+      return website
+    else
+      return "http://#{website}"
+    end
+  end
+
 end
