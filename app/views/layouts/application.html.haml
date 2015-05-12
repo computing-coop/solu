@@ -55,41 +55,33 @@
       %nav.top-bar.sticky
         .hor-container
           .row
-
-            .medium-2.large-3.columns.hide-for-small-only.social_icons
-              = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
-              = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
-              = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
+      
+            .menu_wrapper
+              .social.hide-for-small-only
+                = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
+                = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
+                = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               
-            .medium-10.large-6.large-centered.columns.medium-left
-              .row
-                .small-2.medium-3.columns.small-text-center= link_to 'About', page_path('about')
-                .small-2.medium-3.columns.small-text-center= link_to 'News', posts_path
-                .small-3.columns.small-text-center= link_to 'Partners', partners_path
-                .small-4.medium-3.columns.small-text-center.end= link_to 'Programme', page_path('programme')
-          .row.down_arrow
-            .medium-3.columns.hide-for-small-only
-              &nbsp;
-              - if controller.controller_name == 'calls'
-                = image_tag 'selected_down.png'
-              
-            .medium-6.large-4.small-centered.columns
-              .row.down_arrow
-                .small-4.columns.text-center 
-                  &nbsp;
-                  - if controller.controller_name == 'pages'
-                    - if @page.slug == 'about'
-                      = image_tag 'selected_down.png'
+              .rest
+                %ul.top-bar-menu
+                  %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
+                  %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
+                  %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
+                  %li{class: controller.controller_name == 'pages'  && params[:id] == 'programme' ? :active : false}= link_to 'Programme', page_path('programme')
+          .row
+            .down_arrow_wrapper
+              .social &nbsp;
+              .rest
+                %ul.top-bar-menu
+                  %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}
+                    %span About
+                  %li{class: controller.controller_name == 'posts' ? :active : false}
+                    %span News
+                  %li{class: controller.controller_name == 'partners' ? :active : false}
+                    %span Partners
+                  %li{class: controller.controller_name == 'pages'  && params[:id] == 'programme' ? :active : false}
+                    %span Programme
 
-                .small-4.columns.text-center 
-                  &nbsp;
-                  - if controller.controller_name == 'partners'
-                    = image_tag 'selected_down.png'
-                .small-4.columns.text-center 
-                  &nbsp;
-                  - if controller.controller_name == 'pages'
-                    - if @page.slug == 'programme'
-                      = image_tag 'selected_down.png'
                 
                 
       

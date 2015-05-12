@@ -55,32 +55,34 @@
       %nav.top-bar.sticky
         .hor-container
           .row
-
-            -#.medium-2.large-3.columns.hide-for-small-only.social_icons
-            -#  = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
-            -#  = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
-            -#  = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
-              
+      
             .menu_wrapper
-              %ul.top-bar-menu
-                %li= link_to 'Home', 'http://hybridmatters.net/'
-                %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes')
-                %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
-                %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
-                %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', participants_path
+              .social.hide-for-small-only
+                = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
+                = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
+                = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
+              .rest
+                %ul.top-bar-menu
+                  %li= link_to 'Home', 'http://hybridmatters.net/'
+                  %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes')
+                  %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
+                  %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
+                  %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', participants_path
           .row
             .down_arrow_wrapper
-              %ul.top-bar-menu
-                %li
-                  %span Home
-                %li{class: controller.controller_name == 'pages' ? :active : false}
-                  %span About
-                %li{class: controller.controller_name == 'posts' ? :active : false}
-                  %span Blog
-                %li{class: controller.controller_name == 'groups' ? :active : false}
-                  %span Groups
-                %li{class: controller.controller_name == 'participants' ? :active : false}
-                  %span Participants
+              .social &nbsp;
+              .rest
+                %ul.top-bar-menu
+                  %li
+                    %span Home
+                  %li{class: controller.controller_name == 'pages' ? :active : false}
+                    %span About
+                  %li{class: controller.controller_name == 'posts' ? :active : false}
+                    %span Blog
+                  %li{class: controller.controller_name == 'groups' ? :active : false}
+                    %span Groups
+                  %li{class: controller.controller_name == 'participants' ? :active : false}
+                    %span Participants
       
                 
       

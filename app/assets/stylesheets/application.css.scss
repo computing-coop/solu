@@ -29,6 +29,10 @@
 @import 'foundation_and_overrides';
 @import 'variables';
 
+html {
+  max-width: 100%; 
+  overflow-x: hidden;
+}
 #flash {
   padding: 0.8rem 0;
   color: white;
@@ -125,8 +129,32 @@ header {
   border-right: 2px solid #444;
   margin: 0 0.688em;
   height: 75px;
+
+  .menu_wrapper , .down_arrow_wrapper {
+    width: 100%;
+    .social {
+      width: 90px;
+      float: left;
+      padding-left: 5px;
+    }
+    .rest {
+      padding-top: 0.4rem;
+      width: calc(100% - 90px);
+      float: left;
+    }
+    ul.top-bar-menu {
+      left: calc(30% - 90px);
+      padding-top: 7px;
+      margin: 0;
+    }
+  }
+  .down_arrow_wrapper {
+    .rest {
+      padding: 0;
+    }
+  }
   .row {
-    padding-top: 0.8rem;
+    padding-top: 0;
     &.down_arrow {
       padding-top: 0; 
       img {

@@ -3,14 +3,26 @@
 @media only screen and (max-width: 40em)  { 
   
   nav.top-bar {
-    .menu_wrapper, .down_arrow_wrapper {
-      float: left;
-      left: 0%
-    }
-    ul.top-bar-menu {
-      left: 0%;
-      li {
-        padding: 0 0.3rem;
+    .hor-container {
+      .row {
+        padding-top: 0;
+      }
+      .menu_wrapper, .down_arrow_wrapper {
+        float: left;
+        left: 0;
+        .rest {
+          width: 100%;
+        }
+        ul.top-bar-menu {
+          left: 0;
+          padding-top: 0.2rem;
+          li {
+            padding: 0 0.3rem;
+            a {
+              font-size: 0.85rem;
+            }
+          }
+        }
       }
     }
   }
