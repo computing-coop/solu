@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :protect_with_staging_password if Rails.env.staging?
-  before_filter :get_random_background
+
   before_filter :get_sticky_posts
   before_filter :configure_devise_params, if: :devise_controller?
   before_filter :check_subdomain
+  before_filter :get_random_background
   
   def protect_with_staging_password
     authenticate_or_request_with_http_basic('Bioart eyes only! (for now)') do |username, password|
@@ -35,7 +36,11 @@ class ApplicationController < ActionController::Base
   end
   
   def get_random_background
-    @background_image = Background.active.skip(rand(Background.count)).first
+    if @site
+      @background_image = Background.by_subsite(@site.id).active.skip(rand(Background.by_subsite(@site.id).active.count)).first
+    else
+      @background_image = Background.no_subsite.active.skip(rand(Background.no_subsite.active.count)).first
+    end
   end
   
   def get_sticky_posts

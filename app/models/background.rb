@@ -15,9 +15,11 @@ class Background
   mount_uploader :regular, BackgroundUploader
   mount_uploader :mobile, BackgroundUploader
   before_save :update_image_attributes
-  
+  belongs_to :subsite
   
   scope :active, -> () { where(active: true) }
+  scope :by_subsite, -> (x) { where(subsite_id: x )}
+  scope :no_subsite, -> () { where(subsite_id: nil) }
   
   def update_image_attributes
     if regular.present? && regular_changed?

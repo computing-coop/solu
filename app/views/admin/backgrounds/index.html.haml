@@ -15,7 +15,10 @@
         - @backgrounds.each do |background|
           %tr
             %td= image_tag background.mobile.url
-            %td= background.credit
+            %td
+              = background.credit
+              - if background.subsite
+                %p= background.subsite.name
             %td= background.active
             %td
               = link_to 'Show', [:admin, background], class: [:button, :small]

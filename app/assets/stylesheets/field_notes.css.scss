@@ -28,7 +28,7 @@ nav.top-bar {
     margin-top: 0;
     ul.top-bar-menu {
       li {
-        span { color: transparent; }
+        span { color: transparent; text-transform: uppercase; }
         &.active { background: url('/assets/selected_down.png') no-repeat center center; }
       }
     }

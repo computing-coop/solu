@@ -62,7 +62,7 @@ class Admin::BackgroundsController < Admin::BaseController
   private
 
     def background_params
-      params.require(:background).permit(:regular, :credit,  :mobile, :active)
+      params.require(:background).permit(:regular, :credit, :subsite_id, :mobile, :active)
     end
     
 end

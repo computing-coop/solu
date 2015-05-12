@@ -19,6 +19,8 @@
   .row
     .small-6.columns= f.input :credit
   .row
+    .small-6.columns= f.input :subsite
+  .row
     .small-6.column= f.input :active, as: :boolean,  :hint => 'Untick to keep from being randomly loaded'
   .row
     .small-6.columns= f.submit 'Save', class: [:button, :small]

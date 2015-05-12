@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = display_meta_tags :site => 'HYBRID MATTERs', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
+    = display_meta_tags :site => 'Field_Notes', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
     - if controller.controller_name == 'partners'
