@@ -4,10 +4,14 @@
   
   nav.top-bar {
     .menu_wrapper, .down_arrow_wrapper {
+      float: left;
       left: 0%
     }
     ul.top-bar-menu {
       left: 0%;
+      li {
+        padding: 0 0.3rem;
+      }
     }
   }
 }

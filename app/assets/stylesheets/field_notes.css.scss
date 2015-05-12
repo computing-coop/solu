@@ -29,7 +29,7 @@ nav.top-bar {
     ul.top-bar-menu {
       li {
         span { color: transparent; text-transform: uppercase; }
-        &.active { background: url('/assets/selected_down.png') no-repeat center center; }
+        &.active { background: url(image_path('selected_down.png')) no-repeat center center; }
       }
     }
   }
