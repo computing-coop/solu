@@ -1,0 +1,11 @@
+.participants_container
+  - @participants.each_with_index do |participant, index|
+    .participant{class: index == (@participants.size - 1) ? :last : false}
+      .row
+        .medium-8.columns.medium-offset-2.text-left
+          - unless participant.group.nil?
+            .group_name= link_to participant.group.name, participant.group
+            .participant_name= participant.name
+            - unless participant.website.blank?
+              .participant_website= link_to participant.website_formatted, participant.website_formatted, target: :blank
+            .participant_bio= raw sanitize(participant.bio.gsub(/\&nbsp;/, ' '), tags: %w{bold b strong a u p br iframe underline i italic em})  
