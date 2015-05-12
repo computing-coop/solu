@@ -1,0 +1,14 @@
+@import 'variables';
+
+@media only screen and (max-width: 40em)  { 
+  
+  nav.top-bar {
+    .menu_wrapper, .down_arrow_wrapper {
+      left: 0%
+    }
+    ul.top-bar-menu {
+      left: 0%;
+    }
+  }
+}
+
