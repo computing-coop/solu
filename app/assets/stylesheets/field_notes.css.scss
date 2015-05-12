@@ -73,6 +73,9 @@ nav.top-bar {
 
 .group_container {
   border-bottom: 2px solid black;
+  &.last {
+    border-bottom: none;
+  }
 }
 
 .participants_container {
@@ -92,10 +95,27 @@ nav.top-bar {
         font-weight: 300;
       }
     }
-    .name, .participant_name {
+    .name {
       font-size: 2.063rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.8rem;
       line-height: 2.063rem;
+      color: #444;
+    }
+    .participant_website {
+      font-size: 1.0rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      a {
+        color: #222;
+        &:hover { 
+          color: $turq;
+        }
+      }
+    }
+    .participant_name {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8rem;
       color: #444;
     }
     .bio, .bio p {

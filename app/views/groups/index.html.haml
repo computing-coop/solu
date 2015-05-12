@@ -1,6 +1,6 @@
 - @groups.each_with_index do |group,index|
-  .row.group_container
-    .columns.medium-offset-2{class: index == 0 ? "medium-8"  : "small-12"}
+  .row.group_container{class: @groups[index+1].nil? ? :last : false}
+    .columns.medium-offset-2.medium-8.small-12
       %a{name: group.slug }
       %h2= group.name
       %p

@@ -14,25 +14,17 @@
     .small-12.columns
       - @group.participants.hosts.approved.sort_by(&:last_name).each_with_index do |p, index|
         .row.host_container{class: @group.participants.hosts.approved.sort_by(&:last_name)[index+1].nil? ? :last : false }
-          .medium-2.columns.medium-offset-1.hide-for-small-only
-            - if p.avatar
-              .host_icon= image_tag(p.avatar.url(:blog))
-            - else
-              = image_tag('missing_person.png')
-
-          .medium-9.small-12.columns
+          .medium-8.columns.medium-offset-2.text-left
             .name= p.name
+            - unless p.website.blank?
+              .participant_website= link_to p.website_formatted, p.website_formatted, target: :blank
             .bio= raw sanitize(p.bio.gsub(/\&nbsp;/, ' '), tags: %w{bold b strong a u p br iframe underline i italic em})
   .row.participants_container
     .small-12.columns
       - @group.participants.not_hosts.approved.sort_by(&:last_name).each_with_index do |p, index|
         .row.host_container{class: @group.participants.not_hosts.approved.sort_by(&:last_name)[index+1].nil? ? :last : false }
-          .medium-2.columns.medium-offset-1.hide-for-small-only
-            - if p.avatar
-              .host_icon= image_tag(p.avatar.url(:blog))
-            - else
-              = image_tag('missing_person.png')
-
-          .medium-9.small-12.columns
+          .medium-8.columns.medium-offset-2.text-left
             .name= p.name
+            - unless p.website.blank?
+              .participant_website= link_to p.website_formatted, p.website_formatted, target: :blank
             .bio= raw sanitize(p.bio.gsub(/\&nbsp;/, ' '), tags: %w{bold b strong a u p br iframe underline i italic em})            
