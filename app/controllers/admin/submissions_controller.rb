@@ -18,6 +18,8 @@ class Admin::SubmissionsController < Admin::BaseController
         "vote_average #{direction}"
       when "submitted_by"
         "last_name #{direction}"
+      else
+        "vote_average desc"
       end
     end
     @call = Call.find(params[:call_id])

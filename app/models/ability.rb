@@ -8,9 +8,10 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :partner
-      can :read, Submission
-      can :read, Call
+      can :manage, Submission
+      can :manage, Call
       can :manage, Comment
+      can :manage, Vote
       can :manage, Post
       can :manage, user
       cannot :manage, Subsite
