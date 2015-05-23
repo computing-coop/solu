@@ -1,3 +1,89 @@
-// Place all the styles related to the Activities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+nav.activities-bar {
+ height: 45px;
+ 
+ background-color: #f7e9dc;
+ .secondary_activities_filter {
+   height: initial;
+
+   ul {
+
+     left: initial;
+     padding-top: 7px;
+     list-style:none;
+     position:relative;
+ 
+    
+     li {
+       float: left;
+       position: relative;
+       padding: 0 1.4rem;
+       a {
+         float: left;
+         white-space: nowrap;
+       }
+     }
+   }
+ }
+}
+
+.main-container.activities {
+  padding-bottom: 0;
+}
+
+#activity_map_wrapper {
+  background: url(image_path('map.png')) no-repeat center top;
+  background-size: cover;
+  padding: 10%;
+}
+
+.vertical-line {
+  background: url(image_path('arrowline.png')) repeat-y 23px top;
+  padding-top: 2rem;
+}
+
+.activity_row {
+
+
+  .circle {
+    float: left;
+    background: url(image_path('circle.png')) no-repeat center center;
+    font-weight: 300;
+    color: #FFFFFF;
+    width: 55px;
+    height: 55px;
+    padding: 15px;
+  }
+  
+  .activity_entry {
+    width: 35%;
+    display: table;
+    padding: 12px 0 1rem 1.7rem;
+
+
+    .activity_box {
+      padding: 0.5rem;
+      margin:  0;
+      display: table-cell;
+      float: left;
+      width: calc(100% - 20px);
+  
+      .title {
+        color: #FFF;
+      }
+      .activity_description {
+        margin-top: 0.5rem;
+      }
+    }
+  
+    .arrow_left {
+      display: table-cell;
+      vertical-align: middle;
+    	width: 0; 
+      float: left;
+    	height: 0; 
+    	border-top: 20px solid transparent;
+    	border-bottom: 20px solid transparent;	 
+    }
+  }
+  
+}

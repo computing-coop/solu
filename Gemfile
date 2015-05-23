@@ -3,7 +3,7 @@ source 'http://gems.github.com'
 
 gem 'mongoid', github: "mongoid/mongoid"
 
-ruby '2.2.0'
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

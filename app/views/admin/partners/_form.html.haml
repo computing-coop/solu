@@ -11,6 +11,8 @@
   .row
     .large-5.small-12.columns= f.input :website
   .row
+    .large-5.small-12.columns= f.input :css_colour
+  .row
     .large-5.small-12.columns
       - if f.object.logo?
         = image_tag f.object.logo.url(:thumb)

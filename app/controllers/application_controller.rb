@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
-
+  skip_before_filter :verify_authenticity_token, if: -> { controller_name == 'sessions' && action_name == 'create' }
   before_filter :protect_with_staging_password if Rails.env.staging?
  
   before_filter :get_sticky_posts
@@ -15,7 +15,10 @@ class ApplicationController < ActionController::Base
     end
   end
     
-
+  rescue_from ActionController::InvalidAuthenticityToken do |exception|
+    redirect_to root_path, :alert => exception.message
+  end
+      
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end

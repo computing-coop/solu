@@ -19,5 +19,12 @@ class Activity
   accepts_nested_attributes_for :photos, allow_destroy: true
   slug :name
   
+  def box_colour
+    if responsible_organisations.empty?
+      "ffffff"
+    else
+      responsible_organisations.first.css_colour
+    end
+  end
   
 end

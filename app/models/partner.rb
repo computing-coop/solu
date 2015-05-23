@@ -24,7 +24,7 @@ class Partner
   field :hmlogo_width, type: Integer
   field :hmlogo_height, type: Integer
   field :hmlogo_content_type, type: String
-  
+  field :css_colour, type: String
   field :coordinates, :type => Array
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true

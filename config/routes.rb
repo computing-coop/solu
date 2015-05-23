@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :groups
   resources :participants
+  resources :activities
   
   namespace :admin do
     resources :activities

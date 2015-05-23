@@ -67,7 +67,7 @@
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
-                  %li{class: controller.controller_name == 'pages'  && params[:id] == 'programme' ? :active : false}= link_to 'Programme', page_path('programme')
+                  %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', page_path('programme')
           .row
             .down_arrow_wrapper
               .social &nbsp;
@@ -79,13 +79,24 @@
                     %span News
                   %li{class: controller.controller_name == 'partners' ? :active : false}
                     %span Partners
-                  %li{class: controller.controller_name == 'pages'  && params[:id] == 'programme' ? :active : false}
+                  %li{class: controller.controller_name == 'activities'  ? :active : false}
                     %span Programme
+      - if controller.controller_name == 'activities'
+        %nav.activities-bar.sticky
+          .hor-container.secondary_activities_filter
+            .row
 
+              %ul.top-bar-menu
+                %li Exhibitions
+                %li Public engagement events
+                %li Field_Notes
+                %li Symposium
+                %li Network meetings
+                %li Artistic Research 
                 
                 
       
-    .main-container
+    .main-container{class: controller.controller_name}
       .blue_announcements.show-for-small-only
         .row
           .small-12.columns.text-center.small-centered.heading ANNOUNCEMENTS
