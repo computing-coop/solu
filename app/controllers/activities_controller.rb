@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
   def index
-    @activities = Activity.all
+    @activities = Activity.asc(:start_at)
     set_meta_tags title: "Activities"
   end
 

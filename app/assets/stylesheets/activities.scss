@@ -4,11 +4,12 @@ nav.activities-bar {
  background-color: #f7e9dc;
  .secondary_activities_filter {
    height: initial;
-
+   position: absolute;
+   border-right: none;
    ul {
 
      left: initial;
-     padding-top: 7px;
+     padding-top: 13px;
      list-style:none;
      position:relative;
  
@@ -27,7 +28,7 @@ nav.activities-bar {
 }
 
 .main-container.activities {
-  padding-bottom: 0;
+  padding: 95px 0 0 0;
 }
 
 #activity_map_wrapper {
@@ -55,9 +56,9 @@ nav.activities-bar {
   }
   
   .activity_entry {
-    width: 35%;
+    width: 40%;
     display: table;
-    padding: 12px 0 1rem 1.7rem;
+    padding: 12px 0 1rem 1.4rem;
 
 
     .activity_box {
@@ -69,9 +70,17 @@ nav.activities-bar {
   
       .title {
         color: #FFF;
+        font-size: 1rem;
+        color: #FFF;
+      }
+      .dates {
+        color: #FFF;
+        font-size: 0.75rem;
       }
       .activity_description {
         margin-top: 0.5rem;
+        font-size: 0.750rem;
+        color: #222;
       }
     }
   

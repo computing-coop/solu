@@ -149,6 +149,8 @@ header {
     }
   }
   .down_arrow_wrapper {
+    height: 0;
+    position: absolute;
     .rest {
       padding: 0;
     }
