@@ -1,0 +1,58 @@
+function buildmap() {
+  var myOptions = {
+    mapTypeControl: false,
+    zoomControl: false,
+    zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL,
+        position: google.maps.ControlPosition.BOTTOM_RIGHT
+    },
+    scaleControl: true,
+    panControl: false,
+    streetViewControl: false,
+    scrollwheel: true,
+    minZoom: 3,
+    maxzoom: 13,
+    mapTypeId: 'lightMap'
+  }
+  return new google.maps.Map(document.getElementById("map_container"), myOptions);
+  }
+  
+  function initialize() {
+    var lightMap = [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"hue":"#727D82"},{"lightness":-30},{"saturation":-80}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"visibility":"off"},{"color":"#ff0000"}]},{"featureType":"landscape.natural.landcover","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry.stroke","stylers":[{"color":"#ff0000"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry.stroke","stylers":[{"visibility":"simplified"},{"hue":"#ff0000"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"simplified"},{"hue":"#F3F4F4"},{"lightness":80},{"saturation":-80}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#d6d7d2"}]},{"featureType":"water","elementType":"labels.text","stylers":[{"visibility":"on"},{"color":"#d6d7d2"}]}];
+    
+  
+    var bounds = new google.maps.LatLngBounds();
+    map = buildmap();
+    map.mapTypes.set('lightMap', new google.maps.StyledMapType(lightMap, { name: 'HMs' }));
+
+
+
+  <% unless organizations.nil? %>
+    var markers = [];
+    <% for organization in organizations %>
+      <% next if organization.coordinates.nil? %>
+      var myLatLng = new google.maps.LatLng(<%= organization.coordinates.reverse.join(',') %>);
+      var marker_<%= organization.id %> = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title:"<%= organization.name %>"
+      });
+      markers.push(marker_<%= organization.id %>);
+      bounds.extend(myLatLng);
+      google.maps.event.addListener(marker_<%= organization.id %>, 'click', function() {
+      var html='<div style="clear: float; width: 400px;"><a href="/partners/#<%= organization.slug %>"><img style="float: left;height:75px; width:75px; margin-right: 10px;" src="<%= organization.logo? ? organization.logo.url(:thumb).gsub(/aim-development/, 'aim-production') : '/assets/missing.png' %>" /></a><p style="float: left; width: 250px;"><strong><a href="/initiatives/<%= organization.slug %>"><%= escape_javascript(organization.name) %></a></strong><br /><%= escape_javascript(organization.city) %><br /><a href="/initiatives/<%= organization.slug %>" target="_blank">View profile</a><br /></p></div>';
+      infoWindow.setContent(html);
+      infoWindow.open(map, marker_<%= organization.id %>);
+      });
+    <% end %>      
+
+  <% end %>
+  bounds.extend(new google.maps.LatLng(68.097907,-22.148438));      
+  <% unless organizations.size == 1 %>
+    map.fitBounds(bounds)
+  <% end %>
+
+    return map;
+  }
+
+ 

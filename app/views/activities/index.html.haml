@@ -1,3 +1,4 @@
+
 #activity_map_wrapper
   .vertical-line
     - @activities.each do |activity|
@@ -11,3 +12,5 @@
             .title.text-center= activity.name
             .dates.text-center= date_range(activity.start_at, activity.end_at)
             .activity_description= truncate_html(sanitize(activity.description, tags: %w{b strong i italic em u underline bold}), length: 150)
+
+#map_container
