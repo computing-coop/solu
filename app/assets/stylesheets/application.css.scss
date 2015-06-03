@@ -17,13 +17,14 @@
  *= require pages
  *= require activities
  *= require calls
- *= require mobile
+
  *= require posts
  *= require field_notes
  *= require fn_mobile
  *= require jquery-ui
  *= require jquery-overrides
-
+ *= require mobile
+ *= require tablet
  */
 
 @import 'foundation_and_overrides';

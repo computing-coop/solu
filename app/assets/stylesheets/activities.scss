@@ -4,6 +4,7 @@ nav.activities-bar {
  background-color: #f7e9dc;
  .secondary_activities_filter {
    height: initial;
+   z-index: 99;
    position: absolute;
    border-right: none;
    ul {
@@ -29,12 +30,109 @@ nav.activities-bar {
 
 .main-container.activities {
   padding: 95px 0 0 0;
+  
+  #map_container {
+    float: left;
+    background-color: #dbd9d9;
+    width: 100%;
+    #map_left {
+//      background-size: contain;
+      background: url(image_path('map-left-dotless.png')) no-repeat left top #dbd9d9;
+      width: 44%;
+      min-height: 1847px;
+//      padding-bottom: 100%;
+    }
+    
+    #map_right {
+      background: url(image_path('map-right-dotless.png')) no-repeat right 96px #dbd9d9;
+      float: right;
+//      background-size: contain;
+      width: 56%;
+      min-height: 1847px;
+      padding-bottom: 100%;
+    }
+    .partner_location {
+      position: relative;
+      font-size: 0.8rem;
+      float: right;
+      clear: both;
+      .left_text {
+        float: left;
+        margin-right: 3px;
+      }
+      &.kilpisjarvi {
+        top: 1079px;
+        right: 26px;
+      }
+      &.nikolai {
+        top: 1685px;
+        right: 234px;
+      }
+      &.malmo {
+        top: 1682px;
+        right: 214px;
+      }    
+      &.helsinki {
+        top: 1532px;
+        right:0px;
+      } 
+      &.forumbox {
+        top: 1534px;
+        right: 0px;
+      }
+      &.itu {
+        top: 1682px;
+        right: 170px; 
+      }
+      &.grenland {
+        top: 1569px;
+        right: 301px; 
+      }
+      .partner_circle {
+      	border-radius: 50%;
+      	width: 20px;
+      	height: 20px; 
+        float: left;
+        margin-right: 3px;
+        &.bioart {
+          border:1px solid #8f7cb0;
+          background-color: #8f7cb0;
+        }
+        &.malmo {
+          border:1px solid #ba3245;
+          background-color: #ba3245;
+        }
+        &.forumbox {
+          border:1px solid #fb8828;
+          background-color: #fb8828;
+        }
+        &.itu {
+          border:1px solid #000;
+          background-color: #000;
+        }
+        &.grenland {
+          border:1px solid #fee100;
+          background-color: #fee100;
+        }
+        &.nikolai {
+          border:1px solid #a08065;
+          background-color: #a08065;
+        }
+      }
+    }
+    
+    .clearing {
+      clear: both;
+    }
+  }
 }
 
 #activity_map_wrapper {
-  background: url(image_path('map.png')) no-repeat center top;
+  position: absolute;
+//  background: url(image_path('map.png')) no-repeat center top;
   background-size: cover;
   padding: 10%;
+  margin-left: 6%;
 }
 
 .vertical-line {
