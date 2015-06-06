@@ -150,7 +150,19 @@ nav.activities-bar {
     color: #FFFFFF;
     width: 55px;
     height: 55px;
-    padding: 15px;
+    padding: 13px 5px 5px 5px;
+    .month {
+      font-weight: 100;
+      font-size: 1.5rem;
+      line-height: 1.1rem;
+    }
+    .year, .alone_year {
+      font-weight: 100;
+      font-size: 0.7rem;
+    }
+    .alone_year {
+      padding-top: 8px;
+    }
   }
   
   .activity_entry {

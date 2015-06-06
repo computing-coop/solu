@@ -38,12 +38,16 @@
     - @activities.each do |activity|
       .activity_row
         .circle.text-center
-          = activity.start_at.strftime("%d")
+          = activity.box_date
       
         .activity_entry
           .arrow_left{style: "border-right: 20px solid ##{activity.box_colour};"} &nbsp;
           .activity_box{style: "background-color: ##{activity.box_colour};"}
             .title.text-center= activity.name
-            .dates.text-center= date_range(activity.start_at, activity.end_at)
+            .dates.text-center
+              - if activity.is_whole_year?
+                whole year activity
+              - else
+                = date_range(activity.start_at, activity.end_at)
             .activity_description= truncate_html(sanitize(activity.description, tags: %w{b strong i italic em u underline bold}), length: 150)
 .clearing

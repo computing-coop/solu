@@ -27,4 +27,24 @@ class Activity
     end
   end
   
+  def box_date
+    # same year
+    if end_at.nil?
+       return "<div class='month'>#{start_at.strftime("%m")}</div><div class='year'>#{start_at.year}</div>".html_safe
+    else
+      if start_at.year == end_at.year
+        if start_at.month == end_at.month
+          return "<div class='month'>#{start_at.strftime("%m")}</div><div class='year'>#{start_at.year}</div>".html_safe
+          
+        else
+           return "<div class='alone_year'>#{start_at.year}</div>".html_safe
+        end
+      end
+    end
+  end
+  
+  def is_whole_year?
+    return false if end_at.nil?
+    return true if start_at.year == end_at.year && (start_at.month == 1 && start_at.day == 1 && end_at.day == 31 && end_at.month == 12)
+  end
 end
