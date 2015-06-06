@@ -1,11 +1,23 @@
 class Admin::ActivitiesController < Admin::BaseController
-  
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  handles_sortable_columns
+
 
   def index
-    @activities = Activity.all
+    order = sortable_column_order do |column, direction|
+      case column
+      when "name"
+        "name #{direction}"
+      when "start_at"
+        "start_at #{direction}"
+
+      else
+        "start_at asc"
+      end
+    end
+    @activities = Activity.order(order)
     set_meta_tags title: 'Activities'
     respond_with(@activities)
   end

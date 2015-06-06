@@ -5,10 +5,10 @@
     %table
       %thead
         %tr
-          %th Name
+          %th= sortable_column "Name"
           %th Activity type
           %th Description
-          %th Start at
+          %th= sortable_column "Start at", column: :start_at
           %th End at
           %th
 
@@ -24,7 +24,7 @@
                     = link_to ro.name, ro, target: :_blank
           
             %td= activity.activity_type
-            %td= activity.description
+            %td= truncate_html(activity.description, length: 100)
             %td= activity.start_at
             %td= activity.end_at
             %td
