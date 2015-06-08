@@ -181,16 +181,40 @@ header {
 }
 
 footer {
-  .contact_info {
+  font-size: 0.9rem;
+  .drawer {
     background-color: #fad1cb;
     padding: 1.5rem 0;
+    a {
+      color: #222;
+    }
     .row {
       margin: 0;
     }
   }
   
+  .row.lined {
+    padding: 1.2rem 0;
+    .columns {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid #000;
+    }
+  }
+  
+  .contact_info {
+    margin-top: -26px;
+    padding: 1.7rem 0;
+    background-color: $beige;
+  }
+  
   clear: both;
-  background-color: $beige;
+  
+  .rest {
+    margin-bottom: 26px;
+    display: none;
+    background-color: white;
+    padding-bottom: 1.8rem;
+  }
 
   .logo_strips {
     padding: 1.5rem 0;

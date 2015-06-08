@@ -1,0 +1,57 @@
+@import 'variables';
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em)  { 
+  nav.activities-bar .secondary_activities_filter ul li {
+    font-size: 0.67rem;
+  }
+  
+  .main-container.activities {
+    #map_container {
+    
+      .partner_location {
+        font-size: 0.7rem;
+        
+        &.kilpisjarvi {
+          top: 578px;
+          right: 0px;
+          width: 102px;
+        }
+        &.nikolai {
+          top: 885px;
+          right: 102px;
+        }
+        &.malmo {
+          top: 882px;
+          right: 85px;
+        }    
+        &.helsinki {
+          top: 815px;
+          right:0px;
+        } 
+        &.forumbox {
+          top: 815px;
+          right: 0px;
+        }
+        &.itu {
+          top: 883px;
+          right: 46px; 
+        }
+        &.grenland {
+          top: 826px;
+          right: 141px; 
+        }
+      }
+      
+      #map_left {
+        background: url('/assets/map-left-mid.png') no-repeat left top #dbd9d9;
+        min-height: 1062px;
+      }
+      #map_right {
+        background: url(image_path('map-right-mid.png')) no-repeat right top #dbd9d9;
+        min-height: 1062px;
+      }
+    }
+  }
+  
+  
+}

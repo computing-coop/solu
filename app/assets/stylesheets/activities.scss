@@ -1,3 +1,7 @@
+.activities.main-container {
+  border-bottom: none;
+  margin-bottom: 0;
+}
 nav.activities-bar {
  height: 45px;
  
@@ -31,7 +35,15 @@ nav.activities-bar {
 .main-container.activities {
   padding: 95px 0 0 0;
   
+}
   #map_container {
+
+    .inner_container {
+      border-left: 2px solid #444;
+      border-right: 2px solid #444;
+      border-bottom: 2px solid #444;
+      margin: 0 0.688em 0.688em 0.688em;
+    }
     float: left;
     background-color: #dbd9d9;
     width: 100%;
@@ -125,14 +137,14 @@ nav.activities-bar {
       clear: both;
     }
   }
-}
+
 
 #activity_map_wrapper {
   position: absolute;
 //  background: url(image_path('map.png')) no-repeat center top;
   background-size: cover;
-  padding: 10%;
-  margin-left: 6%;
+  padding: 10% 0% 0% 6%;
+
 }
 
 .vertical-line {
@@ -141,7 +153,8 @@ nav.activities-bar {
 }
 
 .activity_row {
-
+  clear: both;
+  max-width: 800px;
 
   .circle {
     float: left;

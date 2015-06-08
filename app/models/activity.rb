@@ -7,6 +7,7 @@ class Activity
   field :description, type: String
   field :start_at, type: Date
   field :end_at, type: Date
+  belongs_to :activity_type
   
   validates_uniqueness_of :name
   validates_presence_of :name, :start_at, :activity_type

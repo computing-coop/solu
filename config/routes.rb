@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :activities
+    resources :activitytypes
     resources :backgrounds
     resources :partners
     resources :postcategories

@@ -6,8 +6,7 @@
     = display_meta_tags :site => 'HYBRID MATTERs', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
-    - if controller.controller_name == 'partners'
-      %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
+    %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
     = csrf_meta_tags
     %link{:href => "/posts.rss", :rel => "alternate", :title => "RSS", :type => "application/rss+xml"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Roboto:400italic,300,300italic,400", :rel => "stylesheet", :type => "text/css"}/
@@ -109,8 +108,10 @@
             .small-6.columns.blurb_mobile
               = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 100) : post.short_abstract
               = link_to '>>>', post
-            
-      = yield
+    #map_container
+      .inner_container= yield
+
+
     - unless @sticky.empty?
       #sticky_blue_box.hide-for-small-only
         .heading.ui-draggable-handle
@@ -125,7 +126,7 @@
             = link_to '>>>', post
       = content_for :jquery do
         :plain  
-          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
+          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: $('.hor-container')}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           $('#sticky_blue_box .title_box').mouseenter(function() {
             $('#sticky_blue_box .blurb').css('display', 'none');
@@ -142,4 +143,8 @@
 
                      
     :javascript
-      $(document).ready(function() { #{yield :jquery} });
+      $(document).ready(function() { #{yield :jquery} 
+        $('#map_left').css('min-height', $('#activity_map_wrapper').height() + 120);
+        //$('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: $('.hor-container')}})
+        $('.ui-dialog').css('top', 270);
+      });

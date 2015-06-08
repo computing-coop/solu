@@ -1,0 +1,31 @@
+%footer
+  .row.drawer
+    .text-center
+      = link_to 'Supporters and partners', '#', onclick: "javascript:$('footer .rest').slideToggle();return false;"
+  .row.arrow
+    .text-center.down_arrow= link_to image_tag('selected_down.png'), '#', onclick: "javascript:$('footer .rest').slideToggle();return false;"
+  .rest
+    .row.lined
+      .text-center Nordic Cultural Event of the Year
+      .small-centered.columns.small-10.text-center= link_to image_tag('norden.png'), 'http://www.nordiskkulturfond.org/'
+    .row.lined
+      .text-center Partners
+      .small-centered.columns.small-10.text-center
+        = link_to image_tag('bioarts.png'), 'http://www.bioartsociety.fi/', target: :_blank
+        = link_to image_tag('ITcopenhagen.png'), 'http://www.itu.dk/', target: :_blank  
+        = link_to image_tag('forumbox.png'), 'http://www.forumbox.fi/', target: :_blank
+        = link_to image_tag('greenland.png'), 'http://kunsthallgrenland.no/', target: :_blank        
+        = link_to image_tag('nikolaj.png'), 'http://www.nikolajkunsthal.dk/', target: :_blank
+        = link_to image_tag('malmo.png'), 'http://www.mah.se/', target: :_blank  
+    .row
+      .text-center Supporters
+      .small-12.columns.partners.small-text-center 
+        = image_tag('eu.png')
+        = image_tag('cw.png')
+        = image_tag('op.png')
+  .row.contact_info
+    .row
+      .small-12.columns.text-center
+        Contact
+        %br/
+        Bioartsociety | Kaasutehtaankatu 1, 00540 Helsinki, Finland | info@hybridmatters.net      
