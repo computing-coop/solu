@@ -5,7 +5,7 @@
     font-size: 0.67rem;
   }
   
-  .main-container.activities {
+
     #map_container {
     
       .partner_location {
@@ -41,17 +41,18 @@
           right: 141px; 
         }
       }
-      
-      #map_left {
-        background: url('/assets/map-left-mid.png') no-repeat left top #dbd9d9;
-        min-height: 1062px;
-      }
-      #map_right {
-        background: url(image_path('map-right-mid.png')) no-repeat right top #dbd9d9;
-        min-height: 1062px;
+      .inner_container {
+        #map_left {
+          background: url('/assets/map-left-mid.png') no-repeat left top #dbd9d9;
+          min-height: 1062px;
+        }
+        #map_right {
+          background: url(image_path('map-right-mid.png')) no-repeat right top #dbd9d9;
+          min-height: 1062px;
+        }
       }
     }
-  }
+ 
   
   
 }

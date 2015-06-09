@@ -43,26 +43,28 @@ nav.activities-bar {
       border-right: 2px solid #444;
       border-bottom: 2px solid #444;
       margin: 0 0.688em 0.688em 0.688em;
+      #map_left {
+  //      background-size: contain;
+        background: url(image_path('map-left-dotless.png')) no-repeat left top #dbd9d9;
+        width: 44%;
+        min-height: 1847px;
+  //      padding-bottom: 100%;
+      }
+    
+      #map_right {
+        background: url(image_path('map-right-dotless.png')) no-repeat right 96px #dbd9d9;
+        float: right;
+  //      background-size: contain;
+        width: 56%;
+        min-height: 1847px;
+        padding-bottom: 100%;
+      }
+      
     }
     float: left;
     background-color: #dbd9d9;
     width: 100%;
-    #map_left {
-//      background-size: contain;
-      background: url(image_path('map-left-dotless.png')) no-repeat left top #dbd9d9;
-      width: 44%;
-      min-height: 1847px;
-//      padding-bottom: 100%;
-    }
-    
-    #map_right {
-      background: url(image_path('map-right-dotless.png')) no-repeat right 96px #dbd9d9;
-      float: right;
-//      background-size: contain;
-      width: 56%;
-      min-height: 1847px;
-      padding-bottom: 100%;
-    }
+   
     .partner_location {
       position: relative;
       font-size: 0.8rem;
