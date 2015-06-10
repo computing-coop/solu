@@ -36,7 +36,7 @@
 #activity_map_wrapper
   .vertical-line
     - @activities.each do |activity|
-      .activity_row
+      .activity_row{class: "activitytype_#{activity.activitytype.id}"}
         .circle.text-center
           = activity.box_date
       

@@ -29,6 +29,27 @@ function scrollTo(target) {
 }
 
 
+
+function toggleActivitytype(activitytype) {
+  var jsid = "#activitytype_" + activitytype;
+  var jsclass = ".activitytype_" + activitytype;
+  
+  if ($('.secondary_activities_filter ul.top-bar-menu ' + jsid).hasClass('active')) {
+
+    $('.activity_row').removeClass('hidden');
+    
+      
+  } else {
+
+    $('.activity_row').not(jsclass).addClass('hidden');
+    
+  }
+    
+    
+
+  $('ul.top-bar-menu ' + jsid).toggleClass('active');
+}
+
 $(function() { 
   $(document).foundation();  
 });

@@ -23,8 +23,16 @@ nav.activities-bar {
        float: left;
        position: relative;
        padding: 0 1.4rem;
+       &.active {
+         background-color: black;
+         text: white;
+         a {
+           color: white;
+         }
+       }
        a {
          float: left;
+         color: #222;
          white-space: nowrap;
        }
      }
@@ -145,7 +153,7 @@ nav.activities-bar {
   position: absolute;
 //  background: url(image_path('map.png')) no-repeat center top;
   background-size: cover;
-  padding: 10% 0% 0% 6%;
+  padding: 8% 0% 0% 12%;
 
 }
 
@@ -155,6 +163,9 @@ nav.activities-bar {
 }
 
 .activity_row {
+  &.hidden {
+    display: none;
+  }
   clear: both;
   max-width: 800px;
 
@@ -181,7 +192,7 @@ nav.activities-bar {
   }
   
   .activity_entry {
-    width: 40%;
+    min-width: 75%;
     display: table;
     padding: 12px 0 1rem 1.4rem;
 
@@ -191,8 +202,8 @@ nav.activities-bar {
       margin:  0;
       display: table-cell;
       float: left;
-      width: calc(100% - 20px);
-  
+//      width: calc(100% - 20px);
+      width: 350px;
       .title {
         color: #FFF;
         font-size: 1rem;

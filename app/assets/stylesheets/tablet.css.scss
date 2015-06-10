@@ -49,6 +49,19 @@
         #map_right {
           background: url(image_path('map-right-mid.png')) no-repeat right top #dbd9d9;
           min-height: 1062px;
+          
+
+        }
+        #activity_map_wrapper {
+          .vertical-line {
+            .activity_row {
+              .activity_entry {
+                .activity_box {
+                  width: 240px;
+                }
+              }
+            }
+          }        
         }
       }
     }

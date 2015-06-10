@@ -45,7 +45,7 @@ class Admin::ActivitiesController < Admin::BaseController
 
   def update
     @activity.update(activity_params)
-    respond_with(@activity)
+    respond_with @activity, location: admin_activities_path
   end
 
   def destroy
@@ -59,6 +59,6 @@ class Admin::ActivitiesController < Admin::BaseController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :activity_type, :description, :start_at, :end_at, photos_attributes: [:image, :id,  :_destroy], responsible_organisations_attributes: [:id, :_destroy], responsible_organisation_ids: [])
+      params.require(:activity).permit(:name, :activitytype_id, :description, :start_at, :end_at, photos_attributes: [:image, :id,  :_destroy], responsible_organisations_attributes: [:id, :_destroy], responsible_organisation_ids: [])
     end
 end

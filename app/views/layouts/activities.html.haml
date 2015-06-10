@@ -86,12 +86,9 @@
             .row
 
               %ul.top-bar-menu
-                %li Exhibitions
-                %li Public engagement events
-                %li Field_Notes
-                %li Symposium
-                %li Network meetings
-                %li Artistic Research 
+                - Activitytype.all.each do |at|
+                  %li[at]= link_to at.name, '#', onclick: "javascript:toggleActivitytype('#{at.id}');return false;"
+
                 
                 
       

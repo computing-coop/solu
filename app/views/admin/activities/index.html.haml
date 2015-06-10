@@ -24,7 +24,7 @@
                   - activity.responsible_organisations.each do |ro|
                     = link_to ro.name, ro, target: :_blank
           
-            %td= activity.activity_type
+            %td= activity.activitytype.try(:name)
             %td= truncate_html(activity.description, length: 100)
             %td= activity.start_at
             %td= activity.end_at
