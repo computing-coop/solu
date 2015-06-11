@@ -67,7 +67,7 @@
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
-                  %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', page_path('programme')
+                  %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', activities_path
           .row
             .down_arrow_wrapper
               .social &nbsp;

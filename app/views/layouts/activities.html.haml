@@ -66,7 +66,7 @@
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
-                  %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', page_path('programme')
+                  %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', activities_path
           .row
             .down_arrow_wrapper
               .social &nbsp;
@@ -141,7 +141,7 @@
                      
     :javascript
       $(document).ready(function() { #{yield :jquery} 
-        $('#map_left').css('min-height', $('#activity_map_wrapper').height() + 120);
+        $('#map_left').css('min-height', $('#activity_map_wrapper').height() + 220);
         //$('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: $('.hor-container')}})
         $('.ui-dialog').css('top', 270);
       });
