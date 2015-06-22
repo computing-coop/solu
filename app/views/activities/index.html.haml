@@ -6,32 +6,88 @@
   &nbsp; 
   .kilpisjarvi.partner_location
     .partner_circle.bioart
-    Finnish Society of BioArt
-    
+    .caption Finnish Society of BioArt
+    :javascript
+      $('.partner_location.kilpisjarvi').on({
+        mouseenter: function() {
+          $('.partner_circle.bioart').next('.caption').text('Kilpisjärvi');
+        },
+        mouseleave: function() {
+        $('.partner_circle.bioart').next('.caption').text('Finnish Society of BioArt');
+        }
+      });
   .partner_location.helsinki
     .left_text Finnish Society of BioArt
-    .partner_circle.bioart.rightc
-    
+    .partner_circle.bioart.right
+    :javascript
+      $('.partner_location.helsinki').on({
+        mouseenter: function() {
+          $('.partner_location.helsinki .left_text').text('Helsinki');
+        },
+        mouseleave: function() {
+        $('.partner_location.helsinki .left_text').text('Finnish Society of BioArt');
+        }
+      });
   .partner_location.forumbox
     .left_text Forum Box
-    .partner_circle.forumbox.rightc 
-    
+    .partner_circle.forumbox.right
+    :javascript
+      $('.partner_location.forumbox').on({
+        mouseenter: function() {
+          $('.partner_location.forumbox .left_text').text('Helsinki');
+        },
+        mouseleave: function() {
+        $('.partner_location.forumbox .left_text').text('Forum Box');
+        }
+      });
   .partner_location.grenland
     .partner_circle.grenland
-    Kunsthall Grenland        
-    
+    .caption Kunsthall Grenland        
+    :javascript
+      $('.partner_location.grenland').on({
+        mouseenter: function() {
+          $('.partner_circle.grenland').next('.caption').text('Porsgrunn');
+        },
+        mouseleave: function() {
+        $('.partner_circle.grenland').next('.caption').text('Kunsthall Grenland ');
+        }
+      });
   .malmo.partner_location
     .partner_circle.malmo
-    Malmö University
-
+    .caption Malmö University
+    :javascript
+      $('.partner_location.malmo').on({
+        mouseenter: function() {
+          $('.partner_circle.malmo').next('.caption').text('Malmö');
+        },
+        mouseleave: function() {
+        $('.partner_circle.malmo').next('.caption').text('Malmö University');
+        }
+      });
   .partner_location.itu
     .partner_circle.itu
-    IT University of Copenhagen
-    
+    .caption IT University of Copenhagen
+    :javascript
+      $('.partner_location.itu').on({
+        mouseenter: function() {
+          $('.partner_circle.itu').next('.caption').text('Copenhagen');
+        },
+        mouseleave: function() {
+        $('.partner_circle.itu').next('.caption').text('IT University of Copenhagen');
+        }
+      });
   .partner_location.nikolai
     .partner_circle.nikolai
-    Nikolai Kunsthall  
-
+    .caption Nikolai Kunsthall  
+    :javascript
+      $('.partner_location.nikolai').on({
+        mouseenter: function() {
+          $('.partner_circle.nikolai').next('.caption').text('Copenhagen');
+        },
+        mouseleave: function() {
+        $('.partner_circle.nikolai').next('.caption').text('Nikolai Kunsthall');
+        }
+      });
 
 #activity_map_wrapper
   .vertical-line

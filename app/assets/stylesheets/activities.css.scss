@@ -78,6 +78,7 @@ nav.activities-bar {
       font-size: 0.8rem;
       float: right;
       clear: both;
+      cursor: pointer;
       .left_text {
         float: left;
         margin-right: 3px;
@@ -85,30 +86,51 @@ nav.activities-bar {
       &.kilpisjarvi {
         top: 1079px;
         right: 26px;
+        .caption {
+          width: 177px;
+        }
       }
       &.nikolai {
         top: 1685px;
         right: 234px;
+        .caption {
+          width: 119px;
+        }
       }
       &.malmo {
         top: 1682px;
         right: 214px;
+        .caption {
+          width: 122px;
+        }
       }    
       &.helsinki {
         top: 1532px;
         right:0px;
+        .caption {
+          width: 119px;
+        }
       } 
       &.forumbox {
         top: 1534px;
         right: 0px;
+        .caption {
+          width: 119px;
+        }
       }
       &.itu {
         top: 1682px;
         right: 170px; 
+        .caption {
+          width: 184px;
+        }
       }
       &.grenland {
         top: 1569px;
         right: 301px; 
+        .caption {
+          width: 131px;
+        }
       }
       .partner_circle {
       	border-radius: 50%;
