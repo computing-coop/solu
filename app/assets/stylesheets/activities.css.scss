@@ -1,9 +1,11 @@
+@import 'variables';
+
 .activities.main-container {
   border-bottom: none;
   margin-bottom: 0;
 }
 nav.activities-bar {
- height: 45px;
+ height: 55px;
  
  background-color: #f7e9dc;
  .secondary_activities_filter {
@@ -22,17 +24,17 @@ nav.activities-bar {
      li {
        float: left;
        position: relative;
-       padding: 0 1.4rem;
+       padding: 0.6rem 1.4rem;
        &.active {
-         background-color: black;
-         text: white;
+         background-color: none;
+         text: $pastel-blue;
          a {
-           color: white;
+           color: $pastel-blue;
          }
        }
        a {
          float: left;
-         color: #222;
+         color: #444;
          white-space: nowrap;
        }
      }
@@ -41,7 +43,7 @@ nav.activities-bar {
 }
 
 .main-container.activities {
-  padding: 95px 0 0 0;
+  padding: 105px 0 0 0;
   
 }
   #map_container {
@@ -235,7 +237,7 @@ nav.activities-bar {
       .title {
         color: #FFF;
         font-size: 1rem;
-        color: #FFF;
+        text-transform: uppercase;
       }
       .dates {
         color: #FFF;
@@ -245,6 +247,11 @@ nav.activities-bar {
         margin-top: 0.5rem;
         font-size: 0.750rem;
         color: #222;
+      }
+      &.fee100, &.FB8828 {
+        .title, .dates, .activity_description { 
+          color: #444;
+        }
       }
     }
   

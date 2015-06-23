@@ -98,7 +98,7 @@
       
         %td.activity_entry
           .arrow_left{style: "background: url(/assets/arrows/#{activity.box_colour}.png) center center no-repeat"}
-          .activity_box{style: "background-color: ##{activity.box_colour};"}
+          .activity_box{style: "background-color: ##{activity.box_colour};", class: activity.box_colour}
             .title.text-center= activity.name
             .dates.text-center
               - if activity.is_whole_year?
