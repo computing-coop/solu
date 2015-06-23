@@ -182,6 +182,12 @@ nav.activities-bar {
 .vertical-line {
   background: url(image_path('arrowline.png')) repeat-y 23px top;
   padding-top: 2rem;
+  border-collapse: collapse;
+  border: none;
+  tr {
+    margin-bottom: 2rem;
+    background: none !important;
+  }
 }
 
 .activity_row {
@@ -190,14 +196,16 @@ nav.activities-bar {
   }
   clear: both;
   max-width: 800px;
-
+  display: table;
   .circle {
-    float: left;
+//    float: left;
+    display: table-cell;
     background: url(image_path('circle.png')) no-repeat center center;
     font-weight: 300;
     color: #FFFFFF;
     width: 55px;
     height: 55px;
+    vertical-align: middle;
     padding: 13px 5px 5px 5px;
     .month {
       font-weight: 100;
@@ -208,16 +216,14 @@ nav.activities-bar {
       font-weight: 100;
       font-size: 0.7rem;
     }
-    .alone_year {
-      padding-top: 8px;
-    }
+
   }
   
   .activity_entry {
     min-width: 75%;
     display: table;
     padding: 12px 0 1rem 1.4rem;
-
+    margin-left: 1rem;
 
     .activity_box {
       padding: 0.5rem;
@@ -245,11 +251,12 @@ nav.activities-bar {
     .arrow_left {
       display: table-cell;
       vertical-align: middle;
-    	width: 0; 
-      float: left;
-    	height: 0; 
-    	border-top: 20px solid transparent;
-    	border-bottom: 20px solid transparent;	 
+      width: 22px;
+//      width: 0;
+//      float: left;
+//      height: 0;
+//      border-top: 20px solid transparent;
+//      border-bottom: 20px solid transparent;
     }
   }
   
