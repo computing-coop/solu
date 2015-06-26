@@ -88,7 +88,8 @@
         $('.partner_circle.nikolai').next('.caption').text('Nikolai Kunsthall');
         }
       });
-
+  .all_partners
+    = link_to image_tag('all_button.png'), '#', onclick: 'clearAllActivityFilters();return false'
 #activity_map_wrapper
   %table.vertical-line
     - @activities.each do |activity|
@@ -106,4 +107,6 @@
               - else
                 = date_range(activity.start_at, activity.end_at)
             .activity_description= truncate_html(sanitize(activity.description, tags: %w{b strong i italic em u underline bold}), length: 150)
+
 .clearing
+  

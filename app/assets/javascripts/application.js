@@ -29,25 +29,55 @@ function scrollTo(target) {
 }
 
 
+function clearAllActivityFilters() {
+  $('.secondary_activities_filter ul.top-bar-menu li').removeClass('active');
+  $('.activity_row').removeClass('hidden'); 
+}
 
 function toggleActivitytype(activitytype) {
   var jsid = "#activitytype_" + activitytype;
   var jsclass = ".activitytype_" + activitytype;
   
-  if ($('.secondary_activities_filter ul.top-bar-menu ' + jsid).hasClass('active')) {
-
-    $('.activity_row').removeClass('hidden');
-    
-      
-  } else {
-
+  
+  // if this is first active:
+  if ($('.secondary_activities_filter ul.top-bar-menu .active').length == 0) {
+    // hide everything except me
     $('.activity_row').not(jsclass).addClass('hidden');
-    
+    $('ul.top-bar-menu ' + jsid).toggleClass('active');
+
   }
+  else {
+    // something is alerady filtered, so...
+    
+    // am i the only one active?
+    if ($('ul.top-bar-menu ' + jsid).hasClass('active')) {
+      if ($('.secondary_activities_filter ul.top-bar-menu .active').length == 1) {
+        // it's the only one
+
+        $('.activity_row').removeClass('hidden');  // show all
+
+      } else {
+        // not the only one, so just remove me
+        
+        $('.activity_row' + jsclass).addClass('hidden');
+
+      }
+      $('ul.top-bar-menu ' + jsid).toggleClass('active');
+      
+    } else {
+      // not active yet so toggling on
+      $('.activity_row' + jsclass).removeClass('hidden');
+      $('ul.top-bar-menu ' + jsid).toggleClass('active');
+    
+    }
+    
+
+  }
+  
     
     
 
-  $('ul.top-bar-menu ' + jsid).toggleClass('active');
+  
 }
 
 $(function() { 

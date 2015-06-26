@@ -66,8 +66,14 @@ nav.activities-bar {
         float: right;
   //      background-size: contain;
         width: 56%;
-        min-height: 1847px;
+        min-height: 1900px;
         padding-bottom: 100%;
+        position: relative;
+        .all_partners {
+          bottom: 9px;
+          right: 15px;
+          position: absolute;
+        }
       }
       
     }
@@ -228,7 +234,7 @@ nav.activities-bar {
     margin-left: 1rem;
 
     .activity_box {
-      padding: 0.5rem;
+      padding: 1rem;
       margin:  0;
       display: table-cell;
       float: left;
