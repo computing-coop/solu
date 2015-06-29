@@ -1,0 +1,51 @@
+= semantic_nested_form_for [:admin, @event], html: {multipart: true, :"data-abide" =>''} do |f|
+
+  .row
+    .small-12.large-6.columns#error_explanation
+      - unless @event.errors.empty?
+        %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+        %ul
+          - @event.errors.full_messages.each do |msg|
+            %li= msg
+  
+  .row
+    .small-12.large-6.columns= f.input :name, input_html: {required: ''}
+    
+  .row
+    .small-6.large-3.columns= f.input :activity
+  .row
+    .small-6.large-3.columns= f.input :start_at, as: :string,  :input_html => { :class => "date_picker"}    
+    .small-6.large-3.end.columns= f.input :end_at, as: :string,  :input_html => { :class => "date_picker"} 
+  .row
+    .small-12.large-6.columns= f.input :place, label: 'Place/location', input_html: {required: ''}
+    
+    
+               
+  .row
+    .small-12.columns= f.input :description, as: :ckeditor, input_html: {required: ''}
+
+
+  .row
+    .small-12.large-7.columns
+      = f.fields_for :photos do |ff|
+        = if ff.object.image?
+          = image_tag ff.object.image.url(:box)
+        = ff.input :image
+        = ff.link_to_remove "Remove this photo"
+      = f.link_to_add "Add a photo", :photos
+
+
+      
+  .row
+    .small-12.large-6.columns= f.input :published, as: :boolean
+  .row
+    .small-12.large-6.columns= f.input :subsite, label: 'Also feature on sub-site: '   
+        
+
+  .row
+    .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]
+= content_for :jquery do 
+  :plain  
+    $('.date_picker').fdatepicker({
+        format: 'yyyy-mm-dd'
+    });

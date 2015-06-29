@@ -1,0 +1,26 @@
+- @events.each_with_index do |event,index|
+  .row.event_container{class: @events[index+1].nil? ? :last : false}
+    .medium-2.columns.medium-offset-1.hide-for-small-only
+      - if event.photos.empty?
+        = link_to image_tag('hm_logo.png'), event
+      - else
+
+        .front_icon= image_tag event.photos.first.image.url(:blog)
+    .small-12.columns.medium-offset-1.medium-6{class: index == 0 ? "" : "end"}
+      %a{name: event.slug }
+      %h2= event.name
+      %p
+        %em
+          Dates:
+          = date_range(event.start_at, event.end_at)
+        %br/
+        %em
+          Place:
+          = event.place
+      .short_description
+        = raw event.description
+    - if index == 0
+      .medium-2.columns.navigator
+        %ol.events_list
+          - @events.each do |g|
+            %li= link_to g.name, '#', onclick: "scrollTo('a[name=#{g.slug}]');return false;"

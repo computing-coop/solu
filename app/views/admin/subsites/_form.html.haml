@@ -6,7 +6,8 @@
   .row
     .medium-7.small-12.columns= f.input :layout, as: :string, input_html: {required: ''}, label: 'Rails layout name:'
   .row
-    .medium-7.small-12.columns= f.input :symposium, as: :select
+    .medium-4.small-12.columns= f.input :symposium, as: :select
+    .medium-4.end.small-12.columns= f.input :activity, as: :select
   .row
     .small-12.medium-3.columns= f.submit 'Save', class: [:button, :small]
     

@@ -42,6 +42,8 @@
               %li= link_to 'Open calls', admin_calls_path
             - if can? :edit, Symposium
               %li= link_to 'Symposia', admin_symposia_path
+            - if can? :edit, Event
+              %li= link_to 'Events', admin_events_path
             - if can? :edit, Background           
               %li= link_to 'Header images', admin_backgrounds_path
             - if can? :edit, Postcategory           

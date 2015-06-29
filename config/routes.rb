@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :activities
     resources :activitytypes
     resources :backgrounds
+    resources :events
     resources :partners
     resources :postcategories
     resources :posts
@@ -35,6 +36,9 @@ Rails.application.routes.draw do
     resources :pages
     resources :users
   end
+  
+  resources :events
+  
   resources :partners
   resources :home
   resources :calls do

@@ -1,0 +1,34 @@
+.row
+  .small-12.columns
+    %h3 Events
+.row
+  .small-12.columns
+    = link_to 'New event', new_admin_event_path, class: [:button, :small]
+    %table
+      %thead
+        %tr
+          %th= sortable_column "Name"
+          %th= sortable_column "Place"
+          %th= sortable_column "When"
+          %th= sortable_column "Public?"
+          %th
+
+      
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td
+              = event.name
+              - unless event.activity.blank?
+                %p.small= event.activity.name
+            %td.body= event.place
+            %td= date_range(event.start_at, event.end_at)
+            %td= event.published == true  ? 'yes' : 'no'
+            %td 
+              -#= link_to 'Show', event, class: [:button, :tiny], target: :_blank
+              = link_to 'Edit', edit_admin_event_path(event), class: [:button, :tiny]
+              = link_to 'Destroy', [:admin, event], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+
+    %br
+
+    = link_to 'New Event', new_admin_event_path, class: [:button, :small]

@@ -1,0 +1,85 @@
+@import 'variables';
+
+#sticky_invitations_box {
+  background-color: #ba3245;
+  color: black;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+  .heading {
+   cursor: move;
+   font-size: 0.875em;
+   
+    span.white {
+      color: #FFF;
+    }
+    
+  }
+  .title_box {
+    border-top: 2px solid #000;
+
+    .title {
+      a { color: #FFF; }
+      font-weight: 300;
+      font-size: 0.938em;
+      padding: 2.25rem  0 0 0;
+      text-transform: uppercase;
+    }
+
+  }
+  .blurb {
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+
+    a {
+      color: #FFF;
+    }
+  }    
+}
+
+.event_container {
+  padding: 2.5rem 0;
+  border-bottom: 2px solid black;
+  &.last {
+    border-bottom: none;
+  }
+  h2 {
+    font-size: 2.063rem;
+    color: #444;
+    a { 
+      color: #444;
+    }
+  }
+  .short_description, .short_description p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: #222;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+  p {
+    em {
+      font-weight: 300;
+    }
+  }
+  .navigator {
+    ol {
+      margin: 0; padding: 0;
+      color: $turq;
+      li {
+        list-style-position: inside;
+        color: $turq ;
+        margin-bottom: 0.3rem;
+        a {
+          font-size: 0.938rem;
+          padding-bottom: 0.2rem;
+          line-height: 1.5rem;
+          color: $turq;
+        }
+        border-bottom: 1px solid $turq;
+      }
+      
+    }
+  }
+}
+
