@@ -6,6 +6,7 @@ class User
   belongs_to :partner
   accepts_nested_attributes_for :roles
   #has_many :comments
+  has_many :posts, :dependent => :delete
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

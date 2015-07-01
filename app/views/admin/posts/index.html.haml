@@ -25,7 +25,7 @@
                 %strong In Announcement box!
             %td.body= raw truncate_html(strip_tags(post.body), length: 250)
             %td= post.published == true ? "yes" : "no"
-            %td= post.user.name.blank? ? post.user.email : post.user.name
+            %td= !post.user.blank? ? post.user.email : 'no one'
             %td= post.published_at.blank? ? '' : post.published_at.strftime("%d %b %Y")
             %td
               = link_to 'Show', post, class: [:button, :tiny], target: :_blank
