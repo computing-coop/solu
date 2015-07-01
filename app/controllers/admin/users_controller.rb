@@ -1,6 +1,12 @@
 class Admin::UsersController < Admin::BaseController
   respond_to :html
     
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy!
+    redirect_to admin_users_path
+  end
+  
   def edit
     @user = User.find(params[:id])
     set_meta_tags title: 'Edit user record'
