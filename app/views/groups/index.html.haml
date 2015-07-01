@@ -1,7 +1,7 @@
 - @groups.each_with_index do |group,index|
   .row.group_container{class: @groups[index+1].nil? ? :last : false}
     .columns.medium-offset-2.medium-8.small-12
-      %a{name: group.slug }
+      %a{name: group.id }
       %h2= group.name
       %p
         %em Hosts:
@@ -16,4 +16,4 @@
       .medium-2.columns.navigator
         %ol.groups_list
           - @groups.each do |g|
-            %li= link_to g.name, '#', onclick: "scrollTo('a[name=#{g.slug}]');return false;"
+            %li= link_to g.name, '#', onclick: "scrollTo('a[name=#{g.id}]');return false;"
