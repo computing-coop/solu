@@ -145,9 +145,9 @@
                      
     :javascript
       $(document).ready(function() { #{yield :jquery} 
-        if ($('#activity_map_wrapper').height() < 1490) {
+        if ($('#activity_map_wrapper').height() > $('#map_left').height()) {
           $('#map_left').css('min-height', $('#activity_map_wrapper').height() + 200);
           }
         //$('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: $('.hor-container')}})
-        //$('.ui-dialog').css('top', 270);
+        $('.ui-dialog').css('top', 220);
       });

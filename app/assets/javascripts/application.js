@@ -18,6 +18,9 @@
 //= require slick-carousel
 //= require ckeditor/init
 //= require jquery-ui
+  
+  
+  
 
 function scrollTo(target) { 
   $('html, body').stop().animate({
@@ -40,18 +43,18 @@ function toggleActivitytype(activitytype) {
   
   
   // if this is first active:
-  if ($('.secondary_activities_filter ul.top-bar-menu .active').length == 0) {
+  if ($('#map_right .filter_box .active').length == 0) {
     // hide everything except me
     $('.activity_row').not(jsclass).addClass('hidden');
-    $('ul.top-bar-menu ' + jsid).toggleClass('active');
+    $('#map_right .filter_box ' + jsid).toggleClass('active');
 
   }
   else {
     // something is alerady filtered, so...
     
     // am i the only one active?
-    if ($('ul.top-bar-menu ' + jsid).hasClass('active')) {
-      if ($('.secondary_activities_filter ul.top-bar-menu .active').length == 1) {
+    if ($('#map_right .filter_box ' + jsid).hasClass('active')) {
+      if ($('#map_right .filter_box .active').length == 1) {
         // it's the only one
 
         $('.activity_row').removeClass('hidden');  // show all
@@ -62,12 +65,12 @@ function toggleActivitytype(activitytype) {
         $('.activity_row' + jsclass).addClass('hidden');
 
       }
-      $('ul.top-bar-menu ' + jsid).toggleClass('active');
+      $('#map_right .filter_box ' + jsid).toggleClass('active');
       
     } else {
       // not active yet so toggling on
       $('.activity_row' + jsclass).removeClass('hidden');
-      $('ul.top-bar-menu ' + jsid).toggleClass('active');
+      $('#map_right .filter_box ' + jsid).toggleClass('active');
     
     }
     

@@ -19,6 +19,9 @@
       = f.collection_select :user_id, User.all, :id, :email, input_html: {required: ''}, label: 'Posted as:'
   .row
     .small-12.large-7.columns
+      %hr
+      %b Photos/image gallery:
+      %p Please try to keep all photos to the same aspect ratio, to avoid ugly whitespace gaps in between the images and the thumbnails below.
       = f.fields_for :photos do |ff|
         = if ff.object.image?
           = image_tag ff.object.image.url(:box)

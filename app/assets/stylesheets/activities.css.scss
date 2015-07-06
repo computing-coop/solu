@@ -30,9 +30,12 @@ nav.activities-bar {
          width: 1%;
          &.active {
            background-color: none;
-           text: $pastel-blue;
-           a {
-             color: $pastel-blue;
+           text: $darkerturq;
+         }
+         a {
+           color: $darkerturq;
+           &:hover {
+             color: $turq;
            }
          }
        }
@@ -61,13 +64,40 @@ nav.activities-bar {
       }
     
       #map_right {
+        
         background: url(image_path('map-right-dotless.png')) no-repeat right 96px #dbd9d9;
         float: right;
-  //      background-size: contain;
         width: 56%;
         min-height: 1900px;
         padding-bottom: 100%;
         position: relative;
+        
+        .filter_box {
+          top: 25px;
+          right: 5%;
+          position: absolute;
+          clear: both;
+          .title {
+            text-decoration: underline;
+
+            font-size: 0.8rem;
+          }
+          ul {
+            margin-left: 0; padding-left: 0;
+            li {
+              list-style-type: none;
+              font-size: 0.8rem;
+              border: 1px solid $turq;
+              padding: 0.2rem;
+              margin: 0.2rem 0;
+              background-color: transparent;
+              &.active {
+                background-color: $pastel-blue;
+
+              }
+            }
+          }
+        }
         .all_partners {
           bottom: 9px;
           right: 15px;

@@ -67,8 +67,10 @@
     }
     .title {
       font-size: 2.063rem;
+      line-height: 2.5rem;
       color: #444;
-      a { color: #444;
+      a { 
+        color: #444;
       }
     }
     .date {

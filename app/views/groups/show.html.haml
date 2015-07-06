@@ -4,9 +4,11 @@
     %p
       %em Hosts:
       = @group.host
+
     %p
-      %em Place:
-      = @group.place
+      %em Participants:
+      = @group.participants.not_hosts.map(&:name).join(', ')
+
     .description
       = raw @group.description
 - unless @group.participants.empty?

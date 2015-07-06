@@ -1,6 +1,24 @@
 
 @import 'variables';
 
+
+
+.magellan-scrollnav {
+  [data-magellan-expedition-clone] {
+    dl.sub-nav {
+      display: none;
+    }
+  }
+  [data-magellan-expedition], [data-magellan-expedition-clone] {
+    max-width: 275px;
+    min-width: 0;
+    background: none;
+    left: 72.33333%;
+
+  }
+}
+
+
 nav.top-bar {
   .menu_wrapper, .down_arrow_wrapper {
     float:right;
@@ -78,6 +96,28 @@ nav.top-bar {
   }
 }
 
+.magellan-scrollnav {
+  dl {
+    margin: 0; padding: 0;
+    color: $turq;
+    li {
+      list-style-position: inside;
+      color: $turq ;
+      width: 100%;
+      margin-bottom: 0.7rem;
+      a {
+        font-size: 0.938rem;
+        padding: 0.2rem 0;
+        line-height: 1.3rem;
+        color: $turq;
+      }
+      border-bottom: 1px solid $turq;
+    }
+    
+  }
+}
+
+
 .participants_container {
   border-top: 2px solid black;
   .host_container, .participant_container, .participant {
@@ -154,23 +194,5 @@ nav.top-bar {
     font-weight: 300;
     margin-bottom: 0.8rem;
   }
-  .navigator {
-    ol {
-      margin: 0; padding: 0;
-      color: $turq;
-      li {
-        list-style-position: inside;
-        color: $turq ;
-        margin-bottom: 0.3rem;
-        a {
-          font-size: 0.938rem;
-          padding-bottom: 0.2rem;
-          line-height: 1.5rem;
-          color: $turq;
-        }
-        border-bottom: 1px solid $turq;
-      }
-      
-    }
-  }
+
 }

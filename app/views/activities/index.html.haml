@@ -3,7 +3,12 @@
 
 
 #map_right
-  &nbsp; 
+  .filter_box
+    .title Filter by activity type:
+    %ul
+      - Activitytype.order(:sort_order.asc).each do |a|
+        %li[a]= link_to a.name, '#', onclick: "javascript:toggleActivitytype('#{a.id}');return false;"
+  
   .kilpisjarvi.partner_location
     .partner_circle.bioart
     .caption Finnish Society of BioArt
