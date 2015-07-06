@@ -2,7 +2,18 @@
 
 @media only screen and (min-width: 40.063em) and (max-width: 64em)  { 
   nav.activities-bar .secondary_activities_filter ul li {
-    font-size: 0.67rem;
+    padding-top: 18px;
+    font-size: 0.85rem;
+  }
+  .secondary_activities_filter {
+    width: 100%;
+    .menu_wrapper {
+      left: calc(13% - 20px);
+      ul.top-bar-menu {
+        left: 0;
+        width: 100%;
+      }
+    }
   }
   
 

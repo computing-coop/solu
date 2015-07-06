@@ -13,29 +13,28 @@ nav.activities-bar {
    z-index: 99;
    position: absolute;
    border-right: none;
-   ul {
-
-     left: initial;
-     padding-top: 13px;
-     list-style:none;
-     position:relative;
+   .menu_wrapper {
+     display: table;
+     width: 100%;
+     ul.top-bar-menu {
+       display: table-row;
+       padding-top: 7px;
+       margin: 0;
+       width: 100%;
  
     
-     li {
-       float: left;
-       position: relative;
-       padding: 0.6rem 1.4rem;
-       &.active {
-         background-color: none;
-         text: $pastel-blue;
-         a {
-           color: $pastel-blue;
+       li {
+         display: table-cell;
+         position: relative;
+         padding: 1.3rem 1.4rem 0 1.4rem;
+         width: 1%;
+         &.active {
+           background-color: none;
+           text: $pastel-blue;
+           a {
+             color: $pastel-blue;
+           }
          }
-       }
-       a {
-         float: left;
-         color: #444;
-         white-space: nowrap;
        }
      }
    }

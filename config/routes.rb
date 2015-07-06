@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :activities
-    resources :activitytypes
+    resources :activitytypes do
+      collection do
+        post :sort
+      end
+    end
     resources :backgrounds
     resources :events
     resources :partners

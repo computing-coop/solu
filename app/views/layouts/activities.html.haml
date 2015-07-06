@@ -52,7 +52,7 @@
         .grid-container
 
       %nav.top-bar.sticky
-        .hor-container
+        .hor-container.initial
           .row
       
             .menu_wrapper
@@ -84,11 +84,15 @@
         %nav.activities-bar.sticky
           .hor-container.secondary_activities_filter
             .row
-
-              %ul.top-bar-menu
-                - Activitytype.all.each do |at|
-                  %li[at]= link_to at.name, '#', onclick: "javascript:toggleActivitytype('#{at.id}');return false;"
-
+              .menu_wrapper
+                %ul.top-bar-menu
+                  - Activitytype.order_by(:sort_order.asc).each do |at|
+                    - if at.activities.map(&:subsite).compact.empty?
+                      %li= at.name
+                    - else
+                      -  at.activities.delete_if{|x| x.subsite.nil?}.compact.each do |a|
+                        %li= link_to a.name, "http://" + a.subsite.name + ".hybridmatters.net"
+            
                 
                 
       
@@ -123,7 +127,7 @@
             = link_to '>>>', post
       = content_for :jquery do
         :plain  
-          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: $('.hor-container')}}).parent().draggable();
+          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom-40", at: "right bottom-40", of: $('.initial')}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           $('#sticky_blue_box .title_box').mouseenter(function() {
             $('#sticky_blue_box .blurb').css('display', 'none');
@@ -141,7 +145,9 @@
                      
     :javascript
       $(document).ready(function() { #{yield :jquery} 
-        $('#map_left').css('min-height', $('#activity_map_wrapper').height() + 220);
+        if ($('#activity_map_wrapper').height() < 1490) {
+          $('#map_left').css('min-height', $('#activity_map_wrapper').height() + 200);
+          }
         //$('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: $('.hor-container')}})
-        $('.ui-dialog').css('top', 270);
+        //$('.ui-dialog').css('top', 270);
       });

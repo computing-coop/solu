@@ -5,11 +5,27 @@ class Admin::ActivitytypesController < Admin::BaseController
   respond_to :html
 
   def index
-    @activitytypes = Activitytype.all
+    @activitytypes = Activitytype.order_by(:sort_order.asc)
     set_meta_tags title: 'Activity types'
     respond_with(@activitytypes)
   end
+  
+  def destroy
+    @activitytype = Activitytype.find(params[:id])
+    @activitytype.destroy!
+    redirect_to admin_activitytypes_path
+  end
 
+  def sort
+    @activitytypes = Activitytype.all
+    @activitytypes.each do |fi|
+      next if params['activitytype'].index(fi.id.to_s).nil?
+      fi.sort_order = params['activitytype'].index(fi.id.to_s) + 1
+      fi.save
+    end
+    render nothing: true  
+  end
+  
   def show
     redirect_to @activitytype
   end
@@ -49,10 +65,7 @@ class Admin::ActivitytypesController < Admin::BaseController
     end
   end
 
-  def destroy
-    @activitytype.destroy
-    respond_with(@activitytype)
-  end
+
 
   private
     def set_activitytype

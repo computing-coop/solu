@@ -8,6 +8,7 @@ class Activity
   field :start_at, type: Date
   field :end_at, type: Date
   belongs_to :activitytype
+  has_one :subsite
   
   validates_uniqueness_of :name
   validates_presence_of :name, :start_at, :activity_type

@@ -16,6 +16,8 @@ class Ability
       can :manage, Post
       can :manage, user
       cannot :manage, Subsite
+    elsif user.has_role? :participant
+      can :manage, Post # lock to Field_notes only -- to be done
     else
       cannot :read, :all
 

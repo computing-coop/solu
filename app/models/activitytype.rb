@@ -1,5 +1,6 @@
 class Activitytype
   include Mongoid::Document
   field :name, type: String
-  has_many :activities
+  field :sort_order, type: Integer
+  has_many :activities, :dependent => :delete
 end
