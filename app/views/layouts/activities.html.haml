@@ -91,7 +91,7 @@
                       %li= at.name
                     - else
                       -  at.activities.delete_if{|x| x.subsite.nil?}.compact.each do |a|
-                        %li= link_to a.name, "http://" + a.subsite.name + ".hybridmatters.net"
+                        %li= link_to a.name, "http://" + a.subsite.subdomains.split(',').compact.first.strip.downcase + ".hybridmatters.net"
             
                 
                 

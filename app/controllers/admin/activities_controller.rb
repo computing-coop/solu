@@ -50,7 +50,7 @@ class Admin::ActivitiesController < Admin::BaseController
 
   def destroy
     @activity.destroy
-    respond_with(@activity)
+    respond_with(@activity), location: admin_activities_path
   end
 
   private
