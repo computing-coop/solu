@@ -13,7 +13,7 @@ class Group
   field :short_description, type: String
   field :description, type: String
   
-  slug :name, :scope => :symposium
+  slug :name #, :scope => :symposium
 
   embeds_many :participants, cascade_callbacks: true
   

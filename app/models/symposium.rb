@@ -16,7 +16,7 @@ class Symposium
   
   has_many :calls
   embeds_many :groups, cascade_callbacks: true
-  accepts_nested_attributes_for :groups, allow_destroy: true,  reject_if: :all_blank
+  accepts_nested_attributes_for :groups, allow_destroy: true,  reject_if: :all_blank, :autosave => true
   
   validates_presence_of :start_at, :name, :end_at
 end
