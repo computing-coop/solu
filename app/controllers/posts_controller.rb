@@ -17,7 +17,15 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     set_meta_tags title: @post.title
-    respond_with(@post)
+    if @post.subsite
+      render layout: @post.subsite.layout
+    elsif !@post.activities.empty?
+      if @post.activity.first.subsite
+        render layout: @post.activity.first.subsite.layout
+      end
+    else
+      respond_with(@post)
+    end
   end
 
 end

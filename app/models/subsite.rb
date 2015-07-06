@@ -16,4 +16,8 @@ class Subsite
     subdomains.split(/,/).flatten.map(&:strip).uniq.compact
   end
   
+  def hostname
+    subdomains.split(',').compact.first.strip.downcase + ".hybridmatters.net"
+  end
+  
 end
