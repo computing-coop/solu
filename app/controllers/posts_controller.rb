@@ -17,14 +17,32 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     set_meta_tags title: @post.title
-    if @post.subsite
-      render layout: @post.subsite.layout
-    elsif !@post.activities.empty?
-      if @post.activity.first.subsite
-        render layout: @post.activity.first.subsite.layout
+    if @site.nil?
+      if @post.subsite
+        redirect_to subdomain: @post.subsite.subdomain #layout: @post.subsite.layout
+      elsif !@post.activities.empty?
+        if @post.activities.first.subsite
+          redirect_to subdomain: @post.activities.first.subsite.subdomain #render layout: @post.activity.first.subsite.layout
+        end
       end
+      render 
     else
-      respond_with(@post)
+      # check it's right layout
+      if @post.subsite
+        if @site != @post.subsite
+          redirect_to request.url.sub(@site.subdomain, @post.subsite.subdomain)
+        else
+          render layout: @site.layout
+        end
+      elsif !@post.activities.empty?
+        if @site != @post.activities.first.subsite
+          redirect_to request.url.sub(@site.subdomain, @post.activities.first.subsite.subdomain)
+        else
+          render layout: @site.layout
+        end
+      else
+        render layout: @site.layout
+      end
     end
   end
 
