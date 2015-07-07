@@ -25,7 +25,7 @@ class PostsController < ApplicationController
           redirect_to subdomain: @post.activities.first.subsite.subdomain #render layout: @post.activity.first.subsite.layout
         end
       end
-      render 
+
     else
       # check it's right layout
       if @post.subsite

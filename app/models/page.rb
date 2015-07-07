@@ -22,7 +22,7 @@ class Page
     
   belongs_to :subsite
 
-  slug :title
+  slug :title, history: true
     
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true

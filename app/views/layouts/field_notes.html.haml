@@ -64,7 +64,7 @@
               .rest
                 %ul.top-bar-menu
                   %li= link_to 'Home', 'http://hybridmatters.net/'
-                  %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes')
+                  %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
                   %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', participants_path
