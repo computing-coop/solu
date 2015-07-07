@@ -12,7 +12,7 @@ class Post
   belongs_to :subsite
   has_and_belongs_to_many :postcategories
   has_and_belongs_to_many :activities
-  slug :title
+  slug :title, history: true
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true

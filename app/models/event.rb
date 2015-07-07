@@ -13,7 +13,7 @@ class Event
   belongs_to :activity
   belongs_to :subsite
   
-  slug :name
+  slug :name, history: true
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
