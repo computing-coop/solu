@@ -23,4 +23,13 @@ class Event
   
   validates_presence_of :name, :place, :start_at, :end_at
   
+  def previous
+    Event.by_subsite(subsite_id).published.where(:start_at.lt => start_at).order_by([:start_at, :asc]).last
+  end
+
+  def next
+    Event.by_subsite(subsite_id).published.where(:start_at.gt => start_at).order_by([:start_at, :asc]).first
+  end
+  
+  
 end

@@ -1,5 +1,13 @@
 - @events.each_with_index do |event,index|
   .row.event_container{class: @events[index+1].nil? ? :last : false}
+    - if index == 0
+      .medium-2.columns.navigator.right
+        .magellan-scrollnav
+          %div{:"data-magellan-expedition" => :fixed, :"data-options" => "threshold:100;destination_threshold:120;fixed_top:320" }
+            %dl.events_list
+              - @events.each_with_index do |g, count|
+                %li= link_to (count + 1).to_s + ". " +  g.name, '#', onclick: "scrollTo('a[name=#{g.slug}]');return false;"
+
     .medium-2.columns.medium-offset-1.hide-for-small-only
       - if event.photos.empty?
         = link_to image_tag('hm_logo.png'), event
@@ -8,7 +16,7 @@
         .front_icon= image_tag event.photos.first.image.url(:blog)
     .small-12.columns.medium-offset-1.medium-6{class: index == 0 ? "" : "end"}
       %a{name: event.slug }
-      %h2= event.name
+      %h2= link_to event.name, event
       %p
         %em
           Dates:
@@ -19,8 +27,3 @@
           = event.place
       .short_description
         = raw event.description
-    - if index == 0
-      .medium-2.columns.navigator
-        %ol.events_list
-          - @events.each do |g|
-            %li= link_to g.name, '#', onclick: "scrollTo('a[name=#{g.slug}]');return false;"

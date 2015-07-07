@@ -14,9 +14,17 @@ class EventsController < ApplicationController
     if @site.nil?
       redirect_to '/'
     else
-      @event = @site.symposium.events.find(params[:id])
-      set_meta_tags title: @site.symposium.name + ": " + @event.name
+      if @site.symposium
+        @event = @site.symposium.events.find(params[:id])
+        set_meta_tags title: @site.symposium.name + ": " + @event.name
+      else
+        if @site.activity
+          @event = @site.activity.events.find(params[:id])
+          set_meta_tags title: @site.name + ": " + @event.name
+        end
+      end
       render layout: @site.layout
+    
     end
   end
       

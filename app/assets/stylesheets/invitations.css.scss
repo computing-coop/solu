@@ -83,3 +83,43 @@
   }
 }
 
+.event_single_container {
+  margin-top: 3rem;
+
+  .event_info {
+    .blue_heading {
+      color: $turq;
+      font-size: 0.938rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+    em {
+      color: #999;
+    }
+  }
+  
+  .event_short_description, .event_short_description p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: #444;
+    font-weight: 300;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  .event_paginator {
+    margin-top: 1rem;
+    float: left;
+    border: 3px solid #333;
+    color: #333;
+    &.noright {
+      border-right: none;
+    }
+    letter-spacing: 0.3rem;
+    a { color: #333; &:hover { color: $turq; } }
+    padding: 0.2rem 0.65rem; 
+    text-transform: uppercase;
+    font-size: 1rem;
+  }
+  
+}
