@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   resources :activities
 
-  resources :posts
+  resources :posts 
+
   get '/category/:id', to: "postcategories#show"
 
   resources :pages

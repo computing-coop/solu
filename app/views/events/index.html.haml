@@ -16,6 +16,9 @@
         .front_icon= image_tag event.photos.first.image.url(:blog)
     .small-12.columns.medium-offset-1.medium-6{class: index == 0 ? "" : "end"}
       %a{name: event.slug }
+      - if @site.nil?
+        - if event.activity
+          .blue_heading= link_to_if event.activity.subsite, event.activity.name, "http://#{event.activity.subsite.hostname}"
       %h2= link_to event.name, event
       %p
         %em

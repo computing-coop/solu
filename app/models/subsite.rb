@@ -20,4 +20,7 @@ class Subsite
     subdomains.split(',').compact.first.strip.downcase + ".hybridmatters.net"
   end
   
+  def subdomain
+    subdomains.split(',').compact.first.strip.downcase 
+  end
 end

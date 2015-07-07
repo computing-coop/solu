@@ -68,7 +68,7 @@
                   %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-invitations')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
-                  %li{class: controller.controller_name == 'speculations' ? :active : false}= link_to 'Speculations', '#' 
+                  %li{class: controller.controller_name == 'postcategories' && params[:id] == 'speculations' ? :active : false}= link_to 'Speculations', "/category/speculations"
           .row
             .down_arrow_wrapper
               .social &nbsp;
@@ -82,7 +82,7 @@
                     %span Blog
                   %li{class: controller.controller_name == 'events' ? :active : false}
                     %span Events
-                  %li{class: controller.controller_name == 'speculations' ? :active : false}
+                  %li{class: controller.controller_name == 'postcategories' && params[:id] == 'speculations' ? :active : false}
                     %span Speculations
       
                 

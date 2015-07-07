@@ -14,6 +14,8 @@ class Ability
       can :manage, Comment
       can :manage, Vote
       can :manage, Post
+      can :manage, Event
+      can :manage, Page
       can :manage, user
       cannot :manage, Subsite
     elsif user.has_role? :participant
