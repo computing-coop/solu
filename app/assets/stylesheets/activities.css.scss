@@ -79,7 +79,6 @@ nav.activities-bar {
           clear: both;
           .title {
             text-decoration: underline;
-
             font-size: 0.8rem;
           }
           ul {
@@ -87,12 +86,23 @@ nav.activities-bar {
             li {
               list-style-type: none;
               font-size: 0.8rem;
-              border: 1px solid $turq;
+              &:hover {
+                border: 1px solid $darkerturq;
+                color: $darkerturq;
+              }
+              a{ color: #555; 
+                &:hover {
+                  color: $darkerturq;
+                }
+              }
+              border: 1px solid #555;
               padding: 0.2rem;
               margin: 0.2rem 0;
               background-color: transparent;
               &.active {
-                background-color: $pastel-blue;
+                border: 1px solid $hmred;
+                color: $hmred;
+                a { color: $hmred; }
 
               }
             }
@@ -273,6 +283,12 @@ nav.activities-bar {
         color: #FFF;
         font-size: 1rem;
         text-transform: uppercase;
+        a {
+          color: #FFF;
+          &:hover {
+            color: $turq;
+          }
+        }
       }
       .dates {
         color: #FFF;
@@ -286,6 +302,9 @@ nav.activities-bar {
       &.fee100, &.FB8828 {
         .title, .dates, .activity_description { 
           color: #444;
+          a {
+            color: #444;
+          }
         }
       }
     }
@@ -293,7 +312,7 @@ nav.activities-bar {
     .arrow_left {
       display: table-cell;
       vertical-align: middle;
-      width: 22px;
+      width: 21px;
 //      width: 0;
 //      float: left;
 //      height: 0;
