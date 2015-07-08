@@ -144,14 +144,34 @@ header {
       float: left;
     }
     ul.top-bar-menu {
-      left: calc(34% - 110px);
-      padding-top: 7px;
+      left: calc(26% - 110px);
+      padding-top: 4px;
       margin: 0;
+      select {
+        margin: 0; padding: 0 1.2rem 0 0;
+        background-color: $topbarpink;
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: #444;
+        outline: none;
+        height: 25px;
+        -webkit-appearance:none;
+        font-weight: bold;
+        border: none;
+        &:active, &:focus, &:hover {
+          outline: none;
+          border: none;
+        }
+      }
     }
   }
   .down_arrow_wrapper {
     height: 0;
+    z-index: 20;
     position: absolute;
+    .select_spacer {
+      padding: 0 3.35rem 0 1.4rem;
+    }
     .rest {
       padding: 0;
     }

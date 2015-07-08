@@ -64,7 +64,11 @@
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
                 %ul.top-bar-menu
-                  %li= link_to 'Home', 'http://hybridmatters.net/'
+                  %li
+                    %select.main_nav_select
+                      %option{value: 'www'} Main site
+                      %option{value: 'fieldnotes'} Field_Notes
+                      %option{selected: :selected, value: 'invitations'} Invitations
                   %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-invitations')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
@@ -74,8 +78,9 @@
               .social &nbsp;
               .rest
                 %ul.top-bar-menu
-                  %li
-                    %span Home
+                  %li.select_spacer 
+                    %span
+                      %strong Invitations
                   %li{class: controller.controller_name == 'pages' ? :active : false}
                     %span About
                   %li{class: controller.controller_name == 'posts' ? :active : false}
@@ -123,4 +128,8 @@
     = render partial: 'layouts/footer'
                      
     :javascript
-      $(document).ready(function() { #{yield :jquery} });
+      $(document).ready(function() { #{yield :jquery}
+        $('select.main_nav_select').change(function() {
+          window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
+        });
+      });

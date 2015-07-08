@@ -64,6 +64,11 @@
               
               .rest
                 %ul.top-bar-menu
+                  %li
+                    %select.main_nav_select
+                      %option{selected: :selected, value: 'www'} Main site
+                      %option{value: 'fieldnotes'} Field_Notes
+                      %option{value: 'invitations'} Invitations
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
@@ -73,6 +78,9 @@
               .social &nbsp;
               .rest
                 %ul.top-bar-menu
+                  %li.select_spacer 
+                    %span
+                      %strong Main Site
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}
                     %span About
                   %li{class: controller.controller_name == 'posts' ? :active : false}
@@ -142,4 +150,8 @@
 
                      
     :javascript
-      $(document).ready(function() { #{yield :jquery} });
+      $(document).ready(function() { #{yield :jquery} 
+        $('select.main_nav_select').change(function() {
+          window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
+        });
+      });

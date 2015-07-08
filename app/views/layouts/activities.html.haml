@@ -63,6 +63,11 @@
               
               .rest
                 %ul.top-bar-menu
+                  %li
+                    %select.main_nav_select
+                      %option{selected: :selected, value: 'www'} Main site
+                      %option{value: 'fieldnotes'} Field_Notes
+                      %option{value: 'invitations'} Invitations
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
@@ -72,6 +77,10 @@
               .social &nbsp;
               .rest
                 %ul.top-bar-menu
+                  %li.select_spacer 
+                    %span
+                      %strong Main Site
+
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}
                     %span About
                   %li{class: controller.controller_name == 'posts' ? :active : false}
@@ -80,25 +89,7 @@
                     %span Partners
                   %li{class: controller.controller_name == 'activities'  ? :active : false}
                     %span Programme
-      - if controller.controller_name == 'activities'
-        %nav.activities-bar.sticky
-          .hor-container.secondary_activities_filter
-            .row
-              .menu_wrapper
-                %ul.top-bar-menu
-                  - Activitytype.secondary_menu.each do |a|
-                    %li
-                      - if !a.activities.map(&:subsite).compact.empty?
-                        = link_to (a.secondary_menu_name.blank? ? a.name : a.secondary_menu_name), "http://#{a.activities.map(&:subsite).compact.first.hostname}"
-                      - else
-                        = a.secondary_menu_name.blank? ? a.name : a.secondary_menu_name
-                    
-                  / - Activitytype.order_by(:sort_order.asc).each do |at|
-                  /   - if at
-                  /     %li= at.name
-                  /   - else
-                  /     -  at.activities.delete_if{|x| x.subsite.nil?}.compact.each do |a|
-                  /       %li= link_to a.name, "http://" + a.subsite.subdomains.split(',').compact.first.strip.downcase + ".hybridmatters.net"
+
             
                 
                 
@@ -117,7 +108,9 @@
               = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 100) : post.short_abstract
               = link_to '>>>', post
     #map_container
-      .inner_container= yield
+      .inner_container
+
+        = yield
 
 
     - unless @sticky.empty?
@@ -152,10 +145,13 @@
                      
     :javascript
       $(document).ready(function() { #{yield :jquery} 
+        $('select.main_nav_select').change(function() {
+          window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
+        });
         if ($('#activity_map_wrapper').height() > $('#map_left').height()) {
           $('#map_left').css('min-height', $('#activity_map_wrapper').height() + 200);
           }
         //$('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: $('.hor-container')}})
-        $('.ui-dialog').css('top', 220);
+        $('.ui-dialog').css('top', 210);
 
       });
