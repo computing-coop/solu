@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :backgrounds
 
   mount Ckeditor::Engine => '/ckeditor'
-  resources :activities
+  resources :activities do
+    resources :posts
+  end
 
   resources :posts 
 

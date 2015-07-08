@@ -9,6 +9,7 @@ class Activity
   field :end_at, type: Date
   belongs_to :activitytype
   has_one :subsite
+  has_and_belongs_to_many :posts
   
   validates_uniqueness_of :name
   validates_presence_of :name, :start_at, :activity_type

@@ -2,7 +2,8 @@
   .drawer
     .row
       .text-center
-        = link_to 'Supporters and partners', '#', onclick: "javascript:$('footer .rest').slideToggle();return false;"
+        Supporters and partners
+        -#= link_to 'Supporters and partners', '#' , onclick: "javascript:$('footer .rest').slideToggle();return false;"
   .arrow
     .row
       .text-center.down_arrow= link_to image_tag('selected_down.png'), '#', onclick: "javascript:$('footer .rest').slideToggle();return false;"
@@ -13,7 +14,7 @@
     .row.lined
       .text-center Partners
       .small-centered.columns.small-10.text-center
-        = link_to image_tag('bioarts.png'), 'http://www.bioartsociety.fi/', target: :_blank
+        = link_to image_tag('bioarts.jpg'), 'http://www.bioartsociety.fi/', target: :_blank
         = link_to image_tag('ITcopenhagen.png'), 'http://www.itu.dk/', target: :_blank  
         = link_to image_tag('forumbox.png'), 'http://www.forumbox.fi/', target: :_blank
         = link_to image_tag('greenland.png'), 'http://kunsthallgrenland.no/', target: :_blank        

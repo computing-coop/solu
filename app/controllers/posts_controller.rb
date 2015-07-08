@@ -3,15 +3,23 @@ class PostsController < ApplicationController
   respond_to :html, :rss
 
   def index
-    @posts = Post.published.order(published_at: :desc)
-    set_meta_tags title: "News"
-    if @site
-      @posts = Post.by_subsite(@site.id).published.order(published_at: :desc)
-      render layout: @site.layout
+    if params[:activity_id]
+      @activity = Activity.find(params[:activity_id])
+      if @activity.subsite && @site.nil?
+        redirect_to subdomain: @activity.subsite.subdomain
+      end
+      @posts = @activity.posts.published.order(:published_at.desc)
+      set_meta_tags title: 'Posts for activity ' + @activity.name
     else
-      @posts = Post.published.order(published_at: :desc)
+      if @site
+        @posts = Post.by_subsite(@site.id).published.order(published_at: :desc)
+        set_meta_tags title: @subsite.name + ": News"
+        render layout: @site.layout
+      else
+        @posts = Post.published.order(published_at: :desc)
+        set_meta_tags title: "News"
+      end
     end
-    
   end
 
   def show

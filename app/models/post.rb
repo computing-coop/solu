@@ -32,9 +32,10 @@ class Post
   end
   
   def category
-    [activities.map(&:name), postcategories.map{|x|  '<a href="category/' + x.slug + '">' + x.name + '</a>'}].flatten.compact.join(' / ')
+    [activities.map{|x| '<a href="/activities/' + x.slug + '/posts">' + x.name + '</a>'}, postcategories.map{|x|  '<a href="/category/' + x.slug + '">' + x.name + '</a>'}].flatten.compact.join(' / ')
   end
   
+
   def previous
     Post.published.where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
   end
