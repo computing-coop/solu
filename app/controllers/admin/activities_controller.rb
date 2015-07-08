@@ -59,6 +59,6 @@ class Admin::ActivitiesController < Admin::BaseController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :activitytype_id, :description, :show_in_secondary_menu, :secondary_menu_name, :start_at, :end_at, photos_attributes: [:image, :id,  :_destroy], responsible_organisations_attributes: [:id, :_destroy], responsible_organisation_ids: [])
+      params.require(:activity).permit(:name, :activitytype_id, :description,  :start_at, :end_at, photos_attributes: [:image, :id,  :_destroy], responsible_organisations_attributes: [:id, :_destroy], responsible_organisation_ids: [])
     end
 end

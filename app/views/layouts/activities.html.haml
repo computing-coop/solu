@@ -86,15 +86,15 @@
             .row
               .menu_wrapper
                 %ul.top-bar-menu
-                  - Activity.secondary_menu.each do |a|
+                  - Activitytype.secondary_menu.each do |a|
                     %li
-                      - if a.subsite
-                        = link_to (a.secondary_menu_name.blank? ? a.name : a.secondary_menu_name), "http://#{a.subsite.hostname}"
+                      - if !a.activities.map(&:subsite).compact.empty?
+                        = link_to (a.secondary_menu_name.blank? ? a.name : a.secondary_menu_name), "http://#{a.activities.map(&:subsite).compact.first.hostname}"
                       - else
                         = a.secondary_menu_name.blank? ? a.name : a.secondary_menu_name
                     
                   / - Activitytype.order_by(:sort_order.asc).each do |at|
-                  /   - if at.activities.map(&:subsite).compact.empty?
+                  /   - if at
                   /     %li= at.name
                   /   - else
                   /     -  at.activities.delete_if{|x| x.subsite.nil?}.compact.each do |a|

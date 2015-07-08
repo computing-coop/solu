@@ -73,6 +73,6 @@ class Admin::ActivitytypesController < Admin::BaseController
     end
 
     def activitytype_params
-      params.require(:activitytype).permit(:name)
+      params.require(:activitytype).permit(:name, :show_in_secondary_menu, :secondary_menu_name)
     end
 end
