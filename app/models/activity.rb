@@ -7,6 +7,9 @@ class Activity
   field :description, type: String
   field :start_at, type: Date
   field :end_at, type: Date
+  field :show_in_secondary_menu, type: Boolean
+  field :secondary_menu_name, type: String
+  
   belongs_to :activitytype
   has_one :subsite
   has_and_belongs_to_many :posts
@@ -21,7 +24,9 @@ class Activity
   accepts_nested_attributes_for :responsible_organisations, allow_destroy: true
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
-  slug :name
+  slug :name, history: true
+  
+  scope :secondary_menu, -> () { where(show_in_secondary_menu: true) }
   
   def box_colour
     if responsible_organisations.empty?

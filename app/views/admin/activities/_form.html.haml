@@ -11,6 +11,10 @@
   .row
     .small-12.large-8.columns= f.input :activitytype, input_html: {:required => ''}
   .row
+    .small-12.large-5.columns= f.input :show_in_secondary_menu, as: :boolean
+  .row
+    .small-12.large-5.columns= f.input :secondary_menu_name
+  .row
     .small-12.columns= f.input :description, as: :text, input_html: {class: :ckeditor}
   .row
     .small-12.large-8.columns= f.input :start_at, as: :string, input_html: {:required => '', class: :fdatepicker}

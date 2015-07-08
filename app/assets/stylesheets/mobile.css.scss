@@ -1,7 +1,11 @@
 @import 'variables';
 
 @media only screen and (max-width: 40em)  { 
-  
+  header {
+    .top-bar {
+      height: inherit;
+    }
+  }
   .main-container {
     padding-top: 45px;
     
