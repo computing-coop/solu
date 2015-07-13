@@ -62,7 +62,19 @@
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               
               .rest
-                %ul.top-bar-menu
+                .row.show-for-small-only
+                  .small-5.columns.small-offset-1
+                    %select.main_nav_select
+                      %option{selected: :selected, value: 'www'} Main site
+                      %option{value: 'fieldnotes'} Field_Notes
+                      %option{value: 'invitations'} Invitations
+                  .small-6.columns
+                    %select.secondary_nav_select
+                      %option{selected: (controller.controller_name == 'pages' && params[:id] == 'about' ? :selected : false), value: page_path('about') } About
+                      %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } News
+                      %option{selected: (controller.controller_name == 'partners' ? :selected : false), value: partners_path} Partners
+                      %option{selected: (controller.controller_name == 'activities'  ? :selected : false), value: activities_path } Programme
+                %ul.top-bar-menu.hide-for-small-only
                   %li
                     %select.main_nav_select
                       %option{selected: :selected, value: 'www'} Main site
@@ -72,7 +84,7 @@
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
                   %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', activities_path
-          .row
+          .row.hide-for-small-only
             .down_arrow_wrapper
               .social &nbsp;
               .rest
@@ -93,20 +105,21 @@
             
                 
                 
+    .blue_announcements.show-for-small-only
+      .row
+        .small-12.columns.text-center.small-centered.heading= link_to 'ANNOUNCEMENTS', '#', onclick: "javascript:$('.hidden_announcements').slideToggle();return false"
       
-    .main-container{class: controller.controller_name}
-      .blue_announcements.show-for-small-only
-        .row
-          .small-12.columns.text-center.small-centered.heading ANNOUNCEMENTS
-        
+      .hidden_announcements
         - @sticky.each do |post|
           .row
-            .small-6.columns.titlex.text-left
+            .small-10.small-offset-1.columns.titlex.text-left
               .title= link_to post.title, post
               .date= post.published_at.strftime("%d %b %Y")
-            .small-6.columns.blurb_mobile
+            .small-10.small-offset-1.columns.blurb_mobile
               = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 100) : post.short_abstract
-              = link_to '>>>', post
+              = link_to '>>>', post                   
+
+
     #map_container
       .inner_container
 

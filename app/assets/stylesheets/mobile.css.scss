@@ -2,37 +2,101 @@
 
 @media only screen and (max-width: 40em)  { 
   header {
-    .top-bar {
+    nav.top-bar {
       height: inherit;
-    }
-  }
-  .main-container {
-    padding-top: 45px;
-    
-    .blue_announcements {
-      border-top: 1px solid black;
-      background-color: $darkerturq;
-      color: black;
-      font-family: Roboto, sans-serif;
-      .row {
-        border-bottom: 1px solid black;
-        padding: 0.8rem 0;
-        overflow: hidden;
+      
+      .hor-container {
+        height: inherit;
       }
-
-      .titlex {
-        font-size: 0.938rem;
-        a {
-          color: black;
-          
+      
+      .menu_wrapper {
+        margin-top: 0.25rem;
+      }
+      
+      select {
+        margin: 0; padding: 0 1.2rem 0 0;
+        background-color: $topbarpink;
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: #444;
+        outline: none;
+        height: 25px;
+        -webkit-appearance:none;
+        font-weight: bold;
+        border: none;
+        &:active, &:focus, &:hover {
+          outline: none;
+          border: none;
         }
       }
-      .blurb_mobile {
-        font-size: 0.8rem;
-      }
+      
     }
 
+  }
+  
+  .blue_announcements {
+    margin-top: 51px;
+    border-top: 1px solid black;
+    background-color: $darkerturq;
+    color: black;
+    font-family: Roboto, sans-serif;
+    a {
+      color: #FFF;
+    }
+    .hidden_announcements {
+      display: none;
+      border-left: 2px solid #444;
+      border-right: 2px solid #444;
+      margin: 0 0.688em;
+    }
+    .row {
+      border-bottom: 1px solid black;
+      padding: 0.8rem 0;
+      overflow: hidden;
+    }
+
+    .titlex {
+      font-size: 0.938rem;
+      a {
+        color: black;
+        
+      }
+    }
+    .blurb_mobile {
+      font-size: 0.8rem;
+    }
+  }
+  
+
+  #map_container {
+    .inner_container {
+      #activity_map_wrapper {
+        padding: 0.2rem;
+        
+        table.vertical-line {
+          
+          tr.activity_row {
+            td.circle {
+              min-width: 55px;
+            }
+            td.activity_entry {
+              margin-left: 2px;
+              .arrow_left {
+                min-width: 21px;
+              }
+              .activity_box {
+                width: 200px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }  
     
+  .main-container {
+    padding-top: 51px;
+  
     .post_single_container, .post_container {
       
       .post {

@@ -14,7 +14,7 @@
 
 
 #map_right
-  .filter_box
+  .filter_box.hide-for-small-only
     .title Filter by activity type:
     %ul
       - Activitytype.order(:sort_order.asc).each do |a|
