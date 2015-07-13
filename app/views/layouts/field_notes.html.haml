@@ -62,7 +62,19 @@
                 = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
-                %ul.top-bar-menu
+                .row.show-for-small-only
+                  .small-6.columns.small-offset-1
+                    %select.main_nav_select
+                      %option{ value: 'www'} Main site
+                      %option{selected: :selected, value: 'fieldnotes'} Field_Notes
+                      %option{value: 'invitations'} Invitations
+                  .small-5.columns
+                    %select.secondary_nav_select
+                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-field-notes-hybrid-matters') } About
+                      %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
+                      %option{selected: (controller.controller_name == 'groups' ? :selected : false), value: groups_path} Groups
+                      %option{selected: (controller.controller_name == 'participants'  ? :selected : false), value: participants_path } Participants
+                %ul.top-bar-menu.hide-for-small-only
                   %li
                     %select.main_nav_select
                       %option{value: 'www'} Main site
@@ -73,7 +85,7 @@
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
                   %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', participants_path
-          .row
+          .row.hide-for-small-only
             .down_arrow_wrapper
               .social &nbsp;
               .rest
@@ -92,20 +104,13 @@
                     %span Participants
       
                 
+    .fnbox.show-for-small-only
+      .row
+        .small-10.columns.text-center.small-centered.small-offset-1
+          an art&science field laboratory about converging ecologies
       
-    .main-container
-      .blue_announcements.show-for-small-only
-        .row
-          .small-12.columns.text-center.small-centered.heading ANNOUNCEMENTS
-        
-        - @sticky.each do |post|
-          .row
-            .small-6.columns.titlex.text-left
-              .title= link_to post.title, post
-              .date= post.published_at.strftime("%d %b %Y")
-            .small-6.columns.blurb_mobile
-              = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 100) : post.short_abstract
-              = link_to '>>>', post
+    .main-container.field_notes
+
             
       = yield
 
@@ -132,5 +137,8 @@
       $(document).ready(function() { #{yield :jquery} 
         $('select.main_nav_select').change(function() {
           window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
+        });
+        $('select.secondary_nav_select').change(function() {
+          window.location.href= $(this).val();
         });
       });

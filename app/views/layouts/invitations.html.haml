@@ -63,7 +63,19 @@
                 = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
-                %ul.top-bar-menu
+                .row.show-for-small-only
+                  .small-6.columns.small-offset-1
+                    %select.main_nav_select
+                      %option{ value: 'www'} Main site
+                      %option{value: 'fieldnotes'} Field_Notes
+                      %option{selected: :selected, value: 'invitations'} Invitations
+                  .small-5.columns
+                    %select.secondary_nav_select
+                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-invitations') } About
+                      %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
+                      %option{selected: (controller.controller_name == 'events' ? :selected : false), value: events_path} Events
+                      %option{selected: (controller.controller_name == 'postcategories' && params[:id] == 'speculations'  ? :selected : false), value: "/category/speculations"} Speculations              
+                %ul.top-bar-menu.hide-for-small-only
                   %li
                     %select.main_nav_select
                       %option{value: 'www'} Main site
@@ -73,7 +85,7 @@
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
                   %li{class: controller.controller_name == 'postcategories' && params[:id] == 'speculations' ? :active : false}= link_to 'Speculations', "/category/speculations"
-          .row
+          .row.hide-for-small-only
             .down_arrow_wrapper
               .social &nbsp;
               .rest
@@ -91,20 +103,12 @@
                     %span Speculations
       
                 
-      
-    .main-container
-      .blue_announcements.show-for-small-only
-        .row
-          .small-12.columns.text-center.small-centered.heading ANNOUNCEMENTS
-        
-        - @sticky.each do |post|
-          .row
-            .small-6.columns.titlex.text-left
-              .title= link_to post.title, post
-              .date= post.published_at.strftime("%d %b %Y")
-            .small-6.columns.blurb_mobile
-              = post.short_abstract.blank? ? truncate_html(strip_tags(post.body), length: 100) : post.short_abstract
-              = link_to '>>>', post
+    .invitations_box.show-for-small-only
+      .row
+        .small-10.columns.text-center.small-centered.small-offset-1
+          Citizen art&science activities in different Nordic countries by researchers from Malmö University
+    .main-container.invitations
+
             
       = yield
 
@@ -131,5 +135,8 @@
       $(document).ready(function() { #{yield :jquery}
         $('select.main_nav_select').change(function() {
           window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
+        });
+        $('select.secondary_nav_select').change(function() {
+          window.location.href= $(this).val();
         });
       });

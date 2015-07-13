@@ -17,7 +17,7 @@
         margin: 0; padding: 0 1.2rem 0 0;
         background-color: $topbarpink;
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 0.87rem;
         color: #444;
         outline: none;
         height: 25px;
@@ -32,6 +32,29 @@
       
     }
 
+  }
+  
+  .fnbox {
+    background-color: #8F7BAF;
+  }
+  .invitations_box {
+    background-color: #ba3245;
+    font-size: 0.8rem;
+  }
+  .fnbox, .invitations_box {
+    margin-top: 51px;
+    border-top: 1px solid black;
+
+    color: black;
+    font-family: Roboto, sans-serif;
+    .row {
+      border-bottom: 1px solid black;
+      padding: 0.8rem 0;
+      overflow: hidden;
+    }
+    a {
+      color: #FFF;
+    }
   }
   
   .blue_announcements {
@@ -67,6 +90,29 @@
     }
   }
   
+  .magellan-scrollnav [data-magellan-expedition] {
+    max-width: initial;
+    left: 0;
+    top: 0 !important;
+    background-color: white;
+    border-bottom: 1px solid #444;
+    
+    .sub-nav {
+      a {
+        line-height: 1rem;
+      }
+    }
+    dl {
+      li {
+        float: left;
+        width: initial;
+        margin-bottom: 0;
+        a {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
 
   #map_container {
     .inner_container {
@@ -96,6 +142,9 @@
     
   .main-container {
     padding-top: 51px;
+    &.field_notes {
+      padding-top: 20px;
+    }
   
     .post_single_container, .post_container {
       
