@@ -116,6 +116,77 @@
 
   #map_container {
     .inner_container {
+      #map_left {
+        display: none;
+      }
+      #map_right {
+        background: url(image_path('map_transp_mobile.png')) no-repeat right 840px #dbd9d9;
+        width: 100%;
+        float: left;
+
+        
+        .partner_location {
+          position: relative;
+          font-size: 0.8rem;
+          float: right;
+          clear: both;
+          cursor: pointer;
+          .left_text {
+            float: left;
+            margin-right: 3px;
+          }
+          &.kilpisjarvi {
+            top: 1325px;
+            right: 82px;
+            .caption {
+              width: 177px;
+            }
+          }
+          &.nikolai {
+            top: 1574px;
+            right: 62px;
+            .caption {
+              width: 119px;
+            }
+          }
+          &.malmo {
+            top: 1572px;
+            right: 45px;
+            .caption {
+              width: 122px;
+            }
+          }    
+          &.helsinki {
+            top: 1532px;
+            right:0px;
+            .caption {
+              width: 119px;
+            }
+          } 
+          &.forumbox {
+            top: 1534px;
+            right: 0px;
+            .caption {
+              width: 119px;
+            }
+          }
+          &.itu {
+            top: 1572px;
+            left: 3px; 
+            .caption {
+              width: 184px;
+            }
+          }
+          &.grenland {
+            top: 1524px;
+            right: 98px; 
+            .caption {
+              width: 131px;
+            }
+          }
+          
+        }
+      }
       #activity_map_wrapper {
         padding: 0.2rem;
         

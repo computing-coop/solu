@@ -21,8 +21,9 @@
         %li[a]= link_to a.name, '#', onclick: "javascript:toggleActivitytype('#{a.id}');return false;"
   
   .kilpisjarvi.partner_location
+    .left_text.show-for-small-only Finnish Society of BioArt
     .partner_circle.bioart
-    .caption Finnish Society of BioArt
+    .caption.hide-for-small-only Finnish Society of BioArt
     :javascript
       $('.partner_location.kilpisjarvi').on({
         mouseenter: function() {

@@ -107,7 +107,7 @@ header {
   
   .top-bar {
     background: url(image_path('menu_module.png')) repeat-x;
-
+    z-index: 100;
     margin-top: -37px;
     height: 75px;
     
