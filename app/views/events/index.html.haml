@@ -29,4 +29,5 @@
           Place:
           = event.place
       .short_description
-        = raw event.description
+        = raw truncate_html(event.description, length: 600)
+        %p= link_to "Read more....", event

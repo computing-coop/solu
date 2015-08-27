@@ -2,10 +2,10 @@ class EventsController < ApplicationController
   
   def index
     if @site.nil?
-      @events = Event.published.order(start_at: :asc)
+      @events = Event.published.order(start_at: :desc)
       set_meta_tags title: "Events"
     else
-      @events = @site.activity.events.published.order(start_at: :asc)
+      @events = @site.activity.events.published.order(start_at: :desc)
       set_meta_tags title: @site.name + ": Events"
       render layout: @site.layout
     end
