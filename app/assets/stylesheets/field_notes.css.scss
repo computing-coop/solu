@@ -18,7 +18,28 @@
   }
 }
 
-
+header.field_notes  {
+  .top-bar {
+    background: url(image_path('menu_module_fn.png')) repeat-x;
+  }
+  nav.top-bar {
+    .menu_wrapper, .down_arrow_wrapper {
+      ul.top-bar-menu {
+        select {
+          background-color: #DCC8FA;
+        }
+      }
+    }
+    .down_arrow_wrapper {
+      ul.top-bar-menu {
+        li {
+          &.active { background: url(image_path('selected_down_fn.png')) no-repeat center center; }
+        }
+      }
+    }
+  }
+  
+}
 nav.top-bar {
   .menu_wrapper, .down_arrow_wrapper {
     float:right;
@@ -26,11 +47,13 @@ nav.top-bar {
 
     text-align:left;
     margin-top: 1.45rem;
+    
   }
   ul.top-bar-menu {
     list-style:none;
     position:relative;
- 
+    
+   
     
     li {
       float: left;
@@ -47,9 +70,14 @@ nav.top-bar {
     ul.top-bar-menu {
       li {
         span { color: transparent; text-transform: uppercase; }
-        &.active { background: url(image_path('selected_down.png')) no-repeat center center; }
+        
       }
     }
+  }
+}
+footer._fn {
+  .drawer {
+    background-color: #dcc8fa;
   }
 }
 #sticky_field_notes_box {

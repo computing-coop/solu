@@ -39,7 +39,7 @@
           }
         }
         
-    %header{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
+    %header.invitations{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
       - unless @background_image.nil?
         - unless @background_image.credit.blank?
           .image_credit= link_to 'IMAGE CREDITS', '#', onclick: "$(this).text('#{escape_javascript(@background_image.credit)}');return false;"
@@ -66,7 +66,7 @@
                 .row.show-for-small-only
                   .small-6.columns.small-offset-1
                     %select.main_nav_select
-                      %option{ value: 'www'} Main site
+                      %option{ value: 'www'} Home
                       %option{value: 'fieldnotes'} Field_Notes
                       %option{selected: :selected, value: 'invitations'} Invitations
                   .small-5.columns
@@ -78,7 +78,7 @@
                 %ul.top-bar-menu.hide-for-small-only
                   %li
                     %select.main_nav_select
-                      %option{value: 'www'} Main site
+                      %option{value: 'www'} Home
                       %option{value: 'fieldnotes'} Field_Notes
                       %option{selected: :selected, value: 'invitations'} Invitations
                   %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-invitations')
@@ -129,7 +129,7 @@
           
 
 
-    = render partial: 'layouts/footer'
+    = render partial: 'layouts/footer', locals: {append: '_invitations'}
                      
     :javascript
       $(document).ready(function() { #{yield :jquery}

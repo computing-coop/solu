@@ -110,7 +110,13 @@ header {
     z-index: 100;
     margin-top: -37px;
     height: 75px;
-    
+    .down_arrow_wrapper {
+      ul.top-bar-menu {
+        li {
+          &.active { background: url(image_path('selected_down.png')) no-repeat center center; }
+        }
+      }
+    }
 
     a {
       text-transform: uppercase;

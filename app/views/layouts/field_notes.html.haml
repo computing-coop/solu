@@ -38,7 +38,7 @@
           }
         }
         
-    %header{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
+    %header.field_notes{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
       - unless @background_image.nil?
         - unless @background_image.credit.blank?
           .image_credit= link_to 'IMAGE CREDITS', '#', onclick: "$(this).text('#{escape_javascript(@background_image.credit)}');return false;"
@@ -65,7 +65,7 @@
                 .row.show-for-small-only
                   .small-6.columns.small-offset-1
                     %select.main_nav_select
-                      %option{ value: 'www'} Main site
+                      %option{ value: 'www'} Home
                       %option{selected: :selected, value: 'fieldnotes'} Field_Notes
                       %option{value: 'invitations'} Invitations
                   .small-5.columns
@@ -77,7 +77,7 @@
                 %ul.top-bar-menu.hide-for-small-only
                   %li
                     %select.main_nav_select
-                      %option{value: 'www'} Main site
+                      %option{value: 'www'} Home
                       %option{value: 'fieldnotes', selected: :selected} Field_Notes
                       %option{value: 'invitations'} Invitations
                   -#%li= link_to 'Home', 'http://hybridmatters.net/'
@@ -131,7 +131,7 @@
           
 
 
-    = render partial: 'layouts/footer'
+    = render partial: 'layouts/footer', locals: {append: '_fn'}
                      
     :javascript
       $(document).ready(function() { #{yield :jquery} 

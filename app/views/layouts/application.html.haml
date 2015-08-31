@@ -66,7 +66,7 @@
                 .row.show-for-small-only
                   .small-5.columns.small-offset-1
                     %select.main_nav_select
-                      %option{selected: :selected, value: 'www'} Main site
+                      %option{selected: :selected, value: 'www'} Home
                       %option{value: 'fieldnotes'} Field_Notes
                       %option{value: 'invitations'} Invitations
                   .small-6.columns
@@ -79,7 +79,7 @@
                 %ul.top-bar-menu.hide-for-small-only
                   %li
                     %select.main_nav_select
-                      %option{selected: :selected, value: 'www'} Main site
+                      %option{selected: :selected, value: 'www'} Home
                       %option{value: 'fieldnotes'} Field_Notes
                       %option{value: 'invitations'} Invitations
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
@@ -160,7 +160,7 @@
             $('#sticky_blue_box .title_box').css('display', 'block');
           });
           $('.blurb').css('height', $('.blurb').prev('.title_box').css('height'));
-    = render partial: 'layouts/footer'
+    = render partial: 'layouts/footer', locals: {append: ''}
 
                      
     :javascript

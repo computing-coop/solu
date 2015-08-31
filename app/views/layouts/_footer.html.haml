@@ -1,4 +1,4 @@
-%footer
+%footer{class: append}
   .drawer
     .row
       .text-center
@@ -6,7 +6,7 @@
         -#= link_to 'Supporters and partners', '#' , onclick: "javascript:$('footer .rest').slideToggle();return false;"
   .arrow
     .row
-      .text-center.down_arrow= link_to image_tag('selected_down.png'), '#', onclick: "javascript:$('footer .rest').slideToggle();return false;"
+      .text-center.down_arrow= link_to image_tag("selected_down#{append}.png"), '#', onclick: "javascript:$('footer .rest').slideToggle();return false;"
   .rest
     .row.lined
       .text-center Nordic Cultural Event of the Year
