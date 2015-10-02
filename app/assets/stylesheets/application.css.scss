@@ -153,6 +153,9 @@ header {
       left: calc(26% - 110px);
       padding-top: 4px;
       margin: 0;
+      li.select_menu {
+        margin-top: -8px;
+      }
       select {
         margin: 0; padding: 0 1.2rem 0 0;
         background-color: $topbarpink;

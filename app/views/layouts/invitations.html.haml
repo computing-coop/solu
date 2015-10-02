@@ -76,7 +76,7 @@
                       %option{selected: (controller.controller_name == 'events' ? :selected : false), value: events_path} Events
                       %option{selected: (controller.controller_name == 'postcategories' && params[:id] == 'speculations'  ? :selected : false), value: "/category/speculations"} Speculations              
                 %ul.top-bar-menu.hide-for-small-only
-                  %li
+                  %li.select_menu
                     %select.main_nav_select
                       %option{value: 'www'} Home
                       %option{value: 'fieldnotes'} Field_Notes

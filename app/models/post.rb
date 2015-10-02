@@ -13,7 +13,7 @@ class Post
   has_and_belongs_to_many :postcategories
   has_and_belongs_to_many :activities
   slug :title, history: true
-  
+  before_save :remove_p_from_iframe
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   
@@ -24,6 +24,10 @@ class Post
   before_save :check_published_date
   
   validates_presence_of :title, :body, :user_id
+  
+  def remove_p_from_iframe
+    self.body = self.body.gsub(/<p><iframe\s*/, '<iframe ').gsub(/<\/iframe><\/p>/, '</iframe>')
+  end
   
   def check_published_date
     if self.published == true

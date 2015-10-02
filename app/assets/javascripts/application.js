@@ -85,5 +85,6 @@ function toggleActivitytype(activitytype) {
 
 $(function() { 
   $(document).foundation();  
+
 });
 

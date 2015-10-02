@@ -14,8 +14,8 @@
   .row
     .small-6.large-3.columns= f.input :activity
   .row
-    .small-6.large-3.columns= f.input :start_at, as: :string,  :input_html => { :class => "date_picker"}    
-    .small-6.large-3.end.columns= f.input :end_at, as: :string,  :input_html => { :class => "date_picker"} 
+    .small-6.large-3.columns= f.input :start_at, as: :string,  :input_html => { :class => "date_picker", value: f.object.new_record? ? '' : f.object.start_at.strftime('%Y-%m-%d %H:%M') }  
+    .small-6.large-3.end.columns= f.input :end_at, as: :string,  :input_html => { :class => "date_picker", value: f.object.new_record? ? '' : f.object.start_at.strftime('%Y-%m-%d %H:%M')} 
   .row
     .small-12.large-6.columns= f.input :place, label: 'Place/location', input_html: {required: ''}
     

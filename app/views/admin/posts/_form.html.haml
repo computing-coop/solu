@@ -41,7 +41,7 @@
     .small-12.large-6.columns= f.input :subsite, label: 'Also feature on sub-site: '   
         
   .row
-    .small-6.large-3.columns= f.input :published_at, as: :string,  :input_html => { :class => "datetime_picker"}
+    .small-6.large-3.columns= f.input :published_at, as: :string,  :input_html => { :class => "datetime_picker", value: f.object.published_at.blank? ? '' : f.object.published_at.strftime('%Y-%m-%d %H:%M') }
   .row
     .small-10.medium-6.columns= f.input :sticky, label: 'Make post sticky', hint: 'Will appear in floating blue box atop site', as: :boolean   
   .row
@@ -50,7 +50,5 @@
     .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]
 = content_for :jquery do 
   :plain  
-    $('.datetime_picker').fdatetimepicker({
-        format: 'yyyy-mm-dd hh:ii'
-    });
+
     $('.chosen_select').chosen();

@@ -11,5 +11,7 @@
           = raw post.category
         .title= link_to post.title, post
         .date= post.published_at.strftime("%d %B %Y")
-        .body= raw truncate_html(sanitize(post.body.gsub(/\&nbsp;/, ' '), tags: %w{bold b strong u a br iframe p underline i italic em}, attributes: %w{target href}), length: 600)
+        .body
+          = raw truncate_html(sanitize(post.body.gsub(/\&nbsp;/, ' '), tags: %w{bold b h1 h2 h3 h4 h5 h6 ul li ol  strong u a br  p underline i italic em}, attributes: %w{target href}), length: 800)
+          %p= link_to 'Read more...', post
         

@@ -75,7 +75,7 @@
                       %option{selected: (controller.controller_name == 'groups' ? :selected : false), value: groups_path} Groups
                       %option{selected: (controller.controller_name == 'participants'  ? :selected : false), value: participants_path } Participants
                 %ul.top-bar-menu.hide-for-small-only
-                  %li
+                  %li.select_menu
                     %select.main_nav_select
                       %option{value: 'www'} Home
                       %option{value: 'fieldnotes', selected: :selected} Field_Notes
