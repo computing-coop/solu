@@ -46,7 +46,7 @@ header.invitations {
           &.active { background: url(image_path('selected_down_invitations.png')) no-repeat center center; }
         }
         select {
-//          background-color: #feaab6;
+          background-color: #ded3d4;
         }
 
       }
@@ -56,7 +56,7 @@ header.invitations {
 
 footer._invitations {
   .drawer {
-//    background-color: #feaab6;
+    background-color: #ded3d4;
   }
   
 }

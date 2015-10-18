@@ -357,7 +357,6 @@ DEPENDENCIES
   carrierwave-mongoid
   chosen-rails
   ckeditor
-  coffee-rails (~> 4.1.0)
   countries
   country_select!
   devise!
