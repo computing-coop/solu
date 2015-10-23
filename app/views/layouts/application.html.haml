@@ -77,12 +77,13 @@
                       %option{selected: (controller.controller_name == 'activities'  ? :selected : false), value: activities_path } Programme
                       
                 %ul.top-bar-menu.hide-for-small-only
+                  %li.about{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
                   %li.select_menu
                     %select.main_nav_select
-                      %option{selected: :selected, value: 'www'} Home
+                      %option{selected: :selected, value: 'www'} HYBRID_MATTERs
                       %option{value: 'fieldnotes'} Field_Notes
                       %option{value: 'invitations'} Invitations
-                  %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
+                  
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
                   %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', activities_path
@@ -91,11 +92,12 @@
               .social &nbsp;
               .rest
                 %ul.top-bar-menu
-                  %li.select_spacer 
-                    %span
-                      %strong Field_Notes
-                  %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}
-                    %span About
+                  .together{class: controller.controller_name == 'pages' ? :active : false}
+                    %li.about
+                      %span About
+                    %li.select_menu
+                      %span
+                        %strong HYBRID_MATTERs
                   %li{class: controller.controller_name == 'posts' ? :active : false}
                     %span News
                   %li{class: controller.controller_name == 'partners' ? :active : false}

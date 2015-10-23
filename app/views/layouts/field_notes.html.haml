@@ -75,13 +75,14 @@
                       %option{selected: (controller.controller_name == 'groups' ? :selected : false), value: groups_path} Groups
                       %option{selected: (controller.controller_name == 'participants'  ? :selected : false), value: participants_path } Participants
                 %ul.top-bar-menu.hide-for-small-only
+                  %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
                   %li.select_menu
                     %select.main_nav_select
-                      %option{value: 'www'} Home
+                      %option{value: 'www'} HYBRID_MATTERs
                       %option{value: 'fieldnotes', selected: :selected} Field_Notes
                       %option{value: 'invitations'} Invitations
                   -#%li= link_to 'Home', 'http://hybridmatters.net/'
-                  %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
+
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
                   %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', participants_path
@@ -90,12 +91,12 @@
               .social &nbsp;
               .rest
                 %ul.top-bar-menu
-                  %li.select_spacer 
-                    %span
-                      %strong Field_Notes
-                  
-                  %li{class: controller.controller_name == 'pages' ? :active : false}
-                    %span About
+                  .together{class: controller.controller_name == 'pages' ? :active : false}
+                    %li.about
+                      %span About
+                    %li.select_menu
+                      %span
+                        %strong HYBRID_MATTERs
                   %li{class: controller.controller_name == 'posts' ? :active : false}
                     %span Blog
                   %li{class: controller.controller_name == 'groups' ? :active : false}

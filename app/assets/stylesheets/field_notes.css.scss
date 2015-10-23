@@ -26,7 +26,7 @@ header.field_notes  {
     .menu_wrapper, .down_arrow_wrapper {
       ul.top-bar-menu {
         select {
-          background-color: #d7d5da;
+          background-color: #d2d6e8;
         }
       }
     }
@@ -34,6 +34,11 @@ header.field_notes  {
       ul.top-bar-menu {
         li {
           &.active { background: url(image_path('selected_down_fn.png')) no-repeat center center; }
+        }
+        .together {
+          &.active {
+            background: url(image_path('selected_down_fn.png')) no-repeat center center; 
+          }
         }
       }
     }
@@ -82,7 +87,7 @@ footer._fn {
     }
   }
   .drawer {
-    background-color: #d7d5da;
+    background-color: #d2d6e8;
 
   }
 }

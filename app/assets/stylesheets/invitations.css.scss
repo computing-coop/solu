@@ -42,11 +42,16 @@ header.invitations {
     background: url(image_path('menu_module_invitations.png')) repeat-x;
     .menu_wrapper, .down_arrow_wrapper {
       ul.top-bar-menu {
+        .together {
+          &.active {
+            background: url(image_path('selected_down_invitations.png')) no-repeat center center;
+          }
+        }
         li {
           &.active { background: url(image_path('selected_down_invitations.png')) no-repeat center center; }
         }
         select {
-          background-color: #ded3d4;
+          background-color: #f7d5ae;
         }
 
       }
@@ -56,7 +61,7 @@ header.invitations {
 
 footer._invitations {
   .drawer {
-    background-color: #ded3d4;
+    background-color: #f7d5ae;
   }
   
 }
