@@ -2,6 +2,13 @@
 
 @media only screen and (max-width: 40em)  { 
   
+  header.field_notes {
+    nav.top-bar {
+      select {
+        background-color: #d2d6e8;
+      }
+    }
+  }
   nav.top-bar {
     .hor-container {
       .row {
