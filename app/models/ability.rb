@@ -15,11 +15,14 @@ class Ability
       can :manage, Vote
       can :manage, Post
       can :manage, Event
+      can :manage, Artist
+      can :manage, Work
       can :manage, Page
       can :manage, user
       cannot :manage, Subsite
     elsif user.has_role? :participant
       can :manage, Post # lock to Field_notes only -- to be done
+      cannot :manage, Artist
     else
       cannot :read, :all
 

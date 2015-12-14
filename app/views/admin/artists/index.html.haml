@@ -1,0 +1,28 @@
+.row
+  .small-12.columns
+    %h3 Artists
+.row
+  .small-12.columns
+    = link_to 'New artist', new_admin_artist_path, class: [:button, :small]
+    %table
+      %thead
+        %tr
+          %th= sortable_column "Name"
+          %th= sortable_column "Country"
+          %th
+
+      
+      %tbody
+        - @artists.each do |artist|
+          %tr
+            %td= artist.name
+            %td= artist.country
+
+            %td 
+              -#= link_to 'Show', event, class: [:button, :tiny], target: :_blank
+              = link_to 'Edit', edit_admin_artist_path(artist), class: [:button, :tiny]
+              = link_to 'Destroy', [:admin, artist], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+
+    %br
+
+    = link_to 'New artist', new_admin_artist_path, class: [:button, :small]

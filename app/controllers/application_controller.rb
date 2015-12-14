@@ -33,7 +33,31 @@ class ApplicationController < ActionController::Base
     fronturl = request.host.split(/\./).first
     if subdomains.include?(fronturl)
       @site = sites.delete_if{|x| x.subdomains !~ /#{fronturl}/ }.first
+      
+      if @site.name == 'Exhibitions'
+
+        case params[:place]
+        when "grenland"
+          exhibitions = Partner.find('kunsthall-grenland').activities_leading.delete_if{|x| x.activity_type != 'exhibition' }
+          unless exhibitions.empty?
+            @activity = exhibitions.first
+          end
+        when "nikolaj"
+          exhibitions = Partner.find('nikolaj-kunsthal').activities_leading.delete_if{|x| x.activity_type != 'exhibition' }
+          unless exhibitions.empty?
+            @activity = exhibitions.first
+          end
+        when "forumbox"
+          exhibitions = Partner.find('forum-box').activities_leading.delete_if{|x| x.activity_type != 'exhibition' }
+          unless exhibitions.empty?
+            @activity = exhibitions.first
+          end
+        end
+      
+      end
+      
     end
+        
     
   end
   

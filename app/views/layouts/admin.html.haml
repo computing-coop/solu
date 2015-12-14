@@ -48,6 +48,10 @@
               %li= link_to 'Header images', admin_backgrounds_path
             - if can? :edit, Postcategory           
               %li= link_to 'Post categories', admin_postcategories_path
+            - if can? :edit, Artist
+              %li= link_to 'Artists', admin_artists_path
+            - if can? :edit, Work
+              %li= link_to 'Works', admin_works_path
             - if can? :edit, User
               %li= link_to 'Users', admin_users_path
             - if can? :manage, Subsite

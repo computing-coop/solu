@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   respond_to :html, :rss
 
   def index
-    if params[:activity_id]
+    if @activity # if activity already exists from exhibitions URL
+      @posts = @activity.posts.published.order(:published_at.desc)
+      set_meta_tags title: 'Posts for activity ' + @activity.name
+      render layout: @site.layout
+    elsif params[:activity_id]
       @activity = Activity.find(params[:activity_id])
       if @activity.subsite && @site.nil?
         redirect_to subdomain: @activity.subsite.subdomain

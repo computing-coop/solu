@@ -10,6 +10,21 @@ Rails.application.routes.draw do
 
   get '/category/:id', to: "postcategories#show"
 
+  get '/grenland', to: "posts#index", place: 'grenland'
+  get '/nikolaj', to: "posts#index", place: 'nikolaj'
+  get '/forumbox', to: "posts#index", place: 'forumbox'
+  # hardcode exhibitions location
+  scope shallow_prefix: "grenland" do
+    resources :pages
+    resources :posts
+    resources :photos
+    resources :artists
+  end
+  
+  # get '/grenland/*', place: "grenland"
+  # get '/nikolai/*', place: "nikolai"
+  # get '/forumbox/*', place: 'forumbox'
+  
   resources :pages
   resources :groups
   resources :participants
@@ -22,6 +37,7 @@ Rails.application.routes.draw do
         post :sort
       end
     end
+    resources :artists
     resources :backgrounds
     resources :events
     resources :partners
@@ -42,6 +58,7 @@ Rails.application.routes.draw do
     end
     resources :pages
     resources :users
+    resources :works
   end
   
   resources :events

@@ -1,0 +1,249 @@
+
+@import 'variables';
+
+
+
+.magellan-scrollnav {
+  [data-magellan-expedition-clone] {
+    dl.sub-nav {
+      display: none;
+    }
+  }
+  [data-magellan-expedition], [data-magellan-expedition-clone] {
+    max-width: 275px;
+    min-width: 0;
+    background: none;
+    left: 72.33333%;
+
+  }
+}
+
+header.exhibitions  {
+  .top-bar {
+    background: url(image_path('menu_module_exhibitions.png')) repeat-x;
+  }
+  nav.top-bar {
+    .menu_wrapper, .down_arrow_wrapper {
+      ul.top-bar-menu {
+        select {
+          background-color: #ecebeb;
+        }
+      }
+    }
+    .down_arrow_wrapper {
+      ul.top-bar-menu {
+        li {
+          &.active { background: url(image_path('selected_down_exhibitions.png')) no-repeat center center; }
+        }
+        .together {
+          &.active {
+            background: url(image_path('selected_down_exhibitions.png')) no-repeat center center; 
+          }
+        }
+      }
+    }
+  }
+  
+}
+nav.top-bar {
+  .menu_wrapper, .down_arrow_wrapper {
+    float:right;
+    position:relative;
+
+    text-align:left;
+    margin-top: 1.45rem;
+    
+  }
+  ul.top-bar-menu {
+    list-style:none;
+    position:relative;
+    
+   
+    
+    li {
+      float: left;
+      position: relative;
+      padding: 0 1.4rem;
+      a {
+        float: left;
+        white-space: nowrap;
+      }
+    }
+  }
+  .down_arrow_wrapper {
+    margin-top: 0;
+    ul.top-bar-menu {
+      li {
+        span { color: transparent; text-transform: uppercase; }
+        
+      }
+    }
+  }
+}
+footer._exhibitions {
+  .arrow {
+    .down_arrow {
+      margin-top: -1px;
+    }
+  }
+  .drawer {
+    background-color: #ecebeb;
+
+  }
+}
+#sticky_field_notes_box {
+  &.forumbox {
+    background-color: #FB8828;
+  }
+  &.nikolaj {
+    background-color: #A08065;
+  }
+  &.grenland {
+    background-color: #fee100;
+  }
+  background-color: #8F7BAF;
+  color: black;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+  .heading {
+   cursor: move;
+   font-size: 0.875em;
+   
+    span.white {
+      color: #FFF;
+    }
+    
+  }
+  .title_box {
+    border-top: 2px solid #000;
+
+    .title {
+      a { color: #FFF; }
+      font-weight: 300;
+      font-size: 0.938em;
+      padding: 2.25rem  0 0 0;
+      text-transform: uppercase;
+    }
+
+  }
+  .blurb {
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+
+    a {
+      color: #FFF;
+    }
+  }
+}
+
+.group_container {
+  border-bottom: 2px solid black;
+  &.last {
+    border-bottom: none;
+  }
+}
+
+.magellan-scrollnav {
+  dl {
+    margin: 0; padding: 0;
+    color: $turq;
+    li {
+      list-style-position: inside;
+      list-style-type: none;
+      color: $turq ;
+      width: 100%;
+      margin-bottom: 0.7rem;
+      a {
+        font-size: 0.938rem;
+        padding: 0.2rem 0;
+        line-height: 1.3rem;
+        color: $turq;
+      }
+      border-bottom: 1px solid $turq;
+    }
+    
+  }
+}
+
+
+.participants_container {
+  border-top: 2px solid black;
+}
+.participants_container, .participants_index_container {
+  .host_container, .participant_container, .participant {
+    padding: 2.5rem 0;
+    border-bottom: 2px solid black;
+    &.last {
+      border-bottom: none;
+    }
+    
+    .group_name {
+      a {
+        color: $turq;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 300;
+      }
+    }
+    .name {
+      font-size: 2.063rem;
+      margin-bottom: 0.8rem;
+      line-height: 2.063rem;
+      color: #444;
+    }
+    .participant_website {
+      font-size: 1.0rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      a {
+        color: #222;
+        &:hover { 
+          color: $turq;
+        }
+      }
+    }
+    .participant_name {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.8rem;
+      color: #444;
+    }
+    .bio, .bio p, .participant_bio, .participant_bio p {
+      color: #444;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      color: #444;
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+    }
+    .host_icon {
+      img {
+        border: 2px solid #8F7BAF;
+      }
+    }
+    .participant_icon {
+      img {
+        border: 2px solid black;
+      }
+    }
+  }
+}
+.group_container, .group_detail {
+  padding: 2.5rem 0;
+  h2 {
+    font-size: 2.063rem;
+    color: #444;
+    a { 
+      color: #444;
+    }
+  }
+  .short_description, .short_description p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: #222;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+
+}
