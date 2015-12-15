@@ -6,7 +6,7 @@ gem 'mongoid', github: "mongoid/mongoid"
 ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -73,6 +73,7 @@ gem 'mini_magick'
 gem 'mongoid-slug'
 gem 'mongoid_magic_counter_cache'
 gem 'nested_form'
+gem 'nokogiri', '1.6.6.2'
 gem 'recaptcha'
 gem 'rolify'
 gem 'truncate_html'

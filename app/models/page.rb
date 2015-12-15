@@ -28,6 +28,14 @@ class Page
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   
+  def all_images
+    o = photos.flatten.compact.uniq
+    unless activity.nil?
+      o += activity.works.map{|x| x.photos}.flatten.compact.uniq
+    end
+    o.flatten.compact.uniq
+  end
+  
   def headings
     Nokogiri::HTML(self.body).search('a[name]').map{|x| [x['name'], x.text] }.delete_if{|x| x.first.blank? }
   end

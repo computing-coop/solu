@@ -8,6 +8,7 @@ class Activity
   field :start_at, type: Date
   field :end_at, type: Date
 
+  field :place_slug, type: String
   
   belongs_to :activitytype
   has_one :subsite

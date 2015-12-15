@@ -83,7 +83,7 @@
                       %option{value: 'invitations'} Invitations
                       %option{value: 'exhibitions', selected: (@site.name == 'Exhibitions' && @activity.nil? ? :selected : false), id: :exgroup} Exhibitions
                       %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} -- Kunsthall Grenland
-                      %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} -- Nikolai Kunsthall
+                      %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} -- Nikolai Kunsthal
                       %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} -- Forum Box
                   -#%li= link_to 'Home', 'http://hybridmatters.net/'
                   %li{class: controller.controller_name == 'pages' ? :active : false}

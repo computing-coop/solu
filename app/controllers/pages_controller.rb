@@ -7,6 +7,7 @@ class PagesController < ApplicationController
       redirect_to 'exhibitions.' + request.domain
     else
       @page = @activity.pages.first
+      set_meta_tags title: @activity.name
       render layout: @site.layout, template: 'pages/show'
     end
   end

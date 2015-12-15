@@ -92,7 +92,7 @@
           $('.partner_circle.nikolai').next('.caption').text('Copenhagen');
         },
         mouseleave: function() {
-        $('.partner_circle.nikolai').next('.caption').text('Nikolai Kunsthall');
+        $('.partner_circle.nikolai').next('.caption').text('Nikolai Kunsthal');
         }
       });
   .all_partners
@@ -110,6 +110,9 @@
             .title.text-center
               - if activity.subsite
                 = link_to activity.name, "http://" + activity.subsite.hostname
+              - elsif activity.activitytype.name == 'Exhibitions'
+                = link_to activity.name, "http://exhibitions.#{Rails.env.development? ? "local:3000" : (Rails.env.staging? ? "staging.hybridmatters.net" : "hybridmatters.net")}/#{activity.place_slug.to_s}" 
+              
               - else
                 = activity.name
             .dates.text-center
