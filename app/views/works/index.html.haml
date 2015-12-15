@@ -1,0 +1,12 @@
+.works_container
+  - @works.each_with_index do |work, index|
+    .work{class: index == (@works.size - 1) ? :last : false}
+      .row
+        .medium-3.columns.medium-offset-1.text-left
+          - unless work.photos.empty?
+            = image_tag work.photos.first.image.url
+        .medium-7.columns.work_info.end
+          .name= link_to work.title, work
+          .artist= work.artist.name
+          .description= raw work.description
+      

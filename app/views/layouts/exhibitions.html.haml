@@ -81,14 +81,17 @@
                       %option{value: 'www'} HYBRID_MATTERs
                       %option{value: 'fieldnotes', selected: :selected} Field_Notes
                       %option{value: 'invitations'} Invitations
-                      %option{valie: 'exhibitions', selected: (@site.name == 'Exhibitions' && nil? && label: 'EXHIBITIONS', id: :exgroup}
-                        %option{value: 'grenland', selected: (request.url =~ /\/grenland/  ? :selected : false)}Kunsthall Grenland
-                        %option{value: 'nikolaj', selected: (request.url =~ /\/nikolaj/  ? :selected : false)} Nikolai Kunsthall
-                        %option{value: 'forumbox', selected: (request.url =~ /\/forumbox/  ? :selected : false)} Forum Box
+                      %option{value: 'exhibitions', selected: (@site.name == 'Exhibitions' && @activity.nil? ? :selected : false), id: :exgroup} Exhibitions
+                      %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} -- Kunsthall Grenland
+                      %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} -- Nikolai Kunsthall
+                      %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} -- Forum Box
                   -#%li= link_to 'Home', 'http://hybridmatters.net/'
-                  %li{class: controller.controller_name == 'pages' ? :active : false}= link_to 'Curatorial Statement', posts_path
-                  %li{class: controller.controller_name == 'artists' ? :active : false}= link_to 'Artists', artists_path
-                  %li{class: controller.controller_name == 'artists' ? :active : false}= link_to 'Pictures', photos_path
+                  %li{class: controller.controller_name == 'pages' ? :active : false}
+                    - if params[:place].nil?
+                      = link_to 'About Exhibitions', page_path('about-exhibitions')
+                    - else
+                      = link_to 'Curatorial Statement', "/#{params[:place]}"
+                  %li{class: controller.controller_name == 'works' ? :active : false}= link_to 'Works', "/#{params[:place].nil? ? "" : params[:place] + "/"}works"
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
           
           .row.hide-for-small-only
@@ -96,18 +99,22 @@
               .social &nbsp;
               .rest
                 %ul.top-bar-menu
-                  .together{class: controller.controller_name == 'pages' ? :active : false}
+                  .together
                     / %li.about
                     / %span About
                     %li.select_menu
                       %span
                         %strong KUNSTHALL GRENLAND
-                  %li{class: controller.controller_name == 'pages' ? :active : false} 
-                    %span Curatorial Statement
-                  %li{class: controller.controller_name == 'artists' ? :active : false}
-                    %span Artists
-                  %li{class: controller.controller_name == 'photos' ? :active : false}
-                    %span Pictures                    
+
+                  %li{class: controller.controller_name == 'pages' ? :active : false}
+                    %span
+                      - if params[:place].nil?
+                        About Exhibitions
+                      - else
+                        Curatorial Statement
+                  %li{class: controller.controller_name == 'works' ? :active : false}
+                    %span Works
+               
                   %li{class: controller.controller_name == 'posts' ? :active : false}
                     %span Blog
 
@@ -149,8 +156,8 @@
       $(document).ready(function() { #{yield :jquery} 
         $('select.main_nav_select').change(function() {
           var selected = $("option:selected", this);
-          if(selected.parent()[0].id == "exgroup") {
-            window.location.href= 'http://exhibitions.hybridmatters.net/' + $(this).val();
+          if(selected.hasClass("exhibition_select")) {
+            window.location.href= 'http://exhibitions.#{Rails.env.development? ? "local:3000" : (Rails.env.staging? ? "staging.hybridmatters.net" : "hybridmatters.net")}/' + $(this).val();
           }
           else {      
             window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      

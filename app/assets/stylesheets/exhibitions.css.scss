@@ -19,6 +19,9 @@
 }
 
 header.exhibitions  {
+  .hor-container .down_arrow_wrapper ul.top-bar-menu li.select_menu {
+    padding-right: 2.25rem;
+  }
   .top-bar {
     background: url(image_path('menu_module_exhibitions.png')) repeat-x;
   }
@@ -246,4 +249,55 @@ footer._exhibitions {
     margin-bottom: 0.8rem;
   }
 
+}
+
+.works_container {
+  margin: 0;
+  
+  .work {
+    padding: 3.75rem 0;
+    
+    border-bottom: 2px solid black;
+    &.last {
+      border-bottom: none;
+    }
+    .work_info {
+      
+      .artist {
+        color: $turq;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+      .name {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        color: #222;
+        a {
+          color: #222;
+          &:hover {
+            color: $blue_hover;
+          } 
+        }
+      }
+      .web {
+        font-size: 1.0rem;
+
+        font-weight: 300;
+        a {
+          color: #222;
+          &:hover {
+            color: $turq;
+          }
+        }
+      }
+      .description, .description p {
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+        color: #222;
+        font-weight: 300;
+      }
+    }
+  }
 }

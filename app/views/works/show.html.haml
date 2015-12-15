@@ -1,0 +1,32 @@
+.row
+  .large-10.columns.large-offset-1
+    %h1= @work.title
+
+.row
+  .large-10.columns.large-offset-1
+    %h3= @work.artist.name
+- unless @work.photos.empty?
+  .row
+    .large-10.columns.large-offset-1.image_carousel
+      - @work.photos.each do |i|
+        .slide= image_tag i.image.url
+.row
+  .large-10.columns.large-offset-1
+    = raw @work.description
+
+  
+- if can? :edit, @work
+  .row
+    .small-12.columns= link_to 'Edit work', edit_admin_work_path(@work), class: [:button, :tiny, :secondary]
+    
+- if @work.photos.size > 1
+  = content_for :jquery do
+    :plain
+      $('.image_carousel').slick({infinite: true,
+        arrows: false,
+        slide: '.slide',
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 2400,
+        slidesToScroll: 1,
+      });

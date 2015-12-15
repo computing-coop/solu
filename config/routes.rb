@@ -10,21 +10,34 @@ Rails.application.routes.draw do
 
   get '/category/:id', to: "postcategories#show"
 
-  get '/grenland', to: "posts#index", place: 'grenland'
-  get '/nikolaj', to: "posts#index", place: 'nikolaj'
-  get '/forumbox', to: "posts#index", place: 'forumbox'
+  # get '/grenland', to: "posts#index", place: 'grenland'
+  resources :works
+  # get '/nikolaj', to: "posts#index", place: 'nikolaj'
+  # get '/forumbox', to: "posts#index", place: 'forumbox'
+  
   # hardcode exhibitions location
-  scope shallow_prefix: "grenland" do
-    resources :pages
-    resources :posts
-    resources :photos
-    resources :artists
+  scope path: '/grenland' do
+    root 'pages#curatorial_statement', :as => :grenland_root, place: 'grenland'
+    resources :posts, place: 'grenland'
+    resources :works, place: 'grenland'
   end
+  
+  scope path: '/nikolaj' do
+    root 'pages#curatorial_statement', id: 'grenland-statement', :as => :nikolai_root, place: 'nikolaj'
+    resources :posts, place: 'nikolaj'
+    resources :works, place: 'nikolaj'
+  end
+  
+  scope path: '/forumbox' do
+    root 'pages#curatorial_statement', id: 'grenland-statement', :as => :forumbox_root, place: 'forumbox'
+    resources :posts, place: 'forumbox'
+    resources :works, place: 'forumbox'
+  end    
   
   # get '/grenland/*', place: "grenland"
   # get '/nikolai/*', place: "nikolai"
   # get '/forumbox/*', place: 'forumbox'
-  
+ 
   resources :pages
   resources :groups
   resources :participants

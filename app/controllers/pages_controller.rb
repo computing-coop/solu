@@ -1,7 +1,15 @@
 class PagesController < ApplicationController
 
   respond_to :html
-
+  
+  def curatorial_statement
+    if @activity.nil?
+      redirect_to 'exhibitions.' + request.domain
+    else
+      @page = @activity.pages.first
+      render layout: @site.layout, template: 'pages/show'
+    end
+  end
 
 
   def show

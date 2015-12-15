@@ -11,6 +11,8 @@
   .row
     .large-5.small-12.columns= f.input :title
   .row
+    .large-5.small-12.columns= f.input :activity, label: 'Is this the curatorial statement for an exhibition?', as: :select, collection: Activitytype.where(name: 'Exhibitions').map(&:activities).flatten    
+  .row
     .large-5.small-12.columns= f.input :subsite, label: 'Put under optional sub-layout:'
   .row
     .large-8.small-12.columns= f.input :body, as: :text, input_html: {class: :ckeditor}

@@ -16,4 +16,9 @@ class Artist
   
   
   has_many :works
+  
+  def sort_order
+    alphabetical_name.blank? ? name : alphabetical_name
+  end
+  
 end

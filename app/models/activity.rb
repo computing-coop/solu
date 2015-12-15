@@ -24,7 +24,8 @@ class Activity
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   slug :name, history: true
-
+  has_many :pages
+  has_many :works
   
   def box_colour
     if responsible_organisations.empty?
