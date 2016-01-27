@@ -76,15 +76,7 @@
 
                 %ul.top-bar-menu.hide-for-small-only
                   / %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
-                  %li.select_menu
-                    %select.main_nav_select
-                      %option{value: 'www'} HYBRID_MATTERs
-                      %option{value: 'fieldnotes', selected: :selected} Field_Notes
-                      %option{value: 'invitations'} Invitations
-                      %option{value: 'exhibitions', selected: (@site.name == 'Exhibitions' && @activity.nil? ? :selected : false), id: :exgroup} Exhibitions
-                      %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} -- Kunsthall Grenland
-                      %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} -- Nikolai Kunsthal
-                      %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} -- Forum Box
+                  = render partial: 'layouts/dropdown'
                   -#%li= link_to 'Home', 'http://hybridmatters.net/'
                   %li{class: controller.controller_name == 'pages' ? :active : false}
                     - if params[:place].nil?
