@@ -6,6 +6,8 @@
           - unless work.photos.empty?
             = image_tag work.photos.first.image.url
         .medium-7.columns.work_info.end
+          - unless @activity || work.activities.empty?
+            .activity= raw work.activity_list
           .name= link_to work.title, work
           .artist= work.artist.name
           .description= raw work.description

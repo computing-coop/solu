@@ -263,11 +263,18 @@ footer._exhibitions {
     }
     .work_info {
       
-      .artist {
+      .activity {
         color: $turq;
+        a { 
+          color: $turq;
+        }
         text-transform: uppercase;
         font-size: 0.8rem;
         font-weight: 300;
+        margin-bottom: 0.4rem;
+      }
+      .artist {
+        color: #f66060;
         margin-bottom: 1rem;
       }
       .name {

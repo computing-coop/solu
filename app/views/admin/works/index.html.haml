@@ -17,7 +17,7 @@
         - @works.each do |work|
           %tr
             %td= work.title
-            %td= work.activity.name
+            %td= work.activities.map(&:name).join(' / ')
             %td= work.artist.name
 
             %td 

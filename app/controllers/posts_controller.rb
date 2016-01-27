@@ -13,7 +13,8 @@ class PostsController < ApplicationController
         redirect_to subdomain: @activity.subsite.subdomain
       end
       @posts = @activity.posts.published.order(:published_at.desc)
-      set_meta_tags title: 'Posts for activity ' + @activity.name
+      set_meta_tags title: 'Posts for  ' + @activity.name
+      render layout: @site.layout
     else
       if @site
         @posts = Post.by_subsite(@site.id).published.order(published_at: :desc)

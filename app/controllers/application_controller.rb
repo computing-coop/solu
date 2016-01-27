@@ -37,7 +37,8 @@ class ApplicationController < ActionController::Base
       if @site.name == 'Exhibitions'
 
         case params[:place]
-        when "grenland"
+         when "grenland"
+
           exhibitions = Partner.find('kunsthall-grenland').activities_leading.delete_if{|x| x.activity_type != 'exhibition' }
           unless exhibitions.empty?
             @activity = exhibitions.first

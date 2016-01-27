@@ -26,7 +26,7 @@ class Activity
   accepts_nested_attributes_for :photos, allow_destroy: true
   slug :name, history: true
   has_many :pages
-  has_many :works
+  has_and_belongs_to_many :works
   
   def box_colour
     if responsible_organisations.empty?
@@ -56,4 +56,15 @@ class Activity
     return false if end_at.nil?
     return true if start_at.year == end_at.year && (start_at.month == 1 && start_at.day == 1 && end_at.day == 31 && end_at.month == 12)
   end
+  
+  def url_name
+    if name =~ /Exhibition I$/i
+      'grenland'
+    elsif name =~ /Exhibition II$/i
+      'nikolaj'
+    elsif name =~ /Exhibition III$/i
+      'forumbox'
+    end
+  end
+  
 end
