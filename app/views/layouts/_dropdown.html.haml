@@ -1,14 +1,14 @@
 %li.select_menu
   %select.main_nav_select
     %option{disabled: :disabled} Activities
-    %option{value: 'www'} Overview
-    %option{value: 'exhibitions', selected: (@site.name == 'Exhibitions' && @activity.nil? ? :selected : false), id: :exgroup} Exhibitions
+    %optgroup{label: 'Research' }
+      %option{value: 'invitations'} Invitations
+      %option{value: 'fieldnotes'} Field_Notes
+      %option{value: 'investigations'} Investigations
+    %option.bi{value: 'exhibitions', selected: (@site.name == 'Exhibitions' && @activity.nil? ? :selected : false), id: :exgroup} EXHIBITIONS
     %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} -- Kunsthall Grenland
     %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} -- Nikolai Kunsthal
     %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} -- Forum Box
-    %optgroup{label: 'Research' }
-      %option{value: 'invitations'} Invitations (MU)
-      %option{value: 'fieldnotes'} Field_Notes (FSB)
-      %option{value: 'investigations'} Investigations (ITU)
+
 
     
