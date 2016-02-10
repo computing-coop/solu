@@ -6,9 +6,9 @@
       %option{value: 'fieldnotes'} Field_Notes
       %option{value: 'investigations'} Investigations
     %option.bi{value: 'exhibitions', selected: (@site.name == 'Exhibitions' && @activity.nil? ? :selected : false), id: :exgroup} EXHIBITIONS
-    %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} -- Kunsthall Grenland
-    %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} -- Nikolai Kunsthal
-    %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} -- Forum Box
+    %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} Kunsthall Grenland
+    %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} Nikolai Kunsthal
+    %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} Forum Box
 
 
     
