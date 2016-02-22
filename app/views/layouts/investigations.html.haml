@@ -65,22 +65,23 @@
               .rest
                 .row.show-for-small-only
                   .small-6.columns.small-offset-1
-                    %select.main_nav_select
-                      %option{ value: 'www'} Home
-                      %option{value: 'fieldnotes'} Field_Notes
-                      %option{selected: :selected, value: 'investigations'} Investigations
+                    = render partial: 'layouts/dropdown'
+                    / %select.main_nav_select
+                    /   %option{ value: 'www'} Home
+                    /    %option{value: 'fieldnotes'} Field_Notes
+                    /   %option{selected: :selected, value: 'investigations'} Investigations
                   .small-5.columns
                     %select.secondary_nav_select
                       %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-investigations') } About
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
-                      %option{selected: (controller.controller_name == 'events' ? :selected : false), value: events_path} Events
-                      %option{selected: (controller.controller_name == 'postcategories' && params[:id] == 'speculations'  ? :selected : false), value: "/category/speculations"} Speculations              
+                      -#%option{selected: (controller.controller_name == 'events' ? :selected : false), value: events_path} Events
+                      -#%option{selected: (controller.controller_name == 'postcategories' && params[:id] == 'speculations'  ? :selected : false), value: "/category/speculations"} Speculations              
                 %ul.top-bar-menu.hide-for-small-only
                   %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-investigations')
                   = render partial: 'layouts/dropdown'
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
-                  %li{class: controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
-                  %li{class: controller.controller_name == 'postcategories' && params[:id] == 'speculations' ? :active : false}= link_to 'Speculations', "/category/speculations"
+                  -#%li{class: controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
+                  -#%li{class: controller.controller_name == 'postcategories' && params[:id] == 'speculations' ? :active : false}= link_to 'Speculations', "/category/speculations"
           .row.hide-for-small-only
             .down_arrow_wrapper
               .social &nbsp;
@@ -96,9 +97,9 @@
                           KUNSTHALL GRENLAND
                   %li{class: controller.controller_name == 'posts' ? :active : false}
                     %span Blog
-                  %li{class: controller.controller_name == 'events' ? :active : false}
+                  -#%li{class: controller.controller_name == 'events' ? :active : false}
                     %span Events
-                  %li{class: controller.controller_name == 'postcategories' && params[:id] == 'speculations' ? :active : false}
+                  -#%li{class: controller.controller_name == 'postcategories' && params[:id] == 'speculations' ? :active : false}
                     %span Speculations
       
                 

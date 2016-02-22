@@ -63,17 +63,17 @@
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
                 .row.show-for-small-only
-                  .small-6.columns.small-offset-1
-                    %select.main_nav_select
-                      %option{ value: 'www'} Home
-                      %option{selected: :selected, value: 'fieldnotes'} Field_Notes
-                      %option{value: 'invitations'} Invitations
+                  .small-6.columns.small-offset-1= render partial: 'layouts/dropdown'
                   .small-5.columns
                     %select.secondary_nav_select
                       / %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-field-notes-hybrid-matters') } About
+                      - if params[:place].nil?
+                        %option{selected: (controller.controller_name == 'pages' ? :active : false), value: page_path('about-exhibitions') } About Exhibitions
+                      - else
+                        %option{selected: (controller.controller_name == 'pages' ? :active : false), value: "/#{params[:place]}"} Curatorial Statement
+                      %option{selected: (controller.controller_name == 'works' ? :selected : false), value: "/#{params[:place].nil? ? "" : params[:place] + "/"}works"} Works
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
-                      %option{selected: (controller.controller_name == 'groups' ? :selected : false), value: groups_path} Groups
-
+                      
                 %ul.top-bar-menu.hide-for-small-only
                   / %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
                   = render partial: 'layouts/dropdown'
@@ -114,10 +114,13 @@
 
       
                 
-    .fnbox.show-for-small-only
+    .exhibitions_box.show-for-small-only{class: params[:place] ? params[:place] : false}
       .row
         .small-10.columns.text-center.small-centered.small-offset-1
-          an art&science field laboratory about converging ecologies
+          - if params[:place]
+            = render :partial => "layouts/#{params[:place]}"
+          - else
+            Exhibitions of the HYBRID_MATTERs project
       
     .main-container.field_notes
 
@@ -135,7 +138,7 @@
             .title= link_to 'HYBRID MATTERs Exhibitions', '/'
             
           .blurb.text-center
-            an art&science field laboratory about converging ecologies
+            Exhibitions of the HYBRID_MATTERs project
             
       = content_for :jquery do
         :plain  

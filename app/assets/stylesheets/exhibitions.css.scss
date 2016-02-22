@@ -308,3 +308,92 @@ footer._exhibitions {
     }
   }
 }
+
+@media only screen and (max-width: 40em)  { 
+  
+  header.exhibitions {
+    nav.top-bar {
+      select {
+         background-color: #ecebeb !important;
+       }
+      .hor-container {
+        .row {
+          padding-top: 0;
+        }
+        .menu_wrapper, .down_arrow_wrapper {
+          float: left;
+          left: 0;
+
+
+          li.select_menu {
+            line-height: initial;
+            margin-top: 10px;
+          }
+          .secondary_nav_select {
+            margin-top: 28px;
+          }
+          .rest {
+            width: 100%;
+          }
+          ul.top-bar-menu {
+            left: 0;
+            padding-top: 0.2rem;
+            li {
+              padding: 0 0.3rem;
+              a {
+                font-size: 0.85rem;
+              }
+            }
+          }
+        }
+      }
+    }  
+  }
+  
+  .exhibitions_box {
+    &.forumbox {
+      background-color: #FB8828;
+    }
+    &.nikolaj {
+      background-color: #A08065;
+    }
+    &.grenland {
+      background-color: #fee100;
+    }
+    background-color: #ebb347;
+    margin-top: 51px;
+    border-top: 1px solid black;
+    color: black;
+    font-family: Roboto, sans-serif;
+    a {
+      color: #FFF;
+    }
+    .hidden_announcements {
+      display: none;
+      border-left: 2px solid #444;
+      border-right: 2px solid #444;
+      margin: 0 0.688em;
+    }
+    .row {
+      border-bottom: 1px solid black;
+      padding: 0.8rem 0;
+      overflow: hidden;
+    }
+
+    .titlex {
+      font-size: 0.938rem;
+      a {
+        color: black;
+        
+      }
+    }
+    .blurb_mobile {
+      font-size: 0.8rem;
+    }
+  }
+  
+  
+}
+
+
+
