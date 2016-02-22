@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   respond_to :html, :rss
 
   def index
+
     if @activity # if activity already exists from exhibitions URL
       @posts = @activity.posts.published.order(:published_at.desc)
       set_meta_tags title: 'Posts for activity ' + @activity.name

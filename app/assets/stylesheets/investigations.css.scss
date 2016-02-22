@@ -1,0 +1,91 @@
+
+header.investigations  {
+
+  nav.top-bar {
+    background: url(image_path('menu_module_investigations.png')) repeat-x;
+    .down_arrow_wrapper {
+      ul.top-bar-menu {
+        li {
+          &.active { background: url(image_path('selected_down_investigations.png')) no-repeat center center; }
+        }
+        .together {
+          &.active {
+            background: url(image_path('selected_down_investigations.png')) no-repeat center center; 
+          }
+        }
+      }
+    }
+
+    .menu_wrapper, .down_arrow_wrapper {
+     ul.top-bar-menu {
+       li {
+         select {
+           background-color: #4d4d4d;
+           color: #FFF;
+         }
+         a {
+           color: #FFF;
+         }
+       }
+     }
+   }
+  }
+}
+
+  
+#sticky_investigations_box {
+
+  background-color: #26aee5;
+  color: black;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+  .heading {
+   cursor: move;
+   font-size: 0.875em;
+   
+    span.white {
+      color: #FFF;
+    }
+    
+  }
+  .title_box {
+    border-top: 2px solid #000;
+
+    .title {
+      a { color: #FFF; }
+      font-weight: 300;
+      font-size: 0.938em;
+      padding: 2.25rem  0 0 0;
+      text-transform: uppercase;
+    }
+
+  }
+  .blurb {
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+
+    a {
+      color: #FFF;
+    }
+  }
+}
+
+
+
+
+
+footer._investigations {
+  .arrow {
+    .down_arrow {
+      margin-top: -1px;
+    }
+  }
+  .drawer {
+    background-color: #4d4d4d;
+    color: #ffffff;
+  }
+  .contact_info {
+    background-color: #e1e0e0;
+  }
+}

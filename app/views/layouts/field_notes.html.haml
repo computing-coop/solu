@@ -76,12 +76,7 @@
                       %option{selected: (controller.controller_name == 'participants'  ? :selected : false), value: participants_path } Participants
                 %ul.top-bar-menu.hide-for-small-only
                   %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
-                  %li.select_menu
-                    %select.main_nav_select
-                      %option{value: 'www'} HYBRID_MATTERs
-                      %option{value: 'fieldnotes', selected: :selected} Field_Notes
-                      %option{value: 'invitations'} Invitations
-                  -#%li= link_to 'Home', 'http://hybridmatters.net/'
+                  = render partial: 'layouts/dropdown'
 
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
@@ -96,7 +91,8 @@
                       %span About
                     %li.select_menu
                       %span
-                        %strong HYBRID_MATTERs
+                        &nbsp;&nbsp;&nbsp;
+                        %strong KUNSTHALL GRENLAND
                   %li{class: controller.controller_name == 'posts' ? :active : false}
                     %span Blog
                   %li{class: controller.controller_name == 'groups' ? :active : false}

@@ -96,7 +96,9 @@
                     / %span About
                     %li.select_menu
                       %span
-                        %strong KUNSTHALL GRENLAND
+                        &nbsp;
+                        %strong
+                          KUNSTHALL GRENLAND
 
                   %li{class: controller.controller_name == 'pages' ? :active : false}
                     %span
@@ -146,16 +148,5 @@
                      
     :javascript
       $(document).ready(function() { #{yield :jquery} 
-        $('select.main_nav_select').change(function() {
-          var selected = $("option:selected", this);
-          if(selected.hasClass("exhibition_select")) {
-            window.location.href= 'http://exhibitions.#{Rails.env.development? ? "local:3000" : (Rails.env.staging? ? "staging.hybridmatters.net" : "hybridmatters.net")}/' + $(this).val();
-          }
-          else {      
-            window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
-          }
-        });
-        $('select.secondary_nav_select').change(function() {
-          window.location.href= $(this).val();
-        });
+
       });

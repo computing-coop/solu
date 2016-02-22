@@ -2,7 +2,7 @@ class PostcategoriesController < ApplicationController
   
   def show
     @category = Postcategory.find(params[:id])
-    @posts = @category.posts
+    @posts = @category.posts.published
     if @site
       render template: 'posts/index', layout: @site.layout
     else

@@ -3,9 +3,9 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = display_meta_tags :site => 'HYBRID MATTERs invitations', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
+    = display_meta_tags :site => 'HYBRID MATTERs investigations', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
     = stylesheet_link_tag    'application', media: 'all'
-    = stylesheet_link_tag    'invitations', media: 'all'
+    = stylesheet_link_tag    'investigations', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
     - if controller.controller_name == 'partners'
       %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
@@ -39,7 +39,7 @@
           }
         }
         
-    %header.invitations{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
+    %header.investigations{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
       - unless @background_image.nil?
         - unless @background_image.credit.blank?
           .image_credit= link_to 'IMAGE CREDITS', '#', onclick: "$(this).text('#{escape_javascript(@background_image.credit)}');return false;"
@@ -68,15 +68,15 @@
                     %select.main_nav_select
                       %option{ value: 'www'} Home
                       %option{value: 'fieldnotes'} Field_Notes
-                      %option{selected: :selected, value: 'invitations'} Invitations
+                      %option{selected: :selected, value: 'investigations'} Investigations
                   .small-5.columns
                     %select.secondary_nav_select
-                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-invitations') } About
+                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-investigations') } About
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
                       %option{selected: (controller.controller_name == 'events' ? :selected : false), value: events_path} Events
                       %option{selected: (controller.controller_name == 'postcategories' && params[:id] == 'speculations'  ? :selected : false), value: "/category/speculations"} Speculations              
                 %ul.top-bar-menu.hide-for-small-only
-                  %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-invitations')
+                  %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-investigations')
                   = render partial: 'layouts/dropdown'
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
@@ -102,33 +102,33 @@
                     %span Speculations
       
                 
-    .invitations_box.show-for-small-only
+    .investigations_box.show-for-small-only
       .row
         .small-10.columns.text-center.small-centered.small-offset-1
           Citizen art&science activities in different Nordic countries by researchers from Malmö University
-    .main-container.invitations
+    .main-container.investigations
 
             
       = yield
 
-      #sticky_invitations_box.hide-for-small-only
+      #sticky_investigations_box.hide-for-small-only
         .heading.ui-draggable-handle
           .left.text-left PROGRAMME
-          .text-right 2015
+          .text-right 2015-2016
         .title_box.text-center
-          .title= link_to 'HYBRID MATTERs Invitations', '/'
+          .title= link_to 'HYBRID MATTERs Investigations', '/'
             
         .blurb.text-center
-          Citizen art&science activities in different Nordic countries by researchers from Malmö University
+          Research into converging ecologies
             
       = content_for :jquery do
         :plain  
-          $('#sticky_invitations_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
+          $('#sticky_investigations_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           
 
 
-    = render partial: 'layouts/footer', locals: {append: '_invitations'}
+    = render partial: 'layouts/footer', locals: {append: '_investigations'}
                      
     :javascript
       $(document).ready(function() { #{yield :jquery}
