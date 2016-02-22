@@ -459,6 +459,9 @@ select optgroup, option.bi {
   font-style: italic;
   font-weight: bold;;
 }
+select optgroup option {
+  font-style: normal;
+}
 option.exhibition_select {
   padding-left: 1.2rem;
 }
