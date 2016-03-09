@@ -165,9 +165,7 @@
                      
     :javascript
       $(document).ready(function() { #{yield :jquery} 
-        $('select.main_nav_select').change(function() {
-          window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
-        });
+
         $('select.secondary_nav_select').change(function() {
           window.location.href= $(this).val();
         });
