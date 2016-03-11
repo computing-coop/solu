@@ -122,12 +122,12 @@
           - else
             Exhibitions of the HYBRID_MATTERs project
       
-    .main-container.field_notes
+    .main-container.exhibitions
 
             
       = yield
 
-      #sticky_field_notes_box.hide-for-small-only{class: params[:place] ? params[:place] : false}
+      #sticky_exhibitions_box.hide-for-small-only{class: params[:place] ? params[:place] : false}
         - if params[:place]
           = render :partial => "layouts/#{params[:place]}"
         - else
@@ -142,7 +142,7 @@
             
       = content_for :jquery do
         :plain  
-          $('#sticky_field_notes_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
+          $('#sticky_exhibitions_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           
 

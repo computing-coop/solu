@@ -14,7 +14,11 @@ class Work
   accepts_nested_attributes_for :photos, allow_destroy: true
 
   validates_presence_of :artist_id, :title
+  validate :has_activity?
 
+  def has_activity?
+    errors[:base] <<  "Work must belong to at least one exhibition." if self.activities.blank?
+  end
 
   def activity_list
     activities.map{|x| '<a href="/' + x.url_name + '">' + x.name + '</a>'}.flatten.compact.join(' / ')

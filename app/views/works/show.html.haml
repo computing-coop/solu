@@ -1,6 +1,9 @@
 .row
   .large-10.columns.large-offset-1
-    %h1= @work.title
+    - unless @work.activities.empty?
+      .activity= raw @work.activity_list
+    %h1.name= @work.title
+
 
 .row
   .large-10.columns.large-offset-1
