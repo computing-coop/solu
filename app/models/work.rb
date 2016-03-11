@@ -12,7 +12,7 @@ class Work
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
-  
+
   validates_presence_of :artist_id, :title
 
 

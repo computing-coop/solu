@@ -13,7 +13,7 @@
   .row
     .small-12.large-6.columns= f.input :artist, as: :select, collection: Artist.all, input_html: {required: ''}
   .row
-    .small-12.large-6.columns= f.input :activity_ids, as: :check_boxes, label: 'Exhibitions', collection: Activitytype.where(name: 'Exhibitions').map(&:activities).flatten, input_html: { required: ''}
+    .small-12.large-6.columns= f.input :activities, as: :check_boxes, label: 'Exhibitions', collection: Activitytype.where(name: 'Exhibitions').map(&:activities).flatten, input_html: { required: ''}
   .row  
     .small-12.columns= f.input :description, as: :ckeditor, input_html: {required: ''}
   

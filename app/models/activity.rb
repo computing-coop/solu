@@ -58,12 +58,14 @@ class Activity
   end
   
   def url_name
-    if name =~ /Exhibition I$/i
+    if name =~ /Kunsthall Grenland$/i
       'grenland'
-    elsif name =~ /Exhibition II$/i
+    elsif name =~ /Nikolaj Kunsthal$/i
       'nikolaj'
-    elsif name =~ /Exhibition III$/i
+    elsif name =~ /FORUM BOX$/i
       'forumbox'
+    else
+      ''
     end
   end
   
