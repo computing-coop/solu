@@ -1,7 +1,7 @@
 
 %li.select_menu
   %select.main_nav_select
-    %option{disabled: :disabled, selected: (@site.nil?  ? :selected : false)} Activities
+    %option{selected: (@site.nil?  ? :selected : false)} Activities
     %optgroup{label: 'Research' }
       %option{value: 'invitations', selected: (@site.try(:name) == 'Invitations' ? :selected : false)} Invitations
       %option{value: 'fieldnotes', selected: (@site.try(:name) == 'Field_Notes' ? :selected : false)} Field_Notes
@@ -15,11 +15,16 @@
 = content_for :jquery do
   :plain
     $('select.main_nav_select').change(function() {
+
       var selected = $("option:selected", this);
+
       if(selected.hasClass("exhibition_select")) {
         window.location.href= 'http://exhibitions.#{Rails.env.development? ? "local:3000" : (Rails.env.staging? ? "staging.hybridmatters.net" : "hybridmatters.net")}/' + $(this).val();
       }
-      else {      
+      else if ($(this).val() == 'Activities') {
+        
+        window.location.href = 'http://hybridmatters.net/'
+      } else {
         window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
       }
     });

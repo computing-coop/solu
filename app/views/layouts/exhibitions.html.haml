@@ -72,7 +72,7 @@
                       - else
                         %option{selected: (controller.controller_name == 'pages' ? :active : false), value: "/#{params[:place]}"} Curatorial Statement
                       %option{selected: (controller.controller_name == 'works' ? :selected : false), value: "/#{params[:place].nil? ? "" : params[:place] + "/"}works"} Works
-                      %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
+                      %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: params[:place].to_s + '/posts' } Blog
                       
                 %ul.top-bar-menu.hide-for-small-only
                   / %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
@@ -84,7 +84,7 @@
                     - else
                       = link_to 'Curatorial Statement', "/#{params[:place]}"
                   %li{class: controller.controller_name == 'works' ? :active : false}= link_to 'Works', "/#{params[:place].nil? ? "" : params[:place] + "/"}works"
-                  %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
+                  %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', params[:place].to_s + '/posts'
           
           .row.hide-for-small-only
             .down_arrow_wrapper
@@ -133,12 +133,12 @@
         - else
           .heading.ui-draggable-handle
             .left.text-left PROGRAMME
-            .text-right 2015-2016
+            .text-right March-December 2016 
           .title_box.text-center
             .title= link_to 'HYBRID MATTERs Exhibitions', '/'
             
           .blurb.text-center
-            Exhibitions of the HYBRID_MATTERs project
+             
             
       = content_for :jquery do
         :plain  
