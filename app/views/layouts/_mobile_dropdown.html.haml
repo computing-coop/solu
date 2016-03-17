@@ -1,0 +1,11 @@
+.small-5.columns.small-offset-1
+  %select.main_nav_select
+    %option{selected: (@site.nil?  ? :selected : false)} Overview
+    %optgroup{label: 'Research' }
+      %option{value: 'invitations', selected: (@site.try(:name) == 'Invitations' ? :selected : false)} Invitations
+      %option{value: 'fieldnotes', selected: (@site.try(:name) == 'Field_Notes' ? :selected : false)} Field_Notes
+      %option{value: 'investigations', selected: (@site.try(:name) == 'Investigations' ? :selected : false)} Investigations
+    %option.bi{value: 'exhibitions', selected: (@site.try(:name) == 'Exhibitions' && @activity.nil? ? :selected : false), id: :exgroup} EXHIBITIONS
+    %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} &nbsp;&nbsp;&nbsp; Kunsthall Grenland
+    %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} &nbsp; &nbsp;&nbsp;Nikolai Kunsthal
+    %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} &nbsp; &nbsp;&nbsp;Forum Box
