@@ -11,6 +11,10 @@
       
       .menu_wrapper {
         margin-top: 0.25rem;
+        select {
+          font-size: 11px;
+          word-wrap: break-word;
+        }
       }
       
       select {
@@ -212,7 +216,7 @@
   }  
     
   .main-container {
-    padding-top: 51px;
+    padding-top: 15px;
     &.field_notes {
       padding-top: 20px;
     }

@@ -64,11 +64,7 @@
               
               .rest
                 .row.show-for-small-only
-                  .small-5.columns.small-offset-1
-                    %select.main_nav_select
-                      %option{selected: :selected, value: 'www'} Home
-                      %option{value: 'fieldnotes'} Field_Notes
-                      %option{value: 'invitations'} Invitations
+                  = render partial: 'layouts/mobile_dropdown'
                   .small-6.columns
                     %select.secondary_nav_select
                       %option{selected: (controller.controller_name == 'pages' && params[:id] == 'about' ? :selected : false), value: page_path('about') } About
