@@ -30,9 +30,9 @@ class Page
   
   def all_images
     o = photos.flatten.compact.uniq
-    unless activity.nil?
-      o += activity.works.map{|x| x.photos}.flatten.compact.uniq
-    end
+    # unless activity.nil?
+    #   o += activity.works.map{|x| x.photos}.flatten.compact.uniq
+    # end
     o.flatten.compact.uniq
   end
   
