@@ -10,5 +10,8 @@
             .activity= raw work.activity_list
           .name= link_to work.title, work
           .artist= work.artist.name
-          .description= raw work.description
+          .description
+            = raw truncate_html(work.description, length: 600)
+            %p= link_to "Read more....", work
+
       

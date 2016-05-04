@@ -1,21 +1,21 @@
 .row
-  .large-10.columns.large-offset-1
+  .medium-8.columns.medium-offset-2
     - unless @work.activities.empty?
       .activity= raw @work.activity_list
     %h1.name= @work.title
 
 
 .row
-  .large-10.columns.large-offset-1
+  .medium-8.columns.medium-offset-2
     %h3= @work.artist.name
 - unless @work.photos.empty?
   .row
-    .large-10.columns.large-offset-1.image_carousel
+    .medium-7.columns.medium-offset-2.image_carousel
       - @work.photos.each do |i|
         .slide= image_tag i.image.url
 .row
-  .large-10.columns.large-offset-1
-    = raw @work.description
+  .medium-8.columns.medium-offset-2
+    .work_description= raw @work.description
 
   
 - if can? :edit, @work
