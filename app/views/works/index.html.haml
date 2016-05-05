@@ -12,6 +12,6 @@
           .artist= work.artist.name
           .description
             = raw truncate_html(work.description, length: 600)
-            %p= link_to "Read more....", work
+            %p= link_to "Read more....", work.activities.size == 1 ? "/#{work.activities.first.url_name}/works/#{work.slug}" : work
 
       

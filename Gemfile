@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'mongoid', github: "mongoid/mongoid"
+gem 'mongoid', '~> 5.1.0'
 
 ruby '2.2.2'
 
