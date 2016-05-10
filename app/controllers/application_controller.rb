@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     if @site
       @background_image = Background.by_subsite(@site.id).active.skip(rand(Background.by_subsite(@site.id).active.count)).first
     else
-      @background_image = Background.no_subsite.active.skip(rand(Background.no_subsite.active.count)).first
+      @background_image = Background.active.skip(rand(Background.active.count)).first
     end
   end
   

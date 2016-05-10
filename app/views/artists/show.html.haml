@@ -7,9 +7,9 @@
             - if @artist.exhibitions.size > 1
               = image_tag 'hm_logo.png'
             - else
-              = image_tag @artist.exhibitions.first.hmlogo.gsub('development', 'production')
+              = image_tag @artist.exhibitions.first.hmlogo
           - else
-            = image_tag @artist.photos.first.url(:blog).gsub('development', 'production')
+            = image_tag @artist.photos.first.url(:blog)
         .small-12.medium-10.columns.artist_info.end
           .blue_heading= raw @artist.exhibition_list.join(' / ')
           .title= @artist.name
@@ -39,8 +39,8 @@
         .medium-7.columns.medium-offset-2.image_carousel
           - work.photos.each do |i|
             .slide[i]
-              = image_tag i.image.url(:standard).gsub('development', 'production')
-              .thumb= image_tag i.image.url(:thumb).gsub('development', 'production')
+              = image_tag i.image.url(:standard)
+              .thumb= image_tag i.image.url(:thumb)
     .row
       .medium-8.columns.medium-offset-2
         .work_description
