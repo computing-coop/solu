@@ -25,7 +25,7 @@
         .small-12.columns
           = @submission.address
           %br/
-          = [@submission.city, (@submission.country.nil? ? nil : Country[@submission.country].name)].compact.join(', ')
+          = [@submission.city, (@submission.country.nil? ? nil : ISO3166::Country[@submission.country].name)].compact.join(', ')
       .row
         .small-12.columns
           Date of birth:
@@ -33,7 +33,7 @@
       .row
         .small-12.columns
           Nationality:
-          = Country[@submission.nationality].name
+          = ISO3166::Country[@submission.nationality].name
       .row
         .small-12.columns
           = link_to @submission.email, "mailto:#{@submission.email}"

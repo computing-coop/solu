@@ -44,8 +44,8 @@ gem 'unicorn-rails'
 
 gem 'cancancan', '~> 1.10'
 
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-rails', '~> 1.1.0'
+gem 'capistrano'
+gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-bundler'
 

@@ -6,7 +6,7 @@
           - if partner.hmlogo?
             = image_tag partner.hmlogo.url
         .medium-7.columns.partner_info.end
-          .country= Country[partner.country].name
+          .country= ISO3166::Country[partner.country].name
           .name= partner.name
           .web= link_to partner.website, partner.website, target: :_blank
           .description= raw partner.description
