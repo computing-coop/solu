@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # get '/grenland', to: "posts#index", place: 'grenland'
   resources :works
+  resources :artists
   # get '/nikolaj', to: "posts#index", place: 'nikolaj'
   # get '/forumbox', to: "posts#index", place: 'forumbox'
   
@@ -20,18 +21,21 @@ Rails.application.routes.draw do
     root 'pages#curatorial_statement', :as => :grenland_root, place: 'grenland'
     resources :posts, place: 'grenland'
     resources :works, place: 'grenland'
+    resources :artists, place: 'grenland'
   end
   
   scope path: '/nikolaj' do
     root 'pages#curatorial_statement', id: 'grenland-statement', :as => :nikolai_root, place: 'nikolaj'
     resources :posts, place: 'nikolaj'
     resources :works, place: 'nikolaj'
+    resources :artists, place: 'nikolaj'
   end
   
   scope path: '/forumbox' do
     root 'pages#curatorial_statement', id: 'grenland-statement', :as => :forumbox_root, place: 'forumbox'
     resources :posts, place: 'forumbox'
     resources :works, place: 'forumbox'
+    resources :artists, place: 'forumbox'
   end    
   
   # get '/grenland/*', place: "grenland"

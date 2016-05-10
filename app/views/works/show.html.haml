@@ -1,18 +1,21 @@
 .row
   .medium-8.columns.medium-offset-2
     - unless @work.activities.empty?
+      
       .activity= raw @work.activity_list
     %h1.name= @work.title
 
 
 .row
   .medium-8.columns.medium-offset-2
-    %h3= @work.artist.name
+    %h3= raw @work.artist_names
 - unless @work.photos.empty?
   .row
     .medium-7.columns.medium-offset-2.image_carousel
       - @work.photos.each do |i|
-        .slide= image_tag i.image.url
+        .slide[i]
+          = image_tag i.image.url(:standard).gsub('development', 'production')
+          .thumb= image_tag i.image.url(:thumb).gsub('development', 'production')
 .row
   .medium-8.columns.medium-offset-2
     .work_description= raw @work.description
@@ -30,6 +33,10 @@
         slide: '.slide',
         variableWidth: false,
         autoplay: true,
+        dots: true,
+        customPaging: function(slick,index) {
+           return slick.$slides.eq(index).find('.thumb').html() ;
+        },
         autoplaySpeed: 2400,
         slidesToScroll: 1,
       });

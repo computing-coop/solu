@@ -28,6 +28,14 @@ class Activity
   has_many :pages
   has_and_belongs_to_many :works
   
+  def hmlogo
+    if responsible_organisations.empty?
+      'hm_logo.png'
+    else
+      responsible_organisations.first.hmlogo.url
+    end
+  end
+  
   def box_colour
     if responsible_organisations.empty?
       "ffffff"

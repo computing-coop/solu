@@ -9,7 +9,7 @@
           - unless @activity || work.activities.empty?
             .activity= raw work.activity_list
           .name= link_to work.title, work
-          .artist= work.artist.name
+          .artist= raw work.artist_names
           .description
             = raw truncate_html(work.description, length: 600)
             %p= link_to "Read more....", work.activities.size == 1 ? "/#{work.activities.first.url_name}/works/#{work.slug}" : work

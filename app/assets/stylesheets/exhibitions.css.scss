@@ -395,6 +395,7 @@ footer._exhibitions {
   
 }
 
+
 .work_description {
   padding-top: 1.5rem;
 }
@@ -406,3 +407,98 @@ footer._exhibitions {
   font-weight: 300;
 }
 
+
+.artist_single {
+  border-bottom: 1px solid #222;
+  .artist_info {
+    .blue_heading {
+      color: $turq;
+      font-size:  0.938rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 300;
+      a { 
+        color: $turq;
+        &:hover {
+          color: $darkerturq;
+        }
+      }
+    }
+    .title {
+      font-size: 2.063rem;
+      line-height: 2.5rem;
+      color: #444;
+      a { 
+        color: #444;
+      }
+    }
+    .country {
+      color: #999;
+      font-style: italic;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .website {
+      font-size: 1.0rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      a {
+
+        color: #222;
+      }
+    }
+
+  }
+  .artist_bio {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: #444;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+    p {
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      color: #444;
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+    }
+  }
+}
+
+.artist_single_work {
+  border-bottom: 1px solid #222;
+  &.last {
+    border-bottom: none;
+  }
+  padding-top: 2rem;
+  .activities_list {
+    color: $turq;
+    font-size:  0.938rem;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    a { 
+      color: $turq;
+      &:hover {
+        color: $darkerturq;
+      }
+    }
+  }
+  .artist_names {
+    color: #999;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .work_title {
+    font-size: 1.863rem;
+    line-height: 2.5rem;
+    margin: 0.5rem 0;
+    color: #444;
+    a { 
+      color: #444;
+    }
+  }
+}

@@ -18,7 +18,7 @@
           %tr
             %td= work.title
             %td= work.activities.map(&:name).join(' / ')
-            %td= work.artist.name
+            %td= work.artists.map(&:name).join(", ")
 
             %td 
               -#= link_to 'Show', event, class: [:button, :tiny], target: :_blank

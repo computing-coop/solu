@@ -1,0 +1,71 @@
+.artist_single
+  .row
+    .small-12.medium-9.columns.medium-offset-2
+      .row
+        .medium-2.columns.hide-for-small-only
+          - if @artist.photos.empty?
+            - if @artist.exhibitions.size > 1
+              = image_tag 'hm_logo.png'
+            - else
+              = image_tag @artist.exhibitions.first.hmlogo.gsub('development', 'production')
+          - else
+            = image_tag @artist.photos.first.url(:blog).gsub('development', 'production')
+        .small-12.medium-10.columns.artist_info.end
+          .blue_heading= raw @artist.exhibition_list.join(' / ')
+          .title= @artist.name
+          .country= ISO3166::Country[@artist.country].name
+          - if @artist.website
+            .website= link_to @artist.website_formatted, @artist.website_formatted
+          
+  .row
+    .small-12.medium-8.columns.medium-offset-2.artist_bio= raw @artist.bio
+
+- @artist.works.each_with_index do |work, index|
+  .artist_single_work{class: index == (@artist.works.size - 1) ? :last : ''}
+    .row
+      .medium-8.columns.medium-offset-2
+        - unless work.activities.empty?
+      
+          .activities_list= raw work.activity_list
+        .work_title= work.title
+
+
+    .row
+      .medium-8.columns.medium-offset-2
+        - if work.artists.size > 1
+          .artist_names= raw work.artist_names
+    - unless work.photos.empty?
+      .row
+        .medium-7.columns.medium-offset-2.image_carousel
+          - work.photos.each do |i|
+            .slide[i]
+              = image_tag i.image.url(:standard).gsub('development', 'production')
+              .thumb= image_tag i.image.url(:thumb).gsub('development', 'production')
+    .row
+      .medium-8.columns.medium-offset-2
+        .work_description
+          = raw truncate_html(work.description, length: 600)
+          %p= link_to "Read more....", work.activities.size == 1 ? "/#{work.activities.first.url_name}/works/#{work.slug}" : work
+
+
+  
+    - if can? :edit, work
+      .row
+        .medium-7.columns.medium-offset-2= link_to 'Edit work', edit_admin_work_path(work), class: [:button, :tiny, :secondary]
+    
+- if @artist.works.map(&:photos).flatten.compact.size > 1
+  = content_for :jquery do
+    :plain
+      $('.image_carousel').slick({infinite: true,
+        arrows: false,
+        slide: '.slide',
+        variableWidth: false,
+        autoplay: true,
+        dots: true,
+        customPaging: function(slick,index) {
+           return slick.$slides.eq(index).find('.thumb').html() ;
+        },
+        autoplaySpeed: 2400,
+        slidesToScroll: 1,
+      });
+    

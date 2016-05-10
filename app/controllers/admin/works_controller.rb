@@ -47,7 +47,10 @@ class Admin::WorksController < Admin::BaseController
     end
 
     def work_params
-      params.require(:work).permit(:title, :description,  :artist_id,  
-                                      photos_attributes: [:image, :id,  :_destroy], activity_ids: [])
+      params.require(:work).permit(:title, :description,    
+        artist_attributes: [:id, :_destroy], 
+        artist_ids: [],
+        photos_attributes: [:image, :id,  :_destroy],
+        activity_ids: [])
     end
 end
