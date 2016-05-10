@@ -12,8 +12,12 @@
           - else
             = image_tag artist.photos.first.image.url
         .medium-7.columns.artist_info.end
-          - unless artist.exhibitions.empty?
-            .blue_heading= raw artist.exhibition_list.join(' / ')
+          - if @activity.nil?
+            - unless artist.exhibitions.empty?
+              .blue_heading= raw artist.exhibition_list.join(' / ')
+          - else
+            - if artist.exhibitions.size > 1
+              .blue_heading= raw artist.exhibition_list.join(' / ')
           .name= link_to artist.name, artist
           .country= ISO3166::Country[artist.country].name
           - unless artist.website.blank?

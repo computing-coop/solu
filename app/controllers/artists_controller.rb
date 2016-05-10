@@ -8,7 +8,7 @@ class ArtistsController < ApplicationController
       set_meta_tags title: "Artists"
      
     else
-      @artists = @activity.artists.order(title: :asc)
+      @artists = @activity.works.map(&:artists).flatten.sort_by(&:alphabetical_name)
       set_meta_tags title: @activity.name + ": Artists"
 
     end
