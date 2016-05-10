@@ -407,6 +407,67 @@ footer._exhibitions {
   font-weight: 300;
 }
 
+.artists_container {
+  .artist_index {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #222;
+    &.last {
+      border-bottom: none;
+    }
+    .blue_heading {
+      color: $turq;
+      font-size:  0.938rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 300;
+      a { 
+        color: $turq;
+        &:hover {
+          color: $darkerturq;
+        }
+      }
+    }
+    .name {
+      font-size: 2.063rem;
+      line-height: 2.5rem;
+      color: #444;
+      a { 
+        color: #444;
+      }
+    }
+    .country {
+      color: #999;
+      font-style: italic;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .website {
+      font-size: 1.0rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+      a {
+
+        color: #222;
+      }
+    }
+
+  }
+  .description {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: #444;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+    p {
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      color: #444;
+    }
+  }
+  
+}
 
 .artist_single {
   border-bottom: 1px solid #222;

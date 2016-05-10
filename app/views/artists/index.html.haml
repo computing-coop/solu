@@ -1,0 +1,25 @@
+.artists_container
+
+  - @artists.each_with_index do |artist, index|
+    .artist_index{class: index == (@artists.size - 1) ? :last : false}
+      .row
+        .medium-2.columns.medium-offset-1.text-left
+          - if artist.photos.empty?
+            - if artist.exhibitions.size > 1  || artist.exhibitions.empty?
+              = image_tag 'hm_logo.png'
+            - else
+              = image_tag artist.exhibitions.first.hmlogo
+          - else
+            = image_tag artist.photos.first.image.url
+        .medium-7.columns.artist_info.end
+          - unless artist.exhibitions.empty?
+            .blue_heading= raw artist.exhibition_list.join(' / ')
+          .name= link_to artist.name, artist
+          .country= ISO3166::Country[artist.country].name
+          - unless artist.website.blank?
+            .website= link_to artist.website_formatted, artist.website_formatted
+          .description
+            = raw artist.bio
+            %p= link_to "See works....", artist.exhibitions.size == 1 ? "/#{artist.exhibitions.first.url_name}/artists/#{artist.slug}" : artist
+
+      

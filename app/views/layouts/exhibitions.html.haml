@@ -72,6 +72,7 @@
                       - else
                         %option{selected: (controller.controller_name == 'pages' ? :active : false), value: "/#{params[:place]}"} Curatorial Statement
                       %option{selected: (controller.controller_name == 'works' ? :selected : false), value: "/#{params[:place].nil? ? "" : params[:place] + "/"}works"} Works
+                      %option{selected: (controller.controller_name == 'artists' ? :selected : false), value: "/#{params[:place].nil? ? "" : params[:place] + "/"}artists"} Artists
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: "/#{params[:place].nil? ? "" : params[:place] + "/"}posts"} Blog
                       
                 %ul.top-bar-menu.hide-for-small-only
@@ -84,6 +85,7 @@
                     - else
                       = link_to 'Curatorial Statement', "/#{params[:place]}"
                   %li{class: controller.controller_name == 'works' ? :active : false}= link_to 'Works', "/#{params[:place].nil? ? "" : params[:place] + "/"}works"
+                  %li{class: controller.controller_name == 'artists' ? :active : false}= link_to 'Artists', "/#{params[:place].nil? ? "" : params[:place] + "/"}artists"
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', "/#{params[:place].nil? ? "" : params[:place] + "/"}posts"
           
           .row.hide-for-small-only
@@ -108,7 +110,8 @@
                         Curatorial Statement
                   %li{class: controller.controller_name == 'works' ? :active : false}
                     %span Works
-               
+                  %li{class: controller.controller_name == 'artists' ? :active : false}
+                    %span Artists
                   %li{class: controller.controller_name == 'posts' ? :active : false}
                     %span Blog
 

@@ -14,7 +14,7 @@
           .blue_heading= raw @artist.exhibition_list.join(' / ')
           .title= @artist.name
           .country= ISO3166::Country[@artist.country].name
-          - if @artist.website
+          - unless @artist.website.blank?
             .website= link_to @artist.website_formatted, @artist.website_formatted
           
   .row
