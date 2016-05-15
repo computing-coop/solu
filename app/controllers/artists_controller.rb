@@ -4,11 +4,11 @@ class ArtistsController < ApplicationController
   def index
 
     if @activity.nil?
-      @artists = Artist.order(start_at: :desc)
+      @artists = Artist.order(alphabetical_name: :asc)
       set_meta_tags title: "Artists"
      
     else
-      @artists = @activity.works.map(&:artists).flatten.sort_by(&:alphabetical_name)
+      @artists = @activity.works.map(&:artists).flatten.sort_by(&:alphabetical_name).uniq
       set_meta_tags title: @activity.name + ": Artists"
 
     end
