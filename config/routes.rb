@@ -44,7 +44,8 @@ Rails.application.routes.draw do
  
   resources :pages
   resources :groups
-  resources :participants
+  resources :participants 
+  resources :registrations
   resources :activities
   
   namespace :admin do

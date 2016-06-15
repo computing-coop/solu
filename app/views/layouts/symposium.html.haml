@@ -1,0 +1,144 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = display_meta_tags :site => 'HYBRID MATTERs symposium', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
+    = stylesheet_link_tag    'application', media: 'all'
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    - if controller.controller_name == 'partners'
+      %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
+    = csrf_meta_tags
+    %link{:href => "/posts.rss", :rel => "alternate", :title => "RSS", :type => "application/rss+xml"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Roboto:400italic,300,300italic,400", :rel => "stylesheet", :type => "text/css"}/
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-60278881-1', 'auto');
+      ga('send', 'pageview');
+  %body
+    - unless flash.empty?
+      #flash
+        .row
+          .small-12.columns.text-center
+            - flash.each do |name, msg|
+              - if msg.is_a?(String)
+                = content_tag :div, msg, :id => "flash_#{name}"
+    - unless @background_image.nil?
+      :css
+        header{
+          background: url(#{@background_image.regular.url}) no-repeat top center;
+        }
+        @media only screen and (max-width: 40em)  { 
+          header {
+            background: url(#{@background_image.mobile .url}) no-repeat top center;
+          }
+        }
+        
+    %header.symposium{class: @background_image.nil? ? "type" + [1,2,3].sample.to_s : false }
+      - unless @background_image.nil?
+        - unless @background_image.credit.blank?
+          .image_credit= link_to 'IMAGE CREDITS', '#', onclick: "$(this).text('#{escape_javascript(@background_image.credit)}');return false;"
+      - if user_signed_in?  
+        - if current_user.has_role?(:partner) || current_user.has_role?(:admin)
+          .right
+            = link_to 'Back office', '/admin', class: [:button, :tiny]
+      = link_to 'http://hybridmatters.net/' do
+        - if Rails.env.staging?
+          .staging_overlay= image_tag('staging_overlay.png')
+        .before
+        .grid-container
+
+      %nav.top-bar.sticky
+        .hor-container
+          .row
+      
+            .menu_wrapper
+              .social.hide-for-small-only
+                = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
+                = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
+                = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
+              .rest
+                .row.show-for-small-only
+                  .small-6.columns.small-offset-1
+                    = render partial: 'layouts/dropdown'
+
+                  .small-5.columns
+                    %select.secondary_nav_select
+                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-symposium') } Statement
+                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('schedule')} Schedule
+                      %option{class: controller.controller_name == 'registrations' ? :active : false, value: new_registration_path } Registration
+                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-symposium') } Participants
+                      %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
+                      -#%option{selected: (controller.controller_name == 'events' ? :selected : false), value: events_path} Events
+                      %option{selected: (controller.controller_name == 'pages' && params[:id] == 'activities'  ? :selected : false), value: page_path('activities')} Activities      
+                              
+                %ul.top-bar-menu.hide-for-small-only
+
+                  = render partial: 'layouts/dropdown'
+                  %li.statement{class: controller.controller_name == 'pages' ? :active : false}= link_to 'Statement', page_path('statement')
+                  %li.statement{class: controller.controller_name == 'pages' ? :active : false}= link_to 'Schedule', page_path('schedule')
+                  %li.statement{class: controller.controller_name == 'registrations' ? :active : false}= link_to 'Registration', new_registration_path
+                  %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', participants_path
+                  %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
+                  
+          .row.hide-for-small-only
+            .down_arrow_wrapper
+              .social &nbsp;
+              .rest
+                %ul.top-bar-menu
+                  .together
+                    %li.select_menu
+                      %span
+                        &nbsp;&nbsp;&nbsp;
+                        %strong
+                          KUNSTHALL GRENLAND
+                  %li.about{class: controller.controller_name == 'pages' ? (@page.slug == 'statement' ? :active  : false) : false}
+                    %span Statement
+                  %li.schedule{class: controller.controller_name == 'pages' ?  (@page.slug == 'schedule' ? :active  : false) : false}
+                    %span Schedule
+                  %li.registration{class: controller.controller_name == 'registrations' ? :active : false}
+                    %span Registration
+                  %li.participants{class: controller.controller_name == 'participants' ? :active : false}
+                    %span Participants
+                  %li{class: controller.controller_name == 'posts' ? :active : false}
+                    %span Blog
+
+      
+                
+    .symposium_box.show-for-small-only
+      .row
+        .small-10.columns.text-center.small-centered.small-offset-1
+          The symposium in Helsinki by the Bioartsociety will address core ideas and findings of the HYBRID MATTERs programme.
+    .main-container.symposium
+
+
+      = yield
+
+      #sticky_symposium_box.hide-for-small-only
+        .heading.ui-draggable-handle
+          .left.text-left PROGRAMME
+          .text-right NOV 2016
+        .title_box.text-center
+          .title= link_to 'SYMPOSIUM', '/'
+            
+        .blurb.text-center
+          The symposium in Helsinki by the Bioartsociety will address core ideas and findings of the HYBRID MATTERs programme.
+            
+      = content_for :jquery do
+        :plain  
+          $('#sticky_symposium_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
+          $('.ui-dialog').draggable( "option", "containment", 'html');
+          
+
+
+    = render partial: 'layouts/footer', locals: {append: '_s'}
+                     
+    :javascript
+      $(document).ready(function() { #{yield :jquery}
+
+      });

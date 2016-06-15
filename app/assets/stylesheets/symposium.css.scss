@@ -1,0 +1,92 @@
+
+@import 'variables';
+
+
+
+header.symposium  {
+
+  nav.top-bar {
+    background: url(image_path('menu_module_s.png')) repeat-x;
+    
+    .hor-container .menu_wrapper ul.top-bar-menu, .hor-container .down_arrow_wrapper ul.top-bar-menu {
+      left: calc(21% - 110px);
+      
+    }
+    .down_arrow_wrapper {
+      ul.top-bar-menu {
+        li {
+          &.active { background: url(image_path('selected_down_s.png')) no-repeat center center; }
+        }
+        .together {
+          &.active {
+            background: url(image_path('selected_down_s.png')) no-repeat center center; 
+          }
+        }
+      }
+    }
+    .menu_wrapper, .down_arrow_wrapper {
+     .together {
+       margin-right: 1.04rem;
+     }
+     ul.top-bar-menu {
+       li {
+         select {
+           background-color: #bed4e1;
+           color: #000;
+         }
+         a {
+           color: #000;
+         }
+       }
+     }
+   }
+  }
+  }
+footer._s {
+  .arrow {
+    .down_arrow {
+      margin-top: -1px;
+    }
+  }
+  .drawer {
+    background-color: #bed4e1;
+
+  }
+}
+#sticky_symposium_box {
+
+  background-color: #155ee1;
+  color: black;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+  .heading {
+   cursor: move;
+   font-size: 0.875em;
+   
+    span.white {
+      color: #FFF;
+    }
+    
+  }
+  .title_box {
+    border-top: 2px solid #000;
+
+    .title {
+      a { color: #FFF; }
+      font-weight: 300;
+      font-size: 0.938em;
+      padding: 2.25rem  0 0 0;
+      text-transform: uppercase;
+    }
+
+  }
+  .blurb {
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+
+    a {
+      color: #FFF;
+    }
+  }
+}

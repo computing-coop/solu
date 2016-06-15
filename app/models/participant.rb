@@ -4,6 +4,9 @@ class Participant
   include Mongoid::Timestamps
   
   embedded_in :group
+  embeds_one :symposium_registration
+  accepts_nested_attributes_for :symposium_registration, reject_if: :all_blank
+
   
   field :first_name, type: String
   field :last_name, type: String
@@ -16,6 +19,8 @@ class Participant
   field :accepted, type: Boolean, default: false
   field :is_host, type: Mongoid::Boolean
   field :website, type: String
+  field :email, type: String
+
   belongs_to :user
   
   slug :name, scope: :group, history: true

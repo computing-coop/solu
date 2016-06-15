@@ -130,6 +130,9 @@
       }
 
     }
+    input[type=checkbox] {
+      margin-right: 0.4rem;
+    }
   
     input[type=text], textarea, select {
       background-color: $formpink;

@@ -10,6 +10,7 @@
     %option{value: 'grenland', class: :exhibition_select, selected: (request.url =~ /\/grenland/  ? :selected : false)} &nbsp;&nbsp;&nbsp; Kunsthall Grenland
     %option{value: 'nikolaj', class: :exhibition_select, selected: (request.url =~ /\/nikolaj/  ? :selected : false)} &nbsp; &nbsp;&nbsp;Nikolai Kunsthal
     %option{value: 'forumbox', class: :exhibition_select, selected: (request.url =~ /\/forumbox/  ? :selected : false)} &nbsp; &nbsp;&nbsp;Forum Box
+    %option{value: 'symposium', selected: (@site.try(:name) == 'Symposium' ? :selected : false)} Symposium
 
 
 = content_for :jquery do

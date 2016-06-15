@@ -19,5 +19,20 @@
   .row
     .small-6.medium-3.columns= f.input :is_host, as: :boolean, label: 'Host of this group?'
     .small-6.medium-3.end.columns= f.input :accepted, as: :boolean, label: 'Accepted?', hint: 'Must be checked for them to appear on site', input_html: {checked: :checked}
+  - if @participant.symposium_registration
+    .row
+      .small-6.medium-3.columns Registered for:
+      .small-6.medium-3.end.columns
+        - if @participant.symposium_registration.keynote
+          Keynote
+          %br/
+        - if @participant.symposium_registration.symposium
+          Symposium
+          %br/
+        - if @participant.symposium_registration.dinner
+          Dinner
+          %br/
+          = f.fields_for :symposium_registration, @participant.symposium_registration do |ff|
+            = ff.input :dinner_paid, as: :boolean, label: 'Dinner has been paid for?'
   .row
     .small-6.medium-6.columns= f.submit 'Save', class: [:button, :small]

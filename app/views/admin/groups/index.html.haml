@@ -26,14 +26,29 @@
                 %table
                   %thead
                     %th Name
-                    %th Host?
+                    %th
+                      - if group.name == 'Public'
+                        Registered for:
+                      - else
+                        Host?
                     %th Approved?
                     %th actions
                   %tbody
                     - group.participants.each do |p|
                       %tr
                         %td= p.name
-                        %td= p.is_host == true ? 'yes' : 'no'
+                        %td
+                          - if group.name == 'Public'
+                            - if p.symposium_registration.keynote
+                              Keynote
+                              %br/
+                            - if p.symposium_registration.symposium
+                              Symposium
+                              %br/
+                            - if p.symposium_registration.dinner
+                              Dinner
+                          - else
+                            = p.is_host == true ? 'yes' : 'no'
                         %td= p.accepted == true ? 'accepted' : 'not accepted'
                         %td
                           = link_to 'Edit', edit_admin_symposium_group_participant_path(@symposium, group, p), class: [:button, :tiny]
