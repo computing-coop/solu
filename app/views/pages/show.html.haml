@@ -37,7 +37,10 @@
           autoplaySpeed: 2400,
           slidesToScroll: 1,
         });
-                  
-  .row
-    .medium-8.small-centered.columns.medium-offset-2.body
-      = raw @page.body
+  - if @page.slug == 'schedule'
+    = render partial: 'schedule'
+  - else
+  
+    .row
+      .medium-8.small-centered.columns.medium-offset-2.body
+        = raw @page.body

@@ -1,0 +1,5 @@
+- pieces = @page.body.split(/\<hr\s*\/\>/i)
+- pieces.each_with_index do |part, index|
+  .schedule_part{class: index == (pieces.size - 1) ? :last : false}
+    .row
+      .medium-8.small-centered.columns.medium-offset-2.body= raw part
