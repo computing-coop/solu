@@ -5,7 +5,10 @@ class Admin::PagesController < Admin::BaseController
   respond_to :html
 
   def index
-    @pages = Page.all
+    sortable_column_order do |column, direction|
+      @pages = Page.sort_by(column, direction)
+    end
+    @pages ||= Page.desc('updated_at')
     set_meta_tags title: 'Pages'
     respond_with(@pages)
   end

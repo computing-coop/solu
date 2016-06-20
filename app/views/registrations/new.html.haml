@@ -1,94 +1,101 @@
-.application
-  = semantic_form_for @participant,  html: {id: :reg, multipart: true, :"data-abide" => '' } do |f|
-    .row
-      .medium-9.medium-offset-3.columns.small-centered
-        %h3 Registration form
-    - listcounter = 1
+- if Time.now.to_date < Date.parse('2016-09-01')
+  .row
+    .medium-9.medium-offset-3.columns.small-centered
+      %h3 Registration opens on 1 September 2016.
+
+- else
+    
+  .application
+    = semantic_form_for @participant,  html: {id: :reg, multipart: true, :"data-abide" => '' } do |f|
+      .row
+        .medium-9.medium-offset-3.columns.small-centered
+          %h3 Registration form
+      - listcounter = 1
       
-    .row
-      .medium-2.small-offset-1.small-4.columns.left_form
-        .form_label.text-left= "#{listcounter}. First name"
-      .small-7.medium-4.end.columns= f.input :first_name, input_html: {required: ''}, label: false
-      - listcounter += 1
-    .row
-      .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "#{listcounter}. Last name"
-      .small-7.medium-4.end.columns= f.input :last_name, input_html: {required: '' }, label: false
-      - listcounter += 1
-        
-    .row
-      .medium-2.small-offset-1.small-4.columns.text-left.form_label.left_form= "#{listcounter}. Email address"
-      .small-7.medium-4.end.columns= f.input :email, input_html: {required: ''}, label: false
-      - listcounter += 1
-      
-    .row
-      .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "#{listcounter}. Website"
-      .small-7.medium-4.end.columns= f.input :website, label: false
-      - listcounter += 1
-      
-    .row.has_topline
-      .medium-2.small-offset-1.small-4.columns.text-left.left_form
-        .form_label= "#{listcounter}. Short biography"
-        .hint 1500 char. max
-      .small-7.end.columns
-        = f.input :bio, label: false, as: :text, :maxlength => 1500
-        %p.counter= f.object.new_record? ? "1500 characters remaining" : "#{1500 - f.object.description.length} characters remaining"
+      .row
+        .medium-2.small-offset-1.small-4.columns.left_form
+          .form_label.text-left= "#{listcounter}. First name"
+        .small-7.medium-4.end.columns= f.input :first_name, input_html: {required: ''}, label: false
         - listcounter += 1
-    .row
-      .medium-2.small-offset-1.small-4.columns.text-left.left_form
-        .form_label= "#{listcounter}. What are you registering for?"
-        .hint.event Check as many as applicable
-      .small-7.medium-4.end.columns
-        = f.fields_for :symposium_registration, @participant.symposium_registration do |ff|
-          = ff.input :keynote, as: :boolean, label: false
-          = ff.input :symposium, as: :boolean, label: false
-          = ff.input :dinner, as: :boolean, label: false
-    .row
-      .small-12.medium-4.end.columns.small-offset-3.submit_container= f.submit "Submit", class: [:button, :application ]        
+      .row
+        .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "#{listcounter}. Last name"
+        .small-7.medium-4.end.columns= f.input :last_name, input_html: {required: '' }, label: false
+        - listcounter += 1
         
-= content_for :jquery do
-  :plain
-    function valthisform()
-    {
-        var checkboxs = $('input[type="checkbox"]');
-        var okay=false;
-        for(var i=0,l=checkboxs.length;i<l;i++)
-        {
-          if(checkboxs[i].checked)
-          {
-            okay=true;
-            break;
-          }
-        }
-        if(okay) {
-        }
-        else {
-          alert("Please check at least one part of the event to register for!");
-          $('.hint.event').css('color', 'red');
-        }
-      return okay;
-    }
-    $('#reg').on("submit", function(e) { 
-      e.preventDefault();
-      var res = valthisform();
-      if(res) {
- 
-        $('#reg')[0].submit();
-      } 
-    });
-    $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});  
-    $('input[type=file]').change(function(e){
-      $(this).parents('label.file').find('.selected_file').text(e.target.files[0].name);
-    });
-    $('textarea').keyup(function () {
+      .row
+        .medium-2.small-offset-1.small-4.columns.text-left.form_label.left_form= "#{listcounter}. Email address"
+        .small-7.medium-4.end.columns= f.input :email, input_html: {required: ''}, label: false
+        - listcounter += 1
       
-        var left = 1500 - $(this).val().length;
-        if (left < 0) {
-            left = "<span style='color: red;'>" + left + "</span>";
-        }
-        $(this).parents('li').next('.counter').html(left + ' characters remaining');
-    });
-    $('form')
-      .on('invalid.fndtn.abide', function () {
-        $('li.file.error').next('span').css('border', '2px solid red');
-        $('li.file.error').next('span').css('color', 'red');
-      });        
+      .row
+        .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "#{listcounter}. Website"
+        .small-7.medium-4.end.columns= f.input :website, label: false
+        - listcounter += 1
+      
+      .row.has_topline
+        .medium-2.small-offset-1.small-4.columns.text-left.left_form
+          .form_label= "#{listcounter}. Short biography"
+          .hint 1500 char. max
+        .small-7.end.columns
+          = f.input :bio, label: false, as: :text, :maxlength => 1500
+          %p.counter= f.object.new_record? ? "1500 characters remaining" : "#{1500 - f.object.description.length} characters remaining"
+          - listcounter += 1
+      .row
+        .medium-2.small-offset-1.small-4.columns.text-left.left_form
+          .form_label= "#{listcounter}. What are you registering for?"
+          .hint.event Check as many as applicable
+        .small-7.medium-4.end.columns
+          = f.fields_for :symposium_registration, @participant.symposium_registration do |ff|
+            = ff.input :keynote, as: :boolean, label: false
+            = ff.input :symposium, as: :boolean, label: false
+            = ff.input :dinner, as: :boolean, label: false
+      .row
+        .small-12.medium-4.end.columns.small-offset-3.submit_container= f.submit "Submit", class: [:button, :application ]        
+        
+  = content_for :jquery do
+    :plain
+      function valthisform()
+      {
+          var checkboxs = $('input[type="checkbox"]');
+          var okay=false;
+          for(var i=0,l=checkboxs.length;i<l;i++)
+          {
+            if(checkboxs[i].checked)
+            {
+              okay=true;
+              break;
+            }
+          }
+          if(okay) {
+          }
+          else {
+            alert("Please check at least one part of the event to register for!");
+            $('.hint.event').css('color', 'red');
+          }
+        return okay;
+      }
+      $('#reg').on("submit", function(e) { 
+        e.preventDefault();
+        var res = valthisform();
+        if(res) {
+ 
+          $('#reg')[0].submit();
+        } 
+      });
+      $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});  
+      $('input[type=file]').change(function(e){
+        $(this).parents('label.file').find('.selected_file').text(e.target.files[0].name);
+      });
+      $('textarea').keyup(function () {
+      
+          var left = 1500 - $(this).val().length;
+          if (left < 0) {
+              left = "<span style='color: red;'>" + left + "</span>";
+          }
+          $(this).parents('li').next('.counter').html(left + ' characters remaining');
+      });
+      $('form')
+        .on('invalid.fndtn.abide', function () {
+          $('li.file.error').next('span').css('border', '2px solid red');
+          $('li.file.error').next('span').css('color', 'red');
+        });        

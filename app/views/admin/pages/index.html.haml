@@ -11,7 +11,8 @@
     %table
       %thead
         %tr
-          %th Title
+          %th= sortable_column "Activity", column: 'subsite'
+          %th= sortable_column "Title"
           %th Body
           %th Image
           %th
@@ -19,8 +20,9 @@
       %tbody
         - @pages.each do |page|
           %tr
+            %td= page.subsite.nil? ? 'main' : page.subsite.name
             %td= page.title
-            %td= truncate_html(page.body, length: 200)
+            %td= truncate_html(strip_tags(page.body), length: 150)
             %td= image_tag page.image.url(:thumb)
             %td
               = link_to 'Show', page, class: [:button, :small]
