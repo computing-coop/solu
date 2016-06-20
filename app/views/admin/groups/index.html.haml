@@ -39,16 +39,17 @@
                         %td= p.name
                         %td
                           - if group.name == 'Public'
-                            - if p.symposium_registration.keynote
-                              Keynote
-                              %br/
-                            - if p.symposium_registration.symposium
-                              Symposium
-                              %br/
-                            - if p.symposium_registration.dinner
-                              Dinner
-                          - else
-                            = p.is_host == true ? 'yes' : 'no'
+                            - if p.symposium_registration
+                              - if p.symposium_registration.keynote
+                                Keynote
+                                %br/
+                              - if p.symposium_registration.symposium
+                                Symposium
+                                %br/
+                              - if p.symposium_registration.dinner
+                                Dinner
+                            - else
+                              = p.is_host == true ? 'yes' : 'no'
                         %td= p.accepted == true ? 'accepted' : 'not accepted'
                         %td
                           = link_to 'Edit', edit_admin_symposium_group_participant_path(@symposium, group, p), class: [:button, :tiny]
