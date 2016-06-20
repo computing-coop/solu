@@ -1,8 +1,8 @@
 .page_container
-  - unless @page.slug == 'schedule'
-    .row
-      .medium-8.small-centered.columns.medium-offset-2
-        %h2= @page.title
+
+  .row
+    .medium-8.small-centered.columns.medium-offset-2
+      %h2= @page.title
   - if @page.image? && @page.all_images.size == 1
     .row
       .medium-8.small-centered.columns.medium-offset-2= image_tag @page.image.url
