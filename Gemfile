@@ -48,7 +48,7 @@ gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-bundler'
-
+ gem 'capistrano-faster-assets', '~> 1.0'
 
 gem 'carrierwave-aws'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
