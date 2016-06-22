@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :groups
   resources :participants 
-  get '/speakers/*', to: "participants#index"
+  get '/speakers', to: "participants#index"
   resources :registrations
   resources :activities
   
@@ -100,7 +100,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-
+  get '/' => 'pages#show', id: 'statement', :constraints => { :subdomain => 'symposium' } 
   root to: 'posts#index'
   get '/admin',  to: 'admin/posts#index'
 end
