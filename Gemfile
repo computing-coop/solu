@@ -74,7 +74,7 @@ gem 'mongoid-slug'
 gem 'mongoid_magic_counter_cache'
 gem 'nested_form'
 gem 'nokogiri', '1.6.6.2'
-gem "recaptcha", require: "recaptcha/rails"
+gem "recaptcha", '3.0', require: "recaptcha/rails"
 gem 'rolify'
 gem 'truncate_html'
 

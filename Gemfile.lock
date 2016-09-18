@@ -267,7 +267,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.16.0)
     rake (11.2.2)
-    recaptcha (1.3.0)
+    recaptcha (3.0.0)
       json
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
@@ -363,7 +363,7 @@ DEPENDENCIES
   rails-assets-jquery-ui!
   rails-assets-slick-carousel!
   rails-footnotes (>= 3.7.9)
-  recaptcha
+  recaptcha (= 3.0)
   rolify
   sass-rails (~> 5.0)
   spring
