@@ -53,6 +53,7 @@
       .row
         .medium-2.small-offset-1.small-4.columns.text-left.left_form
           .form_label= "#{listcounter}. Are you a real person?"
+          .hint If you are a robot and would like to register, please ask a human friend to register for you.
         .small-7.medium-4.end.columns= recaptcha_tags
       .row
         .small-12.medium-4.end.columns.small-offset-3.submit_container= f.submit "Submit", class: [:button, :application ]        
