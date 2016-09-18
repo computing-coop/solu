@@ -1,4 +1,5 @@
 class RegistrationsController < ApplicationController
+
   
   def new
     if @site.nil?

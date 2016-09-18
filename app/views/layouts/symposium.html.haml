@@ -69,8 +69,8 @@
 
                   .small-5.columns
                     %select.secondary_nav_select
-                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-symposium') } Statement
-                      %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('schedule')} Schedule
+                      %option{selected: (controller.controller_name == 'pages' ? (@page.slug == 'hybrid-matters-symposium' ? :active : false) : false), value: page_path('statement') } Statement
+                      %option{selected: (controller.controller_name == 'pages' ? (@page.slug == 'schedule' ? :active : false) : false), value: page_path('schedule')} Schedule
                       %option{class: controller.controller_name == 'registrations' ? :active : false, value: new_registration_path } Registration
                       %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: '/speakers'} Speakers
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
@@ -80,8 +80,8 @@
                 %ul.top-bar-menu.hide-for-small-only
 
                   = render partial: 'layouts/dropdown'
-                  %li.statement{class: controller.controller_name == 'pages' ? :active : false}= link_to 'Statement', page_path('statement')
-                  %li.statement{class: controller.controller_name == 'pages' ? :active : false}= link_to 'Schedule', page_path('schedule')
+                  %li.statement{class: controller.controller_name == 'pages' ? (@page.slug == 'hybrid-matters-symposium' ? :active : false) : false}= link_to 'Statement', page_path('statement')
+                  %li.statement{class: controller.controller_name == 'pages' ? (@page.slug == 'schedule' ? :active : false)  : false}= link_to 'Schedule', page_path('schedule')
                   %li.statement{class: controller.controller_name == 'registrations' ? :active : false}= link_to 'Registration', new_registration_path
                   %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Speakers', '/speakers'
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
@@ -97,7 +97,7 @@
                         &nbsp;&nbsp;&nbsp;
                         %strong
                           KUNSTHALL GRENLAND
-                  %li.about{class: controller.controller_name == 'pages' ? (@page.slug == 'statement' ? :active  : false) : false}
+                  %li.statement{class: controller.controller_name == 'pages' ? (@page.slug == 'hybrid-matters-symposium' ? :active  : false) : false}
                     %span Statement
                   %li.schedule{class: controller.controller_name == 'pages' ?  (@page.slug == 'schedule' ? :active  : false) : false}
                     %span Schedule

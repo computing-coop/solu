@@ -8,10 +8,13 @@ class ParticipantsController < ApplicationController
       if @site.name == 'Symposium'
         @participant.group = @site.symposium.groups.find_by(name: 'Public')
       end
-      if @participant.save
+      if verify_recaptcha(model: @participant) && @participant.save
         RegistrationMailer.registration_received(@participant).deliver
         flash[:notice] = 'Thank you for your registration. You should receive a confirmation email.'
-        redirect_to '/'
+        render template: 'registrations/registration_received', layout: 'symposium'
+      else
+        flash[:error] = @participant.errors.full_messages.join(", ")
+        render layout: 'symposium', template: 'registrations/new'
       end
     end
   end

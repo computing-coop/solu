@@ -1,13 +1,15 @@
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
-    %p
-      Dear
-      = @user.first_name + " " + @user.last_name
+.row
+  .small-12.medium-8.columns.medium-offset-2
+    %h2 Thank you for registering!
+.row
+  .small-12.medium-8.columns.medium-offset-2    
     %p Thank you for registering for the HYBRID MATTERs symposium in Helsinki on 24-25 November.
 
-    - if @user.symposium_registration.dinner == true
+    %p You should receive an email confirming this. 
+
+
+    
+    - if @participant.symposium_registration.dinner == true
       %p You have registered for the dinner. To complete the dinner registration please transfer 10€ via Paypal:
       :plain
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post"
@@ -31,6 +33,4 @@
         BIC:   NDEAFIHH
         %br/
     
-
     %p If you have any further questions, please email info@bioartsociety.net.
-

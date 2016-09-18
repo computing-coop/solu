@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
-source 'http://gems.github.com'
+# source 'http://gems.github.com'
 
 gem 'mongoid', '~> 5.1.0'
 
 ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.7.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -74,7 +74,7 @@ gem 'mongoid-slug'
 gem 'mongoid_magic_counter_cache'
 gem 'nested_form'
 gem 'nokogiri', '1.6.6.2'
-gem 'recaptcha'
+gem "recaptcha", require: "recaptcha/rails"
 gem 'rolify'
 gem 'truncate_html'
 
