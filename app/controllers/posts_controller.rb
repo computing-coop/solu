@@ -18,13 +18,11 @@ class PostsController < ApplicationController
       render layout: @site.layout
     else
       if @site
-        if @site.name.downcase == 'symposium'
-          redirect_to page_path('statement')
-        else
+
           @posts = Post.by_subsite(@site.id).published.order(published_at: :desc)
           set_meta_tags title: @site.name + ": News"
           render layout: @site.layout
-        end
+  
       else
         @posts = Post.published.order(published_at: :desc)
         set_meta_tags title: "News"
