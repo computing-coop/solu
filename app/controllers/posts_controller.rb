@@ -14,9 +14,9 @@ class PostsController < ApplicationController
         redirect_to subdomain: @activity.subsite.subdomain
       elsif @activity.activity_type == 'exhibition'
         if @activity.url_name.blank?
-          redirect_to "http://exhibition.hybridmatters.net/posts"
+          redirect_to "http://exhibitions.hybridmatters.net/posts"
         else
-          redirect_to "http://exhibition.hybridmatters.net/#{@activity.url_name}/posts"
+          redirect_to "http://exhibitions.hybridmatters.net/#{@activity.url_name}/posts"
         end
       else
         @posts = @activity.posts.published.order(:published_at.desc)
