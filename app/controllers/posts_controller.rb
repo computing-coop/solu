@@ -12,10 +12,17 @@ class PostsController < ApplicationController
       @activity = Activity.find(params[:activity_id])
       if @activity.subsite && @site.nil?
         redirect_to subdomain: @activity.subsite.subdomain
+      elsif @activity.activity_type == 'exhibition'
+        if @activity.url_name.blank?
+          redirect_to "http://exhibition.hybridmatters.net/posts"
+        else
+          redirect_to "http://exhibition.hybridmatters.net/#{@activity.url_name}/posts"
+        end
+      else
+        @posts = @activity.posts.published.order(:published_at.desc)
+        set_meta_tags title: 'Posts for  ' + @activity.name
+        render layout: @site.layout
       end
-      @posts = @activity.posts.published.order(:published_at.desc)
-      set_meta_tags title: 'Posts for  ' + @activity.name
-      render layout: @site.layout
     else
       if @site
 
