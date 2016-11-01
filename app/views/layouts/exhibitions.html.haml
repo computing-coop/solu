@@ -75,7 +75,7 @@
                       %option{selected: (controller.controller_name == 'artists' ? :selected : false), value: "/#{params[:place].nil? ? "" : params[:place] + "/"}artists"} Artists
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: "/#{params[:place].nil? ? "" : params[:place] + "/"}posts"} Blog
                       
-                %ul.top-bar-menu.hide-for-small-only
+                %ul.top-bar-menu.hide-for-small-only.horizontal.menu
                   / %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
                   = render partial: 'layouts/dropdown'
                   -#%li= link_to 'Home', 'http://hybridmatters.net/'
@@ -92,7 +92,7 @@
             .down_arrow_wrapper
               .social &nbsp;
               .rest
-                %ul.top-bar-menu
+                %ul.top-bar-menu.horizontal.menu
                   .together
                     / %li.about
                     / %span About
@@ -135,7 +135,7 @@
           = render :partial => "layouts/#{params[:place]}"
         - else
           .heading.ui-draggable-handle
-            .left.text-left PROGRAMME
+            .float-left.text-left PROGRAMME
             .text-right March-December 2016 
           .title_box.text-center
             .title= link_to 'HYBRID MATTERs Exhibitions', '/'
@@ -145,7 +145,7 @@
             
       = content_for :jquery do
         :plain  
-          $('#sticky_exhibitions_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
+          $('#sticky_exhibitions_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom", of: 'header'}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           
 

@@ -54,7 +54,7 @@
 
       %nav.top-bar.sticky
         .hor-container
-          .row
+          .row.expanded
       
             .menu_wrapper
               .social.hide-for-small-only
@@ -72,7 +72,7 @@
                       %option{selected: (controller.controller_name == 'partners' ? :selected : false), value: partners_path} Partners
                       %option{selected: (controller.controller_name == 'activities'  ? :selected : false), value: activities_path } Programme
                       
-                %ul.top-bar-menu.hide-for-small-only
+                %ul.top-bar-menu.hide-for-small-only.horizontal.menu
                   
                   = render partial: 'layouts/dropdown'
                   
@@ -80,7 +80,7 @@
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
                   %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', activities_path
                   %li.about{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
-          .row.hide-for-small-only
+          .row.hide-for-small-only.expanded
             .down_arrow_wrapper
               .social &nbsp;
               .rest
@@ -101,7 +101,7 @@
       - if controller.controller_name == 'activities'
         %nav.activities-bar.sticky
           .hor-container.secondary_activities_filter
-            .row
+            .row.expanded
 
               %ul.top-bar-menu
                 %li Exhibitions
@@ -113,7 +113,7 @@
                 
                 
     .blue_announcements.show-for-small-only
-      .row
+      .row.expanded
         .small-12.columns.text-center.small-centered.heading= link_to 'ANNOUNCEMENTS', '#', onclick: "javascript:$('.hidden_announcements').slideToggle();return false"
       
       .hidden_announcements

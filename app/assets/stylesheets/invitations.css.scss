@@ -20,7 +20,7 @@
 
     .title {
       a { color: #FFF; }
-      font-weight: 300;
+      font-weight: 400;
       font-size: 0.938em;
       padding: 2.25rem  0 0 0;
       text-transform: uppercase;
@@ -42,6 +42,7 @@ header.invitations {
     background: url(image_path('menu_module_invitations.png')) repeat-x;
     .menu_wrapper, .down_arrow_wrapper {
       ul.top-bar-menu {
+        
         .together {
           &.active {
             background: url(image_path('selected_down_invitations.png')) no-repeat center center;
@@ -51,6 +52,7 @@ header.invitations {
           &.active { background: url(image_path('selected_down_invitations.png')) no-repeat center center; }
         }
         select {
+          
           background-color: #f7d5ae;
         }
 

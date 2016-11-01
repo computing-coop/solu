@@ -22,7 +22,7 @@
   %body
     - unless flash.empty?
       #flash
-        .row
+        .row.expanded
           .small-12.columns.text-center
             - flash.each do |name, msg|
               - if msg.is_a?(String)
@@ -54,7 +54,7 @@
 
       %nav.top-bar.sticky
         .hor-container
-          .row
+          .row.expanded
       
             .menu_wrapper
               .social.hide-for-small-only
@@ -62,7 +62,7 @@
                 = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
-                .row.show-for-small-only
+                .row.expanded.show-for-small-only
                   .small-6.columns.small-offset-1
                     %select.main_nav_select
                       %option{ value: 'www'} Home
@@ -74,18 +74,18 @@
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
                       %option{selected: (controller.controller_name == 'groups' ? :selected : false), value: groups_path} Groups
                       %option{selected: (controller.controller_name == 'participants'  ? :selected : false), value: participants_path } Participants
-                %ul.top-bar-menu.hide-for-small-only
+                %ul.top-bar-menu.hide-for-small-only.horizontal.menu
                   %li.about{class: controller.controller_name == 'pages' ? :active : false}= link_to 'About', page_path('about-field-notes-hybrid-matters')
                   = render partial: 'layouts/dropdown'
 
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'groups' ? :active : false}= link_to 'Groups', groups_path
                   %li{class: controller.controller_name == 'participants' ? :active : false}= link_to 'Participants', participants_path
-          .row.hide-for-small-only
+          .row.expanded.hide-for-small-only
             .down_arrow_wrapper
               .social &nbsp;
               .rest
-                %ul.top-bar-menu
+                %ul.top-bar-menu.horizontal.menu
                   .together{class: controller.controller_name == 'pages' ? :active : false}
                     %li.about
                       %span About
@@ -102,7 +102,7 @@
       
                 
     .fnbox.show-for-small-only
-      .row
+      .row.expanded
         .small-10.columns.text-center.small-centered.small-offset-1
           an art&science field laboratory about converging ecologies by Bioartsociety
       
@@ -113,7 +113,7 @@
 
       #sticky_field_notes_box.hide-for-small-only
         .heading.ui-draggable-handle
-          .left.text-left PROGRAMME
+          .float-left.text-left PROGRAMME
           .text-right SEPT 2015
         .title_box.text-center
           .title= link_to 'FIELD_NOTES HYBRID MATTERs', '/'

@@ -3,13 +3,8 @@
 
 
 
-.magellan-scrollnav {
-  [data-magellan-expedition-clone] {
-    dl.sub-nav {
-      display: none;
-    }
-  }
-  [data-magellan-expedition], [data-magellan-expedition-clone] {
+nav.sticky  {
+  [data-magellan], [data-magellan-clone] {
     max-width: 275px;
     min-width: 0;
     background: none;
@@ -135,8 +130,8 @@ footer._fn {
   }
 }
 
-.magellan-scrollnav {
-  dl {
+nav#magellan {
+  ul {
     margin: 0; padding: 0;
     color: $turq;
     li {

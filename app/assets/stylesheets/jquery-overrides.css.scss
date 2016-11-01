@@ -3,12 +3,14 @@
 
 .ui-dialog {
   padding: 0;
+
   .ui-dialog-titlebar {
     display: none;
   }
 
 }
 
-.ui-widget-content { 
+
+.ui-widget.ui-widget-content { 
   border: none;
 }

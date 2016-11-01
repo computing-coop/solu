@@ -11,8 +11,10 @@
  * file per style scope.
  *
  *= require_self
+//= require foundation_and_overrides
+
  *= require foundation-datepicker
- *= require slick-carousel
+ *= require slick
  *= require partners
  *= require pages
  *= require activities
@@ -31,9 +33,22 @@
 @import 'foundation_and_overrides';
 @import 'variables';
 
+
 html {
   max-width: 100%; 
   overflow-x: hidden;
+}
+body {
+  background: #fff;
+  color: #222;
+  cursor: auto;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 #flash {
   padding: 0.8rem 0;
@@ -111,6 +126,7 @@ header {
     z-index: 100;
     margin-top: -37px;
     height: 75px;
+    width: 100%;
     .down_arrow_wrapper {
       ul.top-bar-menu {
         .together {
@@ -119,7 +135,7 @@ header {
           }
         }
         li {
-
+          font-family: 'Roboto';
           &.active { background: url(image_path('selected_down.png')) no-repeat center center; }
         }
       }
@@ -141,7 +157,7 @@ header {
   z-index: 999;
   border-left: 2px solid #444;
   border-right: 2px solid #444;
-  margin: 0 0.688em;
+  margin: 0 0.210em;
   height: 75px;
 
   .menu_wrapper , .down_arrow_wrapper {
@@ -158,8 +174,13 @@ header {
     }
     ul.top-bar-menu {
       left: calc(26% - 110px);
-      padding-top: 4px;
+      font-family: 'Roboto', sans-serif;
       margin: 0;
+      a {
+        padding:  0.2rem;
+        color: initial;
+        background: none;
+      }
       li.about {
         text-align: right;
         padding-right: 0.2rem;
@@ -167,20 +188,22 @@ header {
       li.select_menu {
         margin-top: -8px;
         margin-left: 0;
-        padding: 0 0.2rem;
+        padding: 0.4rem 0.2rem;
       }
       select {
+        font-family: 'Roboto';
         margin: 0; padding: 0 1.2rem 0 0;
         background-color: $topbarpink;
         text-transform: uppercase;
         font-size: 1rem;
-        color: #444;
+        color: black;
         outline: none;
         height: 25px;
         -webkit-appearance:none;
         font-weight: normal;
         border: none;
         &:active, &:focus, &:hover {
+
           outline: none;
           border: none;
         }
@@ -192,6 +215,7 @@ header {
     z-index: 20;
     position: absolute;
     ul.top-bar-menu {
+      font-family: 'Roboto';
       li.about {
         text-align: right;
         padding-right: 0.2rem;
@@ -199,7 +223,7 @@ header {
       li.select_menu {
         margin-top: -8px;
         margin-left: 0;
-        padding: 0 1.4rem 0 0.2rem;
+        padding: 0 2rem 0 0.2rem;
       }
       .together {
         float: left;
@@ -286,7 +310,7 @@ footer {
   
     .footer_title {
       padding: 1.5rem 0;
-      font-weight: 300;
+      font-weight: 400;
       color: #777;
     }
     
@@ -327,7 +351,7 @@ footer {
   font-family: Roboto, sans-serif;
   .heading {
    cursor: move;
-   font-size: 0.875em;
+   font-size: 0.780rem;
    
     span.white {
       color: #FFF;
@@ -339,7 +363,7 @@ footer {
 
     .title {
       color: #FFF;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 0.938em;
       text-transform: uppercase;
     }
@@ -378,12 +402,12 @@ footer {
     font-size: 0.9rem;
     line-height: 1.4rem;
     color: #222;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 0.8rem;
   }
   p {
     em {
-      font-weight: 300;
+      font-weight: 400;
     }
   }
   .blue_heading, .blue_heading a {
@@ -391,7 +415,7 @@ footer {
     font-size: 0.938rem;
     line-height: 1.5rem;
     text-transform: uppercase;
-    font-weight: 300;
+    font-weight: 400;
   }
   .navigator {
     ol {
@@ -423,7 +447,7 @@ footer {
       font-size: 0.938rem;
       line-height: 1.5rem;
       text-transform: uppercase;
-      font-weight: 300;
+      font-weight: 400;
     }
     em {
       color: #999;
@@ -434,7 +458,7 @@ footer {
     font-size: 0.9rem;
     line-height: 1.4rem;
     color: #444;
-    font-weight: 300;
+    font-weight: 400;
     margin: 1.5rem 0 0.8rem 0;
   }
   

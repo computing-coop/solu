@@ -23,7 +23,7 @@
   %body
     - unless flash.empty?
       #flash
-        .row
+        .row.expanded
           .small-12.columns.text-center
             - flash.each do |name, msg|
               - if msg.is_a?(String)
@@ -55,7 +55,7 @@
 
       %nav.top-bar.sticky
         .hor-container
-          .row
+          .row.expanded
       
             .menu_wrapper
               .social.hide-for-small-only
@@ -63,7 +63,7 @@
                 = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
-                .row.show-for-small-only
+                .row.expanded.show-for-small-only
                   .small-6.columns.small-offset-1
                     %select.main_nav_select
                       %option{ value: 'www'} Home
@@ -75,13 +75,13 @@
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
                       %option{selected: (controller.controller_name == 'events' ? :selected : false), value: events_path} Events
                       %option{selected: (controller.controller_name == 'pages' && params[:id] == 'speculations'  ? :selected : false), value: "pages/speculations"} Speculations              
-                %ul.top-bar-menu.hide-for-small-only
+                %ul.top-bar-menu.hide-for-small-only.horizontal.menu
                   %li.about{class: controller.controller_name == 'pages' && params[:id] == 'about-invitations' ? :active : false}= link_to 'About', page_path('about-invitations')
                   = render partial: 'layouts/dropdown'
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'Blog', posts_path
                   %li{class: controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'speculations' ? :active : false}= link_to 'Speculations', "/pages/speculations"
-          .row.hide-for-small-only
+          .row.expanded.hide-for-small-only
             .down_arrow_wrapper
               .social &nbsp;
               .rest
@@ -103,7 +103,7 @@
       
                 
     .invitations_box.show-for-small-only
-      .row
+      .row.expanded
         .small-10.columns.text-center.small-centered.small-offset-1
           Citizen art&science activities in different Nordic countries by researchers from Malmö University
     .main-container.invitations
@@ -113,7 +113,7 @@
 
       #sticky_invitations_box.hide-for-small-only
         .heading.ui-draggable-handle
-          .left.text-left PROGRAMME
+          .float-left.text-left PROGRAMME
           .text-right 2015
         .title_box.text-center
           .title= link_to 'HYBRID MATTERs Invitations', '/'

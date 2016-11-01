@@ -17,11 +17,19 @@ header.investigations  {
     }
 
     .menu_wrapper, .down_arrow_wrapper {
+      .social {
+        img {
+          -webkit-filter: invert(1);
+          filter: invert(1);
+        }
+      }
      ul.top-bar-menu {
        li {
+        font-weight: bold;
          select {
            background-color: #4d4d4d;
            color: #FFF;
+           font-weight: bold;
          }
          a {
            color: #FFF;

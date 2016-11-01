@@ -4,7 +4,7 @@
 
       .small-12.medium-8.columns.medium-offset-2
         .row
-          .medium-2.columns.hide-for-small-only
+          .medium-2.columns.hide-for-small-only.logo
             - if @post.user.partner.nil?
               = image_tag 'hm_logo.png'
             - else
@@ -19,6 +19,7 @@
             - if can? :edit, @post
               .row
                 .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
+                
     - unless @post.photos.empty?
       .row
         .small-12.medium-8.columns.medium-offset-2
@@ -32,7 +33,8 @@
           
     .row
       .small-12.medium-8.columns.medium-offset-2
-        .body= raw sanitize(@post.body.gsub(/\&nbsp;/, ' '), tags: %w{bold b img h1 h2 h3 h4 h5 h6 ul li ol strong a u p br iframe underline i italic em}, attributes: %w{target width frameborder scrolling height  src href})
+        .row
+          .small-10.columns.body= raw sanitize(@post.body.gsub(/\&nbsp;/, ' '), tags: %w{bold b img h1 h2 h3 h4 h5 h6 ul li ol strong a u p br iframe underline i italic em}, attributes: %w{target width frameborder scrolling height  src href})
     .row
       .small-12.medium-3.columns.small-centered
         - unless @post.previous.nil?
@@ -48,7 +50,8 @@
         arrows: true,
         slide: '.slide',
         adaptiveHeight: false,
-
+        prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+        nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
         dots: true,
         customPaging: function(slick,index) {
            return slick.$slides.eq(index).find('.thumb').html() ;

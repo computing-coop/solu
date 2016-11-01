@@ -123,8 +123,8 @@ footer._exhibitions {
 
     .title {
       a { color: #FFF; }
-      font-weight: 300;
-      font-size: 0.938em;
+      font-weight: 400;
+      font-size: 15px;
       padding: 2.25rem  0 0 0;
       text-transform: uppercase;
     }
@@ -276,6 +276,9 @@ footer._exhibitions {
       .artist {
         color: #f66060;
         margin-bottom: 1rem;
+        a {
+          color: #f66060;
+        }
       }
       .name {
         font-size: 1.8rem;
@@ -304,6 +307,9 @@ footer._exhibitions {
         line-height: 1.4rem;
         color: #222;
         font-weight: 300;
+        a {
+          color:  #f66060;
+        }
       }
     }
   }

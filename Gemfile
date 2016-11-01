@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 # source 'http://gems.github.com'
 
-gem 'mongoid', '~> 5.1.0'
+gem 'mongoid'
 
-ruby '2.2.2'
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.7.1'
+gem 'rails', '5.0.0.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -28,27 +28,29 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 #gem 'sdoc', '~> 0.4.0', group: :doc
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-chosen'
-  gem 'rails-assets-foundation-datepicker'
-  gem 'rails-assets-jquery-ui'
-  gem 'rails-assets-slick-carousel'
-end
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-chosen'
+#   gem 'rails-assets-foundation-datepicker'
+#   gem 'rails-assets-jquery-ui'
+#   gem 'rails-assets-slick-carousel'
+# end
 
+gem "jquery-slick-rails"
+gem 'jquery-ui-rails'
+gem 'foundation-datepicker-rails'
 
 # Use Unicorn as the app server
-gem 'unicorn'
-gem 'unicorn-rails'
+gem 'puma'
 
 #gem 'bson_ext'
 
-gem 'cancancan', '~> 1.10'
+gem 'cancancan'
 
 gem 'capistrano'
-gem 'capistrano-rails'
+gem 'capistrano-rails'#, '1.1.3'
 gem 'capistrano-rvm'
-gem 'capistrano-bundler'
- gem 'capistrano-faster-assets', '~> 1.0'
+gem 'capistrano-bundler'#, '1.1.4'
+gem 'capistrano3-puma'
 
 gem 'carrierwave-aws'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
@@ -58,10 +60,10 @@ gem 'chosen-rails'
 gem 'ckeditor'
 gem 'countries'
 gem 'country_select', github: 'stefanpenner/country_select'
-gem 'devise', github: 'plataformatec/devise', branch: :master
+gem 'devise' #, github: 'plataformatec/devise', branch: :master
 gem 'figaro'
 gem 'formtastic'
-gem 'foundation-rails', '5.5.2.1'
+gem 'foundation-rails'
 gem 'foundation-datetimepicker-rails'
 gem 'geocoder'
 gem 'haml'
@@ -83,10 +85,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'better_errors'
-  gem 'binding_of_caller'
+  # gem 'binding_of_caller'
   gem 'letter_opener'
   gem 'nifty-generators'
-  gem 'rails-footnotes',  '>= 3.7.9'
-  gem 'quiet_assets'
+  # gem 'rails-footnotes',  '>= 3.7.9'
+  # gem 'quiet_assets'
   gem 'spring'
 end

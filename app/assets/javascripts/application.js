@@ -15,7 +15,7 @@
 //= require foundation
 //= require foundation-datepicker
 //= require jquery_nested_form
-//= require slick-carousel
+//= require jquery.slick
 //= require ckeditor/init
 //= require jquery-ui
   
@@ -88,3 +88,5 @@ $(function() {
 
 });
 
+
+$(function(){ $(document).foundation(); });
