@@ -38,13 +38,16 @@ html {
   max-width: 100%; 
   overflow-x: hidden;
 }
+* {
+  font-weight: 400;
+}
 body {
   background: #fff;
   color: #222;
   cursor: auto;
   font-family: "Roboto", sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -130,12 +133,18 @@ header {
     .down_arrow_wrapper {
       ul.top-bar-menu {
         .together {
+          .select_menu {
+            span {
+              font-size: 1rem;
+            }
+          }
           &.active {
             background: url(image_path('selected_down.png')) no-repeat center center; 
           }
         }
         li {
           font-family: 'Roboto';
+          span { font-size: 1.125rem; }
           &.active { background: url(image_path('selected_down.png')) no-repeat center center; }
         }
       }
@@ -223,7 +232,7 @@ header {
       li.select_menu {
         margin-top: -8px;
         margin-left: 0;
-        padding: 0 2rem 0 0.2rem;
+        padding: 0 1.125rem 0 0.2rem;
       }
       .together {
         float: left;

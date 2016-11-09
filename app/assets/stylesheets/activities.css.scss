@@ -111,6 +111,7 @@ nav.activities-bar {
         background: url(image_path('map-left-dotless.png')) no-repeat left top #dbd9d9;
         width: 44%;
         min-height: 1847px;
+        float: left;
   //      padding-bottom: 100%;
       }
     
@@ -283,6 +284,12 @@ nav.activities-bar {
   padding-top: 2rem;
   border-collapse: collapse;
   border: none;
+
+  tbody {
+    background: none;
+    border: none;
+  }
+
   tr {
     margin-bottom: 2rem;
     background: none !important;

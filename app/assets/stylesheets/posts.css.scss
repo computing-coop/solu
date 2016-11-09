@@ -31,7 +31,7 @@
     font-size: 0.9rem;
     line-height: 1.4rem;
     color: #222;
-    font-weight: 300;
+    font-weight: 400;
     h1 {
       font-size: 2.0rem;
     }
@@ -88,7 +88,7 @@
       font-size:  0.938rem;
       line-height: 1.5rem;
       text-transform: uppercase;
-      font-weight: 300;
+      font-weight: 400;
       a { 
         color: $turq;
         &:hover {
@@ -127,9 +127,9 @@
 .slick-next {
   right: -3rem;
   position: absolute;
-  &.page {
-    right: 1rem;
-  }
+//  &.page {
+//    right: 1rem;
+//  }
 }
 .slick-prev:before, .slick-next:before { font-family: "Roboto"; font-size: 10rem; font-weight: 100; line-height: 1; 
   color: black !important; opacity: 1; 

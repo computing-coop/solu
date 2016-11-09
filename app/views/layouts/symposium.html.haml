@@ -122,7 +122,7 @@
 
       #sticky_symposium_box.hide-for-small-only
         .heading.ui-draggable-handle
-          .left.text-left PROGRAMME
+          .float-left.text-left PROGRAMME
           .text-right NOV 2016
         .title_box.text-center
           .title= link_to 'SYMPOSIUM', '/'
@@ -133,7 +133,7 @@
             
       = content_for :jquery do
         :plain  
-          $('#sticky_symposium_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
+          $('#sticky_symposium_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-5", of: 'header'}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           
 

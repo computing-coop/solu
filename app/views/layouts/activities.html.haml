@@ -53,7 +53,7 @@
 
       %nav.top-bar.sticky
         .hor-container.initial
-          .row
+          .row.expanded
       
             .menu_wrapper
               .social.hide-for-small-only
@@ -74,18 +74,18 @@
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } News
                       %option{selected: (controller.controller_name == 'partners' ? :selected : false), value: partners_path} Partners
                       %option{selected: (controller.controller_name == 'activities'  ? :selected : false), value: activities_path } Programme
-                %ul.top-bar-menu.hide-for-small-only
+                %ul.top-bar-menu.hide-for-small-only.horizontal.menu
                   = render partial: 'layouts/dropdown'
                   
                   %li{class: controller.controller_name == 'posts' ? :active : false}= link_to 'News', posts_path
                   %li{class: controller.controller_name == 'partners' ? :active : false}= link_to 'Partners', partners_path
                   %li{class: controller.controller_name == 'activities'  ? :active : false}= link_to 'Programme', activities_path
                   %li{class: controller.controller_name == 'pages' && params[:id] == 'about' ? :active : false}= link_to 'About', page_path('about')
-          .row.hide-for-small-only
+          .row.hide-for-small-only.expanded
             .down_arrow_wrapper
               .social &nbsp;
               .rest
-                %ul.top-bar-menu
+                %ul.top-bar-menu.horizontal.menu
                   .together
                     %li.select_menu
                       &nbsp;&nbsp;&nbsp;&nbsp;

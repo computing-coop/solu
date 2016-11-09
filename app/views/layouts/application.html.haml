@@ -84,7 +84,7 @@
             .down_arrow_wrapper
               .social &nbsp;
               .rest
-                %ul.top-bar-menu
+                %ul.top-bar-menu.horizontal.menu
                   .together
                     %li.select_menu
                       &nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,7 +143,7 @@
             = link_to '>>>', post
       = content_for :jquery do
         :plain  
-          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-40", of: '.hor-container'}}).parent().draggable();
+          $('#sticky_blue_box').dialog({draggable: false, resizable: false, position: { my: "right-40 bottom", at: "right bottom-20", of: 'header'}}).parent().draggable();
           $('.ui-dialog').draggable( "option", "containment", 'html');
           $('#sticky_blue_box .title_box').mouseenter(function() {
             $('#sticky_blue_box .blurb').css('display', 'none');
