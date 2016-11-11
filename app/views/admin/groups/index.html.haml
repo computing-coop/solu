@@ -16,7 +16,7 @@
           %tr
             %td
               = group.name
-              = link_to 'Export to CSV', admin_symposium_group_participants_path(@symposium, group), class: [:button, :small]
+              = link_to 'Export to CSV', admin_symposium_group_participants_path(@symposium, group, format: 'csv'), class: [:button, :small]
             %td= group.host
             %td= group.participants.size.to_s
             %td
