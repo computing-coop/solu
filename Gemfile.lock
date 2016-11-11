@@ -7,6 +7,12 @@ GIT
       mongoid (>= 3.0, < 7.0)
 
 GIT
+  remote: git://github.com/cenotaph/handles_sortable_columns.git
+  revision: b49466c91705637db8f960f98fc4f9ed44b2f91d
+  specs:
+    handles_sortable_columns (0.1.4)
+
+GIT
   remote: git://github.com/stefanpenner/country_select.git
   revision: 46548db15844f987b9ea0d248f9c27cf6db9dd8e
   specs:
@@ -162,7 +168,6 @@ GEM
       haml (>= 4.0.6, < 5.0)
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
-    handles_sortable_columns (0.1.4)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -334,7 +339,7 @@ DEPENDENCIES
   geocoder
   haml
   haml-rails
-  handles_sortable_columns
+  handles_sortable_columns!
   jbuilder (~> 2.0)
   jquery-rails
   jquery-slick-rails

@@ -5,5 +5,11 @@ class Admin::GroupsController < Admin::BaseController
     @groups = @symposium.groups
     set_meta_tags title: @symposium.name + ": Groups"
   end
-    
-  end
+   
+   def show
+     @symposium = Symposium.find(params[:symposium_id])
+     @groups = @symposium.groups.find(params[:id])
+     set_meta_tags title: @symposium.name + ": Groups"
+   end
+   
+end

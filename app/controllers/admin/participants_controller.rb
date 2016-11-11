@@ -1,6 +1,7 @@
 class Admin::ParticipantsController < Admin::BaseController
   skip_load_resource :only => [:show, :destroy, :edit, :update, :destroy]
   handles_sortable_columns
+  require 'csv'
   
   def create
     @symposium = Symposium.find(params[:symposium_id])
@@ -24,6 +25,13 @@ class Admin::ParticipantsController < Admin::BaseController
     redirect_to admin_symposium_groups_path(@symposium)
   end
   
+  def index
+    @symposium = Symposium.find(params[:symposium_id])
+    @group = @symposium.groups.find(params[:group_id])
+    @participants = @group.participants
+
+  end
+      
   def edit
     @symposium = Symposium.find(params[:symposium_id])
     @group = @symposium.groups.find(params[:group_id])

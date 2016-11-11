@@ -1,0 +1,7 @@
+Name,Email,Keynote,Symposium,Dinner
+<%= CSV.generate do |csv|
+   @participants.each do |cs|
+     csv << [ cs.name, cs.email, cs.symposium_registration ? (cs.symposium_registration.keynote ? "YES" : 'no') : '', cs.symposium_registration ? (cs.symposium_registration.symposium ? "YES" : 'no') : '', cs.symposium_registration ? (cs.symposium_registration.dinner ? "YES" : 'no') : '' ]
+   end 
+  end .html_safe
+  %>

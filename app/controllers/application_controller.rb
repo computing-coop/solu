@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :protect_with_staging_password if Rails.env.staging?
  
   before_filter :get_sticky_posts
-  before_filter :configure_devise_params, if: :devise_controller?
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :check_subdomain
   before_filter :get_random_background
   
@@ -74,10 +74,12 @@ class ApplicationController < ActionController::Base
     @sticky = Post.sticky.order(published_at: :desc).limit(2)    
   end
   
-  def configure_devise_params
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email,  :password, :remember_token, :remember_created_at, :sign_in_count, :partner_id) }
-    devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:name, :partner_id, role_ids: [] )}    
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :partner_id, :password, :name,  :password_confirmation ) }
+  def configure_permitted_parameters
+    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :remember_token, :remember_created_at, :sign_in_count, :partner_id,  role_ids: [] ]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+
   end
+
     
 end
