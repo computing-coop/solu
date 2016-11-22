@@ -44,7 +44,7 @@
           .image_credit= link_to 'IMAGE CREDITS', '#', onclick: "$(this).text('#{escape_javascript(@background_image.credit)}');return false;"
       - if user_signed_in?  
         - if current_user.has_role?(:partner) || current_user.has_role?(:admin)
-          .right
+          .float-right
             = link_to 'Back office', '/admin', class: [:button, :tiny]
       = link_to '/' do
         - if Rails.env.staging?
