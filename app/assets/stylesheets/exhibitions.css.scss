@@ -67,6 +67,7 @@ nav.top-bar {
       float: left;
       position: relative;
       padding: 0 1.4rem;
+
       a {
         float: left;
         white-space: nowrap;
@@ -77,7 +78,7 @@ nav.top-bar {
     margin-top: 0;
     ul.top-bar-menu {
       li {
-        span { color: transparent; text-transform: uppercase; }
+        span { color: transparent; text-transform: uppercase; padding: 0 3.2px; }
         
       }
     }
