@@ -78,6 +78,8 @@ gem 'mongoid_magic_counter_cache'
 gem 'nested_form'
 gem 'nokogiri', '1.6.6.2'
 gem "recaptcha", '3.0', require: "recaptcha/rails"
+gem 'redis-rails', '~> 5.0.1'
+gem 'redis'
 gem 'rolify'
 gem 'truncate_html'
 

@@ -6,5 +6,6 @@
         = @category.name
 
   - @posts.each_with_index do |post, index|
-    .post{class: index == (@posts.size - 1) ? :last : false}
-      = render partial: 'posts/post', locals: {post: post}
+    - cache [@site.try(:name), post] do
+      .post{class: index == (@posts.size - 1) ? :last : false}
+        = render partial: 'posts/post', locals: {post: post}
