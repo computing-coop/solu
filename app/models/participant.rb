@@ -21,7 +21,7 @@ class Participant
   field :website, type: String
   field :email, type: String
 
-  belongs_to :user
+  belongs_to :user, optional: true
   
   slug :name, scope: :group, history: true
   

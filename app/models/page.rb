@@ -17,7 +17,7 @@ class Page
   field :image_content_type, type: String
   
   field :published, type: Boolean
-  belongs_to :activity
+  belongs_to :activity, optional: true
   
   mount_uploader :image, ImageUploader
     

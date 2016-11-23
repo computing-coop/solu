@@ -53,6 +53,7 @@ class Admin::ParticipantsController < Admin::BaseController
 
     # hack because there appears to be a bug in mongoid!!!
     @participant.update(participant_params)   
+
     if @symposium.save
       flash[:notice] = 'The participant has been edited'
     else
