@@ -31,5 +31,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fill => [100, 100]
   end
+  
+  def default_url
+    "/assets/default.png"
+  end
 
 end
