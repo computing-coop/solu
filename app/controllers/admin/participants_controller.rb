@@ -56,7 +56,7 @@ class Admin::ParticipantsController < Admin::BaseController
     if @symposium.save
       flash[:notice] = 'The participant has been edited'
     else
-      flash[:error] = 'The participant could not be edited : ' + @symposium.errors.full_messages
+      flash[:error] = 'The participant could not be edited : ' + @symposium.errors.inspect
     end
     redirect_to admin_symposium_groups_path(@symposium)
   end
