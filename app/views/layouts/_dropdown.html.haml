@@ -20,13 +20,13 @@
       var selected = $("option:selected", this);
 
       if(selected.hasClass("exhibition_select")) {
-        window.location.href= 'http://exhibitions.#{Rails.env.development? ? "local:3000" : (Rails.env.staging? ? "staging.hybridmatters.net" : "hybridmatters.net")}/' + $(this).val();
+        window.location.href= 'https://exhibitions.#{Rails.env.development? ? "local:3000" : (Rails.env.staging? ? "staging.hybridmatters.net" : "hybridmatters.net")}/' + $(this).val();
       }
       else if ($(this).val() == 'Overview') {
         
-        window.location.href = 'http://hybridmatters.net/'
+        window.location.href = 'https://hybridmatters.net/'
       } else {
-        window.location.href= 'http://' + $(this).val() + '.hybridmatters.net';      
+        window.location.href= 'https://' + $(this).val() + '.hybridmatters.net';      
       }
     });
     $('select.secondary_nav_select').change(function() {

@@ -63,14 +63,9 @@
                 = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
                 = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
-                .row.expanded.show-for-small-only
-                  .small-6.columns.small-offset-1
-                    = render partial: 'layouts/dropdown'
-                    / %select.main_nav_select
-                    /   %option{ value: 'www'} Home
-                    /    %option{value: 'fieldnotes'} Field_Notes
-                    /   %option{selected: :selected, value: 'investigations'} Investigations
-                  .small-5.columns
+                .row.show-for-small-only
+                  = render partial: 'layouts/mobile_dropdown'
+                  .small-6.columns
                     %select.secondary_nav_select
                       %option{selected: (controller.controller_name == 'pages' ? :selected : false), value: page_path('about-investigations') } About
                       %option{selected: (controller.controller_name == 'posts' ? :selected : false), value: posts_path } Blog
