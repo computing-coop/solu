@@ -131,6 +131,7 @@
     = render partial: 'layouts/footer', locals: {append: '_fn'}
                      
     :javascript
-      $(document).ready(function() { #{yield :jquery} 
+      $(document).ready(function() { 
+        #{yield :jquery} 
 
       });

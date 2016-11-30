@@ -44,21 +44,21 @@
             .post_paginator= link_to raw("Next &#8594;"), @post.next        
 
 
-  - if @post.photos.size > 1
-    = content_for :jquery do
-      :plain
-        $('.image_carousel').slick({infinite: true,
-          arrows: true,
-          slide: '.slide',
-          adaptiveHeight: false,
-          prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
-          nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
-          dots: true,
-          customPaging: function(slick,index) {
-             return slick.$slides.eq(index).find('.thumb').html() ;
-          },
-          variableWidth: false,
-          autoplay: true,
-          autoplaySpeed: 2400,
-          slidesToScroll: 1,
-        });
+- if @post.photos.size > 1
+  = content_for :jquery do
+    :plain
+      $('.image_carousel').slick({infinite: true,
+        arrows: true,
+        slide: '.slide',
+        adaptiveHeight: false,
+        prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+        nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+        dots: true,
+        customPaging: function(slick,index) {
+           return slick.$slides.eq(index).find('.thumb').html() ;
+        },
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 2400,
+        slidesToScroll: 1,
+      });
