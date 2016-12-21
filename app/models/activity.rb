@@ -12,6 +12,7 @@ class Activity
   
   belongs_to :activitytype
   has_one :subsite
+  belongs_to :node
   has_and_belongs_to_many :posts
   
   validates_uniqueness_of :name

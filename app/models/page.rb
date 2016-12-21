@@ -21,7 +21,8 @@ class Page
   
   mount_uploader :image, ImageUploader
     
-  belongs_to :subsite
+  belongs_to :subsite, optional: true
+  belongs_to :node
 
   slug :title, history: true
     

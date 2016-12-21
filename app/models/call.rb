@@ -11,6 +11,8 @@ class Call
   
   slug :name
   
+  belongs_to :node
+  
   belongs_to :symposium
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true

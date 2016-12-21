@@ -73,6 +73,7 @@ gem 'handles_sortable_columns', github: 'cenotaph/handles_sortable_columns'
 gem 'kaminari'
 gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'
+gem 'mongoid_rails_migrations'
 gem 'mongoid-slug'
 gem 'mongoid_magic_counter_cache'
 gem 'nested_form'
@@ -81,6 +82,7 @@ gem "recaptcha", '3.0', require: "recaptcha/rails"
 gem 'redis-rails', '~> 5.0.1'
 gem 'redis'
 gem 'rolify'
+gem 'themes_for_rails', github: 'cenotaph/themes_for_rails'
 gem 'truncate_html'
 
 

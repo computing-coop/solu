@@ -10,6 +10,7 @@ class Subsite
 
   belongs_to :symposium
   belongs_to :activity
+  belongs_to :node
   
 
   def subdomain_list

@@ -11,7 +11,8 @@ class Event
   field :published, type: Mongoid::Boolean
   
   belongs_to :activity
-  belongs_to :subsite
+  belongs_to :subsite, optional: true
+  belongs_to :node
   
   slug :name, history: true
   

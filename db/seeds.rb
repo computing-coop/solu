@@ -82,3 +82,11 @@ Activity.create(
   start_at: '2016-12-01', end_at: '2016-12-04',
   responsible_organisations: [  Partner.find_by(name: 'Finnish Society of Bioart'),  Partner.find_by(name: 'Forum Box')]
 )
+
+Node.create(
+  name: 'bioart', description: 'Finnish Society of Bioart', subdomains: 'bioartsociety'
+)
+
+Node.create(
+  name: 'hybrid_matters', description: 'HYBRID_MATTERs', subdomains: 'hybridmatters'
+)

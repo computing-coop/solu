@@ -32,6 +32,7 @@ class Partner
   
   has_and_belongs_to_many :activities_leading, class_name: 'Activity', inverse_of: :responsible_organisation
   
+  belongs_to :node
   
   slug :name
   

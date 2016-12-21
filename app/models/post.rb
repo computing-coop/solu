@@ -9,7 +9,9 @@ class Post
   field :sticky, type: Mongoid::Boolean
   field :short_abstract, type: String
   belongs_to :user
-  belongs_to :subsite
+  belongs_to :subsite, optional: true
+  belongs_to :node
+  
   has_and_belongs_to_many :postcategories
   has_and_belongs_to_many :activities
   slug :title, history: true

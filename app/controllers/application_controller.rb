@@ -2,12 +2,14 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   skip_before_filter :verify_authenticity_token, if: -> { controller_name == 'sessions' && action_name == 'create' }
-  before_filter :protect_with_staging_password if Rails.env.staging?
+  before_action :protect_with_staging_password if Rails.env.staging?
  
-  before_filter :get_sticky_posts
-  before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :check_subdomain
-  before_filter :get_random_background
+  before_action :get_sticky_posts
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  before_action :check_subdomain
+  before_action :get_random_background
+  theme :get_node
   
   def protect_with_staging_password
     authenticate_or_request_with_http_basic('Bioart eyes only! (for now)') do |username, password|
@@ -24,6 +26,16 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  
+  def get_node
+    # if Rails.env.development?
+      if request.host =~ /^bioartsociety/ 
+        @node = Node.find_by(name: 'bioart')
+      else
+        @node = Node.find_by(name: 'hybrid_matters')
+      end
+      @node.name
+   end
   
   def check_subdomain
     # get all possible subdomains

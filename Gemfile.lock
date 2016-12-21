@@ -13,6 +13,13 @@ GIT
     handles_sortable_columns (0.1.4)
 
 GIT
+  remote: git://github.com/cenotaph/themes_for_rails.git
+  revision: 98c8db268dceebc14c831da18dc4abec9c4c7e74
+  specs:
+    themes_for_rails (0.5.1)
+      rails (>= 4.2.2)
+
+GIT
   remote: git://github.com/stefanpenner/country_select.git
   revision: 46548db15844f987b9ea0d248f9c27cf6db9dd8e
   specs:
@@ -227,6 +234,12 @@ GEM
     mongoid_magic_counter_cache (1.1.1)
       mongoid
       rake
+    mongoid_rails_migrations (1.1.0)
+      activesupport (>= 4.2.0)
+      bundler (>= 1.0.0)
+      mongoid (>= 4.0.0)
+      rails (>= 4.2.0)
+      railties (>= 4.2.0)
     multi_json (1.12.1)
     nested_form (0.3.2)
     net-scp (1.2.1)
@@ -373,6 +386,7 @@ DEPENDENCIES
   mongoid-grid_fs!
   mongoid-slug
   mongoid_magic_counter_cache
+  mongoid_rails_migrations
   nested_form
   nifty-generators
   nokogiri (= 1.6.6.2)
@@ -384,6 +398,7 @@ DEPENDENCIES
   rolify
   sass-rails (~> 5.0)
   spring
+  themes_for_rails!
   truncate_html
   uglifier (>= 1.3.0)
 

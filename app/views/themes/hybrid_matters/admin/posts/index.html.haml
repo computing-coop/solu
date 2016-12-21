@@ -9,6 +9,7 @@
       %thead
         %tr
           %th= sortable_column "Title"
+          %th Subsites
           %th= sortable_column "Body"
           %th= sortable_column "Published"
           %th= sortable_column "Posted by"
@@ -23,6 +24,13 @@
               = post.title
               - if post.sticky == true
                 %strong In Announcement box!
+            %td
+              = post.node.name
+              %br/
+              - if post.subsite.nil?
+                no sub-site
+              - else
+                = post.subsite.name
             %td.body= raw truncate_html(strip_tags(post.body), length: 250)
             %td= post.published == true ? "yes" : "no"
             %td= !post.user.blank? ? post.user.email : 'no one'
