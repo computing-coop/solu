@@ -1,0 +1,36 @@
+@import 'bioart/stylesheets/variables';
+
+header {
+  background-color: $headerblue;
+  .pattern {
+    background: url(/assets/bioart/images/layout/header_pattern.png) repeat;
+    min-height: 13.813em;
+    padding: 3.125em 0;
+    .logo {
+      font-family: 'Myanmar Sangam MN';
+      font-size: 3.081em;
+      line-height: 1em;
+      font-weight: 600;
+    }
+    ul.menu {
+      padding: 5.2em 0 0 0;
+      li {  
+        
+        font-family: 'Titillium Web', sans-serif;
+        padding: 0 0 0 0.15em;
+        a {
+            
+          background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
+
+          padding: 1em 0.7em 1em 2em;
+          margin-right: 0.5em;
+          font-size: 0.933em;
+          
+          text-transform: uppercase;
+        }
+      }
+      
+    }
+  }
+  
+}

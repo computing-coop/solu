@@ -101,6 +101,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   get '/' => 'pages#show', id: 'statement', :constraints => { :subdomain => 'symposium' } 
-  root to: 'posts#index'
+  root to: 'home#home'
   get '/admin',  to: 'admin/posts#index'
 end

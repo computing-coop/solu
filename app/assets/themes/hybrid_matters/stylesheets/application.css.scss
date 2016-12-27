@@ -11,7 +11,7 @@
  * file per style scope.
  *
  *= require_self
-//= require hybrid_matters/stylesheets/foundation_and_overrides
+ *= require hybrid_matters/stylesheets/foundation_and_overrides
 
  *= require hybrid_matters/stylesheets/foundation-datepicker
  *= require slick
