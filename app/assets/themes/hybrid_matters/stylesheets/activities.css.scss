@@ -280,7 +280,7 @@ nav.activities-bar {
 }
 
 .vertical-line {
-  background: url(image_path('arrowline.png')) repeat-y 23px top;
+  background: url(image_path('/assets/hybrid_matters/images/arrowline.png')) repeat-y 23px top;
   padding-top: 2rem;
   border-collapse: collapse;
   border: none;
@@ -306,7 +306,7 @@ nav.activities-bar {
   .circle {
 //    float: left;
     display: table-cell;
-    background: url(image_path('circle.png')) no-repeat center center;
+    background: url(image_path('/assets/hybrid_matters/images/circle.png')) no-repeat center center;
     font-weight: 300;
     color: #FFFFFF;
     width: 55px;

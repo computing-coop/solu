@@ -11,23 +11,23 @@
  * file per style scope.
  *
  *= require_self
-//= require foundation_and_overrides
+//= require hybrid_matters/stylesheets/foundation_and_overrides
 
- *= require foundation-datepicker
+ *= require hybrid_matters/stylesheets/foundation-datepicker
  *= require slick
- *= require partners
- *= require pages
- *= require activities
- *= require calls
- *= require posts
- *= require field_notes
- *= require fn_mobile
- *= require exhibitions
- *= require symposium
+ *= require hybrid_matters/stylesheets/partners
+ *= require hybrid_matters/stylesheets/pages
+ *= require hybrid_matters/stylesheets/activities
+ *= require hybrid_matters/stylesheets/calls
+ *= require hybrid_matters/stylesheets/posts
+ *= require hybrid_matters/stylesheets/field_notes
+ *= require hybrid_matters/stylesheets/fn_mobile
+ *= require hybrid_matters/stylesheets/exhibitions
+ *= require hybrid_matters/stylesheets/symposium
  *= require jquery-ui
- *= require jquery-overrides
- *= require mobile
- *= require tablet
+ *= require hybrid_matters/stylesheets/jquery-overrides
+ *= require hybrid_matters/stylesheets/mobile
+ *= require hybrid_matters/stylesheets/tablet
  */
 
 @import 'foundation_and_overrides';
@@ -104,13 +104,13 @@ header {
     }
   }
   &.type1 {
-    background: url(image_path('top_image1.jpg')) no-repeat top center;
+    background: url(image_path('/assets/hybrid_matters/images/top_image1.jpg')) no-repeat top center;
   }
   &.type2 {
-    background: url(image_path('top_image2.jpg')) no-repeat top center;
+    background: url(image_path('/assets/hybrid_matters/images/top_image2.jpg')) no-repeat top center;
   }
   &.type3 {
-    background: url(image_path('top_image3.jpg')) no-repeat top center;
+    background: url(image_path('/assets/hybrid_matters/images/top_image3.jpg')) no-repeat top center;
   }
   background-color: $pastel-blue;
 //  background-size: cover;
@@ -125,7 +125,7 @@ header {
   }
   
   .top-bar {
-    background: url(image_path('menu_module.png')) repeat-x;
+    background: url(image_path('/assets/hybrid_matters/images/menu_module.png')) repeat-x;
     z-index: 100;
     margin-top: -37px;
     height: 75px;
@@ -139,13 +139,13 @@ header {
             }
           }
           &.active {
-            background: url(image_path('selected_down.png')) no-repeat center center; 
+            background: url(image_path('/assets/hybrid_matters/images/selected_down.png')) no-repeat center center; 
           }
         }
         li {
           font-family: 'Roboto';
           span { font-size: 1.125rem; }
-          &.active { background: url(image_path('selected_down.png')) no-repeat center center; }
+          &.active { background: url(image_path('/assets/hybrid_matters/images/selected_down.png')) no-repeat center center; }
         }
       }
     }

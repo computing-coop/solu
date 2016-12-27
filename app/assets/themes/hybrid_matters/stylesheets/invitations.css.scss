@@ -39,17 +39,17 @@
 
 header.invitations {
   nav.top-bar {
-    background: url(image_path('menu_module_invitations.png')) repeat-x;
+    background: url(image_path('/assets/hybrid_matters/images/menu_module_invitations.png')) repeat-x;
     .menu_wrapper, .down_arrow_wrapper {
       ul.top-bar-menu {
         
         .together {
           &.active {
-            background: url(image_path('selected_down_invitations.png')) no-repeat center center;
+            background: url(image_path('/assets/hybrid_matters/images/selected_down_invitations.png')) no-repeat center center;
           }
         }
         li {
-          &.active { background: url(image_path('selected_down_invitations.png')) no-repeat center center; }
+          &.active { background: url(image_path('/assets/hybrid_matters/images/selected_down_invitations.png')) no-repeat center center; }
         }
         select {
           

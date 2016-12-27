@@ -3,10 +3,10 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = display_meta_tags :site => 'HYBRID MATTERs invitations', og: {image: "http://#{request.host}#{image_path('hm_logo.png')}" }
-    = stylesheet_link_tag    'application', media: 'all'
-    = stylesheet_link_tag    'invitations', media: 'all'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true 
+    = display_meta_tags :site => 'HYBRID MATTERs invitations', og: {image: "http://#{request.host}#{image_path('/assets/hybrid_matters/images/hm_logo.png')}" }
+    = stylesheet_link_tag 'hybrid_matters/stylesheets/application', media: 'all'
+    = stylesheet_link_tag 'hybrid_matters/stylesheets/invitations', media: 'all'
+    = javascript_include_tag 'hybrid_matters/javascripts/application', 'data-turbolinks-track' => true 
     - if controller.controller_name == 'partners'
       %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
     = csrf_meta_tags
@@ -49,7 +49,7 @@
             = link_to 'Back office', '/admin', class: [:button, :tiny]
       = link_to 'http://hybridmatters.net/' do
         - if Rails.env.staging?
-          .staging_overlay= image_tag('staging_overlay.png')
+          .staging_overlay= image_tag('/assets/hybrid_matters/images/staging_overlay.png')
         .before
         .grid-container
 
@@ -59,9 +59,9 @@
       
             .menu_wrapper
               .social.hide-for-small-only
-                = link_to image_tag('icon_fb.png', onmouseover: "this.src='#{image_path('icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
-                = link_to image_tag('icon_twitter.png', onmouseover: "this.src='#{image_path('icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
-                = link_to image_tag('icon_post.png', onmouseover: "this.src='#{image_path('icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
+                = link_to image_tag('/assets/hybrid_matters/images/icon_fb.png', onmouseover: "this.src='#{image_path('/assets/hybrid_matters/images/icon_fb_hover.png')}'", onmouseout: "this.src='#{image_path('/assets/hybrid_matters/images/icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
+                = link_to image_tag('/assets/hybrid_matters/images/icon_twitter.png', onmouseover: "this.src='#{image_path('/assets/hybrid_matters/images/icon_twitter_hover.png')}'", onmouseout: "this.src='#{image_path('/assets/hybrid_matters/images/icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
+                = link_to image_tag('/assets/hybrid_matters/images/icon_post.png', onmouseover: "this.src='#{image_path('/assets/hybrid_matters/images/icon_post_hover.png')}'", onmouseout: "this.src='#{image_path('/assets/hybrid_matters/images/icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
                 .row.show-for-small-only
                   = render partial: 'layouts/mobile_dropdown'
