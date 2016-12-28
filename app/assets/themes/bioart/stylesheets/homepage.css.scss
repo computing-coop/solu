@@ -1,8 +1,15 @@
 @import 'variables';
+@import '_settings';
 
 .frontitem {
   height: 0;
   font-family: $titillium;
+  @include breakpoint(small only) {
+    min-height: 300px;
+    padding-bottom: 0 !important;
+    height: initial;
+    background-size: cover !important; 
+  }
   .frontitem_blurb {
     padding-top: 20%;
     .small_blurb {
@@ -35,6 +42,10 @@
     color: #000;
     text-transform: uppercase;
     font-size: 5.659em;
+    @include breakpoint(small only) {
+      font-size: 3.4em;
+      padding: 2.24rem 0;
+    }
     span.white {
       color: #FFF;
     }
@@ -79,6 +90,9 @@
   .heading {
     background-color: $headerblue;
     font-size: 5.625rem;
+    @include breakpoint(small only) {
+      font-size: 3.4rem;
+    }
     text-transform: uppercase;
     font-family: $rubik;
     float: left;
@@ -93,6 +107,9 @@
       font-family: $rubik;
       float: left;
       margin: -2rem 0 0 3.25rem;
+      @include breakpoint(small only) {
+        margin: 0 2rem 0 -1rem;
+      }
       color: #FFF;
       font-size: 3.5rem;
       clear: left;
@@ -106,9 +123,15 @@
     font-family: $titillium;
 
     margin: 3.75rem 2.75rem;
+    @include breakpoint(small only) {
+      margin: 0;
+    }
     
     .excerpt {
       padding: 5.347rem 2rem 3.347rem;
+      @include breakpoint(small only) {
+        padding-top: 10rem;
+      }
       p {
         font-size: 1.25rem;
         font-weight: bold;
@@ -120,6 +143,10 @@
       position: relative;
       left: 96%;
       margin-top: -12%;
+      @include breakpoint(small only) {
+        left: initial;
+        margin-top: initial;
+      }
       .side_link {
         float: left;
         clear: both;
@@ -147,6 +174,10 @@
     color: #000;
     text-transform: uppercase;
     font-size: 5.659em;
+    @include breakpoint(small only) {
+      font-size: 3.4em;
+      padding: 2.24rem 0;
+    }
     span.white {
       color: #FFF;
     }
@@ -180,12 +211,17 @@
 }
 .featured_projects {
   background: #ececee url(/assets/bioart/images/fp_bg.png) center/cover no-repeat;
+  padding-bottom: 8.75rem;
   .section_title {
     padding: 2.625rem 0;
     font-family: $rubik;
     color: #000;
     text-transform: uppercase;
     font-size: 5.659em;
+    @include breakpoint(small only) {
+      font-size: 3.4em;
+      padding: 2.24rem 0;
+    }
     span.featured {
       color: #FFF;
       padding: 0 0.2em 0 0.4em;
@@ -193,14 +229,28 @@
     }
   }
   .project {
+    height: 200px;
+    @include breakpoint(small only) {
+      height: initial;
+    }
     margin-bottom: 0.75em;
     .project_icon {
+      padding: 0;
+      background-color: white;
       img {
-        width: 100%;
-        height: auto;
+        height: 200px;
+        width: auto;
+        @include breakpoint(small only) {
+          width: 100%;
+          height: auto;
+        }
       }
     }
     .project_content {
+      height: 200px;
+      @include breakpoint(small only) { 
+        height: initial;
+      }
       font-family: $titillium;
       background-color: white;
       padding: 1.5em 3em;
@@ -214,6 +264,70 @@
         font-size: 1.25rem;
         font-weight: normal;
         line-height: 1.8rem;
+      }
+    }
+  }
+}
+
+.contact {
+  background: #FFF url(/assets/bioart/images/layout/blue_halftone.png) repeat;
+  padding: 3rem 0 5.375rem 0 ;
+  .text {
+
+    .red {
+      background-color: $fuschia;
+      font-family: $rubik;
+      float: left;
+      margin: -2rem 0 0 3.25rem;
+      color: #FFF;
+      font-size: 3.5rem;
+      clear: left;
+      line-height: 1em;
+      padding: 0.25rem 0.5rem;
+      position: absolute;
+    
+    }
+    clear: both;
+    background-color: #fff;
+    font-family: $titillium;
+
+    margin: 3.75rem 2.75rem;
+    
+    .address {
+      margin-bottom: 5.375rem;
+      padding: 5.347rem 2rem 3.347rem;
+      p {
+        font-size: 1.25rem;
+        font-weight: bold;
+        font-family: $titillium;
+        line-height: 1.8rem;
+      }
+    }
+    .side_links {
+      position: relative;
+      left: 96%;
+      margin-top: -16%;
+      padding-bottom: 9%;
+      @include breakpoint(small only) {
+        margin-top: initial;
+        left: initial;
+        padding-bottom: initial;
+      }
+      .side_link {
+        float: left;
+        clear: both;
+        margin-bottom: 1em;
+        background-color: #000;
+        background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
+
+        padding: 1em 0.7em 1em 2em;
+        a {
+          text-transform: uppercase;
+          color: #C5C5C5;
+          &:hover {
+            color: #FFF;
+          }
+        }
       }
     }
   }

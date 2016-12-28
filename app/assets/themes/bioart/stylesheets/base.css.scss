@@ -1,4 +1,5 @@
 @import 'bioart/stylesheets/variables';
+@import '_settings';
 
 header {
   background-color: $headerblue;
@@ -6,6 +7,9 @@ header {
     background: url(/assets/bioart/images/layout/header_pattern.png) repeat;
     min-height: 13.813em;
     padding: 3.125em 0;
+    @include breakpoint(small only) {
+        padding: 3.125em 0 0;
+      }
     .logo {
       font-family: 'Myanmar Sangam MN';
       font-size: 3.081em;
@@ -14,8 +18,15 @@ header {
     }
     ul.menu {
       padding: 5.2em 0 0 0;
+      @include breakpoint(small only) {
+        padding: 0;
+      }
       li {  
-        
+        @include breakpoint(small only) {
+          display: inline;
+          float: left;
+          margin-bottom: 1rem;
+        }
         font-family: $titillium;
         padding: 0 0 0 0.15em;
         a {
@@ -33,4 +44,10 @@ header {
     }
   }
   
+}
+
+
+footer {
+  background: $headerblue url(/assets/bioart/images/layout/header_pattern.png) repeat;
+  min-height: 7.5rem;
 }

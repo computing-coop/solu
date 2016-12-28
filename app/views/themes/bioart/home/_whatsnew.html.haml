@@ -1,6 +1,6 @@
 .whats_new
   .row
-    .small-12.columns.section_title
+    .small-10.small-centered.medium-12.columns.section_title
       %span.white What's
       New
   .row.small-up-1.medium-up-2.xxlarge-up-3.post_carousel
@@ -25,7 +25,18 @@
         autoplay: true,
         autoplaySpeed: 4500,
         slidesToScroll: 1,
-        slidesToShow: 2
+        slidesToShow: 2,
+        responsive: [
+            {
+              breakpoint: 480,
+              settings: {
+                autoplay: true,
+                autoplaySpeed: 3000,
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+          }
+        ]
       });;
     
     
