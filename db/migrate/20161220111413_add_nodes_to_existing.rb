@@ -1,5 +1,7 @@
 class AddNodesToExisting < Mongoid::Migration
   def self.up
+    Node.find_or_create_by(name: 'hybrid_matters', description: 'HYBRID_MATTERs', subdomains: 'hybridmatters')
+    Node.find_or_create_by(name: 'bioart', description: 'Finnish Society of Bioart', subdomains: 'bioartsociety')
     hms = Node.find 'hybrid-matters' 
     Post.all.each do |p|
       p.node = hms
