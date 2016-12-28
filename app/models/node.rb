@@ -11,4 +11,11 @@ class Node
   
   validates_uniqueness_of :name
   
+  embeds_many :frontitems
+  has_many :pages, inverse_of: :node
+  
+  def to_hashtag
+    "##{name.gsub(/\s*/, '')}"
+  end
+  
 end

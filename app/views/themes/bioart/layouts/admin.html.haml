@@ -1,0 +1,64 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = display_meta_tags :site => 'Bioart Society backoffice'
+    = stylesheet_link_tag 'bioart/stylesheets/application', media: 'all', 'data-turbolinks-track' => true 
+    = stylesheet_link_tag 'bioart/stylesheets/backoffice', media: 'all', 'data-turbolinks-track' => false
+    = javascript_include_tag 'bioart/javascripts/application', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'bioart/javascripts/backoffice', 'data-turbolinks-track' => false 
+
+    = csrf_meta_tags 
+  %body
+    - unless flash.empty?
+      #flash
+        .row
+          .small-12.columns.text-center
+            - flash.each do |name, msg|
+              - if msg.is_a?(String)
+                = content_tag :div, msg, :id => "flash_#{name}"
+    - if user_signed_in?
+      .title-bar
+        .title-bar-left
+          %em Bioart Society backoffice
+        .title-bar-right
+          = current_user.name
+          = link_to ' [Edit profile]', edit_admin_user_path(current_user)
+          = link_to ' [sign out]', destroy_user_session_path, :method => :delete
+        .right 
+        .title-bar-left
+
+          %ul.menu.horizontal
+            - if can? :edit, Partner
+              %li= link_to 'Partners', admin_partners_path
+            - if can? :edit, Post              
+              %li= link_to 'Blog', admin_posts_path
+            - if can? :edit, Activity              
+              %li= link_to 'Activities', admin_activities_path
+            - if can? :edit, Page              
+              %li= link_to 'Static pages', admin_pages_path
+            - if can? :read, Submission              
+              %li= link_to 'Open calls', admin_calls_path
+            - if can? :edit, Symposium
+              %li= link_to 'Symposia', admin_symposia_path
+            - if can? :edit, Event
+              %li= link_to 'Events', admin_events_path
+            - if can? :edit, Background           
+              %li= link_to 'Header images', admin_backgrounds_path
+            - if can? :edit, Postcategory           
+              %li= link_to 'Post categories', admin_postcategories_path
+            - if can? :edit, Artist
+              %li= link_to 'Artists', admin_artists_path
+            - if can? :edit, Work
+              %li= link_to 'Works', admin_works_path
+            - if can? :edit, User
+              %li= link_to 'Users', admin_users_path
+            - if can? :manage, Subsite
+              %li.last= link_to 'Subdomains', admin_subsites_path
+              
+          
+    = yield
+    
+    :javascript
+      $(document).ready(function() { #{yield :jquery} });

@@ -1,0 +1,31 @@
+.whats_new
+  .row
+    .small-12.columns.section_title
+      %span.white What's
+      New
+  .row.small-up-1.medium-up-2.xxlarge-up-3.post_carousel
+    - @posts.each do |post|
+      .post.column
+        .post_image{style: "background: url(#{post.photos.empty? ? current_theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+          .hashtag
+            = "##{post.node.name}"
+        .post_content
+          .title= post.title
+          .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
+      
+= content_for :jquery do
+  :plain
+    $('.post_carousel').slick({infinite: true,
+        arrows: true,
+        slide: '.post',
+        adaptiveHeight: false,
+        prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+        nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 4500,
+        slidesToScroll: 1,
+        slidesToShow: 2
+      });;
+    
+    

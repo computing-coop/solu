@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Node:
+  = @project.node
+%p
+  %b Year range:
+  = @project.year_range
+%p
+  %b Name:
+  = @project.name
+%p
+  %b Slug:
+  = @project.slug
+%p
+  %b Description:
+  = @project.description
+%p
+  %b Icon file name:
+  = @project.icon_file_name
+%p
+  %b Icon width:
+  = @project.icon_width
+%p
+  %b Icon height:
+  = @project.icon_height
+%p
+  %b Icon size:
+  = @project.icon_size
+%p
+  %b Icon content type:
+  = @project.icon_content_type
+%p
+  %b Published:
+  = @project.published
+%p
+  %b Redirect url:
+  = @project.redirect_url
+
+= link_to 'Edit', edit_project_path(@project)
+\|
+= link_to 'Back', projects_path

@@ -16,10 +16,10 @@ header {
       padding: 5.2em 0 0 0;
       li {  
         
-        font-family: 'Titillium Web', sans-serif;
+        font-family: $titillium;
         padding: 0 0 0 0.15em;
         a {
-            
+          color: #FFF;
           background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
 
           padding: 1em 0.7em 1em 2em;

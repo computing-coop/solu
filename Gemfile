@@ -74,7 +74,7 @@ gem 'kaminari'
 gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'
 gem 'mongoid_rails_migrations'
-gem 'mongoid-slug'
+gem 'mongoid-slug', github: 'mongoid/mongoid-slug', branch: 'master'
 gem 'mongoid_magic_counter_cache'
 gem 'nested_form'
 gem 'nokogiri', '1.6.6.2'
@@ -82,7 +82,7 @@ gem "recaptcha", '3.0', require: "recaptcha/rails"
 gem 'redis-rails', '~> 5.0.1'
 gem 'redis'
 gem 'rolify'
-gem 'themes_for_rails', github: 'cenotaph/themes_for_rails'
+gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master', ref: '98c8db2'
 gem 'truncate_html'
 
 

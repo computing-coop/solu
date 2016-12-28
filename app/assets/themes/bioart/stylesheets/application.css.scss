@@ -13,6 +13,7 @@
  *= require_self
  *= require bioart/stylesheets/foundation_and_overrides
  *= require bioart/stylesheets/base
+ *= require bioart/stylesheets/homepage
  *= require slick
  *= require jquery-ui
  */
@@ -28,3 +29,32 @@
   font-weight: 400;
   src: url('/assets/bioart/fonts/msmn.ttf') format('truetype');
 }
+
+
+.slick-next, .slick-prev {
+  height: inherit;
+  width: inherit;
+  top: 64%;
+}
+.slick-prev {
+  left: -3rem;
+  position: absolute;
+}
+
+.slick-next {
+  right: -3rem;
+  position: absolute;
+//  &.page {
+//    right: 1rem;
+//  }
+}
+.slick-prev:before, .slick-next:before { font-family: sans-serif; font-size: 3em; font-weight: 100; line-height: 1; 
+  color: black !important; opacity: 1; 
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }   
+
+.slick-prev:before { content: "◀"; }
+[dir="rtl"] .slick-prev:before { content: "▶"; }
+
+[dir="rtl"] .slick-next { left: -10px; top: 70px; right: auto; }
+.slick-next:before { content: "▶"; }
+[dir="rtl"] .slick-next:before { content: "◀"; }

@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   
   def date_range(from_date, until_date, options = {})
     if until_date.nil? # || from_date.class == Date

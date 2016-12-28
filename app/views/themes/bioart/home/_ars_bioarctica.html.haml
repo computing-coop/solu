@@ -1,0 +1,11 @@
+.ars_bioarctica_front{style: "background: url(#{@ars.background.url}) repeat;"}
+  .row
+    .small-12.columns.section_title
+      %span.white ARS
+      Bioarctica
+  .row
+    .small-12.columns.medium-11.medium-centered
+      .ars_image
+        = image_tag @ars.image.url
+      .ars_content
+        = raw @ars.body

@@ -1,0 +1,12 @@
+.about{style: "background: url(#{@about.background.url}) center/cover no-repeat;"}
+  .row
+    .small-12.columns
+      .heading About
+      
+      .text
+        .red The Bioart Society
+        .excerpt= raw @about.excerpt
+        .side_links
+          .side_link= link_to 'Become a member', '#'
+          .side_link= link_to 'Check our book!', '#'
+    

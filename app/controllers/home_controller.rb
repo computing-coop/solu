@@ -41,6 +41,12 @@ class HomeController < ApplicationController
         end
       end
 
+    else
+      @frontitems = @node.frontitems.published
+      @posts = Post.published.order(published_at: :desc).limit(8)
+      @about = @node.pages.find('about-the-bioart-society') rescue nil
+      @ars = @node.pages.find('ars-bioarctica-front') rescue nil
+      @projects = Project.published
     end
   end
 end

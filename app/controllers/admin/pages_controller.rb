@@ -1,14 +1,14 @@
 class Admin::PagesController < Admin::BaseController
-  
+ 
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    sortable_column_order do |column, direction|
-      @pages = Page.sort_by(column, direction)
-    end
-    @pages ||= Page.desc('updated_at')
+    # sortable_column_order do |column, direction|
+    #   @pages = Page.by_node(@node).sort_by(column, direction)
+    # end
+    @pages = @node.pages.desc('updated_at')
     set_meta_tags title: 'Pages'
     respond_with(@pages)
   end
@@ -32,18 +32,19 @@ class Admin::PagesController < Admin::BaseController
 
   def create
     @page = Page.new(page_params)
+    @page.node = @node
     @page.save
-    respond_with(@page)
+    redirect_to admin_pages_path
   end
 
   def update
     @page.update(page_params)
-    respond_with(@page)
+    redirect_to admin_pages_path
   end
 
   def destroy
     @page.destroy
-    respond_with(@page)
+    redirect_to admin_pages_path
   end
 
   private
@@ -52,6 +53,6 @@ class Admin::PagesController < Admin::BaseController
     end
 
     def page_params
-      params.require(:page).permit(:title, :body, :image, :subsite_id, :activity_id, :published, :image, :remove_image, photos_attributes: [:image, :id,  :_destroy])
+      params.require(:page).permit(:title, :body, :image, :subsite_id, :background, :excerpt, :activity_id, :published, :image, :remove_background, :remove_image, photos_attributes: [:image, :id,  :_destroy])
     end
 end

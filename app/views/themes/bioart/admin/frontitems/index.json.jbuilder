@@ -1,0 +1,1 @@
+json.array! @frontitems, partial: 'frontitems/frontitem', as: :frontitem

@@ -1,0 +1,2 @@
+json.extract! frontitem, :id, :item_id, :item_type, :wideimage, :wideimage_width, :wideimage_height, :wideimage_content_type, :smallblurb_background_colour, :smallblurb_text_colour, :smallblurb_hover_colour, :smallblurb_text, :middleblurb_background_color, :middleblurb_text_colour, :middleblurb_hover_colour, :middleblurb_text, :thirdblurb_background_colour, :thirdblurb_text_colour, :thirdblurb_hover_colour, :thirdblurb_text, :url_override, :node_id, :published, :sortorder, :no_text, :dont_scale, :created_at, :updated_at
+json.url frontitem_url(frontitem, format: :json)

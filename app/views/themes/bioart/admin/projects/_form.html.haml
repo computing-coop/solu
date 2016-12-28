@@ -1,0 +1,24 @@
+= semantic_form_for [:admin, @project], html: {multipart: true} do |f|
+  - if @project.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+      %ul
+        - @project.errors.full_messages.each do |msg|
+          %li= msg
+
+  .small-10.medium-6.columns
+    = f.input :node
+  .small-10.medium-6.columns
+    = f.input :year_range
+  .small-10.medium-6.columns
+    = f.input :name
+  .small-10.medium-6.columns
+    = f.text_area :description
+  .small-10.medium-6.columns
+    = f.input :image
+  .small-10.medium-6.columns
+    = f.input :published, as: :boolean
+  .small-10.medium-6.columns
+    = f.input :redirect_url
+  .actions
+    = f.submit 'Save'

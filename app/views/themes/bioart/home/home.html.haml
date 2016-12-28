@@ -1,0 +1,16 @@
+- @frontitems.each do |frontitem|
+  = render partial: 'frontitem', locals: {frontitem: frontitem}
+  
+  
+= render partial: 'whatsnew'
+
+= render partial: 'about'
+
+- unless @ars.nil?
+  = render partial: 'ars_bioarctica'
+  
+  
+- unless @projects.empty?
+
+  = render partial: 'projects'
+  

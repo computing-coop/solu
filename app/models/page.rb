@@ -3,32 +3,44 @@ class Page
   include Mongoid::Slug
   include Mongoid::Timestamps
   include Imageable
-  validates_uniqueness_of :title
+  validates_uniqueness_of :title, scope: :node
   before_save :update_image_attributes
   
   
   field :title, type: String
   field :body, type: String
   field :image, type: String
+  field :background, type: String
+  
+  field :excerpt, type: String
   
   field :image_size, type: Integer
   field :image_width, type: Integer
   field :image_height, type: Integer
   field :image_content_type, type: String
-  
+
+  field :background_size, type: Integer
+  field :background_width, type: Integer
+  field :background_height, type: Integer
+  field :background_content_type, type: String
+    
   field :published, type: Boolean
   belongs_to :activity, optional: true
   
-  mount_uploader :image, ImageUploader
-    
-  belongs_to :subsite, optional: true
-  belongs_to :node
 
-  slug :title, history: true
+  mount_uploader :image, ImageUploader
+  mount_uploader :background, BackgroundUploader
+  
+  belongs_to :subsite, optional: true
+  belongs_to :node, inverse_of: :pages
+
+  
+  slug :title, scope: :node
     
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   
+  scope :by_node, ->(node) { where(node: node)}
   def all_images
     o = photos.flatten.compact.uniq
     # unless activity.nil?

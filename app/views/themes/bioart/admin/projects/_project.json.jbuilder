@@ -1,0 +1,2 @@
+json.extract! project, :id, :node_id, :year_range, :name, :slug, :description, :icon_file_name, :icon_width, :icon_height, :icon_size, :icon_content_type, :published, :redirect_url, :created_at, :updated_at
+json.url project_url(project, format: :json)

@@ -1,0 +1,75 @@
+%p#notice= notice
+
+%p
+  %b Item:
+  = @frontitem.item
+%p
+  %b Wideimage:
+  = @frontitem.wideimage
+%p
+  %b Wideimage width:
+  = @frontitem.wideimage_width
+%p
+  %b Wideimage height:
+  = @frontitem.wideimage_height
+%p
+  %b Wideimage content type:
+  = @frontitem.wideimage_content_type
+%p
+  %b Smallblurb background colour:
+  = @frontitem.smallblurb_background_colour
+%p
+  %b Smallblurb text colour:
+  = @frontitem.smallblurb_text_colour
+%p
+  %b Smallblurb hover colour:
+  = @frontitem.smallblurb_hover_colour
+%p
+  %b Smallblurb text:
+  = @frontitem.smallblurb_text
+%p
+  %b Middleblurb background color:
+  = @frontitem.middleblurb_background_color
+%p
+  %b Middleblurb text colour:
+  = @frontitem.middleblurb_text_colour
+%p
+  %b Middleblurb hover colour:
+  = @frontitem.middleblurb_hover_colour
+%p
+  %b Middleblurb text:
+  = @frontitem.middleblurb_text
+%p
+  %b Thirdblurb background colour:
+  = @frontitem.thirdblurb_background_colour
+%p
+  %b Thirdblurb text colour:
+  = @frontitem.thirdblurb_text_colour
+%p
+  %b Thirdblurb hover colour:
+  = @frontitem.thirdblurb_hover_colour
+%p
+  %b Thirdblurb text:
+  = @frontitem.thirdblurb_text
+%p
+  %b Url override:
+  = @frontitem.url_override
+%p
+  %b Node:
+  = @frontitem.node
+%p
+  %b Published:
+  = @frontitem.published
+%p
+  %b Sortorder:
+  = @frontitem.sortorder
+%p
+  %b No text:
+  = @frontitem.no_text
+%p
+  %b Dont scale:
+  = @frontitem.dont_scale
+
+= link_to 'Edit', edit_frontitem_path(@frontitem)
+\|
+= link_to 'Back', frontitems_path

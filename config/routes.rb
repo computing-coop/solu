@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+
+  resources :projects
   resources :backgrounds
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :activities do
     resources :posts
   end
-
+  themes_for_rails
   resources :posts 
 
   get '/category/:id', to: "postcategories#show"
@@ -57,11 +59,13 @@ Rails.application.routes.draw do
       end
     end
     resources :artists
+    resources :frontitems
     resources :backgrounds
     resources :events
     resources :partners
     resources :postcategories
     resources :posts
+    resources :projects
     resources :subsites
     resources :symposia do
       resources :groups do

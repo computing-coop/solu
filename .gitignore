@@ -50,3 +50,4 @@ config/deploy/*
 config/deploy
 Capfile
 config/deploy.rb
+test/*

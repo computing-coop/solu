@@ -1,0 +1,39 @@
+= semantic_nested_form_for [:admin, @page], html: {multipart: true} do |f|
+  - if @page.errors.any?
+    .row
+      .large-6.small-12.columns
+        #error_explanation
+          %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
+          %ul
+            - @page.errors.full_messages.each do |msg|
+              %li= msg
+
+  .row
+    .large-5.small-12.columns= f.input :title
+  .row
+    .large-8.small-12.columns= f.input :body, as: :text, input_html: {class: :ckeditor}
+  .row
+    .large-8.small-12.columns= f.input :excerpt, as: :text, input_html: {class: :ckeditor} , label: 'Excerpt (for front page)'
+  .row
+    .large-8.small-12.columns
+      - if f.object.background?
+        = image_tag f.object.background.url
+        = f.input :remove_background, as: :boolean
+      = f.input :background, label: 'Background image (for front page)'
+
+  .row
+    .large-5.small-12.columns
+      - if f.object.image?
+        = image_tag f.object.image.url(:box)
+        = f.input :remove_image, as: :boolean
+      = f.input :image
+  = f.fields_for :photos do |ff|
+    = if ff.object.image?
+      = image_tag ff.object.image.url(:box)
+    = ff.input :image
+    = ff.link_to_remove "Remove this photo"
+  = f.link_to_add "Add a photo", :photos 
+      
+  .row
+    .large-5.small-12.columns
+      = f.submit 'Save', class: [:small, :button]

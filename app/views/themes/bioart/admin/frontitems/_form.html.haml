@@ -1,0 +1,54 @@
+.row.expanded
+  = semantic_form_for [:admin, @frontitem], html: {multipart: true} do |f|
+    - if @frontitem.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@frontitem.errors.count, "error")} prohibited this frontitem from being saved:"
+        %ul
+          - @frontitem.errors.full_messages.each do |msg|
+            %li= msg
+
+    .large-4.columns
+      - if f.object.wideimage?
+        = image_tag f.object.wideimage.url
+      = f.input :wideimage, label: 'Background image file', hint: 'Will NOT be resized automatically'
+
+    .large-4.columns
+      = f.input :smallblurb_background_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :smallblurb_text_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :smallblurb_hover_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :smallblurb_text
+    .large-4.columns
+      = f.input :middleblurb_background_color, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :middleblurb_text_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :middleblurb_hover_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :middleblurb_text
+    .large-4.columns
+      = f.input :thirdblurb_background_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :thirdblurb_text_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :thirdblurb_hover_colour, input_html: {class: :colour_picker}
+    .large-4.columns
+      = f.input :thirdblurb_text
+    .large-4.columns
+      = f.input :url_override
+    .large-4.columns
+      = f.input :published, as: :boolean
+    .large-4.columns
+      = f.input :no_text
+    .large-4.columns
+      = f.input :dont_scale
+    .actions
+      = f.submit 'Save'
+
+= content_for :jquery do
+  :plain
+    $('.colour_picker').spectrum({
+    preferredFormat: "hex"});
+    
