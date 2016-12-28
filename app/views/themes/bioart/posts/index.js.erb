@@ -1,0 +1,9 @@
+$("<%=j render(:partial => 'eventfeed', locals: {column_count: 0}) %>")
+  .appendTo($(".events_index .event_boxes"));
+  
+<% if @upcoming.last_page? %>
+  $('.pagination').html("no more posts!>");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@upcoming, t(:next), :remote => true) %>");
+<% end %>  

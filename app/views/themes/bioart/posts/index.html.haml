@@ -1,0 +1,13 @@
+.posts_index
+  .row
+    .small-10.small-centered.medium-12.columns.section_title
+      News
+  .row.small-up-1.medium-up-2.xxlarge-up-3#results= render partial: 'postspage'
+ 
+
+= content_for :jquery do
+  :plain
+    $('#results').pageless({ totalPages: 10
+                           , url: '/posts/'
+                           , loaderMsg: 'Loading more posts....'
+                           });

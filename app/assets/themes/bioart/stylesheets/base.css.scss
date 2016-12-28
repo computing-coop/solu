@@ -10,11 +10,14 @@ header {
     @include breakpoint(small only) {
         padding: 3.125em 0 0;
       }
-    .logo {
-      font-family: 'Myanmar Sangam MN';
-      font-size: 3.081em;
-      line-height: 1em;
-      font-weight: 600;
+    a {
+      .logo {
+        font-family: 'Myanmar Sangam MN';
+        font-size: 3.081em;
+        line-height: 1em;
+        font-weight: 600;
+        color: black;
+      }
     }
     ul.menu {
       padding: 5.2em 0 0 0;

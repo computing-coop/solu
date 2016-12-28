@@ -1,0 +1,12 @@
+.post_detail
+  .row
+    .small-12.columns
+      - unless @post.photos.empty?
+        .post_image
+          -#{style: "background: url(#{@post.photos.empty? ? current_theme_image_path('placeholder.png') : @post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat; height: #{@post.photos.first.image_height}px"}
+          = image_tag @post.photos.first.image.url.gsub('development', 'production')
+          .hashtag
+            = "##{@post.node.name}"
+      .post_content
+        .title= @post.title
+        .description= raw @post.body
