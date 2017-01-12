@@ -20,7 +20,9 @@
       clear: both;
       font-size: 1em;
     }
-  
+    .third_blurb {
+      opacity: 0.9;
+    }
     .middle_blurb, .third_blurb {
       padding: 1em 0.813em;
       float: left;
@@ -69,6 +71,7 @@
       padding: 1.875em 2.625em;
       background-color: white;
       margin-bottom: 2.2rem;
+      opacity: 0.9;
       .title {
         font-family: $abel;
         font-size: 1.914em;
@@ -102,6 +105,7 @@
   }
 
   .text {
+    opacity: 0.9;
     .red {
       background-color: $fuschia;
       font-family: $rubik;
@@ -253,6 +257,7 @@
       }
       font-family: $titillium;
       background-color: white;
+      opacity: 0.9;
       padding: 1.5em 3em;
       .title {
         font-size: 1.914em;
@@ -273,7 +278,7 @@
   background: #FFF url(/assets/bioart/images/layout/blue_halftone.png) repeat;
   padding: 3rem 0 5.375rem 0 ;
   .text {
-
+    opacity: 0.9;
     .red {
       background-color: $fuschia;
       font-family: $rubik;
