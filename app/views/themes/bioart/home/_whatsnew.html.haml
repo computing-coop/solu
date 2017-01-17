@@ -6,7 +6,7 @@
   .row.small-up-1.medium-up-2.xxlarge-up-3.post_carousel
     - @posts.each do |post|
       .post.column
-        .post_image{style: "background: url(#{post.photos.empty? ? current_theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+        .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
           .hashtag
             = "##{post.node.name}"
         .post_content

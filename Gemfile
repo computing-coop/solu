@@ -82,7 +82,7 @@ gem "recaptcha", '3.0', require: "recaptcha/rails"
 gem 'redis-rails', '~> 5.0.1'
 gem 'redis'
 gem 'rolify'
-gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master', ref: '98c8db2'
+gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master' #, ref: '98c8db2'
 gem 'truncate_html'
 
 
