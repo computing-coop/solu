@@ -50,7 +50,7 @@ gem 'capistrano'
 gem 'capistrano-rails'#, '1.1.3'
 gem 'capistrano-rvm'
 gem 'capistrano-bundler'#, '1.1.4'
-gem 'capistrano3-puma'
+gem 'capistrano3-puma', github: "seuros/capistrano-puma"
 
 gem 'carrierwave-aws'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
