@@ -107,4 +107,5 @@ Rails.application.routes.draw do
   get '/' => 'pages#show', id: 'statement', :constraints => { :subdomain => 'symposium' } 
   root to: 'home#home'
   get '/admin',  to: 'admin/posts#index'
+  get '/about', to: 'home#about'
 end

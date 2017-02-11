@@ -1,0 +1,131 @@
+@import 'variables';
+@import '_settings';
+
+.about_page {
+  background-color: #d5d7d8;
+  min-height: 600px;
+  .heading {
+    background-color: $headerblue;
+    font-size: 5.625rem;
+    @include breakpoint(small only) {
+      font-size: 3.4rem;
+    }
+    text-transform: uppercase;
+    font-family: $rubik;
+    float: left;
+    margin: 2.8rem 0 0rem -50px;
+
+    padding: 0.25rem;
+    line-height: 1em;
+  }
+
+  .text {
+    opacity: 0.9;
+    .red {
+      background-color: $fuschia;
+      font-family: $rubik;
+      float: left;
+      margin: -2rem 0 0 3.25rem;
+      @include breakpoint(small only) {
+        margin: 0 2rem 0 -1rem;
+      }
+      color: #FFF;
+      font-size: 3.5rem;
+      clear: left;
+      line-height: 1em;
+      padding: 0.25rem 0.5rem;
+      position: absolute;
+    
+    }
+    clear: both;
+    background-color: #fff;
+    font-family: $titillium;
+
+    margin-top: 1.75rem;
+    margin-bottom: 10.75rem;
+    @include breakpoint(small only) {
+      margin: 0;
+    }
+    
+    .excerpt {
+      padding: 3.347rem 2rem 3.347rem;
+      @include breakpoint(small only) {
+        padding-top: 10rem;
+      }
+      p {
+        font-size: 1.15rem;
+        font-weight: bold;
+        font-family: $titillium;
+        line-height: 1.8rem;
+      }
+    }
+    .side_links {
+      position: relative;
+      left: 96%;
+      margin-top: -12%;
+      @include breakpoint(small only) {
+        left: initial;
+        margin-top: initial;
+      }
+      .side_link {
+        float: left;
+        clear: both;
+        margin-bottom: 1em;
+        background-color: #000;
+        background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
+
+        padding: 1em 0.7em 1em 2em;
+        a {
+          text-transform: uppercase;
+          color: #C5C5C5;
+          &:hover {
+            color: #FFF;
+          }
+        }
+      }
+    }
+  }
+  
+  .member_row_header {
+    margin: 3rem 0;
+  }
+  
+  .member_box {
+    .member_image {
+      min-height: 546px;
+    }
+    .member_content {
+      padding: 1.875em 2rem;
+      background-color: white;
+      margin-bottom: 2.2rem;
+      .title {
+        font-family: $abel;
+        font-size: 2.125rem;
+        line-height: 2.475rem;
+        font-weight: bold;
+        margin-bottom: 1em;
+        a {
+          color: #333;
+        }
+      }
+      .excerpt, .excerpt p {
+        font-family: $titillium;
+        font-size: 1.3rem;
+        font-weight: bold;
+        line-height: 1.85rem;
+      }
+    }
+  }
+  
+  .staff_box {
+    margin-top: 3rem;
+    .excerpt {
+      ul {
+        li {
+          font-family: $titillium;
+          list-style-image: url(/assets/bioart/images/grey_box.png);
+        }
+      }
+    }
+  }
+}
