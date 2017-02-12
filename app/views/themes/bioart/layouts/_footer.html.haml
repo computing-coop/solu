@@ -1,0 +1,13 @@
+.row
+  .small-6.medium-2.columns
+    Bioart society address here?
+  .small-6.columns.medium-7 &nbsp;
+  .small-7.medium-3.columns
+    .form
+      = form_tag '/search' do
+        = text_field_tag :searchterm
+    .icons.float-right
+      .email= link_to image_tag(theme_image_path('layout/email_icon.png')), '#'
+      .fb= link_to image_tag(theme_image_path('layout/fb_icon.png')), 'https://www.facebook.com/groups/bioartsociety/', target: :_blank
+      .twitter= link_to image_tag(theme_image_path('layout/twitter_icon.png')), 'https://twitter.com/bioartsociety', target: :_blank
+      

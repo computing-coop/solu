@@ -13,6 +13,7 @@ class Project
   field :image_content_type, type: String
   field :published, type: Boolean
   field :redirect_url, type: String
+  field :ongoing, type: Boolean
   belongs_to :node, optional: true
   belongs_to :subsite, optional: true
   mount_uploader :image, ImageUploader

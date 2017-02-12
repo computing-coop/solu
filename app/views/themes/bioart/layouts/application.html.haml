@@ -37,7 +37,7 @@
                 %li= link_to 'Projects', '#'
                 %li= link_to 'Contact', page_path('contact')
     = yield
-    %footer
-      stuff to go here
+    %footer= render partial: 'layouts/footer'
+
     :javascript
       $(document).ready(function() { #{yield :jquery}  });

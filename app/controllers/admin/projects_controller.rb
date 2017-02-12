@@ -69,6 +69,6 @@ class Admin::ProjectsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:node_id, :year_range, :name, :description, :image, :published, :redirect_url)
+      params.require(:project).permit(:node_id, :year_range, :name, :ongoing,  :description, :image, :published, :redirect_url)
     end
 end

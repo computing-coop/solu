@@ -3,9 +3,10 @@
     .small-10.small-centered.medium-12.columns.section_title
       %span.white What's
       New
-  .row.small-up-1.medium-up-2.xxlarge-up-3.post_carousel
+  .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel
     - @posts.each do |post|
-      .post.column
+      = link_to post, class: [:post, :columns] do
+
         .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
           .hashtag
             = "##{post.node.name}"
@@ -25,7 +26,7 @@
         autoplay: true,
         autoplaySpeed: 4500,
         slidesToScroll: 1,
-        slidesToShow: 2,
+        slidesToShow: 3,
         responsive: [
             {
               breakpoint: 480,

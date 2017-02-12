@@ -16,8 +16,12 @@
     = f.text_area :description
   .small-10.medium-6.columns
     = f.input :image
+    
+  .small-10.medium-6.columns
+    = f.input :ongoing, as: :boolean    
   .small-10.medium-6.columns
     = f.input :published, as: :boolean
+  
   .small-10.medium-6.columns
     = f.input :redirect_url
   .actions
