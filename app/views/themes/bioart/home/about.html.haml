@@ -6,8 +6,8 @@
   .row
     .small-10.small-centered.medium-12.columns
       .text
-        .excerpt= raw @about_text.excerpt
-        .side_links
+        .excerpt
+          = raw @about_text.excerpt
           .side_link= link_to 'Association rules', '#'
   
   .row
