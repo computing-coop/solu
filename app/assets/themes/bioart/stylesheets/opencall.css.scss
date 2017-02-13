@@ -3,6 +3,10 @@
 
 
 .opencall_detail {
+  .row.boolean {
+    padding: 1.5rem 0;
+  }
+  
   background: url(/assets/bioart/images/layout/pink_dots_S.png) repeat;
   .text {
     opacity: 0.9;
@@ -23,12 +27,12 @@
       clear: left;
       line-height: 1em;
       padding: 1rem 1.5rem;
-      position: absolute;
+     
     
     }
     .deadline {
       background-color: #e0e0e0;
-      margin: 3rem 8rem 0rem 3.25rem;
+      margin: 0rem 8rem 0rem 3.25rem;
       float: left;
       padding: 0.5rem 0.75rem;
       font-family: $titillium;
@@ -37,7 +41,12 @@
       color: #333;
     }
     .call_text {
-      padding: 9.25rem 2.75rem 4rem 2.75rem;
+      padding: 14.25rem 6.75rem 0rem 3.25rem;
+      font-family: $titillium;
+      h3 {
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
     }
     
     form {
@@ -47,14 +56,85 @@
         padding: 0.3rem 0.4rem;
         font-weight: bold;
       }
-        
+      .text {
+        margin: 0;
+        padding: 0;
+        clear: right;
+        textarea {
+          height: 200px;
+          width: 75%;
+        }
+      }
+      label.file {
+        position: relative;
+        margin: 10px 0px;
+        display: inline-block;
+        span {
+          border: none;
+          background-color: black;
+          padding: 4px 18px;
+          text-transform: uppercase;
+          color: white;
+          font-weight: 300;
+          font-size: 1.2rem;
+        }
+        input[type=file] {
+          position: fixed;
+          left: -1000px;
+
+        } 
+        .selected_file {
+          float: right;
+          margin-left: 15px;
+          font-weight: 300;
+        }
+      }
+      input[type=submit] {
+        float: right;
+        text-transform: uppercase;
+        background-color: red;
+        padding: 9px 10px;
+        &:hover {
+          background-color: #777;
+        }
+      }
+      
       li {
+        
         list-style-type: none;
         &#call_submission_preferred_start_input, &#call_submission_preferred_end_input {
           width: 30%;
           float: left;
         }
-
+        &.choice {
+          float: left;
+          
+          label {
+            margin-right: 2.5rem;
+            text-transform: uppercase;
+            font-family: $titillium;
+            font-size: 1rem;
+            font-weight: bold;
+            img {
+              display: inline-block;
+              padding: 0px;
+              margin-left: 0.4rem;
+              height:30px;
+            	width:30px;
+            	background: none;
+            }
+          }
+        }
+        &.choice > label > input {
+          visibility: hidden;
+          float: right;
+        }
+        &.choice > label > input:checked +img {
+          background: url(/assets/bioart/images/icons/checked_radio.png);
+        	background-repeat: no-repeat;
+        	background-position:center center;
+        	background-size:30px 30px;
+        }
       }
     }
     

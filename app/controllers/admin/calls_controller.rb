@@ -45,6 +45,6 @@ class Admin::CallsController < Admin::BaseController
     end
 
     def call_params
-      params.require(:call).permit(:name, :overview, :node_id,  :start_at, :symposium_id, :end_at, :published, photos_attributes: [:image, :id,  :_destroy], questions_attributes: [:id, :question, :hint, :question_type, :required, :_destroy])
+      params.require(:call).permit(:name, :overview, :node_id,  :start_at, :symposium_id, :end_at, :published, photos_attributes: [:image, :id,  :_destroy], questions_attributes: [:id, :question, :hint, :question_type, :char_limit, :required, :_destroy])
     end
 end

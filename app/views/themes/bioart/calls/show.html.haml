@@ -57,7 +57,7 @@
                 = f.input :preferred_end, as: :string, input_html: {required: '' }, label: false
 
             = f.fields_for :answers do |ff|
-              .row{class:  ff.object.question.question_type.to_sym == :text ? :has_topline : false }
+              .row{class:  [ff.object.question.question_type.to_sym == :text ? :has_topline : false,  ff.object.question.question_type.to_sym]}
                 .medium-2.small-offset-1.small-4.columns.text-left.left_form
                   .form_label= ff.object.question.question
                   = ff.input :question_id, as: :hidden
@@ -70,14 +70,35 @@
                       %span Upload
                       .selected_file
                   - elsif ff.object.question.question_type.to_sym == :boolean
-                    = ff.input :answer_boolean, label: false,  as: :boolean
+                    = raw ff.input :answer_boolean, label: false,  as: :radio, collection: [[ 'Yes <img />'.html_safe, true], ['No <img />'.html_safe, false]]
+                    
+                    
                   - elsif ff.object.question.question_type.to_sym == :group_select
                     = ff.input :answer_text, as: :select, collection: @call.symposium.groups, label: false, input_html: { required: ff.object.question.required == true ? '' : false }
                   - else
-                    = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false, input_html: { required: ff.object.question.required == true ? '' : 'ssss' }
-                    - if  ff.object.question.question_type.to_sym == :text
-                      %p.counter= ff.object.new_record? ? "1500 characters remaining" : "#{1500 - f.object.description.length} characters remaining"
+                    = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false, input_html: { required: ff.object.question.required == true ? '' : 'ssss', rel: ff.object.question.char_limit }
+                    - if  ff.object.question.question_type.to_sym == :text && !ff.object.question.char_limit.blank?
+                      %p.counter= ff.object.new_record? ? "#{ff.object.question.char_limit.to_s} characters remaining" : "#{ff.object.question.char_limit.to_i - f.object.description.length} characters remaining"
 
 
           .row
-            .small-12.medium-4.end.columns.small-offset-3.submit_container= form.submit "Submit", class: [:button, :application ]
+            .small-12.medium-7.columns.small-offset-3.submit_container= form.submit "Submit", class: [:button, :application ]
+
+= content_for :jquery do
+  :plain
+    $('input[type=file]').change(function(e){
+      $(this).parents('label.file').find('.selected_file').text(e.target.files[0].name);
+    });
+    $('textarea').keyup(function () {
+        var climit = parseInt($(this).attr('rel'));
+        var left = climit - $(this).val().length;
+        if (left < 0) {
+            left = "<span style='color: red;'>" + left + "</span>";
+        }
+        $(this).parents('li').next('.counter').html(left + ' characters remaining');
+    });
+    $('form')
+      .on('invalid.fndtn.abide', function () {
+        $('li.file.error').next('span').css('border', '2px solid red');
+        $('li.file.error').next('span').css('color', 'red');
+      });
