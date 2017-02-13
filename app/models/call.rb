@@ -13,7 +13,7 @@ class Call
   
   belongs_to :node
   
-  belongs_to :symposium
+  belongs_to :symposium, optional: true
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true,  reject_if: :all_blank

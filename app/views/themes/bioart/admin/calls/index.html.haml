@@ -1,0 +1,28 @@
+.row.expanded
+  .small-12.columns
+    %h3 Open calls
+
+    %table
+      %thead
+        %tr
+          %th Project
+          %th= sortable_column "Name"
+          %th Deadline
+          %th Submissions
+          %th Actions
+      
+      %tbody
+        - @calls.each do |call|
+          %tr
+            %td= call.node.name
+            %td= call.name
+            %td= l call.end_at, format: :short
+            %td
+              = link_to "View all #{call.submissions.count}", admin_call_submissions_path(call), class: [:button, :tiny]
+            %td{colspan: 3}
+              = link_to 'Show', call, class: [:button, :tiny], target: :_blank
+              = link_to 'Edit', edit_admin_call_path(call), class: [:button, :tiny]
+              = link_to 'Destroy',[:admin, call], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+              
+.row
+  .small-12.columns= link_to 'New call', new_admin_call_path, class: [:button, :tiny]

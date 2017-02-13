@@ -7,7 +7,7 @@ class Answer
   field :attachment_size, type: Integer
   field :answer_boolean, type: Mongoid::Boolean
   embedded_in :submission
-  belongs_to :question
+  belongs_to :question, optional: true
   
   validates_presence_of :question_id
   mount_uploader :attachment, AttachmentUploader

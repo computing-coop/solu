@@ -8,6 +8,7 @@ class Submission
   field :first_name, type: String
   field :last_name, type: String
   field :address, type: String
+  field :profession, type: String
   field :city, type: String
   field :country, type: String
   field :date_of_birth, type: Date
@@ -19,6 +20,8 @@ class Submission
   field :vote_count
   field :comment_count
   field :vote_average, type: Float
+  field :preferred_start, type: Date
+  field :preferred_end, type: Date
   slug :name, :scope => :call
   
   embeds_many :comments #, as: :commentable, cascade_callbacks: true

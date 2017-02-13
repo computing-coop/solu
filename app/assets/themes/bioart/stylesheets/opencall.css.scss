@@ -1,0 +1,63 @@
+@import 'variables';
+@import '_settings';
+
+
+.opencall_detail {
+  background: url(/assets/bioart/images/layout/pink_dots_S.png) repeat;
+  .text {
+    opacity: 0.9;
+    clear: both;
+    background-color: #fff;
+    font-family: $titillium;
+
+    margin: 7.75rem 0 2rem 0;
+    padding: 2.75rem 0;
+    
+    .red {
+      background-color: $fuschia;
+      font-family: $rubik;
+      float: left;
+      margin: -5.5rem 16rem 0rem 3.25rem;
+      color: #FFF;
+      font-size: 3.5rem;
+      clear: left;
+      line-height: 1em;
+      padding: 1rem 1.5rem;
+      position: absolute;
+    
+    }
+    .deadline {
+      background-color: #e0e0e0;
+      margin: 3rem 8rem 0rem 3.25rem;
+      float: left;
+      padding: 0.5rem 0.75rem;
+      font-family: $titillium;
+      font-size: 2rem;
+      text-transform: uppercase;
+      color: #333;
+    }
+    .call_text {
+      padding: 9.25rem 2.75rem 4rem 2.75rem;
+    }
+    
+    form {
+      padding-top: 4rem;
+      span.between {
+        float: left;
+        padding: 0.3rem 0.4rem;
+        font-weight: bold;
+      }
+        
+      li {
+        list-style-type: none;
+        &#call_submission_preferred_start_input, &#call_submission_preferred_end_input {
+          width: 30%;
+          float: left;
+        }
+
+      }
+    }
+    
+  }
+  
+}

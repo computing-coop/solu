@@ -22,6 +22,10 @@ class CallsController < ApplicationController
   
   def show
     @call = Call.find(params[:id])
+    @submission = Submission.new(call: @call)
+    @call.questions.sort_by(&:created_at).each do |qs|
+      @submission.answers.build(question: qs)
+    end
     # @submission = Submission.new(call: @call)
     # @call.questions.each do |qs|
     #   @submission.answers.build(question: qs)
