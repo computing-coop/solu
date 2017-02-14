@@ -22,6 +22,7 @@ class Project
   validates_uniqueness_of :name
   before_save :update_image_attributes
   
-  scope :published, -> () { where(published: true) }
-  
+  scope :published, ->() { where(published: true) }
+  scope :ongoing, ->() { where(ongoing: true) }
+  scope :older, -> () {where(:ongoing.ne => "", :ongoing.exists => false)}
 end

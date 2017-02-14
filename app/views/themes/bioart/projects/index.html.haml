@@ -1,0 +1,38 @@
+.projects_index
+  - unless @ongoing.empty?
+    .row
+      .small-10.small-centered.medium-12.columns
+        .heading
+          %span.featured Ongoing
+          Projects
+          
+    - @ongoing.each do |project|
+
+      .row.project[project]
+        .small-12.columns
+          .row.inner
+            .small-12.medium-2.project_icon.columns
+              = image_tag project.image.url(:box)
+            .small-12.medium-10.project_content.columns
+              .title= project.name
+              .years= project.year_range
+              .description= project.description
+
+  - unless @old.empty?
+    .row
+      .small-10.small-centered.medium-12.columns
+        .heading
+          Past
+          Projects
+          
+    - @old.each do |project|
+
+      .row.project[project]
+        .small-12.columns
+          .row.inner
+            .small-12.medium-2.project_icon.columns
+              = image_tag project.image.url(:box)
+            .small-12.medium-10.project_content.columns
+              .title= project.name
+              .years= project.year_range
+              .description= project.description                    
