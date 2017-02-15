@@ -60,6 +60,16 @@ footer {
   background: $headerblue url(/assets/bioart/images/layout/green_dots_S.png) repeat;
   min-height: 7.5rem;
   padding: 2rem 0;
+  
+  .address {
+
+    p {
+      margin: 0;
+      font-family: $titillium;
+      line-height: 1.3rem;
+    }
+  }
+  
   .form {
 
     input[type=text] {
@@ -71,7 +81,7 @@ footer {
     }
    }
   .icons {
-    .email, .fb, .twitter {
+    .email, .fb, .twitter, .instagram {
       float: left;
       img {
         padding: 0 0.4rem;
