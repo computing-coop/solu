@@ -4,7 +4,7 @@
 header {
   background-color: $headerblue;
   .pattern {
-    background: url(/assets/bioart/images/layout/green_dots_S.png) repeat;
+    background: url(/assets/bioart/images/layout/green_dots_small.png) repeat;
     max-height: 11.25em;
     padding: 3.125em 0;
     @include breakpoint(small only) {
@@ -57,7 +57,7 @@ header {
 
 
 footer {
-  background: $headerblue url(/assets/bioart/images/layout/green_dots_S.png) repeat;
+  background: $headerblue url(/assets/bioart/images/layout/green_dots_small.png) repeat;
   min-height: 7.5rem;
   padding: 2rem 0;
   
