@@ -7,9 +7,13 @@
           %ul
             - @page.errors.full_messages.each do |msg|
               %li= msg
-
+  .row
+    .large-5.small-12.columns= f.input :project
+  .row
+    .large-5.small-12.columns= f.input :parent
   .row
     .large-5.small-12.columns= f.input :title
+    
   .row
     .large-8.small-12.columns= f.input :body, as: :text, input_html: {class: :ckeditor}
   .row

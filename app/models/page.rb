@@ -2,6 +2,8 @@ class Page
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
+  include Mongoid::Tree
+  include Mongoid::Tree::Ordering
   include Imageable
   validates_uniqueness_of :title, scope: :node
   before_save :update_image_attributes
@@ -26,7 +28,7 @@ class Page
     
   field :published, type: Boolean
   belongs_to :activity, optional: true
-  
+  belongs_to :project, optional: true
 
   mount_uploader :image, ImageUploader
   mount_uploader :background, BackgroundUploader
@@ -35,7 +37,7 @@ class Page
   belongs_to :node, inverse_of: :pages
 
   
-  slug :title, scope: :node
+  slug :title, scope: [:node, :project]
     
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true

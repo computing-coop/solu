@@ -14,11 +14,19 @@ class Project
   field :published, type: Boolean
   field :redirect_url, type: String
   field :ongoing, type: Boolean
+  
+  field :has_groups, type: Boolean
+  field :custom_background_colour, type: String
+  field :custom_background_image, type: String
+  
   belongs_to :node, optional: true
   belongs_to :subsite, optional: true
   mount_uploader :image, ImageUploader
+  mount_uploader :custom_background_image, BackgroundUploader
+  
   slug :name, history: true
   include Imageable
+  
   validates_uniqueness_of :name
   before_save :update_image_attributes
   

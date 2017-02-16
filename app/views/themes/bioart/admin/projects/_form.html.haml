@@ -16,6 +16,13 @@
     = f.text_area :description
   .small-10.medium-6.columns
     = f.input :image
+  
+  .small-10.medium-6.columns
+    = f.input :has_groups, as: :boolean  
+  .small-10.medium-6.columns
+    = f.input :custom_background_colour, input_html: {class: :colour_picker}
+  .small-10.medium-6.columns
+    = f.input :custom_background_image
     
   .small-10.medium-6.columns
     = f.input :ongoing, as: :boolean    
@@ -26,3 +33,9 @@
     = f.input :redirect_url
   .actions
     = f.submit 'Save'
+
+= content_for :jquery do
+  :plain
+    $('.colour_picker').spectrum({
+    preferredFormat: "hex"});
+    

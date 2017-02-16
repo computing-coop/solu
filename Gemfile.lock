@@ -244,6 +244,8 @@ GEM
     mongoid-compatibility (0.4.0)
       activesupport
       mongoid (>= 2.0)
+    mongoid-tree (2.1.0)
+      mongoid (>= 4.0, < 7.0)
     mongoid_magic_counter_cache (1.1.1)
       mongoid
       rake
@@ -398,6 +400,7 @@ DEPENDENCIES
   mongoid
   mongoid-grid_fs!
   mongoid-slug!
+  mongoid-tree
   mongoid_magic_counter_cache
   mongoid_rails_migrations
   nested_form
