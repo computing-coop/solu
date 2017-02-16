@@ -64,9 +64,14 @@ footer {
   .address {
 
     p {
+      strong {
+        font-weight: bold;
+      }
       margin: 0;
+      font-weight: normal;
       font-family: $titillium;
-      line-height: 1.3rem;
+      line-height: 1.6rem;
+      font-size: 1.125rem;
     }
   }
   
