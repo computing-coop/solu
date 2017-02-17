@@ -26,8 +26,12 @@ class Admin::PartnersController < Admin::BaseController
 
   def create
     @admin_partner = Partner.new(partner_params)
-    @admin_partner.save
-    respond_with(@admin_partner)
+    if @admin_partner.save
+      redirect_to admin_partners_path
+    else
+      flash[:error] = 'error: ' + @admin_partner.errors.inspect
+      respond_with(@admin_partner)
+    end
   end
 
   def update
@@ -47,7 +51,7 @@ class Admin::PartnersController < Admin::BaseController
 
     def partner_params
       params.require(:partner).permit(:name, :website, :address1, :css_colour, :address2, :city, :country, 
-      :postcode, :latitude, :longitude, :logo, :hmlogo, :remove_logo, :remove_hmlogo, :description,
+      :postcode, :latitude, :longitude, :logo, :hmlogo, :remove_logo, :remove_hmlogo, :node_id, :description,
       photos_attributes:[:image, :id,  :_destroy],
        project_ids: [] )
     end
