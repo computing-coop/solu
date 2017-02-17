@@ -29,6 +29,9 @@ class Activity
   has_many :pages
   has_and_belongs_to_many :works
   
+  
+  scope :by_node, -> (x) { where(node_id: x) }
+    
   def hmlogo
     if responsible_organisations.empty?
       'hm_logo.png'

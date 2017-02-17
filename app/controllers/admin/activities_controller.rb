@@ -17,7 +17,7 @@ class Admin::ActivitiesController < Admin::BaseController
         "start_at asc"
       end
     end
-    @activities = Activity.order(order)
+    @activities = Activity.by_node(@node.id).order(order)
     set_meta_tags title: 'Activities'
     respond_with(@activities)
   end
@@ -59,7 +59,7 @@ class Admin::ActivitiesController < Admin::BaseController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :activitytype_id, :description, :place_slug, :start_at, 
+      params.require(:activity).permit(:name, :activitytype_id,:node_id, :description, :place_slug, :start_at, 
       :end_at, photos_attributes: [:image, :id,  :_destroy], 
       responsible_organisations_attributes: [:id, :_destroy], 
       responsible_organisation_ids: [])

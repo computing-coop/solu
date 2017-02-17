@@ -21,7 +21,7 @@
       background-color: $fuschia;
       font-family: $rubik;
       float: left;
-      margin: -5.5rem 16rem 0rem 3.25rem;
+      margin: -5.5rem 5rem 0rem 3.25rem;
       color: #FFF;
       font-size: 3.5rem;
       clear: left;
@@ -67,7 +67,7 @@
       }
       label.file {
         position: relative;
-        margin: 10px 0px;
+        margin:  0px;
         display: inline-block;
         span {
           border: none;
@@ -92,7 +92,7 @@
       input[type=submit] {
         float: right;
         text-transform: uppercase;
-        background-color: red;
+        background-color: #ff3366;
         padding: 9px 10px;
         &:hover {
           background-color: #777;

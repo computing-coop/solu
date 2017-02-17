@@ -1,0 +1,43 @@
+= semantic_nested_form_for [:admin, @activity], html: {multipart: true, :"data-abide" => ''} do |f|
+  - if @activity.errors.any?
+    .row
+      .large-8.small-12.columns#error_explanation
+        %h2= "#{pluralize(@activity.errors.count, "error")} prohibited this activity from being saved:"
+        %ul
+          - @activity.errors.full_messages.each do |msg|
+            %li= msg
+  .row
+    .small-12.large-8.columns= f.input :node, input_html: {:required => ''}            
+  .row
+    .small-12.large-8.columns= f.input :name, input_html: {:required => ''}
+  .row
+    .small-12.large-8.columns= f.input :activitytype, input_html: {:required => ''}
+  .row
+    .small-12.large-8.columns= f.input :place_slug, label: 'Slug for exhibition URL'
+
+  .row
+    .small-12.columns= f.input :description, as: :text, input_html: {class: :ckeditor}
+  .row
+    .small-12.large-8.columns= f.input :start_at, as: :string, input_html: {:required => '', class: :fdatepicker}
+  .row
+    .small-12.large-8.columns= f.input :end_at, as: :string, input_html: {class: :fdatepicker}
+  .row
+    .small-12.large-8.columns= f.input :responsible_organisation_ids, collection: Partner.all,  input_html: {class: :chosen_select}, multiple: true, label: 'Responsible organisations'
+  / = f.fields_for :responsible_organisations do |ff|
+  /   .row
+  /     .small-12.large-8.columns= f.input
+  .row
+    .small-12.large-7.columns
+      = f.fields_for :photos do |ff|
+        = if ff.object.image?
+          = image_tag ff.object.image.url(:box)
+        = ff.input :image
+        = ff.link_to_remove "Remove this photo"
+      = f.link_to_add "Add a photo", :photos    
+  .row
+    .small-12.large-8.columns= f.submit 'Save', class: [:button, :small]
+= content_for :jquery do 
+  :plain  
+    $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});
+
+    $('.chosen_select').chosen();

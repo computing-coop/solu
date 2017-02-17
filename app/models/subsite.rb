@@ -8,8 +8,8 @@ class Subsite
   
   has_many :pages
 
-  belongs_to :symposium
-  belongs_to :activity
+  belongs_to :symposium, optional: true
+  belongs_to :activity, optional: true
   belongs_to :node
   
 
