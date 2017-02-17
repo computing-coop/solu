@@ -31,8 +31,8 @@ class Admin::PartnersController < Admin::BaseController
   end
 
   def update
-    @admin_partner.update(partner_params)
-    respond_with(@admin_partner)
+    @admin_partner.update_attributes(partner_params)
+    redirect_to admin_partners_path
   end
 
   def destroy
@@ -47,7 +47,8 @@ class Admin::PartnersController < Admin::BaseController
 
     def partner_params
       params.require(:partner).permit(:name, :website, :address1, :css_colour, :address2, :city, :country, 
-      :postcode, :latitude, :longitude, :logo, :hmlogo, :remove_logo, :remove_hmlogo, :description, 
-      photos_attributes:[:image, :id,  :_destroy])
+      :postcode, :latitude, :longitude, :logo, :hmlogo, :remove_logo, :remove_hmlogo, :description,
+      photos_attributes:[:image, :id,  :_destroy],
+       project_ids: [] )
     end
 end

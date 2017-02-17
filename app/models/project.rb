@@ -31,7 +31,7 @@ class Project
   
   validates_uniqueness_of :name
   before_save :update_image_attributes
-  
+  has_and_belongs_to_many :partners
   has_many :posts
   has_many :pages 
   scope :published, ->() { where(published: true) }

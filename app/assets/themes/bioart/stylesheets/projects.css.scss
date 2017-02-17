@@ -164,8 +164,15 @@
       }
     }
   }
+  
   .blog_container {
     margin: 6rem 0 0 0;
+  }
+  .collaborators_container {
+    margin: 6rem 0;
+  }
+  .blog_container, .collaborators_container {
+    
     .red {
       background-color: $fuschia;
       font-family: $rubik;
@@ -182,7 +189,18 @@
         color: #FFF;
       }
     }
-    a.post {
+    .collaborators {
+      
+      margin-left: -0.45rem;
+      a.collaborator {
+        height: 200px;
+        margin: 0.5rem;
+        background-color: white;
+        padding: 75px;
+
+      }
+    }
+    a.post{
       .post_image {
         overflow: hidden;
         height: 392px;

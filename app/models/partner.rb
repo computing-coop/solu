@@ -30,7 +30,13 @@ class Partner
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   
+
+  
   has_and_belongs_to_many :activities_leading, class_name: 'Activity', inverse_of: :responsible_organisation
+  
+  has_and_belongs_to_many :projects
+  accepts_nested_attributes_for :projects, reject_if: lambda {|x| x.blank?}
+
   
   belongs_to :node
   
