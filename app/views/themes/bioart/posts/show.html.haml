@@ -1,4 +1,11 @@
-.post_detail
+.post_detail{class: @project.nil? ? false : :project_detail}
+  - if @project
+    .row
+      .small-12.columns
+        %h1.project_title= link_to @project.name, @project
+    .row
+      .small-12.columns= render partial: 'shared/project_menu'
+      
   .row
     .small-12.columns
       - unless @post.photos.empty?

@@ -1,7 +1,12 @@
 
 - lastslug = ''
 %ul.horizontal.menu.project_menu
+  - unless @project.pages.where(is_project_overview: true).empty?
+    %li= link_to @project.pages.where(is_project_overview: true).first.title, @project.pages.where(is_project_overview: true).first
+    - lastslug = 'about'
+  
   - @project.pages.roots.each do |page|
+    - next if page.is_project_overview == true
     - if lastslug =~ /^about/
       %li= link_to 'blog', posts_path
       - lastslug = 'foo'

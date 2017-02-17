@@ -51,7 +51,9 @@ class PostsController < ApplicationController
   def show
     if @node.name == 'bioart'      
       @post = Post.find(params[:id])
-
+      if @post.project
+        @project = @post.project
+      end
     else
       @post = Post.find(params[:id])
       set_meta_tags title: @post.title

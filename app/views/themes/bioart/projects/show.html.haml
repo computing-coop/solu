@@ -74,12 +74,12 @@
               - else
                 = raw page.body
             - if page.image?
-              .image= image_tag page  .image.url
+              .image= image_tag page.image.url
           - else
             .row.small-up-1.medium-up-2.large-up-3.xxlarge-up-4.page_children
               - page.children.each do |child|
                 = link_to child, class: [:page, :columns] do
-                  .page_image{style: "background: url(#{child.photos.empty? ? @project.image.url : child.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+                  .page_image{style: "background: url(#{child.image? ?  child.image.url(:box).gsub(/development/, 'production') : @project.image.url }) center/cover no-repeat"}
                   .page_content
                     .title= child.title
                     .excerpt= truncate_html(sanitize(child.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
