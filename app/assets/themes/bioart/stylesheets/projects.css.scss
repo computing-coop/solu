@@ -79,6 +79,7 @@
   
   ul.project_menu {
     padding: 2.1em 0 0 0;
+    margin-bottom: 3rem;
     @include breakpoint(small only) {
       padding: 0;
     }
@@ -113,6 +114,9 @@
   h1.project_title {
     font-family: $rubik;
     font-size: 5.75rem;
+    a {
+      color: #000;
+    }
   }
   h3.project_subtitle {
     font-size: 2.875rem;
@@ -128,33 +132,12 @@
     background-color: #fff;
     font-family: $titillium;
 
-    margin: 7.75rem 0 2rem 0;
-    padding: 2.75rem 0 0 0;
+    margin: 3.75rem 0 2rem 0;
     
-    .red {
-      background-color: $fuschia;
-      font-family: $rubik;
-      float: left;
-      margin: -5.5rem 5rem 0rem 3.25rem;
-      color: #FFF;
-      font-size: 3.5rem;
-      clear: left;
-      line-height: 1em;
-      padding: 1rem 1.5rem;
-     
     
+    &.has_children {
+      background: transparent;
     }
-    .body {
-      padding: 2rem 2rem 0 2rem;
-      font-family: $titillium;
-      h3 {
-        font-weight: bold;
-        font-size: 1.3rem;
-      }
-    }
-  }
-  .blog_container {
-    margin: 6rem 0;
     .red {
       background-color: $fuschia;
       font-family: $rubik;
@@ -167,6 +150,37 @@
       padding: 1rem 1.5rem;
       position: absolute;
       z-index: 50;
+      a {
+        color: #FFF;
+      }
+    
+    }
+    .body {
+      padding: 4rem 2rem 0 2rem;
+      font-family: $titillium;
+      h3 {
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .blog_container {
+    margin: 6rem 0 0 0;
+    .red {
+      background-color: $fuschia;
+      font-family: $rubik;
+      float: left;
+      margin: -2.5rem 5rem 0rem 3.25rem;
+      color: #FFF;
+      font-size: 3.5rem;
+      clear: left;
+      line-height: 1em;
+      padding: 1rem 1.5rem;
+      position: absolute;
+      z-index: 50;
+      a {
+        color: #FFF;
+      }
     }
     a.post {
       .post_image {
@@ -187,6 +201,35 @@
         background-color: white;
         margin-bottom: 2.2rem;
         opacity: 0.9;
+        .title {
+          font-family: $abel;
+          font-size: 1.914em;
+          line-height: 1.25em;
+          font-weight: bold;
+          margin-bottom: 1em;
+          color: #000;
+        }
+        .excerpt, .excerpt p {
+          font-family: $titillium;
+          font-size: 1.246rem;
+          line-height: 1.25em;
+          color: #000;
+        }
+      }
+    }
+  }
+  .page_children {
+    a.page {
+      .page_image {
+        overflow: hidden;
+        height: 392px;
+      }
+      .page_content {
+        padding: 1.875em 2.625em;
+        background-color: white;
+        margin-bottom: 2.2rem;
+        opacity: 0.9;
+        color: #000;
         .title {
           font-family: $abel;
           font-size: 1.914em;

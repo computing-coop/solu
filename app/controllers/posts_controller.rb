@@ -3,8 +3,13 @@ class PostsController < ApplicationController
   respond_to :html, :rss, :js
 
   def index
-    if @node.name == 'bioart'      
-      @posts = Post.published.order(published_at: :desc).page(params[:page]).per(4)
+    if @node.name == 'bioart'
+      if params[:project_id]
+        @project = Project.find(params[:project_id])
+        @posts = @project.posts.published.order(published_at: :desc).page(params[:page]).per(12)
+      else
+        @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)
+      end
       if request.xhr?
         render layout: false, partial: 'postspage'
       end

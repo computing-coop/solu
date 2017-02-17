@@ -7,6 +7,6 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
-    @about = @project.pages.find_by(is_project_overview: true)
+    @about = @project.pages.find_by(is_project_overview: true) rescue nil
   end
 end

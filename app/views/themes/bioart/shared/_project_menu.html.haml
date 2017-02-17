@@ -1,0 +1,10 @@
+
+- lastslug = ''
+%ul.horizontal.menu.project_menu
+  - @project.pages.roots.each do |page|
+    - if lastslug =~ /^about/
+      %li= link_to 'blog', posts_path
+      - lastslug = 'foo'
+    - else
+      %li= link_to page.title, page
+      - lastslug = page.slug
