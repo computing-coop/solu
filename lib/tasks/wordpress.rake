@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'making_life'
+@scope = 'fieldnotes1'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -193,7 +193,7 @@ namespace :wordpress do
     data = File.read xml
     hash = Hash.from_xml data
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('making-life')
+    makinglife = Project.find('field-notes')
     hash['rss']['channel']['item'].each do |p|
       next unless p['post_type'] == 'page'
       page = Page.create(
@@ -247,7 +247,7 @@ namespace :wordpress do
     # cats = PostCategory.all.map{|x| [x.name, x.id] }
     # Post.paper_trail_off!
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('making-life')
+    makinglife = Project.find('field-notes')
     hash['rss']['channel']['item'].each do |p|
      
 
