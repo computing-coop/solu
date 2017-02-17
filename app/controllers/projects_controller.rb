@@ -5,4 +5,8 @@ class ProjectsController < ApplicationController
     @old = Project.older
   end
   
+  def show
+    @project = Project.find(params[:id])
+    @about = @project.pages.find_by(is_project_overview: true)
+  end
 end

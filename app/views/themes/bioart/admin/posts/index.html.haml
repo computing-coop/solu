@@ -1,0 +1,45 @@
+.row
+  .small-12.columns
+    %h3 Blog posts
+
+.row
+  .small-12.columns
+    = link_to 'New post', new_admin_post_path, class: [:button, :small]
+    %table
+      %thead
+        %tr
+          %th= sortable_column "Title"
+          %th Subsites
+          %th= sortable_column "Body"
+          %th= sortable_column "Published"
+          %th= sortable_column "Posted by"
+          %th= sortable_column "Published at"
+          %th
+
+      
+      %tbody
+        - @posts.each do |post|
+          %tr
+            %td
+              = post.title
+              - if post.sticky == true
+                %strong In Announcement box!
+            %td
+              = post.node.name
+              %br/
+              - if post.subsite.nil?
+                no sub-site
+              - else
+                = post.subsite.name
+            %td.body= raw truncate_html(strip_tags(post.body), length: 250)
+            %td= post.published == true ? "yes" : "no"
+            %td= !post.user.blank? ? post.user.email : 'no one'
+            %td= post.published_at.blank? ? '' : post.published_at.strftime("%d %b %Y")
+            %td
+              = link_to 'Show', post, class: [:button, :tiny], target: :_blank
+              = link_to 'Edit', edit_admin_post_path(post), class: [:button, :tiny]
+              = link_to 'Destroy', [:admin, post], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+
+    %br
+
+    = link_to 'New Post', new_admin_post_path, class: [:button, :small]

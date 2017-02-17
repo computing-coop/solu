@@ -15,6 +15,7 @@ class Page
   field :background, type: String
   
   field :excerpt, type: String
+  field :is_project_overview, type: Boolean
   
   field :image_size, type: Integer
   field :image_width, type: Integer
@@ -30,6 +31,10 @@ class Page
   belongs_to :activity, optional: true
   belongs_to :project, optional: true
 
+  field :wordpress_scope, type: String
+  field :wordpress_author, type: String
+  field :wordpress_id, type: Integer
+  
   mount_uploader :image, ImageUploader
   mount_uploader :background, BackgroundUploader
   

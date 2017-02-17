@@ -24,7 +24,8 @@
     }
   }
   
-  .project {
+  a.project {
+    color: #000;
     height: 152px;
     @include breakpoint(small only) {
       height: initial;
@@ -70,5 +71,138 @@
   }
   
   
+  
+}
+
+.project_detail {
+  background: #f7f7f6 url(/assets/bioart/images/layout/grey_dots_small.png) repeat;
+  
+  ul.project_menu {
+    padding: 2.1em 0 0 0;
+    @include breakpoint(small only) {
+      padding: 0;
+    }
+    li {  
+      @include breakpoint(small only) {
+        display: inline;
+        float: left;
+        margin-bottom: 1rem;
+      }
+      font-family: $titillium;
+      padding: 0 0 0 0.15em;
+      a {
+        color: #000;
+        background: #f7f7f6 url(/assets/bioart/images/layout/menubar_arrow_blk.png)  0.4em no-repeat;
+
+        padding: 1em 0.7em 1em 2em;
+        margin-right: 0.5em;
+        font-size: 0.933em;
+        
+        text-transform: uppercase;
+      }
+      &:hover {
+        a {
+          color: $fuschia;
+        }
+      }
+    }
+    
+    
+  }
+  
+  h1.project_title {
+    font-family: $rubik;
+    font-size: 5.75rem;
+  }
+  h3.project_subtitle {
+    font-size: 2.875rem;
+    font-family: $rubik;
+  }
+  
+  .project_indented {
+    margin-left: 2.75rem;
+  }
+  .text_box {
+    opacity: 0.9;
+    clear: both;
+    background-color: #fff;
+    font-family: $titillium;
+
+    margin: 7.75rem 0 2rem 0;
+    padding: 2.75rem 0 0 0;
+    
+    .red {
+      background-color: $fuschia;
+      font-family: $rubik;
+      float: left;
+      margin: -5.5rem 5rem 0rem 3.25rem;
+      color: #FFF;
+      font-size: 3.5rem;
+      clear: left;
+      line-height: 1em;
+      padding: 1rem 1.5rem;
+     
+    
+    }
+    .body {
+      padding: 2rem 2rem 0 2rem;
+      font-family: $titillium;
+      h3 {
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .blog_container {
+    margin: 6rem 0;
+    .red {
+      background-color: $fuschia;
+      font-family: $rubik;
+      float: left;
+      margin: -2.5rem 5rem 0rem 3.25rem;
+      color: #FFF;
+      font-size: 3.5rem;
+      clear: left;
+      line-height: 1em;
+      padding: 1rem 1.5rem;
+      position: absolute;
+      z-index: 50;
+    }
+    a.post {
+      .post_image {
+        overflow: hidden;
+        height: 392px;
+        .hashtag {
+          float: left;
+          margin: 0.813em 0.688em;
+          font-family: $titillium;
+          color: #333;
+          font-size: 1rem;
+          background-color: $headerblue;
+          padding: 0.5em 0.313em;
+        }
+      }
+      .post_content {
+        padding: 1.875em 2.625em;
+        background-color: white;
+        margin-bottom: 2.2rem;
+        opacity: 0.9;
+        .title {
+          font-family: $abel;
+          font-size: 1.914em;
+          line-height: 1.25em;
+          font-weight: bold;
+          margin-bottom: 1em;
+          color: #000;
+        }
+        .excerpt, .excerpt p {
+          font-family: $titillium;
+          font-size: 1.246rem;
+          line-height: 1.25em;
+          color: #000;
+        }
+      }
+    }
+  }
   
 }

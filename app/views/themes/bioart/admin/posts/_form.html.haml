@@ -1,0 +1,54 @@
+= semantic_nested_form_for [:admin, @post], html: {multipart: true, :"data-abide" =>''} do |f|
+
+  .row
+    .small-12.large-6.columns#error_explanation
+      - unless @post.errors.empty?
+        %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+        %ul
+          - @post.errors.full_messages.each do |msg|
+            %li= msg
+  
+  .row
+    .small-12.large-6.columns= f.input :title, input_html: {required: ''}
+  .row
+    .small-12.columns= f.input :body, as: :ckeditor, input_html: {required: ''}
+
+  .row
+    .small-12.large-6.columns
+      %label.label Posted by:
+      = f.collection_select :user_id, User.all, :id, :email, input_html: {required: ''}, label: 'Posted as:'
+  .row
+    .small-12.large-7.columns
+      %hr
+      %b Photos/image gallery:
+      %p Please try to keep all photos to the same aspect ratio, to avoid ugly whitespace gaps in between the images and the thumbnails below.
+      = f.fields_for :photos do |ff|
+        = if ff.object.image?
+          = image_tag ff.object.image.url(:box)
+        = ff.input :image
+        = ff.link_to_remove "Remove this photo"
+      = f.link_to_add "Add a photo", :photos
+
+  .row
+    .small-10.medium-6.columns
+      = f.input :activities, input_html: {class: :chosen_select}, label: 'Related to any activities?'
+    .small-10.medium-6.columns
+      = f.input :postcategories, input_html: {class: :chosen_select}, label: 'Post categories?'
+      
+  .row
+    .small-12.large-6.columns= f.input :published, as: :boolean
+  .row
+    .small-12.large-6.columns= f.input :subsite, label: 'Also feature on sub-site: '   
+        
+  .row
+    .small-6.large-3.columns= f.input :published_at, as: :string,  :input_html => { :class => "datetime_picker", value: f.object.published_at.blank? ? '' : f.object.published_at.strftime('%Y-%m-%d %H:%M') }
+  .row
+    .small-10.medium-6.columns= f.input :sticky, label: 'Make post sticky', hint: 'Will appear in floating blue box atop site', as: :boolean   
+  .row
+    .small-10.medium-6.columns= f.input :short_abstract, label: 'Few sentences to show if sticky:', as: :text
+  .row
+    .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]
+= content_for :jquery do 
+  :plain  
+
+    $('.chosen_select').chosen();

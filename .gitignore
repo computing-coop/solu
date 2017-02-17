@@ -50,4 +50,5 @@ config/deploy/*
 config/deploy
 Capfile
 config/deploy.rb
+lib/assets/*
 test/*

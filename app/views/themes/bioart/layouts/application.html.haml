@@ -21,8 +21,8 @@
       ga('create', 'UA-60278881-1', 'auto');
       ga('send', 'pageview');
   %body
-    %header
-      .pattern
+    %header{style: @project.nil? ? '' : "background-color: #{@project.custom_background_colour}"}
+      .pattern{class: @project.nil? ? false : @project.slug, style: @project.nil? ? '' : "background: url(#{@project.custom_background_image.url}) repeat;"}
         .row
           = link_to '/' do
             .logo.medium-2.columns.small-12
@@ -37,7 +37,7 @@
                 %li= link_to 'Projects', projects_path
                 %li= link_to 'Contact', page_path('contact')
     = yield
-    %footer= render partial: 'layouts/footer'
+    %footer{style: @project.nil? ? '' : "background: #{@project.custom_background_colour} url(#{@project.custom_background_image.url}) repeat;" }= render partial: 'layouts/footer'
 
     :javascript
       $(document).ready(function() { #{yield :jquery}  });

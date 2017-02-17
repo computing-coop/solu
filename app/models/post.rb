@@ -11,6 +11,11 @@ class Post
   belongs_to :user
   belongs_to :subsite, optional: true
   belongs_to :node
+  belongs_to :project, optional: true
+  
+  field :wordpress_scope, type: String
+  field :wordpress_author, type: String
+  field :wordpress_id, type: Integer
   
   has_and_belongs_to_many :postcategories
   has_and_belongs_to_many :activities

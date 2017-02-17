@@ -19,9 +19,16 @@
       
       %tbody
         - @pages.each do |page|
+          - next unless page.root?
           %tr
             %td= page.subsite.nil? ? 'main' : page.subsite.name
-            %td= page.title
+            %td
+              = page.title
+              - unless page.children.empty?
+                %br/
+                - page.children.each do |p|
+                  = link_to p.title, edit_admin_page_path(p), target: :_blank
+                  | 
             %td= truncate_html(strip_tags(page.body), length: 150)
             %td= image_tag page.image.url(:thumb)
             %td

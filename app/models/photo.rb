@@ -5,6 +5,7 @@ class Photo
   field :image_width, type: Integer
   field :image_height, type: Integer
   field :image_content_type, type: String
+  field :wordpress_id, type: Integer
   
   mount_uploader :image, ImageUploader
   include Imageable 

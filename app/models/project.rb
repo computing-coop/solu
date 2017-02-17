@@ -4,6 +4,7 @@ class Project
   include Mongoid::Timestamps
   field :year_range, type: String
   field :name, type: String
+  field :subtitle, type: String
   field :slug, type: String
   field :description, type: String
   field :image, type: String
@@ -14,6 +15,7 @@ class Project
   field :published, type: Boolean
   field :redirect_url, type: String
   field :ongoing, type: Boolean
+
   
   field :has_groups, type: Boolean
   field :custom_background_colour, type: String
@@ -30,7 +32,9 @@ class Project
   validates_uniqueness_of :name
   before_save :update_image_attributes
   
+  has_many :posts
+  has_many :pages 
   scope :published, ->() { where(published: true) }
   scope :ongoing, ->() { where(ongoing: true) }
-  scope :older, -> () {where(:ongoing.ne => "", :ongoing.exists => false)}
+  scope :older, -> () {where(:ongoing.in => ["", nil, false])}
 end

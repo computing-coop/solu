@@ -1,0 +1,65 @@
+.project_detail
+  .row
+    .small-12.columns
+      %h1.project_title= @project.name
+      %h3.project_subtitle= @project.subtitle
+      
+  .row
+    .small-12.columns 
+      - lastslug = ''
+      %ul.horizontal.menu.project_menu
+        - @project.pages.roots.each do |page|
+          - if lastslug =~ /^about/
+            %li= link_to 'blog', posts_path
+            - lastslug = 'foo'
+          - else
+            %li= link_to page.title, page
+            - lastslug = page.slug
+            
+  .row
+    .small-12.columns.project_indented
+      - unless @about.nil?
+        .text_box
+          .red= @about.title
+          .body= raw @about.excerpt
+          - if @about.image?
+            .image= image_tag @about.image.url
+            
+      - unless @project.posts.empty?
+        .blog_container
+          .red Blog
+          .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel
+            - @project.posts.each do |post|
+              = link_to post, class: [:post, :columns] do
+
+                .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+                  -#.hashtag
+                  -#  = "##{post.node.name}"
+                .post_content
+                  .title= post.title
+                  .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
+        = content_for :jquery do
+          :plain
+            $('.post_carousel').slick({infinite: true,
+                arrows: true,
+                slide: '.post',
+                adaptiveHeight: false,
+                prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+                nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+                variableWidth: false,
+                autoplay: true,
+                autoplaySpeed: 4500,
+                slidesToScroll: 1,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                      breakpoint: 480,
+                      settings: {
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                  }
+                ]
+              });;

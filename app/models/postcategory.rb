@@ -6,6 +6,7 @@ class Postcategory
   has_and_belongs_to_many :posts
   
   field :name, type: String
+  field :wordpress_id
   slug :name
   validates_uniqueness_of :name
   
