@@ -10,6 +10,8 @@ class Activity
 
   field :place_slug, type: String
   
+  field :location, type: String
+  
   belongs_to :activitytype, optional: true
   has_one :subsite
   belongs_to :node

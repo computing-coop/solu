@@ -18,4 +18,5 @@
       .activity_content
         .title= @activity.name
         %p.date= date_range(@activity.start_at, @activity.end_at)
+        %p= @activity.location
         .description= raw @activity.description

@@ -8,4 +8,5 @@
     .activity_content
       .title= link_to activity.name, activity
       .date= date_range(activity.start_at, activity.end_at)
+      %p= activity.location
       .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)  
