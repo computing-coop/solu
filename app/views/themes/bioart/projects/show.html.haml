@@ -69,7 +69,7 @@
           .red= link_to  page.title, project_page_path(@project, page)
           - if page.children.empty?
             .body
-              - if page.excerpt.blank?
+              - if !page.excerpt.blank?
                 = raw page.excerpt
               - else
                 = raw page.body

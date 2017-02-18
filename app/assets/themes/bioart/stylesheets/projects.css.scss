@@ -145,7 +145,7 @@
       background: transparent;
     }
     .red {
-      background-color: $fuschia;
+      background-color: $red;
       font-family: $rubik;
       float: left;
       margin: -2.5rem 5rem 0rem 3.25rem;
@@ -180,7 +180,7 @@
   .blog_container, .collaborators_container {
     
     .red {
-      background-color: $fuschia;
+      background-color: $red;
       font-family: $rubik;
       float: left;
       margin: -2.5rem 5rem 0rem 3.25rem;
@@ -227,7 +227,7 @@
         opacity: 0.9;
         .title {
           font-family: $abel;
-          font-size: 1.914em;
+          font-size: 1.4em;
           line-height: 1.25em;
           font-weight: bold;
           margin-bottom: 1em;
@@ -235,7 +235,7 @@
         }
         .excerpt, .excerpt p {
           font-family: $titillium;
-          font-size: 1.246rem;
+          font-size: 1rem;
           line-height: 1.25em;
           color: #000;
         }
@@ -256,7 +256,7 @@
         color: #000;
         .title {
           font-family: $abel;
-          font-size: 1.914em;
+          font-size: 1.4em;
           line-height: 1.25em;
           font-weight: bold;
           margin-bottom: 1em;
@@ -264,7 +264,7 @@
         }
         .excerpt, .excerpt p {
           font-family: $titillium;
-          font-size: 1.246rem;
+          font-size: 1rem;
           line-height: 1.25em;
           color: #000;
         }
