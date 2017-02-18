@@ -58,11 +58,11 @@ class Post
   
 
   def previous
-    Post.published.where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
+    Post.published.by_node(node).where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
   end
 
   def next
-    Post.published.where(:published_at.gt => published_at).order_by([:published_at, :asc]).first
+    Post.published.by_node(node).where(:published_at.gt => published_at).order_by([:published_at, :asc]).first
   end
   
 end

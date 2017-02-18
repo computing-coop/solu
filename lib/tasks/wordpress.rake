@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'fieldnotes1'
+@scope = 'making_life'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -17,19 +17,23 @@ end
 
 
 def get_tagged_posts(hash)
-  hash['rss']['channel']['item'].select do |item|
-    categories = item['category']
-   next if categories.nil?
-    if categories.class == String
+  begin
+    hash['rss']['channel']['item'].select do |item|
+      categories = item['category']
+     next if categories.nil?
+      if categories.class == String
       
-      categories = [categories]
-    end
-    ['Aside','Main'].each do |ignore|
-      if index = categories.index(ignore)
-        categories.delete_at index
+        categories = [categories]
       end
+      ['Aside','Main'].each do |ignore|
+        if index = categories.index(ignore)
+          categories.delete_at index
+        end
+      end
+      categories.length > 1
     end
-    categories.length > 1
+  rescue
+    nil
   end
 end
 
@@ -45,7 +49,7 @@ def get_thumbnail_image(post)
     end
   end
   if thumb != 0
-    master_image = Photo.where(:wordpress_id => thumb)
+    master_image = Photo.where(:wordpress_id => thumb, wordpress_scope: @scope)
     unless master_image.empty?
       master_image.id
     end
@@ -156,14 +160,19 @@ namespace :wordpress do
       next unless i['post_type'] == 'attachment'
       unless i['attachment_url'].blank?
         # get post
-        post = Post.where(wordpress_id: i['post_id'], wordpress_scope: @scope)
+        post = Post.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
+        p 'need to put attachement ' + i['attachment_url'] + ' to post ' + i['post_parent']
         unless post.empty?
           post = post.first
           if !post.photos.empty?
+            basename = File.basename(URI.parse(i['attachment_url']).path)
+            next if post.photos.map{|x| x['image']}.include?(basename)
             puts "already found with wordpress id #{i['post_id']}"
-          else
-            post.photos << Photo.create(:remote_filename_url => i['attachment_url'], :wordpress_id => i['post_id'], :wordpress_scope => @scope ) rescue next
           end
+            p 'creating photo for for ' + i['post_id']
+            post.photos << Photo.create(:remote_image_url => i['attachment_url'], photographic: post,
+                           :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
+          # end
         end
       end
     end
@@ -193,7 +202,7 @@ namespace :wordpress do
     data = File.read xml
     hash = Hash.from_xml data
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('field-notes')
+    makinglife = Project.find('making-life')
     hash['rss']['channel']['item'].each do |p|
       next unless p['post_type'] == 'page'
       page = Page.create(
@@ -247,7 +256,7 @@ namespace :wordpress do
     # cats = PostCategory.all.map{|x| [x.name, x.id] }
     # Post.paper_trail_off!
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('field-notes')
+    makinglife = Project.find('making-life')
     hash['rss']['channel']['item'].each do |p|
      
 
@@ -272,8 +281,9 @@ namespace :wordpress do
       )
       ti = get_thumbnail_image(p)
       if ti
+        p 'found photo for ' + p['post_id']
         photo = Photo.find(ti)
-        article.remote_image_url = photo.filename.url
+        article.remote_image_url = photo.image.url
         photo.destroy
       end
       article.postcategory_ids =  p['category'].blank? ? false : ( p['category'].class == Array ? p['category'].map{|x| cats.find{|y| y.first == x }.last } : [cats.find{|y| y.first == p['category']}.last] ) rescue []

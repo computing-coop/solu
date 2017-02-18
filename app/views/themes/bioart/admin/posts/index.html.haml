@@ -10,7 +10,7 @@
         %tr
           %th= sortable_column "Title"
           %th Subsites
-          %th= sortable_column "Body"
+          %th= sortable_column "# of photos"
           %th= sortable_column "Published"
           %th= sortable_column "Posted by"
           %th= sortable_column "Published at"
@@ -21,7 +21,7 @@
         - @posts.each do |post|
           %tr
             %td
-              = post.title
+              = link_to post.title, post, target: :_blank
               - if post.sticky == true
                 %strong In Announcement box!
             %td
@@ -31,7 +31,7 @@
                 no sub-site
               - else
                 = post.subsite.name
-            %td.body= raw truncate_html(strip_tags(post.body), length: 250)
+            %td.body= post.photos.size.to_s
             %td= post.published == true ? "yes" : "no"
             %td= !post.user.blank? ? post.user.email : 'no one'
             %td= post.published_at.blank? ? '' : post.published_at.strftime("%d %b %Y")

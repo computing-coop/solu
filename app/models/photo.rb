@@ -6,7 +6,7 @@ class Photo
   field :image_height, type: Integer
   field :image_content_type, type: String
   field :wordpress_id, type: Integer
-  
+  field :wordpress_scope, type: String
   mount_uploader :image, ImageUploader
   include Imageable 
   before_save :update_image_attributes
