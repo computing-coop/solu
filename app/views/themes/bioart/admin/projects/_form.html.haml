@@ -24,6 +24,8 @@
   .small-10.medium-6.columns
     = f.input :custom_background_colour, input_html: {class: :colour_picker}, label: 'Custom colour for header/footer'
   .small-10.medium-6.columns
+    = f.input :custom_heading_background_colour, input_html: {class: :colour_picker}, label: 'Custom background color for titles and headings (defaults to red)'
+  .small-10.medium-6.columns
     - if f.object.custom_background_image?
       =image_tag f.object.custom_background_image.url
     = f.input :custom_background_image, label: 'Custom background image for header/footer'

@@ -3,9 +3,7 @@
 
 
 .projects_index {
-  
-  background: f7f7f6;
-  padding-bottom: 8.75rem;
+  padding: 1rem 0 30rem 1rem;
   .heading {
     margin-left: -2.4rem;
     padding: 2.625rem 0;
@@ -27,6 +25,8 @@
   a.project {
     color: #000;
     height: 152px;
+    float: left;
+    width: 100%;
     @include breakpoint(small only) {
       height: initial;
     }

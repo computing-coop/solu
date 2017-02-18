@@ -23,6 +23,7 @@ class Project
   field :custom_background_colour, type: String
   field :custom_background_image, type: String
   field :custom_body_background_image, type: String
+  field :custom_heading_background_colour, type: String
   
   belongs_to :node, optional: true
   belongs_to :subsite, optional: true
