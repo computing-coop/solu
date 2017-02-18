@@ -2,19 +2,23 @@
 @import '_settings';
 
 .activities_index {
+  padding: 3rem 0;
   background: #FFF url(/assets/bioart/images/layout/header_pattern.png) repeat;
 
-  .section_title {
-    padding: 2.7rem 0;
+  .red {
+    background-color: $fuschia;
     font-family: $rubik;
-    color: #000;
-    text-transform: uppercase;
-    font-size: 5.659em;
+    float: left;
+    margin: -2rem 0 0 3.25rem;
     @include breakpoint(small only) {
-      font-size: 3.4em;
-      padding: 2.24rem 0;
+      margin: 0 2rem 0 -1rem;
     }
-    
+    color: #FFF;
+    font-size: 3.5rem;
+    clear: left;
+    line-height: 1em;
+    padding: 0.25rem 0.5rem;
+    position: absolute;
   }
   .activity {
     .activity_image {
