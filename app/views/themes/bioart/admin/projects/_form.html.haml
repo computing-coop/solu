@@ -46,6 +46,7 @@
 
 = content_for :jquery do
   :plain
-    $('.colour_picker').spectrum({
+    $('.colour_picker').spectrum({showInput: true,
+    allowEmpty:true,
     preferredFormat: "hex"});
     
