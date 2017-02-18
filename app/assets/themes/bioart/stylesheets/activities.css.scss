@@ -9,7 +9,7 @@
     background-color: $fuschia;
     font-family: $rubik;
     float: left;
-    margin: -2rem 0 0 3.25rem;
+    margin: -2rem 0 0 2rem;
     @include breakpoint(small only) {
       margin: 0 2rem 0 -1rem;
     }
