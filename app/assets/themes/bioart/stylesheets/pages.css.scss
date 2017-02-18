@@ -134,3 +134,33 @@
     }
   }
 }
+
+.page_detail {
+  
+  .text {
+    padding: 1.875em 2rem;
+    background-color: white;
+    margin-bottom: 2.2rem;
+    
+    .page_image {
+      margin-bottom: 1.5rem;
+    }
+    .excerpt , .excerpt p {
+      font-family: $titillium;
+      font-size: 1rem;
+      line-height: 1.4rem;
+      
+      img {
+        padding: 1.5rem 0;
+      }
+      ul {
+        li {
+          font-family: $titillium;
+          list-style-image: url(/assets/bioart/images/grey_box.png);
+        }
+      }
+    }
+  }
+  
+  
+}

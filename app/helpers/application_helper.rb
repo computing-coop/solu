@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def clean_whitespace(text)
+    document = Nokogiri::HTML.parse(text.gsub(/(<br\ ?\/?>)+/, '<br />'))
+    document.css('p').find_all.each do |p|
+        # Ruby on Rails Solution:
+        p.remove if p.content.blank?
+    end
+    return document
+  end
   
   def date_range(from_date, until_date, options = {})
     if until_date.nil? # || from_date.class == Date

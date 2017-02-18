@@ -1,0 +1,25 @@
+.page_detail{class: @project.nil? ? false : :project_detail}
+  - if @project
+    .row
+      .small-12.columns
+        %h1.project_title= link_to @project.name, @project
+        %h3.project_subtitle= @page.title
+    .row
+      .small-12.columns= render partial: 'shared/project_menu'
+  - else
+    .row
+      .small-10.small-centered.medium-12.columns.section_title
+        = @page.title
+
+
+
+  .row
+    .small-12.columns
+      .text
+        - if @page.image?
+          .page_image= image_tag @page.image.url.gsub(/development/, 'production')
+        - elsif !@page.photos.empty?
+          .page_image= image_tag @page.photos.first.url.gsub(/development/, 'production')
+        .excerpt
+          = raw clean_whitespace(sanitize(@page.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
+          

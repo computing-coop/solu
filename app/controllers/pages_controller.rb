@@ -14,7 +14,13 @@ class PagesController < ApplicationController
 
 
   def show
-    @page = Page.find(params[:id])
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+      @page = @project.pages.find(params[:id])
+    else
+      @page = Page.find(params[:id])
+    end
+    
     set_meta_tags title: @page.title
     if @page.subsite
       unless @page.subsite.layout.blank?

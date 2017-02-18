@@ -100,6 +100,12 @@
         font-size: 0.933em;
         
         text-transform: uppercase;
+        &.active {
+          background: $fuschia url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
+          
+          color: #FFF;
+          
+        }
       }
       &:hover {
         a {
