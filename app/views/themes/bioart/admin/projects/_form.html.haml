@@ -22,9 +22,15 @@
   .small-10.medium-6.columns
     = f.input :has_groups, as: :boolean  
   .small-10.medium-6.columns
-    = f.input :custom_background_colour, input_html: {class: :colour_picker}
+    = f.input :custom_background_colour, input_html: {class: :colour_picker}, label: 'Custom colour for header/footer'
   .small-10.medium-6.columns
-    = f.input :custom_background_image
+    - if f.object.custom_background_image?
+      =image_tag f.object.custom_background_image.url
+    = f.input :custom_background_image, label: 'Custom background image for header/footer'
+  .small-10.medium-6.columns
+    - if f.object.custom_body_background_image?
+      =image_tag f.object.custom_body_background_image.url
+    = f.input :custom_body_background_image, label: 'Custom background image for body'
     
   .small-10.medium-6.columns
     = f.input :ongoing, as: :boolean    

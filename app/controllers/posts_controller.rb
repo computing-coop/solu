@@ -57,6 +57,9 @@ class PostsController < ApplicationController
       end
     else
       @post = Post.find(params[:id])
+      if @post.node != @node
+        redirect_to subdomain: @post.node.subdomains
+      end
       set_meta_tags title: @post.title
       if @site.nil?
         if @post.subsite

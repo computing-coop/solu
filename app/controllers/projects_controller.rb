@@ -6,7 +6,15 @@ class ProjectsController < ApplicationController
   end
   
   def show
+   
     @project = Project.find(params[:id])
-    @about = @project.pages.find_by(is_project_overview: true) rescue nil
+    if @node.slug != 'bioart'
+      redirect_to project_url(@project, subdomain: Node.find('bioart').subdomains)
+    else
+      @about = @project.pages.find_by(is_project_overview: true) rescue nil
+    end
+
   end
+
+
 end
