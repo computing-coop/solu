@@ -96,17 +96,18 @@
       opacity: 0.9;
       .title {
         font-family: $abel;
-        font-size: 1.914em;
+        font-size: 1.4em;
         line-height: 1.25em;
+
         font-weight: bold;
         margin-bottom: 1em;
-        color: #000;
+        color: #333;
       }
       .excerpt, .excerpt p {
         font-family: $titillium;
-        font-size: 1.246rem;
+        font-size: 1rem;
         line-height: 1.25em;
-        color: #000;
+        color: #333;
       }
     }
   }
