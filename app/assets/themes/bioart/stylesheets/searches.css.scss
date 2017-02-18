@@ -1,0 +1,149 @@
+@import 'variables';
+@import '_settings';
+
+.search_results {
+  background-color: #d8d9db;
+  padding: 5rem 0;
+  
+  .result_header {
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  h1 {
+    font-size: 5.25rem;
+    font-family: $rubik;
+    line-height: 6.3rem;
+    text-transform: uppercase;
+    em {
+      background-color: $headerblue;
+      text-transform: none;
+      padding: 0 0.8rem;
+    }
+  }
+  
+  .section_title {
+    padding: 2.375rem  0.9375rem;
+    font-size: 5.25rem;
+    font-family: $rubik;
+    line-height: 6.3rem;
+    text-transform: uppercase;
+    color: #FFF;
+  }
+  
+  a.project {
+    height: 152px;
+    float: left;
+    @include breakpoint(small only) {
+      height: initial;
+    }
+    margin-bottom: 0.75em;
+    .project_icon {
+      padding: 0;
+      background-color: white;
+      img {
+        height: 152px;
+        width: auto;
+        @include breakpoint(small only) {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+    .project_content {
+      height: 152px;
+      @include breakpoint(small only) { 
+        height: initial;
+      }
+      font-family: $titillium;
+      background-color: white;
+      opacity: 0.9;
+      padding: 1rem;
+      color: #333;
+      .title {
+        font-size: 1.614em;
+      }
+      .year {
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+      .description, .description p {
+        font-size: 1rem;
+        font-weight: normal;
+        line-height: 1.4rem;
+      }
+    }
+  }
+  
+  a.post {
+    .post_image {
+      overflow: hidden;
+      height: 392px;
+      .hashtag {
+        float: left;
+        margin: 0.813em 0.688em;
+        font-family: $titillium;
+        color: #333;
+        font-size: 1rem;
+        background-color: $headerblue;
+        padding: 0.5em 0.313em;
+      }
+    }
+    .post_content {
+      padding: 1.875em 2.625em;
+      background-color: white;
+      margin-bottom: 2.2rem;
+      opacity: 0.9;
+      .title {
+        font-family: $abel;
+        font-size: 1.914em;
+        line-height: 1.25em;
+        font-weight: bold;
+        margin-bottom: 1em;
+        color: #000;
+      }
+      .excerpt, .excerpt p {
+        font-family: $titillium;
+        font-size: 1.246rem;
+        line-height: 1.25em;
+        color: #000;
+      }
+    }
+  }
+  
+  a.activity {
+    .activity_image {
+      overflow: hidden;
+      height: 320px;
+      .hashtag {
+        float: left;
+        margin: 0.813em 0.688em;
+        font-family: $titillium;
+        color: #333;
+        font-size: 1rem;
+        background-color: $headerblue;
+        padding: 0.5em 0.313em;
+      }
+    }
+    .activity_content {
+      padding: 1.875em 2.625em;
+      background-color: white;
+      margin-bottom: 2.2rem;
+      .title {
+        font-family: $abel;
+        font-size: 1.4em;
+        line-height: 1.25em;
+        font-weight: bold;
+        margin-bottom: 1em;
+        color: #333;
+
+      }
+      .excerpt, .excerpt p {
+        font-family: $titillium;
+        font-size: 1rem;
+        line-height: 1.25em;
+        color: #333;
+      }
+    }
+  }  
+}

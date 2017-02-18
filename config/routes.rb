@@ -100,6 +100,7 @@ Rails.application.routes.draw do
   end
   resources :user
   resources :submissions
+  resources :search
   resources :projects
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

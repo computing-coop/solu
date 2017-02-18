@@ -32,9 +32,15 @@ class Post
   
   validates_presence_of :title, :body, :user_id
   
+  index({ body: "text", title: "text" })
+  
   # field :position, type: Integer
   # index({ position: 1, _id: 1 })
       
+    
+  def self.search(q)
+    Post.where({ :$text => { :$search => q, :$language => "en" } })
+  end      
       
   def remove_p_from_iframe
     self.body = self.body.gsub(/<p><iframe\s*/, '<iframe ').gsub(/<\/iframe><\/p>/, '</iframe>')

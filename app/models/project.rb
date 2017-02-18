@@ -2,6 +2,7 @@ class Project
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
+  include Mongoid::Search
   field :year_range, type: String
   field :name, type: String
   field :subtitle, type: String
@@ -16,7 +17,8 @@ class Project
   field :redirect_url, type: String
   field :ongoing, type: Boolean
 
-  
+  # search_in :description, :title, :subtitle
+  index({ description: "text", title: "text", subtitle: "text" })
   field :has_groups, type: Boolean
   field :custom_background_colour, type: String
   field :custom_background_image, type: String
@@ -37,4 +39,8 @@ class Project
   scope :published, ->() { where(published: true) }
   scope :ongoing, ->() { where(ongoing: true) }
   scope :older, -> () {where(:ongoing.in => ["", nil, false])}
+  
+  def self.search(q)
+    Project.where({ :$text => { :$search => q, :$language => "en" } })
+  end
 end

@@ -31,9 +31,14 @@ class Activity
   has_many :pages
   has_and_belongs_to_many :works
   
+  index({ description: "text", name: "text", location: "text" })
   
   scope :by_node, -> (x) { where(node_id: x) }
     
+  def self.search(q)
+    Activity.where({ :$text => { :$search => q, :$language => "en" } })
+  end
+  
   def hmlogo
     if responsible_organisations.empty?
       'hm_logo.png'

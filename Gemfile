@@ -76,7 +76,7 @@ gem 'mini_magick'
 gem 'mongoid_rails_migrations'
 gem 'mongoid-slug', github: 'mongoid/mongoid-slug', branch: 'master'
 gem 'mongoid-tree', :require => 'mongoid/tree'
-
+gem 'mongoid_search'
 gem 'mongoid_magic_counter_cache'
 gem 'nested_form'
 gem 'nokogiri', '1.6.6.2'
