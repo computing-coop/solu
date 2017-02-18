@@ -161,18 +161,17 @@ namespace :wordpress do
       unless i['attachment_url'].blank?
         # get post
         post = Post.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
-        p 'need to put attachement ' + i['attachment_url'] + ' to post ' + i['post_parent']
+        # p 'need to put attachement ' + i['attachment_url'] + ' to post ' + i['post_parent']
         unless post.empty?
           post = post.first
-          if !post.photos.empty?
-            basename = File.basename(URI.parse(i['attachment_url']).path)
-            next if post.photos.map{|x| x['image']}.include?(basename)
-            puts "already found with wordpress id #{i['post_id']}"
+          basename = File.basename(URI.parse(i['attachment_url']).path)
+          # p 'creating photo for for ' + i['post_id']
+          if post.photos.map{|x| x['image']}.include?(basename)
+            p ' among ' + post.photos.map{|x| x['image']}.join(', ')
+          else
+            p 'no ' + basename + ' in ' + post.photos.map{|x| x['image']}.join('/')
+            post.photos << Photo.new(:remote_image_url => i['attachment_url'], photographic: post, :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
           end
-            p 'creating photo for for ' + i['post_id']
-            post.photos << Photo.create(:remote_image_url => i['attachment_url'], photographic: post,
-                           :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
-          # end
         end
       end
     end
@@ -273,7 +272,7 @@ namespace :wordpress do
         wordpress_id: p['post_id'],
         wordpress_author: p['creator'],
         wordpress_scope: @scope,
-        user: User.first,
+        user: User.find_by(email: 'erich.berger@bioartsociety.fi'),
         node: bioartnode,
         published: p['status'] == 'draft' ? false : true,
         # tag_list: get_tags(p),
