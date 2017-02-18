@@ -12,7 +12,7 @@
     .small-12.columns.project_indented
       - unless @about.nil?
         .text_box
-          .red= @about.title
+          .red= link_to @about.title, project_page_path(@project, @about)
           .body= raw @about.excerpt
           - if @about.image?
             .image= image_tag @about.image.url

@@ -3,13 +3,10 @@
 %ul.horizontal.menu.project_menu
   - unless @project.pages.where(is_project_overview: true).empty?
     %li= link_to @project.pages.where(is_project_overview: true).first.title, project_page_path(@project, @project.pages.where(is_project_overview: true).first),  class: [controller.controller_name == 'pages' && @page && (@page == @project.pages.where(is_project_overview: true).first || @page.descendant_of?(@project.pages.where(is_project_overview: true).first)) ? :active : false]
-    - lastslug = 'about'
+  %li= link_to 'blog', project_posts_path(@project), class: [controller.controller_name == 'posts' ? :active : false]
+  - lastslug = 'blog'
   
   - @project.pages.roots.each do |page|
+
     - next if page.is_project_overview == true
-    - if lastslug =~ /^about/
-      %li= link_to 'blog', project_posts_path(@project), class: [controller.controller_name == 'posts' ? :active : false]
-      - lastslug = 'foo'
-    - else
-      %li= link_to page.title, project_page_path(@project, page), class: [controller.controller_name == 'pages' && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]
-      - lastslug = page.slug
+    %li= link_to page.title, project_page_path(@project, page), class: [controller.controller_name == 'pages' && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]
