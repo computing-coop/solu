@@ -35,13 +35,14 @@ class PostsController < ApplicationController
         end
       else
         if @site
-
+    
             @posts = Post.by_subsite(@site.id).published.order(published_at: :desc)
             set_meta_tags title: @site.name + ": News"
             render layout: @site.layout
   
         else
-          @posts = Post.published.order(published_at: :desc)
+
+          @posts = Post.by_node(@node.id).published.order(published_at: :desc)
           set_meta_tags title: "News"
         end
       end

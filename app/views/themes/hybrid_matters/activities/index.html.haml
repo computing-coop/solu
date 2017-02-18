@@ -7,7 +7,7 @@
   .filter_box.hide-for-small-only
     .title Filter by activity type:
     %ul
-      - Activitytype.order(:sort_order.asc).each do |a|
+      - @activities.map(&:activitytype).flatten.uniq.compact.each do |a|
         %li[a]= link_to a.name, '#', onclick: "javascript:toggleActivitytype('#{a.id}');return false;"
   
   .kilpisjarvi.partner_location

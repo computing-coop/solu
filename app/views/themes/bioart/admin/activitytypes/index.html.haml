@@ -1,0 +1,46 @@
+.row
+  .small-12.columns
+    %h1 activity types
+    
+    %p Drag-and-drop to re-order how they will appear on menus/filters
+    
+    %table
+      %thead
+        %tr
+          %th Name
+          %th
+
+      
+      %tbody
+        - @activitytypes.each do |pc|
+          %tr[pc]
+            %td.item= pc.name
+            %td
+              = link_to 'Edit', edit_admin_activitytype_path(pc), class: [:button, :small]
+              = link_to 'Destroy', [:admin, pc], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
+
+    %br
+
+    = link_to 'New activity type', new_admin_activitytype_path, class: [:button, :small]
+
+= content_for :jquery do
+  :plain
+    $('tbody').sortable({
+      axis: 'y',
+      dropOnEmpty: false,
+      cursor: 'crosshair',
+      items: 'tr',
+      opacity: 0.4,
+      scroll: true,
+      update: function() {
+        $.ajax({
+          url: '/admin/activitytypes/sort',
+          type: 'post',
+          data: $('tbody').sortable('serialize'),
+          dataType: 'script',
+          complete: function(request){
+            $('tbody tr').effect('highlight');
+          }
+        }) 
+      }
+      });

@@ -1,0 +1,107 @@
+@import 'variables';
+@import '_settings';
+
+.activities_index {
+  background: #FFF url(/assets/bioart/images/layout/header_pattern.png) repeat;
+
+  .section_title {
+    padding: 2.7rem 0;
+    font-family: $rubik;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 5.659em;
+    @include breakpoint(small only) {
+      font-size: 3.4em;
+      padding: 2.24rem 0;
+    }
+    
+  }
+  .activity {
+    .activity_image {
+      overflow: hidden;
+      height: 320px;
+      .hashtag {
+        float: left;
+        margin: 0.813em 0.688em;
+        font-family: $titillium;
+        color: #333;
+        font-size: 1rem;
+        background-color: $headerblue;
+        padding: 0.5em 0.313em;
+      }
+    }
+    .activity_content {
+      padding: 1.875em 2.625em;
+      background-color: white;
+      margin-bottom: 2.2rem;
+      .title {
+        font-family: $abel;
+        font-size: 1.4em;
+        line-height: 1.25em;
+        font-weight: bold;
+        margin-bottom: 1em;
+        a {
+          color: black;
+          &:hover {
+            color: #666;
+          }
+        }
+      }
+      .excerpt, .excerpt p {
+        font-family: $titillium;
+        font-size: 1rem;
+        line-height: 1.25em;
+      }
+    }
+  }  
+  
+}
+
+
+.activity_detail {
+  background: #FFF url(/assets/bioart/images/layout/header_pattern.png) repeat;
+  padding: 2.7rem 0;
+  .activity_image {
+
+    min-height: 200px;
+    .hashtag {
+      float: left;
+      margin: 0.813em 0.688em;
+      font-family: $titillium;
+      color: #333;
+      font-size: 1rem;
+      background-color: $headerblue;
+      padding: 0.5em 0.313em;
+      position: absolute;
+      top: 23%;
+      
+    }
+  }
+  .activity_content {
+    padding: 1.875em 2.625em;
+    background-color: white;
+    margin-bottom: 2.2rem;
+    .title {
+      font-family: $abel;
+      font-size: 1.4em;
+      line-height: 1.45em;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+    .description, .description p {
+      font-family: $titillium;
+      font-size: 1rem;
+      line-height: 1.25em;
+      img {
+        float: left;
+        margin-right: 25px;
+      }
+      iframe {
+        &::before {
+           clear: both;
+         }
+        padding: 2rem 0;
+      }
+    }
+  }
+}

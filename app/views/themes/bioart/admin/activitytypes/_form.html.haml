@@ -1,0 +1,9 @@
+= semantic_form_for [:admin, @activitytype] do |f|
+  .row
+    .small-10.medium-5.columns= f.input :name
+  .row
+    .small-12.large-5.columns= f.input :show_in_secondary_menu, as: :boolean
+  .row
+    .small-12.large-5.columns= f.input :secondary_menu_name
+  .row
+    .small-12.columns= f.submit 'Save', class: [:button, :small]

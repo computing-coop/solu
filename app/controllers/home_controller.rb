@@ -41,7 +41,9 @@ class HomeController < ApplicationController
             render layout: @site.layout, template: 'posts/index'
   
         else
-          @posts = Post.published.order(published_at: :desc)
+
+          @posts = Post.by_node(@node).published.order(published_at: :desc)
+          
           set_meta_tags title: "News"
           render template: 'posts/index'
         end

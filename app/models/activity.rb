@@ -10,13 +10,13 @@ class Activity
 
   field :place_slug, type: String
   
-  belongs_to :activitytype
+  belongs_to :activitytype, optional: true
   has_one :subsite
   belongs_to :node
   has_and_belongs_to_many :posts
   
   validates_uniqueness_of :name
-  validates_presence_of :name, :start_at, :activity_type
+  validates_presence_of :name, :start_at, :activitytype_id
   index({ name: 1 }, { unique: true, drop_dups: true, name: "name_index" })
   
   has_and_belongs_to_many :responsible_organisations, class_name: 'Partner', inverse_of: :activities_leading

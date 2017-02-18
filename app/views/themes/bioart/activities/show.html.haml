@@ -1,0 +1,21 @@
+.activity_detail{class: @project.nil? ? false : :project_detail}
+  - if @project
+    .row
+      .small-12.columns
+        %h1.project_title= link_to @project.name, @project
+    .row
+      .small-12.columns= render partial: 'shared/project_menu'
+      
+  .row
+    .small-12.columns
+      - unless @activity.photos.empty?
+        .activity_image
+          -#{style: "background: url(#{@activity.photos.empty? ? current_theme_image_path('placeholder.png') : @activity.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat; height: #{@activity.photos.first.image_height}px"}
+          = image_tag @activity.photos.first.image.url.gsub(/development/, 'production')
+          - if @project
+            .hashtag
+              = "##{@project.name}"
+      .activity_content
+        .title= @activity.name
+        %p.date= date_range(@activity.start_at, @activity.end_at)
+        .description= raw @activity.description
