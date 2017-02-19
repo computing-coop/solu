@@ -7,7 +7,9 @@ class Postcategory
   
   field :name, type: String
   field :wordpress_id
+  belongs_to :project, optional: true
+  
   slug :name
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, scope: :project
   
 end

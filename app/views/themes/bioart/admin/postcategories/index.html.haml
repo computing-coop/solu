@@ -1,0 +1,24 @@
+.row.expanded
+  .small-12.columns
+    %h1 Listing post categories
+
+    %table.cms
+      %thead
+        %tr
+          %th Name
+          %th Project
+          %th
+
+      
+      %tbody
+        - @postcategories.each do |pc|
+          %tr
+            %td= pc.name
+            %td= pc.project.try(:name)
+            %td
+              = link_to 'Edit', edit_admin_postcategory_path(pc), class: [:button, :small]
+              = link_to 'Destroy', [:admin, pc], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :small, :alert]
+
+    %br
+
+    = link_to 'New post category', new_admin_postcategory_path, class: [:button, :small]
