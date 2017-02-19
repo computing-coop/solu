@@ -53,6 +53,8 @@ class Admin::PagesController < Admin::BaseController
     end
 
     def page_params
-      params.require(:page).permit(:title, :body, :image, :subsite_id, :background, :is_project_overview, :excerpt, :project_id, :parent_id,  :activity_id, :published, :image, :remove_background, :remove_image, photos_attributes: [:image, :id,  :_destroy])
+      params.require(:page).permit(:title, :body, :image, :subsite_id, :background, :is_project_overview, :excerpt,
+                                    :project_id, :parent_id,  :activity_id, :published, :image, :remove_background, 
+                                    :remove_image, :split_on_h3, photos_attributes: [:image, :id,  :_destroy])
     end
 end

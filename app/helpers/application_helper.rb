@@ -62,6 +62,19 @@ module ApplicationHelper
     end
   end
   
-  
+  def split_on_h3(body)
+    
+    document = Nokogiri::HTML.parse(body)
+    sections = document.xpath('//body').children.inject([]) do |chapters_hash, child|
+      if child.name == 'h3'
+        title = child.inner_text
+        chapters_hash << { :title => title.gsub(/[\r|\n]/, ''), :contents => ''}
+      else
+        next chapters_hash if chapters_hash.empty?
+        chapters_hash.last[:contents] << child.to_xhtml
+        chapters_hash
+      end
+    end
+  end
   
 end

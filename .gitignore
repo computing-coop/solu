@@ -52,3 +52,5 @@ Capfile
 config/deploy.rb
 lib/assets/*
 test/*
+
+dump/

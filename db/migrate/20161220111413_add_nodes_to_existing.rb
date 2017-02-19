@@ -3,31 +3,31 @@ class AddNodesToExisting < Mongoid::Migration
     Node.find_or_create_by(name: 'hybrid_matters', description: 'HYBRID_MATTERs', subdomains: 'hybridmatters')
     Node.find_or_create_by(name: 'bioart', description: 'Finnish Society of Bioart', subdomains: 'bioartsociety')
     hms = Node.find 'hybrid-matters' 
-    Post.all.each do |p|
+    Post.where(node: nil).each do |p|
       p.node = hms
       p.save
     end
-    Page.all.each do |p|
+    Page.where(node: nil).all.each do |p|
       p.node = hms
       p.save
     end
-    Activity.all.each do |p|
+    Activity.where(node: nil).all.each do |p|
       p.node = hms
       p.save
     end
-    Call.all.each do |c|
+    Call.where(node: nil).all.each do |c|
       c.node = hms
       c.save
     end
-    Event.all.each do |e|
+    Event.where(node: nil).all.each do |e|
       e.node = hms
       e.save
     end
-    Partner.all.each do |p|
+    Partner.where(node: nil).all.each do |p|
       p.node = hms
       p.save
     end
-    Background.all.each do |b|
+    Background.where(node: nil).all.each do |b|
       b.node = hms
       b.save
     end

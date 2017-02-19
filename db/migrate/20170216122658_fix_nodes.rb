@@ -5,7 +5,7 @@ class FixNodes < Mongoid::Migration
       p.node = hms
       p.save
     end
-    Activity.all.each do |p|
+    Activity.where(node: nil).all.each do |p|
       p.node = hms
       p.save
     end

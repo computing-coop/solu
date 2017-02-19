@@ -35,12 +35,15 @@ class Page
   field :wordpress_author, type: String
   field :wordpress_id, type: Integer
   
+  field :split_on_h3, type: Boolean
+  
   mount_uploader :image, ImageUploader
   mount_uploader :background, BackgroundUploader
   
   belongs_to :subsite, optional: true
   belongs_to :node, inverse_of: :pages
-
+  
+  
   
   slug :title, scope: [:node, :project]
     

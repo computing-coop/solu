@@ -136,7 +136,33 @@
 }
 
 .page_detail {
-  
+
+  .chunked {
+    padding: 1.875em 2rem;
+    background-color: white;
+    margin: 0.8rem;
+    float: left;
+    max-width: 340px;
+    
+    .box_chunk {
+      p {
+        font-family: $titillium;
+        font-size: 1rem;
+        line-height: 1.4rem;
+      
+        img {
+          padding: 1.5rem 0;
+        }
+        ul {
+          li {
+            font-family: $titillium;
+            list-style-image: url(/assets/bioart/images/grey_box.png);
+          }
+        }
+      }
+      float: left;
+    }
+  }
   .text {
     padding: 1.875em 2rem;
     background-color: white;
@@ -145,6 +171,8 @@
     .page_image {
       margin-bottom: 1.5rem;
     }
+    
+    
     .excerpt , .excerpt p {
       font-family: $titillium;
       font-size: 1rem;

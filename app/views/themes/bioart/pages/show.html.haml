@@ -15,11 +15,29 @@
 
   .row
     .small-12.columns
-      .text
-        - if @page.image?
-          .page_image= image_tag @page.image.url.gsub(/development/, 'production')
-        - elsif !@page.photos.empty?
-          .page_image= image_tag @page.photos.first.url.gsub(/development/, 'production')
-        .excerpt
-          = raw clean_whitespace(sanitize(@page.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
-          
+      - if @page.split_on_h3 == true
+        .grid
+          - split_on_h3(@page.body).each do |section|
+            .chunked
+              .box_chunk
+                .box_title= raw section[:title]
+                = raw section[:contents]
+          = content_for :jquery do
+            :plain
+              $('.grid').masonry({
+                // options
+                itemSelector: '.chunked',
+                columnWidth:  '.chunked',
+              });
+              
+      - else
+        .text
+          - if @page.image?
+            .page_image= image_tag @page.image.url.gsub(/development/, 'production')
+          - elsif !@page.photos.empty?
+            .page_image= image_tag @page.photos.first.url.gsub(/development/, 'production')
+
+
+          .excerpt
+            = raw clean_whitespace(sanitize(@page.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
+        
