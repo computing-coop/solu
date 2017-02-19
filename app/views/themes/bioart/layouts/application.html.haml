@@ -21,6 +21,9 @@
           .project_detail ul.project_menu li a.active {
             background: #{@project.custom_heading_background_colour}  url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat !important;
           }
+          .project_detail .text p a, .project_detail .grid .chunked p a {
+            color: #{@project.custom_heading_background_colour};
+          }
       - unless @project.custom_body_background_image.blank?
         :css
           .project_detail {

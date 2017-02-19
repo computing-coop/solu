@@ -125,7 +125,46 @@ def get_tags(post)
   # tags.push('wp-import')
 end
 
+namespace :after_import do
+  task update_links: :environment do
+    # pages first
+    string_to_replace = /http:\/\/bioartsociety\.fi\/making_life\/([^\"\'\/]*)/
+    project = Project.find('making-life')
+    
+    Page.all.each do  |p|
 
+      p.body.gsub!(string_to_replace) {
+        match = Regexp.last_match[1]
+        unless match.nil?
+          STDERR.puts 'atcb is ' + match
+          unless match =~ /wp\-content/ || match =~ /^category/
+            # look for post
+            
+            posts = Post.where(project: project).find(match) rescue nil
+            if posts.nil?
+              pages = Page.where(project: project).find(match) rescue nil
+              if pages.nil?
+                STDERR.puts 'cannot find ' + match
+                match
+              else
+                STDERR.puts ' -- rewriting to ' + "/projects/making-life/pages/#{pages.slug}"
+                "/projects/making-life/pages/#{pages.slug}"
+              end
+            else
+              STDERR.puts ' -- rewriting to ' + "/projects/making-life/posts/#{posts.slug}"
+              "/projects/making-life/posts/#{posts.slug}"
+            
+            end
+          end
+          
+        end
+      }
+    end
+  end
+end
+        
+      
+    
 
 namespace :wordpress do
 

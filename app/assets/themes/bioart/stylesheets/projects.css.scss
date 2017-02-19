@@ -77,6 +77,13 @@
 .project_detail {
   background: #f7f7f6 url(/assets/bioart/images/layout/grey_dots_small.png) repeat;
   
+  .text {
+    p, .excerpt, .excerpt p {
+      a {
+        color: $red;
+      }
+    }
+  }
   ul.project_menu, ul.project_submenu {
     padding: 2.1em 0 0 0;
     margin-bottom: 3rem;
@@ -172,6 +179,9 @@
     .body {
       padding: 4rem 2rem 0 2rem;
       font-family: $titillium;
+      a {
+        color: $red;
+      }
       h3 {
         font-weight: bold;
         font-size: 1.3rem;
