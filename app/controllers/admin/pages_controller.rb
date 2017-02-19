@@ -11,7 +11,7 @@ class Admin::PagesController < Admin::BaseController
     # sortable_column_order do |column, direction|
     #   @pages = Page.by_node(@node).sort_by(column, direction)
     # end
-    @pages = apply_scopes(Page.by_node(@node)).desc('updated_at')
+    @pages = apply_scopes(Page).desc('updated_at')
     set_meta_tags title: 'Pages'
     respond_with(@pages)
   end
@@ -56,7 +56,7 @@ class Admin::PagesController < Admin::BaseController
     end
 
     def page_params
-      params.require(:page).permit(:title, :body, :image, :subsite_id, :background, :is_project_overview, :excerpt,
+      params.require(:page).permit(:title, :body, :image, :subsite_id, :background, :node_id, :is_project_overview, :excerpt,
                                     :project_id, :parent_id,  :activity_id, :published, :image, :remove_background, 
                                     :remove_image, :split_on_h3, photos_attributes: [:image, :id,  :_destroy])
     end

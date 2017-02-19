@@ -8,6 +8,8 @@
             - @page.errors.full_messages.each do |msg|
               %li= msg
   .row
+    .large-5.small-12.columns= f.input :node              
+  .row
     .large-5.small-12.columns= f.input :project
   .row
     .large-5.small-12.columns= f.input :parent
