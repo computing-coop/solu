@@ -17,8 +17,13 @@ class PagesController < ApplicationController
     if params[:project_id]
       @project = Project.find(params[:project_id])
       @page = @project.pages.find(params[:id])
+      
     else
       @page = Page.find(params[:id])
+      if @page.project
+        redirect_to project_page_url(@page.project, @page)
+      end
+        
     end
     
     set_meta_tags title: @page.title

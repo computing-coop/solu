@@ -41,7 +41,7 @@
             %td= truncate_html(strip_tags(page.body), length: 150)
             %td= image_tag page.image.url(:thumb)
             %td
-              = link_to 'Show', page, class: [:button, :small]
+              = link_to 'Show', page, class: [:button, :small], target: :_blank
               = link_to 'Edit', edit_admin_page_path(page), class: [:button, :small]
               = link_to 'Destroy', [:admin, page], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :small]
 
