@@ -3,12 +3,16 @@ class Admin::PostsController < Admin::BaseController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  has_scope :by_project
+  has_scope :by_node
+  
+  
 
   def index
     sortable_column_order do |column, direction|
-      @posts = Post.sort_by(column, direction)
+      @posts = apply_scopes(Post) #.sort_by(column, direction)
     end
-    @posts ||= Post.desc(:published_at)
+    @posts ||= apply_scopes(Post).desc(:published_at)
     set_meta_tags title: 'Posts'
     respond_with(@posts)
   end

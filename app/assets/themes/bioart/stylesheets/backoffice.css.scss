@@ -24,3 +24,10 @@ form {
     list-style-type: none;
   }
 }
+
+table.cms {
+  tr:nth-child(even) {background: #FFF}
+  td {
+    padding: 1rem;
+  }
+}

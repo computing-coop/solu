@@ -1,11 +1,17 @@
-.row
+.row.expanded
   .small-12.columns
     %h3 Blog posts
-
-.row
+  .filter_box.row.expanded
+    .medium-6.columns
+      .filter_title Filter by project:
+      %select#by_project
+        %option{:value => ""} &nbsp;
+        - Project.all.sort_by{|x| x.name.downcase}.each do |project|
+          %option{:value => project.id, :selected => (params[:by_project] == project.id.to_s ? :selected : false)}= project.name
+.row.expanded
   .small-12.columns
     = link_to 'New post', new_admin_post_path, class: [:button, :small]
-    %table
+    %table.cms
       %thead
         %tr
           %th= sortable_column "Title"
@@ -24,16 +30,16 @@
               = link_to post.title, post, target: :_blank
               - if post.sticky == true
                 %strong In Announcement box!
+              - if post.project
+                %p.project= post.project.name
             %td
               = post.node.name
               %br/
-              - if post.subsite.nil?
-                no sub-site
-              - else
+              - unless post.subsite.nil?
                 = post.subsite.name
             %td.body= post.photos.size.to_s
             %td= post.published == true ? "yes" : "no"
-            %td= !post.user.blank? ? post.user.email : 'no one'
+            %td= !post.user.blank? ? post.user.name : 'no one'
             %td= post.published_at.blank? ? '' : post.published_at.strftime("%d %b %Y")
             %td
               = link_to 'Show', post, class: [:button, :tiny], target: :_blank
@@ -43,3 +49,13 @@
     %br
 
     = link_to 'New Post', new_admin_post_path, class: [:button, :small]
+= content_for :jquery do
+  :plain
+    $('.filter_box select').change(function() {
+      var parts = "#{request.url}".split(/\?/, 2);
+      if (parts[1]) {
+        window.location.href=parts[0] + "?" + parts[1].replace(new RegExp("\\&*" + $(this).attr('id') + "\=\\d+", "g"), '') + "&" + $(this).attr('id') + "=" + $(this).val();
+      } else {
+        window.location.href=parts[0] + "?" + $(this).attr('id') + "=" + $(this).val();
+      }
+    });  

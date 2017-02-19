@@ -28,6 +28,8 @@ class Post
   scope :sticky, ->() { where(published: true, sticky: true) }
   scope :by_subsite, -> (x) { where(subsite_id: x).where(published: true)}
   scope :by_node, -> (x) { where(node: x)}
+  scope :by_project,  ->(x) {where(project: x)}
+  
   before_save :check_published_date
   
   validates_presence_of :title, :body, :user_id
