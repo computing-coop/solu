@@ -19,6 +19,10 @@
 @import 'variables';
 
 @import 'foundation-datetimepicker';
+
+body {
+  background-color: #f7f7f6;
+}
 form {
   li {
     list-style-type: none;
