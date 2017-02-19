@@ -60,6 +60,6 @@ class Admin::PostcategoriesController < Admin::BaseController
     end
 
     def postcategory_params
-      params.require(:postcategory).permit(:name, :project_id)
+      params.require(:postcategory).permit(:name, :project_id, :page_id)
     end
 end
