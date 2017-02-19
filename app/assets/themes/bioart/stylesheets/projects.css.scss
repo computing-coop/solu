@@ -291,3 +291,10 @@
   }
   
 }
+.image_carousel {
+  ul.slick-dots {
+    li.slick-active {
+      border: 3px solid $red !important;
+    }
+  }
+}

@@ -20,6 +20,7 @@
     .post_image {
       overflow: hidden;
       height: 320px;
+ 
       .hashtag {
         float: left;
         margin: 0.813em 0.688em;
@@ -62,7 +63,7 @@
   background: #FFF url(/assets/bioart/images/layout/header_pattern.png) repeat;
   padding: 2.7rem 0;
   .post_image {
-
+     background-color: white;
     min-height: 200px;
     .hashtag {
       float: left;
@@ -114,16 +115,21 @@
 .slick-next, .slick-prev {
   height: inherit;
   width: inherit;
-  top: 25%;
+  bottom: -20%;
+  z-index: 4000;
+  &:focus {
+    outline: none;
+  }
 }
 .slick-prev {
-  left: -3rem;
+  left: 6rem;
   position: absolute;
 }
 
 .slick-next {
-  right: -3rem;
+  right: 7rem;
   position: absolute;
+
 //  &.page {
 //    right: 1rem;
 //  }
@@ -138,24 +144,24 @@
     
   }
   &.slick-slider {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0 !important;
   }
   ul.slick-dots {
     position: relative  ;
-    text-align: left;
+    text-align: center;
     margin: 0.5rem 0 0 0;
     bottom: 0;
     cursor: pointer;
-    padding: 0;
+    padding: 0 10rem;
     li {
       width: 100px;
       height: 100px;
       margin: 0 0.5rem 0.5rem 0px;
-      border: 2px solid #333;
+      border: none;
       position: relative;
       display: inline-block;
       &.slick-active {
-        border: 2px solid #999;
+        border: 3px solid $headerblue;
       }
     }
     
@@ -166,7 +172,7 @@
       .slide {
         &.slick-active {
           img {
-            border: 3px solid #444;
+            border: none;
           }
         }
       }

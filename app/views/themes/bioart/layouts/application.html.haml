@@ -24,6 +24,9 @@
           .project_detail .text p a, .project_detail .grid .chunked p a {
             color: #{@project.custom_heading_background_colour};
           }
+          .image_carousel ul.slick-dots li.slick-active {
+            border: 3px solid #{@project.custom_heading_background_colour} !important;
+          }
       - unless @project.custom_body_background_image.blank?
         :css
           .project_detail {
