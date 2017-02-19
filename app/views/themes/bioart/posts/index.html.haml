@@ -4,6 +4,8 @@
     .row
       .small-12.columns
         %h1.project_title= link_to @project.name, @project
+        - if @category
+          %h3.project_subtitle= @category.name
     .row
       .small-12.columns= render partial: 'shared/project_menu'
   - else
