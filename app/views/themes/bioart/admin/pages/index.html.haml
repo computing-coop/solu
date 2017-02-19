@@ -1,14 +1,20 @@
-.row
+.row.expanded
   .small-12.columns
     %h2 Listing pages
-.row
+.row.expanded
   .small-12.columns
 
     = link_to 'New Page', new_admin_page_path, class: [:button, :small]
-    
-.row
+.filter_box.row.expanded
+  .medium-6.columns
+    .filter_title Filter by project:
+    %select#by_project
+      %option{:value => ""} &nbsp;
+      - Project.all.sort_by{|x| x.name.downcase}.each do |project|
+        %option{:value => project.id, :selected => (params[:by_project] == project.id.to_s ? :selected : false)}= project.name    
+.row.expanded
   .small-12.columns
-    %table
+    %table.cms
       %thead
         %tr
           %th= sortable_column "Activity", column: 'subsite'
@@ -21,7 +27,10 @@
         - @pages.each do |page|
           - next unless page.root?
           %tr
-            %td= page.subsite.nil? ? 'main' : page.subsite.name
+            %td
+              = page.subsite.nil? ? 'main' : page.subsite.name
+              - if page.project
+                %p.project= page.project.name
             %td
               = page.title
               - unless page.children.empty?
@@ -36,7 +45,17 @@
               = link_to 'Edit', edit_admin_page_path(page), class: [:button, :small]
               = link_to 'Destroy', [:admin, page], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :small]
 
-.row
+.row.expanded
   .small-12.columns
 
     = link_to 'New Page', new_admin_page_path, class: [:button, :small]
+= content_for :jquery do
+  :plain
+    $('.filter_box select').change(function() {
+      var parts = "#{request.url}".split(/\?/, 2);
+      if (parts[1]) {
+        window.location.href=parts[0] + "?" + parts[1].replace(new RegExp("\\&*" + $(this).attr('id') + "\=\\d+", "g"), '') + "&" + $(this).attr('id') + "=" + $(this).val();
+      } else {
+        window.location.href=parts[0] + "?" + $(this).attr('id') + "=" + $(this).val();
+      }
+    });  

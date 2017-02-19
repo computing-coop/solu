@@ -3,12 +3,15 @@ class Admin::PagesController < Admin::BaseController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  
+  has_scope :by_project
+  has_scope :by_node
 
   def index
     # sortable_column_order do |column, direction|
     #   @pages = Page.by_node(@node).sort_by(column, direction)
     # end
-    @pages = @node.pages.desc('updated_at')
+    @pages = apply_scopes(Page.by_node(@node)).desc('updated_at')
     set_meta_tags title: 'Pages'
     respond_with(@pages)
   end

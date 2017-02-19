@@ -29,5 +29,9 @@ table.cms {
   tr:nth-child(even) {background: #FFF}
   td {
     padding: 1rem;
+    p.project {
+      font-size: 0.7em;
+      color: #666;
+    }
   }
 }

@@ -51,6 +51,8 @@ class Page
   accepts_nested_attributes_for :photos, allow_destroy: true
   
   scope :by_node, ->(node) { where(node: node)}
+  scope :by_project,  ->(x) {where(project: x)}
+  
   def all_images
     o = photos.flatten.compact.uniq
     # unless activity.nil?
