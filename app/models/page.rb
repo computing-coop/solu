@@ -43,6 +43,7 @@ class Page
   belongs_to :subsite, optional: true
   belongs_to :node, inverse_of: :pages
   
+  has_one :postcategory
   
   
   slug :title, scope: [:node, :project]

@@ -17,9 +17,14 @@ class PagesController < ApplicationController
     if params[:project_id]
       @project = Project.find(params[:project_id])
       @page = @project.pages.find(params[:id])
-      
+      if @page.postcategory
+        @posts = @page.postcategory.posts
+      end
     else
       @page = Page.find(params[:id])
+      if @page.postcategory
+        @posts = @page.postcategory.posts
+      end
       if @page.project
         redirect_to project_page_url(@page.project, @page)
       end

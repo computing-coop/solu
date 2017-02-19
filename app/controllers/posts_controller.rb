@@ -54,6 +54,11 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       if @post.project
         @project = @post.project
+        unless @post.postcategories.empty?
+          unless @post.postcategories.map(&:page).compact.empty?
+            @page = @post.postcategories.map(&:page).first
+          end
+        end
       end
     else
       @post = Post.find(params[:id])
