@@ -10,3 +10,14 @@
 
     - next if page.is_project_overview == true
     %li= link_to page.title, project_page_path(@project, page), class: [controller.controller_name == 'pages' && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]
+
+- if @page
+  - unless @page.children.empty? && @page.depth == 0
+    %ul.horizontal.menu.project_submenu{class: "depth_#{@page.depth.to_s}"}
+      - if @page.children.empty?
+        - if @page.depth > 0
+          - @page.parent.children.each do |page|
+            %li= link_to page.title, project_page_path(@project, page), class: [controller.controller_name == 'pages' && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]
+      - else
+        - @page.children.each do |page|
+          %li= link_to page.title, project_page_path(@project, page), class: [controller.controller_name == 'pages' && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]

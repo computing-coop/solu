@@ -77,7 +77,7 @@
 .project_detail {
   background: #f7f7f6 url(/assets/bioart/images/layout/grey_dots_small.png) repeat;
   
-  ul.project_menu {
+  ul.project_menu, ul.project_submenu {
     padding: 2.1em 0 0 0;
     margin-bottom: 3rem;
     @include breakpoint(small only) {
@@ -115,6 +115,14 @@
     }
     
     
+  }
+  ul.project_submenu {
+    padding: 0 0 2rem;
+    margin: -21px 0 0 3rem;
+    li {
+      a {
+        font-size: 0.7em;}
+    }
   }
   
   h1.project_title {
