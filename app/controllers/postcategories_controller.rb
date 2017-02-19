@@ -17,6 +17,7 @@ class PostcategoriesController < ApplicationController
         render template: 'posts/index'
       end
     end
+
   end
   
 end
