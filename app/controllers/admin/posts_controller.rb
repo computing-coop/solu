@@ -39,7 +39,7 @@ class Admin::PostsController < Admin::BaseController
 
   def update
     @post.update(post_params)
-    respond_with(@post)
+    redirect_to admin_posts_path
   end
 
   def destroy

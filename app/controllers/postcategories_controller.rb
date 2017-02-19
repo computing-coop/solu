@@ -2,13 +2,21 @@ class PostcategoriesController < ApplicationController
   
   def show
     @category = Postcategory.find(params[:id])
-    @posts = @category.posts.published
-    if @site
-      render template: 'posts/index', layout: @site.layout
-    else
-      render template: 'posts/index'
+    if @category.project
+      @project = @category.project
+
     end
-    
+    @posts = @category.posts.published
+    if @project.node != @node
+ 
+      redirect_to "http://#{@project.node.subdomains}/category/#{params[:id]}"
+    else
+      if @site
+        render template: 'posts/index', layout: @site.layout
+      else
+        render template: 'posts/index'
+      end
+    end
   end
   
 end
