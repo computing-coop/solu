@@ -1,7 +1,7 @@
 
 - @posts.each do |post|
   .post.column
-    .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+    .post_image{style: "background: url(#{post.photos.empty? ? (@project.nil? ? theme_image_path('placeholder.png') : @project.image.url(:box) ) :  post.photos.first.image.url(:box).gsub('development', 'production')}) #{!@project.nil? && post.photos.empty? ? 'center' : 'center/cover'} no-repeat"}
       - unless @project
         .hashtag
           = "##{post.node.name}"
