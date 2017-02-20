@@ -7,6 +7,7 @@ class PostsController < ApplicationController
       if params[:project_id]
         @project = Project.find(params[:project_id])
         @posts = @project.posts.published.order(published_at: :desc).page(params[:page]).per(12)
+        set_meta_tags title: @project.name + ": Blog"
       else
         @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)
       end

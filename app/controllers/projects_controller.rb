@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     @ongoing = Project.ongoing
     @old = Project.older
+    set_meta_tags title: 'Projects'
   end
   
   def show
@@ -17,7 +18,7 @@ class ProjectsController < ApplicationController
         redirect_to project_url(@project, subdomain: Node.find('bioart').subdomains)
       else
         @about = @project.pages.find_by(is_project_overview: true) rescue nil
-
+        set_meta_tags title: @project.name
       end
 
     end
