@@ -96,6 +96,23 @@
         float: left;
         margin-bottom: 1rem;
       }
+      &.is-dropdown-submenu-parent {
+        a {
+          background: #f7f7f6 url(/assets/bioart/images/layout/menubar_plus_blk.png)  0.4em no-repeat;
+          &.active {
+            background: $red url(/assets/bioart/images/layout/menubar_plus.png)  0.4em no-repeat;
+          }
+        }
+        
+        li.is-submenu-item {
+          a {
+             background: #f7f7f6 url(/assets/bioart/images/layout/menubar_arrow_blk.png)  0.4em no-repeat;
+          }
+        }
+      }
+      &.is-dropdown-submenu-parent > a::after {
+        border: none;
+      }
       font-family: $titillium;
       padding: 0 0 0 0.15em;
       a {
