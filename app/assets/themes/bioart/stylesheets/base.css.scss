@@ -86,9 +86,10 @@ footer {
     }
    }
   .icons {
-    .email, .fb, .twitter, .instagram {
+    .email, .fb, .twitter, .instagram, .rss {
       float: left;
       img {
+        height: 20px;
         padding: 0 0.4rem;
       }
     }

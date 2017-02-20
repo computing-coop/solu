@@ -203,7 +203,7 @@ namespace :wordpress do
         # p 'need to put attachement ' + i['attachment_url'] + ' to post ' + i['post_parent']
         unless post.empty?
           post = post.first
-          basename = File.basename(URI.parse(i['attachment_url']).path)
+          basename = File.basename(URI.parse(i['attachment_url']).path) rescue next
           # p 'creating photo for for ' + i['post_id']
           if post.photos.map{|x| x['image']}.include?(basename)
             p ' among ' + post.photos.map{|x| x['image']}.join(', ')
