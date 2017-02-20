@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'arsbioarctica'
+@scope = 'deeptime'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -129,7 +129,7 @@ namespace :after_import do
   task update_links: :environment do
     # pages first
     string_to_replace = /http:\/\/bioartsociety\.fi\/making_life\/([^\"\'\/]*)/
-    project = Project.find('ars-bioarctica')
+    project = Project.find('deep-time')
     
     Page.all.each do  |p|
 
@@ -147,12 +147,12 @@ namespace :after_import do
                 STDERR.puts 'cannot find ' + match
                 match
               else
-                STDERR.puts ' -- rewriting to ' + "/projects/ars-bioarctica/pages/#{pages.slug}"
-                "/projects/ars-bioarctica/pages/#{pages.slug}"
+                STDERR.puts ' -- rewriting to ' + "/projects/deep-time/pages/#{pages.slug}"
+                "/projects/deep-time/pages/#{pages.slug}"
               end
             else
-              STDERR.puts ' -- rewriting to ' + "/projects/ars-bioarctica/posts/#{posts.slug}"
-              "/projects/ars-bioarctica/posts/#{posts.slug}"
+              STDERR.puts ' -- rewriting to ' + "/projects/deep-time/posts/#{posts.slug}"
+              "/projects/deep-time/posts/#{posts.slug}"
             
             end
           end
@@ -240,7 +240,7 @@ namespace :wordpress do
     data = File.read xml
     hash = Hash.from_xml data
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('ars-bioarctica')
+    makinglife = Project.find('deep-time')
     hash['rss']['channel']['item'].each do |p|
       next unless p['post_type'] == 'page'
       page = Page.create(
@@ -294,7 +294,7 @@ namespace :wordpress do
     # cats = PostCategory.all.map{|x| [x.name, x.id] }
     # Post.paper_trail_off!
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('ars-bioarctica')
+    makinglife = Project.find('deep-time')
     hash['rss']['channel']['item'].each do |p|
      
 
