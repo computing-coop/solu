@@ -26,6 +26,8 @@
               = "##{@post.node.name}"
       .post_content
         .title= @post.title
+        - unless @post.wordpress_author.blank?
+          %p.author= "posted by #{@post.wordpress_author}"
         .description= raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
         
 

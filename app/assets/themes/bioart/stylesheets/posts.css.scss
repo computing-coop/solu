@@ -35,6 +35,12 @@
       padding: 1.875em 2.625em;
       background-color: white;
       margin-bottom: 2.2rem;
+      .author {
+        font-family: $titillium;
+        font-size: 1rem;
+        line-height: 1.25em;
+        color: #666;
+      }
       .title {
         font-family: $abel;
         font-size: 1.4em;
@@ -89,6 +95,12 @@
       font-weight: bold;
       margin-bottom: 1em;
     }
+    .author {
+      font-family: $titillium;
+      font-size: 1rem;
+      line-height: 1.25em;
+      color: #666;
+    }
     .description, .description p {
       font-family: $titillium;
       font-size: 1rem;
@@ -112,32 +124,34 @@
 
 // image carousel
 
-.slick-next, .slick-prev {
-  height: inherit;
-  width: inherit;
-  bottom: -20%;
-  z-index: 4000;
-  &:focus {
-    outline: none;
-  }
-}
-.slick-prev {
-  left: 6rem;
-  position: absolute;
-}
-
-.slick-next {
-  right: 7rem;
-  position: absolute;
-
-//  &.page {
-//    right: 1rem;
-//  }
-}
-
   
 .image_carousel {
   margin-top: 1rem;
+  
+
+  .slick-next, .slick-prev {
+    height: inherit;
+    width: inherit;
+    bottom: -20%;
+    z-index: 4000;
+    &:focus {
+      outline: none;
+    }
+  }
+  .slick-prev {
+    left: 6rem;
+    position: absolute;
+  }
+
+  .slick-next {
+    right: 7rem;
+    position: absolute;
+
+  //  &.page {
+  //    right: 1rem;
+  //  }
+  }
+  
   
   .thumb {
     display: none;
