@@ -59,7 +59,7 @@
       background-color: white;
       opacity: 0.9;
       padding: 1rem;
-      color: #333;
+      color: #000;
       .title {
         font-size: 1.614em;
       }
@@ -83,7 +83,7 @@
         float: left;
         margin: 0.813em 0.688em;
         font-family: $titillium;
-        color: #333;
+        color: #000;
         font-size: 1rem;
         background-color: $headerblue;
         padding: 0.5em 0.313em;
@@ -101,13 +101,13 @@
 
         font-weight: bold;
         margin-bottom: 1em;
-        color: #333;
+        color: #000;
       }
       .excerpt, .excerpt p {
         font-family: $titillium;
         font-size: 1rem;
         line-height: 1.25em;
-        color: #333;
+        color: #000;
       }
     }
   }
@@ -120,7 +120,7 @@
         float: left;
         margin: 0.813em 0.688em;
         font-family: $titillium;
-        color: #333;
+        color: #000;
         font-size: 1rem;
         background-color: $headerblue;
         padding: 0.5em 0.313em;
@@ -136,14 +136,14 @@
         line-height: 1.25em;
         font-weight: bold;
         margin-bottom: 1em;
-        color: #333;
+        color: #000;
 
       }
       .excerpt, .excerpt p {
         font-family: $titillium;
         font-size: 1rem;
         line-height: 1.25em;
-        color: #333;
+        color: #000;
       }
     }
   }  
