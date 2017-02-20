@@ -1,7 +1,10 @@
 .project_detail
   .row
     .small-12.columns
-      %h1.project_title= @project.name
+      %h1.project_title
+        = @project.name
+        - unless @project.ongoing == true
+          %span.years= @project.year_range
       %h3.project_subtitle= @project.subtitle
       
   .row
