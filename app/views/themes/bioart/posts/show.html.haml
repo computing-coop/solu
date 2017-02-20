@@ -2,7 +2,10 @@
   - if @project
     .row
       .small-12.columns
-        %h1.project_title= link_to @project.name, @project
+        %h1.project_title
+          = link_to @project.name, @project
+          - unless @project.ongoing == true
+            %span.years= @project.year_range
     .row
       .small-12.columns= render partial: 'shared/project_menu'
       
