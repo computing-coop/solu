@@ -201,7 +201,22 @@ namespace :wordpress do
         # get post
         post = Post.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
         # p 'need to put attachement ' + i['attachment_url'] + ' to post ' + i['post_parent']
-        unless post.empty?
+        if post.empty?
+          # look for a page
+          page = Page.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
+          if page.empty?
+            p 'cannot find parent for ' + i['post_parent']
+          else
+            page = page.first
+            basename = File.basename(URI.parse(i['attachment_url']).path) rescue next
+            if page.photos.map{|x| x['image']}.include?(basename)
+              p ' among ' + page.photos.map{|x| x['image']}.join(', ')
+            else
+              p 'no ' + basename + ' in ' + page.photos.map{|x| x['image']}.join('/')
+              page.photos << Photo.new(:remote_image_url => i['attachment_url'], photographic: page, :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
+            end
+          end
+        else
           post = post.first
           basename = File.basename(URI.parse(i['attachment_url']).path) rescue next
           # p 'creating photo for for ' + i['post_id']
@@ -271,10 +286,10 @@ namespace :wordpress do
       next unless i['post_type'] == 'attachment'
 
       # get entry in photo table
-      photo_entry = Photo.where(:wordpress_id => i['post_id'])
+      photo_entry = Page.all.map(&:photos).flatten.where(:wordpress_id => i['post_id'], wordpress_scope: @scope)
       next if photo_entry.empty?  # we deleted it as it's a primary image post
       # check for existence of parent post
-      parent_post = Post.where(:wordpress_id => i['post_parent'])
+      parent_post = Page.where(:wordpress_id => i['post_parent'], wordpress_scope: @scope)
       next if parent_post.empty?
       if parent_post.photos.include?(photo_entry)
         # it's already here so don't put it twice
