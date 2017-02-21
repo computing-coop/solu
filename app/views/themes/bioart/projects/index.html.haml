@@ -24,15 +24,15 @@
         .heading
           Past
           Projects
-   
-    - @old.each do |project|
-      = link_to project, class: [:project] do
-        .row[project]
-          .small-12.columns
-            .row.inner
-              .small-12.medium-2.project_icon.columns
-                = image_tag project.image.url(:box).gsub(/development/, 'production')
-              .small-12.medium-10.project_content.columns
-                .title= project.name
-                .years= project.year_range
-                .description= project.description
+    .row.projects_container
+      .small-12.columns
+        - @old.each do |project|
+          .row
+            = link_to project, class: [:columns, 'small-12', :project] do
+              .row.inner
+                .small-12.medium-2.project_icon.columns
+                  = image_tag project.image.url(:box).gsub(/development/, 'production')
+                .small-12.medium-10.project_content.columns
+                  .title= project.name
+                  .years= project.year_range
+                  .description= project.description
