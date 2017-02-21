@@ -22,7 +22,7 @@
     
               - @post.photos.each do |photo|
                 .slide[photo]
-                  = image_tag photo.image.url(:standard).gsub('development', 'production')
+                  = image_tag photo.image.url(:standard).gsub('development', 'production'), align: :center
                   .thumb= image_tag photo.image.url(:thumb).gsub('development', 'production')    
           - unless @project
             .hashtag
@@ -55,6 +55,7 @@
           $('.image_carousel').slick({infinite: true,
             arrows: true,
             slide: '.slide',
+      
             adaptiveHeight: false,
             prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
             nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',

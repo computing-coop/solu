@@ -209,6 +209,10 @@
   .slick-list {
     .slick-track {
       .slide {
+        img {
+          margin-left: auto;
+          margin-right: auto;
+        }
         &.slick-active {
           img {
             border: none;
