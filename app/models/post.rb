@@ -58,7 +58,19 @@ class Post
     [activities.map{|x| x.subsite? ? '<a href="http://' + x.subsite.hostname + '">' + x.name + '</a>' : '<a href="/activities/' + x.slug + '/posts">' + x.name + '</a>'}, postcategories.map{|x|  '<a href="/category/' + x.slug + '">' + x.name + '</a>'}].flatten.compact.join(' / ')
   end
   
-
+  def previous_by_project
+    project.nil? ? 
+      Post.published.by_node(node).where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
+      :
+      Post.published.by_node(node).by_project(project).where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
+  end
+  
+  def next_by_project
+    project.nil? ?
+      Post.published.by_node(node).where(:published_at.gt => published_at).order_by([:published_at, :asc]).first
+      : Post.published.by_node(node).by_project(project).where(:published_at.gt => published_at).order_by([:published_at, :asc]).first
+  end
+  
   def previous
     Post.published.by_node(node).where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
   end

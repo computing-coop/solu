@@ -29,10 +29,26 @@
               = "##{@post.node.name}"
       .post_content
         .title= @post.title
-        - unless @post.wordpress_author.blank?
-          %p.author= "posted by #{@post.wordpress_author}"
+        .author
+          - if @post.wordpress_author.blank?
+            = "posted by #{@post.user.name} on #{@post.published_at.strftime('%-d %B %Y')}"
+          - elsif !@post.wordpress_author.blank? && @post.user.email == 'erich.berger@bioartsociety.fi'
+            = "posted by #{@post.wordpress_author} on #{@post.published_at.strftime('%-d %B %Y')}"
+            
         .description= raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
-        
+        .navigation
+          - if @project.nil?
+            - unless @post.previous.nil?
+              .side_link.prev_post.float-left= link_to 'Previous', @post.previous
+          - else
+            - unless @post.previous_by_project.nil?
+              .side_link.prev_post.float-left= link_to 'Previous', @post.previous_by_project
+          - if @project.nil?
+            - unless @post.next.nil?
+              .side_link.float-right= link_to 'Next', @post.next, class: :next_post
+          - else
+            - unless @post.next_by_project.nil?
+              .side_link.float-right= link_to 'Next', @post.next_by_project, class: :next_post        
 
       = content_for :jquery do
         :plain
