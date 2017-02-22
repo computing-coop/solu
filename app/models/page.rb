@@ -5,9 +5,7 @@ class Page
   include Mongoid::Tree
   include Mongoid::Tree::Ordering
   include Imageable
-  validates_uniqueness_of :title, scope: :node
-  before_save :update_image_attributes
-  
+
   
   field :title, type: String
   field :body, type: String
@@ -49,10 +47,18 @@ class Page
   slug :title, scope: [:node, :project]
     
   embeds_many :photos, as: :photographic, cascade_callbacks: true
+  embeds_many :soundfiles, as: :soundable, cascade_callbacks: true
+  accepts_nested_attributes_for :soundfiles, allow_destroy: true
   accepts_nested_attributes_for :photos, allow_destroy: true
+
   
   scope :by_node, ->(node) { where(node: node)}
   scope :by_project,  ->(x) {where(project: x)}
+  
+  validates_uniqueness_of :title, scope: :node
+  
+  before_save :update_image_attributes
+  
   
   def all_images
     o = photos.flatten.compact.uniq

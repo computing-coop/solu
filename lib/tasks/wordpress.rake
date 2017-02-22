@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'artandhenvi'
+@scope = 'arsbioarctica'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -129,7 +129,7 @@ namespace :after_import do
   task update_links: :environment do
     # pages first
     string_to_replace = /http:\/\/bioartsociety\.fi\/making_life\/([^\"\'\/]*)/
-    project = Project.find('art-and-henvi')
+    project = Project.find('ars-bioarctica')
     
     Page.all.each do  |p|
 
@@ -147,12 +147,12 @@ namespace :after_import do
                 STDERR.puts 'cannot find ' + match
                 match
               else
-                STDERR.puts ' -- rewriting to ' + "/projects/art-and-henvi/pages/#{pages.slug}"
-                "/projects/art-and-henvi/pages/#{pages.slug}"
+                STDERR.puts ' -- rewriting to ' + "/projects/ars-bioarctica/pages/#{pages.slug}"
+                "/projects/ars-bioarctica/pages/#{pages.slug}"
               end
             else
-              STDERR.puts ' -- rewriting to ' + "/projects/art-and-henvi/posts/#{posts.slug}"
-              "/projects/art-and-henvi/posts/#{posts.slug}"
+              STDERR.puts ' -- rewriting to ' + "/projects/ars-bioarctica/posts/#{posts.slug}"
+              "/projects/ars-bioarctica/posts/#{posts.slug}"
             
             end
           end
@@ -191,6 +191,47 @@ namespace :wordpress do
     end
   end
 
+  task soundfiles: :environment do
+    xml = @cache_dir + 'export.xml'
+    data = File.read xml
+    hash = Hash.from_xml data
+    hash['rss']['channel']['item'].each do |i|
+      next unless i['post_type'] == 'attachment'
+      unless i['attachment_url'].blank?
+        next unless i['attachment_url'] =~ /mp3/i || i['attachment_url'] =~ /m4a/i
+        post = Post.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
+        if post.empty?
+          # look for a page
+          page = Page.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
+          if page.empty?
+            p 'cannot find parent for ' + i['post_parent']
+          else
+            page = page.first
+            basename = File.basename(URI.parse(i['attachment_url']).path) rescue next
+            if page.soundfiles.map{|x| x['soundfile']}.include?(basename)
+              p ' among ' + page.soundfiles.map{|x| x['soundfile']}.join(', ')
+            else
+              p 'no ' + basename + ' in ' + page.soundfiles.map{|x| x['soundfile']}.join('/')
+              page.soundfiles << Soundfile.new(:remote_soundfile_url => i['attachment_url'], soundable: page, :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
+              p 'put sound on page # ' + post.slug
+            end
+          end
+        else
+          post = post.first
+          basename = File.basename(URI.parse(i['attachment_url']).path) rescue next
+          # p 'creating photo for for ' + i['post_id']
+          if post.soundfiles.map{|x| x['soundfile']}.include?(basename)
+            p ' among ' + post.soundfiles.map{|x| x['soundfile']}.join(', ')
+          else
+            p 'no ' + basename + ' in ' + post.soundfiles.map{|x| x['soundfile']}.join('/')
+            post.soundfiles << Soundfile.new(:remote_soundfile_url => i['attachment_url'], soundable: post, :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
+            p 'put sound on post # ' + post.slug
+          end
+        end
+      end
+    end
+  end
+  
   task :attachments => :environment do
     xml = @cache_dir + 'export.xml'
     data = File.read xml
@@ -255,7 +296,7 @@ namespace :wordpress do
     data = File.read xml
     hash = Hash.from_xml data
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('art-and-henvi')
+    makinglife = Project.find('ars-bioarctica')
     hash['rss']['channel']['item'].each do |p|
       next unless p['post_type'] == 'page'
       page = Page.create(
@@ -293,6 +334,7 @@ namespace :wordpress do
       next if parent_post.empty?
       if parent_post.photos.include?(photo_entry)
         # it's already here so don't put it twice
+        
         next
       else
         parent_post.photos << photo_entry
@@ -309,7 +351,7 @@ namespace :wordpress do
     # cats = PostCategory.all.map{|x| [x.name, x.id] }
     # Post.paper_trail_off!
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('art-and-henvi')
+    makinglife = Project.find('ars-bioarctica')
     hash['rss']['channel']['item'].each do |p|
      
 
