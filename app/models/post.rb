@@ -26,9 +26,11 @@ class Post
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   embeds_many :soundfiles, as: :soundable, cascade_callbacks: true
+  embeds_many :videos, as: :videographic, cascade_callbacks: true
   
   accepts_nested_attributes_for :soundfiles, allow_destroy: true
   accepts_nested_attributes_for :photos, allow_destroy: true
+  accepts_nested_attributes_for :videos, allow_destroy: true
   
   scope :published, -> () { where(published: true)}
   scope :sticky, ->() { where(published: true, sticky: true) }

@@ -23,10 +23,17 @@
               - @post.photos.each do |photo|
                 .slide[photo]
                   = image_tag photo.image.url(:standard).gsub('development', 'production'), align: :center
-                  .thumb= image_tag photo.image.url(:thumb).gsub('development', 'production')    
+                  .thumb= image_tag photo.image.url(:thumb).gsub('development', 'production')
+      - unless @post.videos.empty?                  
+        - @post.videos.each do |video|
+          - if video.videofile.url =~ /mp4$/
+            = videojs_rails sources: { mp4: video.videofile.url }, setup: "{}", controls: true
+          - elsif video.videofile.url =~ /mov$/
+            %video{controls: '', preload: true}
+              %source{src: video.videofile.url }
           - unless @project
             .hashtag
-              = "##{@post.node.name}"
+              = "##{@post.project.name}"
       .post_content
         .title= @post.title
 

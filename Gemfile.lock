@@ -360,6 +360,7 @@ GEM
     uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
     unicode_utils (1.4.0)
+    videojs_rails (4.12.15)
     warden (1.2.6)
       rack (>= 1.0)
     websocket-driver (0.6.4)
@@ -426,6 +427,7 @@ DEPENDENCIES
   themes_for_rails!
   truncate_html
   uglifier (>= 1.3.0)
+  videojs_rails
 
 RUBY VERSION
    ruby 2.3.1p112

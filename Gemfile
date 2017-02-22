@@ -87,7 +87,7 @@ gem 'redis'
 gem 'rolify'
 gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master' #, ref: '98c8db2'
 gem 'truncate_html'
-
+gem 'videojs_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

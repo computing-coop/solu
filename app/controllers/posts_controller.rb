@@ -9,7 +9,7 @@ class PostsController < ApplicationController
         @posts = @project.posts.published.order(published_at: :desc).page(params[:page]).per(12)
         set_meta_tags title: @project.name + ": Blog"
       else
-        @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)
+        @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)      
       end
       if request.xhr?
         render layout: false, partial: 'postspage'
@@ -52,13 +52,18 @@ class PostsController < ApplicationController
 
   def show
     if @node.name == 'bioart'      
-      @post = Post.find(params[:id])
-      if @post.project
-        @project = @post.project
+      if params[:project_id]
+        @project = Project.find(params[:project_id])
+        @post = @project.posts.find(params[:id])
         unless @post.postcategories.empty?
           unless @post.postcategories.map(&:page).compact.empty?
             @page = @post.postcategories.map(&:page).first
           end
+        end
+      else
+        @post = Post.find(params[:id])
+        if @post.project
+          redirect_to project_post_url(@post.project, @post)
         end
       end
     else

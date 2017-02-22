@@ -190,6 +190,48 @@ namespace :wordpress do
       PostCategory.create(:name => c['cat_name'], :slug => c['category_nicename'], :wordpress_id => c['term_id'])
     end
   end
+  
+  task videos: :environment do
+    xml = @cache_dir + 'export.xml'
+    data = File.read xml
+    hash = Hash.from_xml data
+    hash['rss']['channel']['item'].each do |i|
+      next unless i['post_type'] == 'attachment'
+      unless i['attachment_url'].blank?
+        next unless i['attachment_url'] =~ /mov/i || i['attachment_url'] =~ /mp4/i || i['attachment_url'] =~ /avi/i
+        post = Post.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
+        if post.empty?
+          # look for a page
+          page = Page.where(wordpress_id: i['post_parent'], wordpress_scope: @scope)
+          if page.empty?
+            p 'cannot find parent for ' + i['post_parent']
+          else
+            page = page.first
+            basename = File.basename(URI.parse(i['attachment_url']).path) rescue next
+            if page.videos.map{|x| x['videofile']}.include?(basename)
+              p ' among ' + page.videos.map{|x| x['videofile']}.join(', ')
+            else
+              p 'no ' + basename + ' in ' + page.videos.map{|x| x['videofile']}.join('/')
+              page.videos << Video.new(:remote_videofile_url => i['attachment_url'], videographic: page, :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
+              p 'put video on page # ' + post.slug
+            end
+          end
+        else
+          post = post.first
+          basename = File.basename(URI.parse(i['attachment_url']).path) rescue next
+          # p 'creating photo for for ' + i['post_id']
+          if post.videos.map{|x| x['videofile']}.include?(basename)
+            p ' among ' + post.videos.map{|x| x['videofile']}.join(', ')
+          else
+            p 'no ' + basename + ' in ' + post.videos.map{|x| x['videofile']}.join('/')
+            post.videos << Video.new(:remote_videofile_url => i['attachment_url'], videographic: post, :wordpress_id => i['post_id'], :wordpress_scope => @scope ) 
+            p 'put video on post # ' + post.slug
+          end
+        end
+      end
+    end
+  end
+  
 
   task soundfiles: :environment do
     xml = @cache_dir + 'export.xml'

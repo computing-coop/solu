@@ -11,3 +11,4 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( ckeditor/* backoffice.js backoffice.css invitations.css investigations.css exhibitions.css)
 Rails.application.config.assets.precompile += %w( bioart/stylesheets/backoffice.css  bioart/javascripts/backoffice.js  hybrid_matters/javascripts/backoffice.js hybrid_matters/stylesheets/backoffice.css)
+Rails.application.config.assets.precompile += %w( video-js.swf vjs.eot vjs.svg vjs.ttf vjs.woff )
