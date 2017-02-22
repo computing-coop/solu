@@ -58,12 +58,13 @@
                   Toggle Mute
               = content_for :jquery do
                 :plain
-                  var wavesurfer_#{sound.id.to_s} = WaveSurfer.create({
+                  wavesurfer_#{sound.id.to_s} = WaveSurfer.create({
                       container: '#soundfile_#{sound.id.to_s}',
                       waveColor: '#{@project.nil? ? '#66ffcc' : (@project.custom_heading_background_colour.blank? ? '#ff3366' : @project.custom_heading_background_colour )}',
                       progressColor: 'purple'
                   });
                   wavesurfer_#{sound.id.to_s}.load('#{sound.soundfile.url}');
+                  
           = raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
         .navigation
           - if @project.nil?
