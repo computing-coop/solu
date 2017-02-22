@@ -29,7 +29,7 @@
           - if video.videofile.url =~ /mp4$/
             = videojs_rails sources: { mp4: video.videofile.url }, setup: "{}", controls: true
           - elsif video.videofile.url =~ /mov$/
-            %video{controls: '', preload: true}
+            %video{controls: '', preload: true, width: '100%'}
               %source{src: video.videofile.url }
           - unless @project
             .hashtag
