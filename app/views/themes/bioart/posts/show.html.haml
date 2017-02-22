@@ -29,13 +29,42 @@
               = "##{@post.node.name}"
       .post_content
         .title= @post.title
+
         .author
           - if @post.wordpress_author.blank?
             = "posted by #{@post.user.name} on #{@post.published_at.strftime('%-d %B %Y')}"
           - elsif !@post.wordpress_author.blank? && @post.user.email == 'erich.berger@bioartsociety.fi'
             = "posted by #{@post.wordpress_author} on #{@post.published_at.strftime('%-d %B %Y')}"
             
-        .description= raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
+        .description
+          - unless @post.soundfiles.empty?
+            - @post.soundfiles.each do |sound|
+              .soundplayer[sound]
+              .controls
+                %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.skipBackward()"}
+                  %i.fa.fa-step-backward
+                  Backward
+                %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.playPause()"}
+                  %i.fa.fa-play
+                  Play
+                  \/
+                  %i.fa.fa-pause
+                  Pause
+                %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.skipForward()"}
+                  %i.fa.fa-step-forward
+                  Forward
+                %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.toggleMute()"}
+                  %i.fa.fa-volume-off
+                  Toggle Mute
+              = content_for :jquery do
+                :plain
+                  var wavesurfer_#{sound.id.to_s} = WaveSurfer.create({
+                      container: '#soundfile_#{sound.id.to_s}',
+                      waveColor: '#{@project.nil? ? '#66ffcc' : (@project.custom_heading_background_colour.blank? ? '#ff3366' : @project.custom_heading_background_colour )}',
+                      progressColor: 'purple'
+                  });
+                  wavesurfer_#{sound.id.to_s}.load('#{sound.soundfile.url}');
+          = raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href src}))
         .navigation
           - if @project.nil?
             - unless @post.previous.nil?
