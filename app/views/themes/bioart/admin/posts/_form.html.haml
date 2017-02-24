@@ -29,7 +29,9 @@
         = ff.input :image
         = ff.link_to_remove "Remove this photo"
       = f.link_to_add "Add a photo", :photos
-
+    
+  .row.expanded
+    .small-10.medium-6.columns= f.input :hide_featured_image, as: :boolean, label: 'Hide photo in detail view?', hint: 'If photos are attached, the first photo will show in the index view of posts, cropped into a box. If you tick this box, no photos will actually show above the post in the detail view. Use this if you want to put a photo for the index view instead of the default "no image" image, but not actually display the photo above the post.'    
   .row.expanded
     .small-10.medium-6.columns
       = f.input :activities, input_html: {class: :chosen_select}, label: 'Related to any activities?'

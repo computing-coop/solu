@@ -39,6 +39,8 @@ class Project
   has_and_belongs_to_many :partners
   has_many :posts
   has_many :pages 
+  has_many :activities
+  
   scope :published, ->() { where(published: true) }
   scope :ongoing, ->() { where(ongoing: true) }
   scope :older, -> () {where(:ongoing.in => ["", nil, false])}

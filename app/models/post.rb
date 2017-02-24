@@ -17,6 +17,8 @@ class Post
   field :wordpress_author, type: String
   field :wordpress_id, type: Integer
   
+  field :hide_featured_image, type: Boolean, default: false
+  
   has_and_belongs_to_many :postcategories
   has_and_belongs_to_many :activities
   
@@ -39,6 +41,7 @@ class Post
   scope :by_project,  ->(x) {where(project: x)}
   
   before_save :check_published_date
+  
   
   validates_presence_of :title, :body, :user_id
   
