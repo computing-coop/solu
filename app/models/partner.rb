@@ -42,6 +42,8 @@ class Partner
   
   slug :name
   
+  scope :by_node, ->(x) { where(node: x)}
+  
   index({ name: 1 }, { unique: true, drop_dups: true, name: "name_index" })
   
   mount_uploader :logo, ImageUploader

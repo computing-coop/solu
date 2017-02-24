@@ -373,7 +373,11 @@ namespace :wordpress do
       next if photo_entry.empty?  # we deleted it as it's a primary image post
       # check for existence of parent post
       parent_post = Page.where(:wordpress_id => i['post_parent'], wordpress_scope: @scope)
-      next if parent_post.empty?
+      if parent_post.empty?
+        next
+      else
+        parent_post  = parent_post.first
+      end
       if parent_post.photos.include?(photo_entry)
         # it's already here so don't put it twice
         

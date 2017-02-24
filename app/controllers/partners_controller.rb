@@ -2,7 +2,7 @@ class PartnersController < ApplicationController
   respond_to :html
   
   def index
-    @partners = Partner.all.sort_by(&:created_at)
+    @partners = Partner.by_node(@node).sort_by(&:created_at)
     set_meta_tags title: 'Partners'
     respond_with @partners
   end
