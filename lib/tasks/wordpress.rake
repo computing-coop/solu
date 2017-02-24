@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'arsbioarctica'
+@scope = 'fieldnotes1'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -129,7 +129,7 @@ namespace :after_import do
   task update_links: :environment do
     # pages first
     string_to_replace = /http:\/\/bioartsociety\.fi\/making_life\/([^\"\'\/]*)/
-    project = Project.find('ars-bioarctica')
+    project = Project.find('field-notes')
     
     Page.all.each do  |p|
 
@@ -147,12 +147,12 @@ namespace :after_import do
                 STDERR.puts 'cannot find ' + match
                 match
               else
-                STDERR.puts ' -- rewriting to ' + "/projects/ars-bioarctica/pages/#{pages.slug}"
-                "/projects/ars-bioarctica/pages/#{pages.slug}"
+                STDERR.puts ' -- rewriting to ' + "/projects/field-notes/pages/#{pages.slug}"
+                "/projects/field-notes/pages/#{pages.slug}"
               end
             else
-              STDERR.puts ' -- rewriting to ' + "/projects/ars-bioarctica/posts/#{posts.slug}"
-              "/projects/ars-bioarctica/posts/#{posts.slug}"
+              STDERR.puts ' -- rewriting to ' + "/projects/field-notes/posts/#{posts.slug}"
+              "/projects/field-notes/posts/#{posts.slug}"
             
             end
           end
@@ -326,7 +326,7 @@ namespace :wordpress do
       if par.empty?
         next
       else
-        new_db = Page.find_by(:wordpress_id => p['post_id'], :wordpress_scope => @scope)
+        new_db = Page.find_by(:wordpress_id => p['post_id'], :wordpress_scope => @scope) rescue next
         new_db.parent = par.first
         new_db.save
       end
@@ -338,7 +338,7 @@ namespace :wordpress do
     data = File.read xml
     hash = Hash.from_xml data
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('ars-bioarctica')
+    makinglife = Project.find('field-notes')
     hash['rss']['channel']['item'].each do |p|
       next unless p['post_type'] == 'page'
       page = Page.create(
@@ -369,7 +369,7 @@ namespace :wordpress do
       next unless i['post_type'] == 'attachment'
 
       # get entry in photo table
-      photo_entry = Page.all.map(&:photos).flatten.where(:wordpress_id => i['post_id'], wordpress_scope: @scope)
+      photo_entry = Page.all.map(&:photos).flatten.delete_if{|x| x.wordpress_id != i['post_id'] && x.wordpress_scope != @scope}
       next if photo_entry.empty?  # we deleted it as it's a primary image post
       # check for existence of parent post
       parent_post = Page.where(:wordpress_id => i['post_parent'], wordpress_scope: @scope)
@@ -393,7 +393,7 @@ namespace :wordpress do
     # cats = PostCategory.all.map{|x| [x.name, x.id] }
     # Post.paper_trail_off!
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('ars-bioarctica')
+    makinglife = Project.find('field-notes')
     hash['rss']['channel']['item'].each do |p|
      
 
