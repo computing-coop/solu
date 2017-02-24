@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'fieldnotes1'
+@scope = 'bioartmain'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -129,7 +129,7 @@ namespace :after_import do
   task update_links: :environment do
     # pages first
     string_to_replace = /http:\/\/bioartsociety\.fi\/making_life\/([^\"\'\/]*)/
-    project = Project.find('field-notes')
+    # project = Project.find('field-notes')
     
     Page.all.each do  |p|
 
@@ -147,12 +147,12 @@ namespace :after_import do
                 STDERR.puts 'cannot find ' + match
                 match
               else
-                STDERR.puts ' -- rewriting to ' + "/projects/field-notes/pages/#{pages.slug}"
-                "/projects/field-notes/pages/#{pages.slug}"
+                STDERR.puts ' -- rewriting to ' + "/pages/#{pages.slug}"
+                "/pages/#{pages.slug}"
               end
             else
-              STDERR.puts ' -- rewriting to ' + "/projects/field-notes/posts/#{posts.slug}"
-              "/projects/field-notes/posts/#{posts.slug}"
+              STDERR.puts ' -- rewriting to ' + "/posts/#{posts.slug}"
+              "/posts/#{posts.slug}"
             
             end
           end
@@ -338,7 +338,7 @@ namespace :wordpress do
     data = File.read xml
     hash = Hash.from_xml data
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('field-notes')
+    # makinglife = Project.find('field-notes')
     hash['rss']['channel']['item'].each do |p|
       next unless p['post_type'] == 'page'
       page = Page.create(
@@ -351,8 +351,8 @@ namespace :wordpress do
         wordpress_scope: @scope,
         created_at: p['pubDate'],
         updated_at: p['pubDate'],
-        node: bioartnode,
-        project: makinglife
+        node: bioartnode
+        # project: makinglife
 
       )
     end
@@ -397,7 +397,7 @@ namespace :wordpress do
     # cats = PostCategory.all.map{|x| [x.name, x.id] }
     # Post.paper_trail_off!
     bioartnode = Node.find('bioart')
-    makinglife = Project.find('field-notes')
+    # makinglife = Project.find('field-notes')
     hash['rss']['channel']['item'].each do |p|
      
 
@@ -416,9 +416,9 @@ namespace :wordpress do
         wordpress_scope: @scope,
         user: User.find_by(email: 'erich.berger@bioartsociety.fi'),
         node: bioartnode,
-        published: p['status'] == 'draft' ? false : true,
+        published: p['status'] == 'draft' ? false : true
         # tag_list: get_tags(p),
-        project: makinglife
+        # project: makinglife
       )
       ti = get_thumbnail_image(p)
       if ti

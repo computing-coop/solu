@@ -46,4 +46,9 @@ class Project
   def self.search(q)
     Project.where({ :$text => { :$search => q, :$language => "en" } })
   end
+  
+  def to_hashtag
+    "##{name.gsub(/\s*/, '')}"
+  end
+  
 end
