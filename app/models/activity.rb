@@ -2,6 +2,10 @@ class Activity
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
+  include Mongoid::Taggable
+  
+  include Relatable
+  
   field :name, type: String
   field :activity_type, type: String
   field :description, type: String
@@ -88,5 +92,11 @@ class Activity
       ''
     end
   end
+  
+  def index_image
+    photos.empty? ? "background: #d8d9db url(/assets/bioart/images/placeholder.png) center/cover no-repeat" :
+    "background: #d8d9db url(#{photos.first.image.url(:box)}) center/cover no-repeat;" 
+  end
+  
   
 end

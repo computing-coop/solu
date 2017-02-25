@@ -54,7 +54,7 @@ class Admin::PostsController < Admin::BaseController
 
     def post_params
       params.require(:post).permit(:title, :body, :sticky, :subsite_id, :short_abstract, :published, :user_id,
-                                   :published_at, :hide_featured_image, 
+                                   :published_at, :hide_featured_image, :tags,
                                    photos_attributes: [:image, :id,  :_destroy], 
                                    activity_ids: [], postcategory_ids: [] )
     end

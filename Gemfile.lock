@@ -262,6 +262,9 @@ GEM
     mongoid_search (0.3.2)
       fast-stemmer (~> 1.0.0)
       mongoid (>= 3.0.0)
+    mongoid_taggable (1.1.1)
+      mongoid (>= 3)
+      rake
     multi_json (1.12.1)
     nested_form (0.3.2)
     net-scp (1.2.1)
@@ -413,6 +416,7 @@ DEPENDENCIES
   mongoid_magic_counter_cache
   mongoid_rails_migrations
   mongoid_search
+  mongoid_taggable
   nested_form
   nifty-generators
   nokogiri (= 1.6.6.2)

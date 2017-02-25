@@ -26,6 +26,9 @@
     .small-12.large-8.columns= f.input :end_at, as: :string, input_html: {class: :fdatepicker}
   .row
     .small-12.large-8.columns= f.input :responsible_organisation_ids, collection: Partner.all,  input_html: {class: :chosen_select}, multiple: true, label: 'Responsible organisations'
+
+  .row
+    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'    
   / = f.fields_for :responsible_organisations do |ff|
   /   .row
   /     .small-12.large-8.columns= f.input

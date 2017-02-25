@@ -2,6 +2,9 @@ class Post
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
+  include Mongoid::Taggable
+  
+  
   field :title, type: String
   field :body, type: String
   field :published, type: Mongoid::Boolean
@@ -88,6 +91,19 @@ class Post
 
   def next
     Post.published.by_node(node).where(:published_at.gt => published_at).order_by([:published_at, :asc]).first
+  end
+  
+  def name
+    title
+  end
+  
+  def description
+    body
+  end
+  
+  def index_image
+    photos.empty? ? "background: #d8d9db url(/assets/bioart/images/placeholder.png) center/cover no-repeat" :
+    "background: #d8d9db url(#{photos.first.image.url(:box)}) center/cover no-repeat;" 
   end
   
 end

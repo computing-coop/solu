@@ -5,6 +5,7 @@ class Page
   include Mongoid::Tree
   include Mongoid::Tree::Ordering
   include Imageable
+  include Mongoid::Taggable
 
   
   field :title, type: String
@@ -74,5 +75,19 @@ class Page
     Nokogiri::HTML(self.body).search('a[name]').map{|x| [x['name'], x.text] }.delete_if{|x| x.first.blank? }
   end
   
+  def index_image
+    image? ? "background: #d8d9db url(#{image.url(:box)}) center/cover no-repeat;" :
+    (project? ? project.index_image : 
+      "background: #d8d9db url(/assets/bioart/images/placeholder.png) center/cover no-repeat" )
+  end
+  
+  def name
+    title
+  end
+  
+  def description
+    body
+  end
+
 end
 

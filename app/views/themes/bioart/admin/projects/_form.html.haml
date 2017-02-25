@@ -38,11 +38,11 @@
     = f.input :ongoing, as: :boolean    
   .small-10.medium-6.columns
     = f.input :published, as: :boolean
-  
+  .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'
   .small-10.medium-6.columns
     = f.input :redirect_url
-  .actions
-    = f.submit 'Save'
+  .row
+    .small-12.medium-12.columns.actions= f.submit 'Save'
 
 = content_for :jquery do
   :plain

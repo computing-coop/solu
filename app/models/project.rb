@@ -3,6 +3,9 @@ class Project
   include Mongoid::Slug
   include Mongoid::Timestamps
   include Mongoid::Search
+  include Mongoid::Taggable
+  
+  
   field :year_range, type: String
   field :name, type: String
   field :subtitle, type: String
@@ -53,4 +56,8 @@ class Project
     "##{name.gsub(/\s*/, '')}"
   end
   
+  def index_image
+    image? ? "background: #{custom_heading_background_colour.blank? ? '#d8d9db' : custom_heading_background_colour} url(#{image.url}) center center no-repeat;" : ''
+  end
+
 end

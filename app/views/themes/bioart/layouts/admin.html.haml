@@ -30,6 +30,8 @@
         .title-bar-left
 
           %ul.menu.horizontal
+            - if can? :edit, Project
+              %li= link_to 'Projects', admin_projects_path
             - if can? :edit, Partner
               %li= link_to 'Partners', admin_partners_path
             - if can? :edit, Post              
@@ -40,22 +42,22 @@
               %li= link_to 'Static pages', admin_pages_path
             - if can? :read, Submission              
               %li= link_to 'Open calls', admin_calls_path
-            - if can? :edit, Symposium
-              %li= link_to 'Symposia', admin_symposia_path
-            - if can? :edit, Event
-              %li= link_to 'Events', admin_events_path
-            - if can? :edit, Background           
-              %li= link_to 'Header images', admin_backgrounds_path
+            / - if can? :edit, Symposium
+            /   %li= link_to 'Symposia', admin_symposia_path
+            / - if can? :edit, Event
+            /   %li= link_to 'Events', admin_events_path
+            / - if can? :edit, Background
+            /   %li= link_to 'Header images', admin_backgrounds_path
             - if can? :edit, Postcategory           
               %li= link_to 'Post categories', admin_postcategories_path
-            - if can? :edit, Artist
-              %li= link_to 'Artists', admin_artists_path
-            - if can? :edit, Work
-              %li= link_to 'Works', admin_works_path
+            / - if can? :edit, Artist
+            /   %li= link_to 'Artists', admin_artists_path
+            / - if can? :edit, Work
+            /   %li= link_to 'Works', admin_works_path
             - if can? :edit, User
               %li= link_to 'Users', admin_users_path
-            - if can? :manage, Subsite
-              %li.last= link_to 'Subdomains', admin_subsites_path
+            / - if can? :manage, Subsite
+            /   %li.last= link_to 'Subdomains', admin_subsites_path
               
           
     = yield

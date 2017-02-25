@@ -20,3 +20,53 @@
         %p.date= date_range(@activity.start_at, @activity.end_at)
         %p= @activity.location
         .description= raw @activity.description
+      
+  - unless @activity.related_content.empty?
+    .related_container
+      .row
+        .small-12.columns.offset
+          %h1 Related Activities
+      .row.small-up-1.medium-up-3.xxlarge-up-4.related_carousel
+        - @activity.related_content.each do |related|
+          = link_to related, class: [:related, :columns] do
+
+            .related_image{style: related.index_image.gsub('development', 'production')}
+              - if related.class == Project
+                .hashtag
+                  = "#{related.to_hashtag}"
+              -elsif related.project
+                .hashtag
+                  = "#{related.project.to_hashtag}"
+                  
+              - elsif related.node != @node
+                .hashtag
+                  = "#{related.node.to_hashtag}"
+            .related_content
+              .title= related.name
+              .excerpt= truncate_html(sanitize(related.description, tags: %w{b strong bold i italic em u underline br}), length: 150)
+      - if @activity.related_content.size > 3
+        = content_for :jquery do
+          :plain
+            $('.related_carousel').slick({infinite: true,
+                arrows: true,
+                slide: '.related',
+                adaptiveHeight: false,
+                prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+                nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+                variableWidth: false,
+                autoplay: true,
+                autoplaySpeed: 4500,
+                slidesToScroll: 1,
+                slidesToShow: 3,
+                responsive: [
+                    {
+                      breakpoint: 480,
+                      settings: {
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                  }
+                ]
+              });;

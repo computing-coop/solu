@@ -24,6 +24,8 @@
   .row
     .large-5.small-12.columns= f.input :split_on_h3, as: :boolean, label: 'Split text into boxes along Header 3s', hint: 'If ticked, use the style dropdown in the editor to specify headings as HEADER 3 and the site will render this page with the different sections in different boxes.'
   .row
+    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'     
+  .row
     .large-8.small-12.columns
       - if f.object.background?
         = image_tag f.object.background.url

@@ -8,8 +8,12 @@
       = link_to post, class: [:post, :columns] do
 
         .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
-          .hashtag
-            = "##{post.node.name}"
+          - if post.project
+            .hashtag
+              = "#{post.project.to_hashtag}"
+          - elsif post.node != @node
+            .hashtag
+              = "#{post.node.to_hashtag}"
         .post_content
           .title= post.title
           .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)

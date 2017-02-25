@@ -79,6 +79,7 @@ gem 'mongoid-slug', github: 'mongoid/mongoid-slug', branch: 'master'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'mongoid_search'
 gem 'mongoid_magic_counter_cache'
+gem 'mongoid_taggable'
 gem 'nested_form'
 gem 'nokogiri', '1.6.6.2'
 gem "recaptcha", '3.0', require: "recaptcha/rails"
