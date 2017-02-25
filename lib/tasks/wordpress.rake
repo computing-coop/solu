@@ -443,25 +443,47 @@ namespace :wordpress do
       end
       matches = post.body.scan(/['"]((https?):\/\/(www\.:?)kilpiscope\.net\/residency\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
-        next if image_url =~ /mp3$/ || image_url =~ /mov$/ || image_url =~ /mp4$/
-        image_url =  image_url.gsub(/\-\d{3,4}x\d{3,4}(\.\w\w\w)\s*$/, '\1')
-        # p ' '
-        # p ' '
-        # p File.basename(image_url) + ":"
-        # p '----'
-        unless post.photos.map{|x| x['image']}.include?(File.basename(image_url))
-          # p 'cannot find photo: ' + image_url + ' in post ' + post.slug + ' from ' + post.photos.map{|x| x['image']}.join(', ')
+        if image_url =~ /mp3$/i || image_url =~ /wav$/i || image_url =~ /m4a$/i || image_url =~ /ogg$/i
+          unless post.soundfiles.map{|x| x['soundfile']}.include?(File.basename(image_url).gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6'))
+            begin
+              post.soundfiles << Soundfile.new(:remote_soundfile_url => image_url, soundable: post, :wordpress_scope => @scope )
+              p 'getting sound ' + image_url + ' and adding to post ' + post.slug
+              p ' '
+            rescue
+              p 'cannot find sound: ' + image_url + ' in post ' + post.slug
+            end
+          end
+        elsif image_url =~ /mov$/i || image_url =~ /mp4$/i || image_url =~ /m4v$/i
+          unless post.videos.map{|x| x['videofile']}.include?(File.basename(image_url).gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6').gsub(/æ/, '_C3_A6').gsub(/é/, '_C3_A9').gsub(/’/, '_E2_80_99'))
+            begin
+              post.videos << Video.new(:remote_videofile_url => image_url, videographic: post, :wordpress_scope => @scope )
+              p 'getting video ' + image_url + ' and adding to post ' + post.slug
+              p ' '
+            rescue
+              p 'cannot find video: ' + image_url + ' in post ' + post.slug
+            end
+          end
+          
+        else
+          image_url =  image_url.gsub(/\-\d{3,4}x\d{3,4}(\.\w\w\w)\s*$/, '\1')
           # p ' '
           # p ' '
-          # next
-          begin
-            post.photos << Photo.new(:remote_image_url => image_url,
-                           photographic: post, 
-                            :wordpress_scope => @scope )
+          # p File.basename(image_url) + ":"
+          # p '----'
+          unless post.photos.map{|x| x['image'].to_s.gsub(/jpeg$/, 'jpg')}.include?(File.basename(image_url).gsub(/jpeg$/, 'jpg').gsub(/à/, '_C3_A0').gsub(/é/, '_C3_A9').gsub(/’/, '_E2_80_99').gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6').gsub(/æ/, '_C3_A6'))
+            # p 'cannot find photo: ' + image_url + ' in post ' + post.slug + ' from ' + post.photos.map{|x| x['image']}.join(', ')
+            # p ' '
+            # p ' '
+            # next
+            begin
+              post.photos << Photo.new(:remote_image_url => image_url,
+                             photographic: post, 
+                              :wordpress_scope => @scope )
 
-            p 'getting photo ' + image_url + ' and adding to post ' + post.slug
-          rescue
-            p 'cannot find photo: ' + image_url + ' in post ' + post.slug
+              p 'getting photo ' + image_url + ' and adding to post ' + post.slug
+            rescue
+              p 'cannot find photo: ' + image_url + ' in post ' + post.slug
+            end
           end
         end
       end

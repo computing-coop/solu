@@ -27,7 +27,7 @@
                     .thumb= image_tag photo.image.url(:thumb).gsub('development', 'production')
       - unless @post.videos.empty?                  
         - @post.videos.each do |video|
-          - if video.videofile.url =~ /mp4$/
+          - if video.videofile.url =~ /mp4$/i || video.videofile.url =~ /m4v$/i
             = videojs_rails sources: { mp4: video.videofile.url }, setup: "{}", controls: true
           - elsif video.videofile.url =~ /mov$/
             %video{controls: '', preload: true, width: '100%'}
