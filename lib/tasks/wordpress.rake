@@ -450,7 +450,10 @@ namespace :wordpress do
         # p File.basename(image_url) + ":"
         # p '----'
         unless post.photos.map{|x| x['image']}.include?(File.basename(image_url))
-          
+          # p 'cannot find photo: ' + image_url + ' in post ' + post.slug + ' from ' + post.photos.map{|x| x['image']}.join(', ')
+          # p ' '
+          # p ' '
+          # next
           begin
             post.photos << Photo.new(:remote_image_url => image_url,
                            photographic: post, 
