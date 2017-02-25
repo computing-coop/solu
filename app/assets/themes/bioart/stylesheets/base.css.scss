@@ -55,7 +55,19 @@ header {
   
 }
 
+#flash {
+  background-color: $fuschia;
+  font-family: $rubik;
 
+  @include breakpoint(small only) {
+    margin: 0 2rem 0 -1rem;
+  }
+  color: #FFF;
+  font-size: 1.5rem;
+  clear: left;
+  line-height: 1em;
+  padding: 0.75rem 0.5rem;
+}
 footer {
   background: $headerblue url(/assets/bioart/images/layout/green_dots_small.png) repeat;
   min-height: 7.5rem;

@@ -32,6 +32,9 @@
           .image_carousel ul.slick-dots li.slick-active {
             border: 3px solid #{@project.custom_heading_background_colour} !important;
           }
+          #flash {
+            background-color: #{@project.custom_heading_background_colour} !important;
+          }
       - unless @project.custom_body_background_image.blank?
         :css
           .project_detail {
@@ -62,6 +65,13 @@
                 %li= link_to 'ARS Bioarctica', project_path('ars-bioarctica')
                 %li= link_to 'Projects', projects_path
                 -#%li= link_to 'Contact', page_path('contact')
+    - unless flash.empty?
+      #flash
+        .row
+          .small-12.columns.text-center
+            - flash.each do |name, msg|
+              - if msg.is_a?(String)
+                = content_tag :div, msg, :id => "flash_#{name}"
     = yield
     %footer{style: @project.nil? ? '' : "background: #{@project.custom_background_colour} url(#{@project.custom_background_image.url}) repeat;" }= render partial: 'layouts/footer'
 

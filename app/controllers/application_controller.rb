@@ -81,9 +81,11 @@ class ApplicationController < ActionController::Base
     else
       @background_image = Background.active.skip(rand(Background.active.count)).first
     end
+    
   end
   
   def get_sticky_posts
+
     @sticky = Post.sticky.order(published_at: :desc).limit(2)    
   end
   
