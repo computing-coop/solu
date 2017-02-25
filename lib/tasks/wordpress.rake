@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'bioartmain'
+@scope = 'arsbioarctica'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -436,67 +436,87 @@ namespace :wordpress do
 
   task migrate_images: :environment do
     
-    Post.all.each do |post|
+    Post.where(wordpress_scope: @scope).each do |post|
       next if post.body.nil?
-      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)pixelache\.ac\/wp-content[^"]+)/).map(&:first).uniq
+      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)kilpiscope\.net\/residency\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
-        # check to see if it's already in our database
-        existing = Ckeditor::Asset.find_by(wordpress_url: image_url)
-
-        # new record so grab url and save and mark if missing
-        if existing.nil?
-          ck = Ckeditor.picture_model.new
-
-          # if it ends in something like -660x371 try to get original
-          if image_url =~ /\-\d\d\dx\d\d\d\.(jpe?g|png|gif)$/
-            first_try = image_url.gsub(/\-\d\d\dx\d\d\d\./, '.')
-            ck.remote_data_url = first_try
-            ck.wordpress_url = image_url
-            if !ck.save
-              ck.remote_data_url = image_url
-            end
-          else
-            ck.remote_data_url = image_url
-          end
-
-          ck.wordpress_url = image_url
+        next if image_url =~ /mp3$/ || image_url =~ /mov$/ || image_url =~ /mp4$/
+        image_url =  image_url.gsub(/\-\d{3,4}x\d{3,4}(\.\w\w\w)\s*$/, '\1')
+        # p ' '
+        # p ' '
+        # p File.basename(image_url) + ":"
+        # p '----'
+        unless post.photos.map{|x| x['image']}.include?(File.basename(image_url))
           begin
-            ck.save!
-          rescue ActiveRecord::RecordInvalid
-              ck.remote_data_url = 'http://bioartsociety.fi/wp-content/uploads/2013/10/kilpis_cano.jpg'
-              ck.missing = true
-              ck.save!
+            post.photos << Photo.new(:remote_image_url => image_url,
+                           photographic: post, 
+                            :wordpress_scope => @scope ) 
+            p 'getting photo ' + image_url + ' and adding to post ' + post.slug
+          rescue
+            p 'cannot find photo: ' + image_url + ' in post ' + post.slug
           end
-          existing = ck
-        end
-
-        # already exists so just replace with correct URL
-        post.body.gsub!(image_url, existing.data.url)
-        if existing.missing
-          puts "broken URL: #{image_url}"
-        else
-          puts "replaced #{image_url} with #{existing.data.url} for Post ##{post.post_id}"
-        end
-        # doc = Nokogiri::HTML.fragment(post.body)
-        # doc.search('figure').each do |a|
-        #   a.replace(a.content)
-        # end
-        # post.body = doc.to_html
-        post.body.gsub!(/<\/?figure>/, '')
-
-        post.save(validate: false)
-      end  # end of matches.each loop
-      unless post.globalized_model.image? || matches.empty?
-        d = Ckeditor::Asset.find_by(wordpress_url: matches.first)
-        unless d.missing == true
-          post.globalized_model.remote_image_url = d.data.url
-          post.globalized_model.save!
-          puts "Post ##{post.post_id} was missing image, now has #{d.data.url}"
         end
       end
-
     end
   end
+
+  #       # check to see if it's already in our database
+        # existing = Ckeditor::Asset.find_by(wordpress_url: image_url)
+  #
+  #       # new record so grab url and save and mark if missing
+  #       if existing.nil?
+  #         ck = Ckeditor.picture_model.new
+  #
+  #         # if it ends in something like -660x371 try to get original
+  #         if image_url =~ /\-\d\d\dx\d\d\d\.(jpe?g|png|gif)$/
+  #           first_try = image_url.gsub(/\-\d\d\dx\d\d\d\./, '.')
+  #           ck.remote_data_url = first_try
+  #           ck.wordpress_url = image_url
+  #           if !ck.save
+  #             ck.remote_data_url = image_url
+  #           end
+  #         else
+  #           ck.remote_data_url = image_url
+  #         end
+  #
+  #         ck.wordpress_url = image_url
+  #         begin
+  #           ck.save!
+  #         rescue ActiveRecord::RecordInvalid
+  #             ck.remote_data_url = 'http://bioartsociety.fi/wp-content/uploads/2013/10/kilpis_cano.jpg'
+  #             ck.missing = true
+  #             ck.save!
+  #         end
+  #         existing = ck
+  #       end
+  #
+  #       # already exists so just replace with correct URL
+  #       post.body.gsub!(image_url, existing.data.url)
+  #       if existing.missing
+  #         puts "broken URL: #{image_url}"
+  #       else
+  #         puts "replaced #{image_url} with #{existing.data.url} for Post ##{post.post_id}"
+  #       end
+  #       # doc = Nokogiri::HTML.fragment(post.body)
+  #       # doc.search('figure').each do |a|
+  #       #   a.replace(a.content)
+  #       # end
+  #       # post.body = doc.to_html
+  #       post.body.gsub!(/<\/?figure>/, '')
+  #
+  #       post.save(validate: false)
+  #     end  # end of matches.each loop
+  #     unless post.globalized_model.image? || matches.empty?
+  #       d = Ckeditor::Asset.find_by(wordpress_url: matches.first)
+  #       unless d.missing == true
+  #         post.globalized_model.remote_image_url = d.data.url
+  #         post.globalized_model.save!
+  #         puts "Post ##{post.post_id} was missing image, now has #{d.data.url}"
+  #       end
+  #     end
+  #
+  #   end
+  # end
 
 
 
