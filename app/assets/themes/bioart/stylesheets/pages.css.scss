@@ -2,6 +2,9 @@
 @import '_settings';
 
 .about_page {
+  &.errors {
+    padding: 3rem 0;
+  }
   background-color: #d5d7d8;
   min-height: 600px;
   .heading {

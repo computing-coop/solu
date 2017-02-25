@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+
   resources :projects do
     resources :posts
     resources :pages
@@ -113,4 +117,6 @@ Rails.application.routes.draw do
   get '/admin',  to: 'admin/posts#index'
   get '/feed' => 'feeds#index', :defaults => { :format => 'rss' }
   get '/about', to: 'home#about'
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 end
