@@ -438,6 +438,9 @@ namespace :wordpress do
     
     Post.where(wordpress_scope: @scope).each do |post|
       next if post.body.nil?
+      if post.photos.empty?
+        post.hide_featured_image = true
+      end
       matches = post.body.scan(/['"]((https?):\/\/(www\.:?)kilpiscope\.net\/residency\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
         next if image_url =~ /mp3$/ || image_url =~ /mov$/ || image_url =~ /mp4$/
@@ -447,10 +450,12 @@ namespace :wordpress do
         # p File.basename(image_url) + ":"
         # p '----'
         unless post.photos.map{|x| x['image']}.include?(File.basename(image_url))
+          
           begin
             post.photos << Photo.new(:remote_image_url => image_url,
                            photographic: post, 
-                            :wordpress_scope => @scope ) 
+                            :wordpress_scope => @scope )
+
             p 'getting photo ' + image_url + ' and adding to post ' + post.slug
           rescue
             p 'cannot find photo: ' + image_url + ' in post ' + post.slug
