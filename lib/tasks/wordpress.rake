@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'arsbioarctica'
+@scope = 'making_life'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -441,7 +441,7 @@ namespace :wordpress do
       if post.photos.empty?
         post.hide_featured_image = true
       end
-      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)kilpiscope\.net\/residency\/wp-content[^"]+)/).map(&:first).uniq
+      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)*bioartsociety\.fi\/making_life\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
         orig_match = image_url
         if image_url =~ /mp3$/i || image_url =~ /wav$/i || image_url =~ /m4a$/i || image_url =~ /ogg$/i
@@ -522,7 +522,7 @@ namespace :wordpress do
       doc.xpath('//@width').remove
       doc.xpath('//@height').remove 
       post.body = doc.to_html
-      post.save!
+      post.save!(validate: false)
     end
   end 
   #       # check to see if it's already in our database
