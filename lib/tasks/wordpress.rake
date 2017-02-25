@@ -443,6 +443,7 @@ namespace :wordpress do
       end
       matches = post.body.scan(/['"]((https?):\/\/(www\.:?)kilpiscope\.net\/residency\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
+        orig_match = image_url
         if image_url =~ /mp3$/i || image_url =~ /wav$/i || image_url =~ /m4a$/i || image_url =~ /ogg$/i
           unless post.soundfiles.map{|x| x['soundfile']}.include?(File.basename(image_url).gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6'))
             begin
@@ -470,7 +471,8 @@ namespace :wordpress do
           # p ' '
           # p File.basename(image_url) + ":"
           # p '----'
-          unless post.photos.map{|x| x['image'].to_s.gsub(/jpeg$/, 'jpg')}.include?(File.basename(image_url).gsub(/jpeg$/, 'jpg').gsub(/à/, '_C3_A0').gsub(/é/, '_C3_A9').gsub(/’/, '_E2_80_99').gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6').gsub(/æ/, '_C3_A6'))
+          indb = post.photos.map{|x| x['image'].to_s.gsub(/jpeg$/, 'jpg')}.include?(File.basename(image_url).gsub(/jpeg$/, 'jpg').gsub(/à/, '_C3_A0').gsub(/é/, '_C3_A9').gsub(/’/, '_E2_80_99').gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6').gsub(/æ/, '_C3_A6'))
+          if indb.nil?
             # p 'cannot find photo: ' + image_url + ' in post ' + post.slug + ' from ' + post.photos.map{|x| x['image']}.join(', ')
             # p ' '
             # p ' '
@@ -484,12 +486,45 @@ namespace :wordpress do
             rescue
               p 'cannot find photo: ' + image_url + ' in post ' + post.slug
             end
-          end
+          else
+            begin
+              indb = post.photos.find_by(image: File.basename(image_url).gsub(/à/, '_C3_A0').gsub(/é/, '_C3_A9').gsub(/’/, '_E2_80_99').gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6').gsub(/æ/, '_C3_A6')
+              )
+              p 'image_url!! is ' + orig_match
+              p 'new image is ' + indb.image.url
+              newbody = post.body.gsub(orig_match, indb.image.url)
+              post.body = newbody
+              post.save!(validate: false)
+            rescue Mongoid::Errors::DocumentNotFound
+              begin
+                indb = post.photos.find_by(image: File.basename(image_url).gsub(/\.jpg$/, '.jpeg').gsub(/à/, '_C3_A0').gsub(/é/, '_C3_A9').gsub(/’/, '_E2_80_99').gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6').gsub(/æ/, '_C3_A6')
+                      )
+                p 'image_url is ' + orig_match
+                p 'new image is ' + indb.umage.url
+                newbody = post.body.gsub(orig_match, indb.image.url)
+                post.body = newbody
+                post.save!(validate: false)
+              rescue
+                'cannot find ' + File.basename(image_url)
+              end
+            end
+            
+          end 
         end
       end
     end
   end
 
+
+  task strip_height_and_width: :environment do
+    Post.where(wordpress_scope: @scope).each do |post|
+      doc = Nokogiri::HTML(post.body)
+      doc.xpath('//@width').remove
+      doc.xpath('//@height').remove 
+      post.body = doc.to_html
+      post.save!
+    end
+  end 
   #       # check to see if it's already in our database
         # existing = Ckeditor::Asset.find_by(wordpress_url: image_url)
   #
