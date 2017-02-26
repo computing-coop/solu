@@ -436,11 +436,11 @@ namespace :wordpress do
 
   task migrate_images: :environment do
     
-    Post.where(wordpress_scope: @scope).each do |post|
+    Page.where(wordpress_scope: @scope).each do |post|
       next if post.body.nil?
-      if post.photos.empty?
-        post.hide_featured_image = true
-      end
+      # if post.photos.empty?
+      #   post.hide_featured_image = true
+      # end
       matches = post.body.scan(/['"]((https?):\/\/(www\.:?)*bioartsociety\.fi\/field_notes\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
         orig_match = image_url
@@ -517,7 +517,7 @@ namespace :wordpress do
 
 
   task strip_height_and_width: :environment do
-    Post.where(wordpress_scope: @scope).each do |post|
+    Page.where(wordpress_scope: @scope).each do |post|
       doc = Nokogiri::HTML(post.body)
       doc.xpath('//@width').remove
       doc.xpath('//@height').remove 
