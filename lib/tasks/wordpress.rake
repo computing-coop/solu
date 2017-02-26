@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'making_life'
+@scope = 'deeptime'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -441,7 +441,7 @@ namespace :wordpress do
       if post.photos.empty?
         post.hide_featured_image = true
       end
-      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)*bioartsociety\.fi\/making_life\/wp-content[^"]+)/).map(&:first).uniq
+      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)*bioartsociety\.fi\/deep_time\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
         orig_match = image_url
         if image_url =~ /mp3$/i || image_url =~ /wav$/i || image_url =~ /m4a$/i || image_url =~ /ogg$/i
@@ -472,7 +472,7 @@ namespace :wordpress do
           # p File.basename(image_url) + ":"
           # p '----'
           indb = post.photos.map{|x| x['image'].to_s.gsub(/jpeg$/, 'jpg')}.include?(File.basename(image_url).gsub(/jpeg$/, 'jpg').gsub(/à/, '_C3_A0').gsub(/é/, '_C3_A9').gsub(/’/, '_E2_80_99').gsub(/ä/, '_C3_A4').gsub(/ö/, '_C3_B6').gsub(/æ/, '_C3_A6'))
-          if indb.nil?
+          if indb == false
             # p 'cannot find photo: ' + image_url + ' in post ' + post.slug + ' from ' + post.photos.map{|x| x['image']}.join(', ')
             # p ' '
             # p ' '
@@ -492,7 +492,7 @@ namespace :wordpress do
               )
               p 'image_url!! is ' + orig_match
               p 'new image is ' + indb.image.url
-              newbody = post.body.gsub(orig_match, indb.image.url)
+              newbody = post.body.gsub(orig_match, indb.image.url(:standard))
               post.body = newbody
               post.save!(validate: false)
             rescue Mongoid::Errors::DocumentNotFound
@@ -501,7 +501,7 @@ namespace :wordpress do
                       )
                 p 'image_url is ' + orig_match
                 p 'new image is ' + indb.umage.url
-                newbody = post.body.gsub(orig_match, indb.image.url)
+                newbody = post.body.gsub(orig_match, indb.image.url(:standard))
                 post.body = newbody
                 post.save!(validate: false)
               rescue
