@@ -1,5 +1,5 @@
 @cache_dir = 'lib/assets/'
-@scope = 'bioartmain'
+@scope = 'fieldnotes1'
 
 def hash_from_cache
   xml = @cache_dir + 'export.xml'
@@ -441,7 +441,7 @@ namespace :wordpress do
       if post.photos.empty?
         post.hide_featured_image = true
       end
-      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)*bioartsociety\.fi\/wp-content[^"]+)/).map(&:first).uniq
+      matches = post.body.scan(/['"]((https?):\/\/(www\.:?)*bioartsociety\.fi\/field_notes\/wp-content[^"]+)/).map(&:first).uniq
       matches.each do |image_url|
         orig_match = image_url
         if image_url =~ /mp3$/i || image_url =~ /wav$/i || image_url =~ /m4a$/i || image_url =~ /ogg$/i
