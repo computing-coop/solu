@@ -55,7 +55,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :participants 
   get '/speakers', to: "participants#index"
-  resources :registrations
+  # resources :registrations
   resources :activities
   
   namespace :admin do
