@@ -3,7 +3,7 @@ class User
   include Mongoid::Slug
   rolify
   validates_uniqueness_of :email
-  belongs_to :partner
+  belongs_to :partner, optional: true
   accepts_nested_attributes_for :roles
   #has_many :comments
   has_many :posts, :dependent => :delete
