@@ -1,8 +1,12 @@
-- if Time.now.to_date < Date.parse('2016-09-01')
+- if Time.current.to_date < Date.parse('2016-09-01')
   .row
     .medium-9.medium-offset-3.columns.small-centered
       %h3 Registration opens on 1 September 2016.
-
+- elsif Time.current.to_date >= Date.parse('2016-11-24')
+  .row
+    .medium-9.medium-offset-3.columns.small-centered
+      %h3 The symposium has already happened.
+      %p The symposium took place on 24-25 November, 2016. Registration is therefore closed.
 - else
     
   .application
