@@ -20,7 +20,11 @@
     padding: 0.25rem 0.5rem;
     position: absolute;
   }
-  .activity {
+  a.activity {
+    color: black;
+    &:hover {
+      color: #666;
+    }
     .activity_image {
       overflow: hidden;
       height: 320px;
@@ -44,12 +48,7 @@
         line-height: 1.25em;
         font-weight: bold;
         margin-bottom: 1em;
-        a {
-          color: black;
-          &:hover {
-            color: #666;
-          }
-        }
+
       }
       .excerpt, .excerpt p {
         font-family: $titillium;
