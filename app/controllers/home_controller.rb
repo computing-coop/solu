@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   def about
     @about_text = @node.pages.find('about-the-bioart-society') rescue nil
     @board_staff = @node.pages.find('board-and-staff') rescue nil
+    @members = @node.pages.find('members') rescue Page.new
+    @collaborators = @node.pages.find('collaborators') rescue Page.new
     set_meta_tags title: "About"
   end
   

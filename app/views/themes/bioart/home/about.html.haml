@@ -12,18 +12,18 @@
   
   .row
     .small-12.medium-6.columns.member_box
-      .member_image{style: "background: url(#{theme_image_path('placeholders/members.jpg')}) center/cover no-repeat"}
+      .member_image{style: "background: url(#{@members.image.url}) center/cover no-repeat"}
       .member_content
         .title= link_to 'Members', page_path('members')
         .excerpt
-          Lorem ipsum dolor sit amet, ex vix porro mentitum delicata, cu vim mentitum antiopam accommodare, reque falli utinam at vix.
+          = raw @members.excerpt
           
     .small-12.medium-6.columns.member_box
-      .member_image{style: "background: url(#{theme_image_path('placeholders/collaborators.jpg')}) center/cover no-repeat"}
+      .member_image{style: "background: url(#{@collaborators.image.url}) center/cover no-repeat"}
       .member_content
         .title= link_to 'Collaborators', page_path('collaborators')
         .excerpt
-          Lorem ipsum dolor sit amet, ex vix porro mentitum delicata, cu vim mentitum antiopam accommodare, reque falli utinam at vix. Te animal electram quo. Vix id viris tollit. Ad pri viris munere quaeque. 
+          = raw @collaborators.excerpt
           
 
   .row
