@@ -31,7 +31,7 @@
                   -#  = "##{post.node.name}"
                 .post_content
                   .title= truncate_html(post.title, length: 40)
-                  .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline }), length: 150)
+                  .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attr: %w{href target src}), length: 150)
         = content_for :jquery do
           :plain
             $('.post_carousel').slick({infinite: true,

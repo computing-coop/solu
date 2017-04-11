@@ -11,6 +11,12 @@
           %h3.project_subtitle= @category.name
     .row
       .small-12.columns= render partial: 'shared/project_menu'
+  - elsif @category
+    .row
+      .small-10.small-centered.medium-12.columns.section_title
+        %h1.project_title News
+        - if @category
+          %h3.project_subtitle= @category.name  
   - else
     .row
       .small-10.small-centered.medium-12.columns.section_title

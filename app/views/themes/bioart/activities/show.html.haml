@@ -20,7 +20,8 @@
         %p.date= date_range(@activity.start_at, @activity.end_at)
         %p= @activity.location
         .description= raw @activity.description
-      
+        - unless @activity.postcategory.blank?
+          %h2= link_to 'See all blog posts...', "/category/#{@activity.postcategory.slug}"
   - unless @activity.related_content.empty?
     .related_container
       .row

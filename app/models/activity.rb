@@ -20,6 +20,7 @@ class Activity
   has_one :subsite
   belongs_to :node
   belongs_to :project, optional: true
+  belongs_to :postcategory, optional: true
   has_and_belongs_to_many :posts
   
   validates_uniqueness_of :name
