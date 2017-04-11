@@ -8,8 +8,9 @@
   background-color: #d5d7d8;
   min-height: 600px;
   .heading {
+    opacity: 0.9;
     background-color: $headerblue;
-    font-size: 4.375em;
+    font-size: 5rem;
     @include breakpoint(small only) {
       font-size: 3.4rem;
     }
@@ -57,7 +58,7 @@
       }
       p {
         font-size: 1.15rem;
-        font-weight: bold;
+        font-weight: normal;
         font-family: $titillium;
         line-height: 1.8rem;
       }
@@ -103,7 +104,7 @@
       background-color: white;
       margin-bottom: 2.2rem;
       .title {
-        font-family: $abel;
+        font-family: $titillium;
         font-size: 1.75rem;
         line-height: 2.275rem;
         font-weight: bold;
@@ -115,7 +116,7 @@
       .excerpt, .excerpt p {
         font-family: $titillium;
         font-size: 1.125rem;
-        font-weight: bold;
+        font-weight: normal;
         line-height: 1.6rem;
       }
     }
