@@ -12,6 +12,9 @@ module Relatable
         related += self.activitytype.activities.delete_if{|x| x==self }
       end
     end
+    unless self.postcategory.nil?
+      related += self.postcategory.posts.delete_if{|x| x==self }
+    end
     related.compact.delete_if{|x| x == self}.delete_if{|x| x.node != self.node}.uniq
   end
   
