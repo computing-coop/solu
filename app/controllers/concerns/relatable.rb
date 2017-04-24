@@ -12,7 +12,7 @@ module Relatable
         related += self.activitytype.activities.delete_if{|x| x==self }
       end
     end
-    related.compact.delete_if{|x| x == self}.uniq
+    related.compact.delete_if{|x| x == self}.delete_if{|x| x.node != self.node}.uniq
   end
   
 end

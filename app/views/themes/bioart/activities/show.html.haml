@@ -35,6 +35,8 @@
               - if related.class == Project
                 .hashtag
                   = "#{related.to_hashtag}"
+
+                
               -elsif related.project
                 .hashtag
                   = "#{related.project.to_hashtag}"
