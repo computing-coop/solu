@@ -41,7 +41,7 @@ class Admin::PartnersController < Admin::BaseController
 
   def destroy
     @admin_partner.destroy
-    respond_with(@admin_partner)
+    redirect_to admin_partners_path
   end
 
   private
