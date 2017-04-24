@@ -50,7 +50,7 @@ class Admin::PartnersController < Admin::BaseController
     end
 
     def partner_params
-      params.require(:partner).permit(:name, :website, :address1, :css_colour, :address2, :city, :country, 
+      params.require(:partner).permit(:name, :website, :address1, :css_colour, :address2, :city, :country, :is_funder,
       :postcode, :latitude, :longitude, :logo, :hmlogo, :remove_logo, :remove_hmlogo, :node_id, :description,
       photos_attributes:[:image, :id,  :_destroy],
        project_ids: [] )

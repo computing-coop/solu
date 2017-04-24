@@ -26,6 +26,7 @@ class Partner
   field :hmlogo_content_type, type: String
   field :css_colour, type: String
   field :coordinates, :type => Array
+  field :is_funder, type:  Mongoid::Boolean
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
@@ -43,6 +44,7 @@ class Partner
   slug :name
   
   scope :by_node, ->(x) { where(node: x)}
+  scope :funders, ->() { where(is_funder: true) }
   
   index({ name: 1 }, { unique: true, drop_dups: true, name: "name_index" })
   
