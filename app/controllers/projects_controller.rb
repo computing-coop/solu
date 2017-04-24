@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
   
   def index
-    @ongoing = Project.ongoing
-    @old = Project.older
+    @ongoing = Project.ongoing.published.order(year_range: :asc)
+    @old = Project.older.published.order(year_range: :desc)
     set_meta_tags title: 'Projects'
   end
   
