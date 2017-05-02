@@ -271,7 +271,7 @@
     a.post{
       .post_image {
         overflow: hidden;
-        height: 392px;
+        padding-bottom: 100%;
         .hashtag {
           float: left;
           margin: 0.813em 0.688em;
@@ -308,7 +308,7 @@
     a.page {
       .page_image {
         overflow: hidden;
-        height: 392px;
+        padding-bottom: 100%;
       }
       .page_content {
         padding: 1.875em 2.625em;
