@@ -18,7 +18,7 @@
           .red= link_to @about.title, project_page_path(@project, @about)
           - if @about.image?
             .image= image_tag @about.image.url.gsub(/development/, 'production')
-          .body
+          .body.about_excerpt{class: [@calls.empty? ? false : :has_call]}
             = raw @about.excerpt
             - unless @calls.empty?
               - @calls.each do |call|
@@ -78,9 +78,14 @@
           - if page.children.empty?
             .body
               - if !page.excerpt.blank?
-                = raw page.excerpt
+                = raw sanitize(page.excerpt, tags: %w{b strong bold i italic em u underline br})
               - else
-                = raw page.body
+                - if page.split_on_h3 == true
+                  = raw truncate_html(sanitize(page.body, tags: %w{b p strong bold i italic em u underline br}), length: 150)
+                - else
+                  = raw truncate_html(sanitize(page.body, tags: %w{b p strong bold i italic em u underline br}), length: 450)
+                  
+                .side_link= link_to 'Read more', page
             - if page.image?
               .image= image_tag page.image.url
           - else

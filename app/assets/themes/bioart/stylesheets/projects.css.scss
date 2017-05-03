@@ -221,7 +221,11 @@
     
     }
     .body {
-      padding: 2rem 2rem 4rem 2rem;
+      &.about_excerpt { padding: 2rem; }
+      padding: 4rem 2rem;
+      &.has_call {
+        padding: 2rem 2rem 4rem 2rem;
+      }
       font-family: $titillium;
       a {
         color: $red;
