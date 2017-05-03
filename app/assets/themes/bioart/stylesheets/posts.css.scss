@@ -122,6 +122,8 @@
         padding: 1rem 0;
       }
       .controls {
+        margin-bottom: 3rem;
+        border-bottom: 1px solid black;
         button {
           &.primary {
             background-color: white;
