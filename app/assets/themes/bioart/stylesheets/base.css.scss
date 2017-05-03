@@ -4,7 +4,7 @@
 header {
   background-color: $headerblue;
   .pattern {
-    background: url(/assets/bioart/images/layout/green_dots_small.png) repeat;
+    background: url(/assets/bioart/images/layout/menu_dot.png) repeat;
     max-height: 11.25em;
     padding: 3.125em 0;
     @include breakpoint(small only) {
@@ -29,6 +29,26 @@ header {
           display: inline;
           float: left;
           margin-bottom: 1rem;
+        }
+        &.search {
+          width: 20%;
+          form {
+
+            input[type=text] {
+              float: left;
+              outline: none;
+              box-shadow: none;
+              font-family: $titillium;
+              border: none;
+              padding-left: 20px;
+              background:  url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #66ffcc;
+              &::-webkit-input-placeholder {font-family: $titillium; color: #000; text-transform: uppercase; }
+              &::-moz-placeholder { font-family: $titillium; color: #000; text-transform: uppercase; } 
+              &:-ms-input-placeholder { font-family: $titillium; color: #000; text-transform: uppercase; }
+              &:input:-moz-placeholder { font-family: $titillium; color: #000; text-transform: uppercase; }
+              
+            }
+           }
         }
         font-family: $titillium;
         padding: 0 0 0 0.15em;
@@ -130,7 +150,7 @@ header {
 }
 
 footer {
-  background: $headerblue url(/assets/bioart/images/layout/green_dots_small.png) repeat;
+  background: $headerblue url(/assets/bioart/images/layout/menu_dot.png) repeat;
   min-height: 7.5rem;
   padding: 2rem 0;
   font-size: 1rem;
@@ -148,18 +168,7 @@ footer {
     }
   }
   
-  .form {
 
-    input[type=text] {
-      float: left;
-      outline: none;
-      box-shadow: none;
-      font-family: $titillium;
-      border: none;
-      padding-left: 20px;
-      background:  url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center , url(/assets/bioart/images/layout/menubar_arrow_blk.png) no-repeat right center #66ffcc;
-    }
-   }
   .icons {
     .email, .fb, .twitter, .instagram, .rss {
       float: left;

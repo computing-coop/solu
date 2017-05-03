@@ -1,8 +1,9 @@
 .ars_bioarctica_front{style: "background: url(#{@ars.background.url}) repeat;"}
   .row
     .small-10.small-centered.medium-12.columns.section_title
-      %span.white ARS
-      Bioarctica
+      = link_to '/projects/ars-bioarctica' do
+        %span.white ARS
+        Bioarctica
   .row
     .small-10.columns.medium-11.small-centered
       .ars_image

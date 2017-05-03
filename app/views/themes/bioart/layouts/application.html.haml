@@ -56,14 +56,19 @@
             .logo.medium-2.columns.small-12
               BIOART
               SOCIETY
-          .title-bar.medium-8.columns.small-12
+          .title-bar.medium-9.columns.small-12
             .title-bar-left
               %ul.horizontal.menu
-                %li= link_to 'News', posts_path
-                %li= link_to 'About', '/about'
-                %li= link_to 'Activities', activities_path
+                %li= link_to 'Blog', posts_path
+
                 %li= link_to 'ARS Bioarctica', project_path('ars-bioarctica')
                 %li= link_to 'Projects', projects_path
+
+                %li= link_to 'Activities', activities_path
+                %li= link_to 'About', '/about'
+                %li.search
+                  = form_tag '/search' do
+                    = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center , url(/assets/bioart/images/layout/menubar_arrow_blk.png) no-repeat right center #{@project.custom_background_colour};"
                 -#%li= link_to 'Contact', page_path('contact')
     - unless flash.empty?
       #flash
