@@ -51,19 +51,19 @@
               .controls
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.skipBackward()"}
                   %i.fa.fa-step-backward
-                  Backward
+                  
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.playPause()"}
                   %i.fa.fa-play
-                  Play
+                  
                   \/
                   %i.fa.fa-pause
-                  Pause
+                  
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.skipForward()"}
                   %i.fa.fa-step-forward
-                  Forward
+                  
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.toggleMute()"}
                   %i.fa.fa-volume-off
-                  Toggle Mute
+                  
               = content_for :jquery do
                 :plain
                   wavesurfer_#{sound.id.to_s} = WaveSurfer.create({

@@ -121,6 +121,13 @@
         display: block;
         padding: 1rem 0;
       }
+      .controls {
+        button {
+          &.primary {
+            background-color: white;
+          }
+        }
+      }
       iframe {
         &::before {
            clear: both;

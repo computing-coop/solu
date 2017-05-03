@@ -177,6 +177,8 @@ GEM
     fast-stemmer (1.0.2)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-rails (4.7.0.0)
+      railties (>= 3.2, < 5.1)
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
     foundation-datepicker-rails (0.0.2)
@@ -392,6 +394,7 @@ DEPENDENCIES
   devise
   execjs
   figaro
+  font-awesome-rails
   formtastic
   foundation-datepicker-rails
   foundation-datetimepicker-rails
