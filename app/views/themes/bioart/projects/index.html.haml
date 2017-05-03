@@ -12,9 +12,9 @@
         .row[project]
           .small-12.columns
             .row.inner
-              .small-12.medium-2.project_icon.columns
+              .small-12.large-2.hide-for-medium-only.project_icon.columns
                 = image_tag project.image.url(:box).gsub(/development/, 'production')
-              .small-12.medium-10.project_content.columns
+              .small-12.medium-12.large-10.project_content.columns
                 .title= project.name
                 .years= project.year_range
                 .description= project.description
@@ -31,9 +31,9 @@
           .row
             = link_to project, class: [:columns, 'small-12', :project] do
               .row.inner
-                .small-12.medium-2.project_icon.columns
+                .small-12.large-2.hide-for-medium-only.project_icon.columns
                   = image_tag project.image.url(:box).gsub(/development/, 'production')
-                .small-12.medium-10.project_content.columns
+                .small-12.medium-12.large-10.project_content.columns
                   .title= project.name
                   .years= project.year_range
                   .description= project.description

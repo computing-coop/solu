@@ -54,11 +54,12 @@
       font-family: $titillium;
       background-color: white;
       opacity: 0.9;
-      padding: 1rem;
+      padding: 0.3rem;
       .title {
-        font-size: 1.614em;
+        font-size: 1.614rem;
+        line-height: 1.9rem;
       }
-      .year {
+      .years {
         font-size: 0.8rem;
         font-style: italic;
       }
