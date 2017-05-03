@@ -13,6 +13,7 @@ class Call
   
   belongs_to :node
   
+  belongs_to :project, optional: true
   belongs_to :symposium, optional: true
   
   embeds_many :photos, as: :photographic, cascade_callbacks: true
@@ -22,6 +23,8 @@ class Call
   accepts_nested_attributes_for :questions, allow_destroy: true,  reject_if: :all_blank
   
   embeds_many :submissions , cascade_callbacks: true
+  
+  scope :active, ->() { where(:start_at.lte => Time.current.to_date, :end_at.gte =>  Time.current.to_date) }
   
   def headings
     Nokogiri::HTML(self.overview).search('a[name]').map{|x| [x['name'], x.text] }.delete_if{|x| x.first.blank? }

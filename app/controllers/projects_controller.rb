@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def show
    
     @project = Project.find(params[:id])
-
+    @calls = @project.calls.active
     unless @project.redirect_url.blank?
       redirect_to @project.redirect_url
     else

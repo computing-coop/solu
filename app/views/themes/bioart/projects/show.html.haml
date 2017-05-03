@@ -16,9 +16,14 @@
       - unless @about.nil?
         .text_box
           .red= link_to @about.title, project_page_path(@project, @about)
-          .body= raw @about.excerpt
           - if @about.image?
-            .image= image_tag @about.image.url
+            .image= image_tag @about.image.url.gsub(/development/, 'production')
+          .body
+            = raw @about.excerpt
+            - unless @calls.empty?
+              - @calls.each do |call|
+                .side_link= link_to call.name, call
+
             
       - unless @project.posts.empty?
         .blog_container

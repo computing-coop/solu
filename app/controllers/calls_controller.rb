@@ -21,7 +21,16 @@ class CallsController < ApplicationController
   end
   
   def show
-    @call = Call.find(params[:id])
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+      @call = @project.calls.find(params[:id])
+    else
+      @call = Call.find(params[:id])
+      if @call.project
+        redirect_to project_call_url(@call.project, @call)
+      end
+    end
+    
     @submission = Submission.new(call: @call)
     @call.questions.sort_by(&:created_at).each do |qs|
       @submission.answers.build(question: qs)
@@ -30,6 +39,7 @@ class CallsController < ApplicationController
     # @call.questions.each do |qs|
     #   @submission.answers.build(question: qs)
     # end
+    
     set_meta_tags title: @call.name
   end
   

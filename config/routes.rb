@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :posts
     resources :pages
+    resources :calls
   end
   resources :backgrounds
 

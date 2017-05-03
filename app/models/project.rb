@@ -43,6 +43,7 @@ class Project
   has_many :posts
   has_many :pages 
   has_many :activities
+  has_many :calls
   
   scope :published, ->() { where(published: true) }
   scope :ongoing, ->() { where(ongoing: true) }

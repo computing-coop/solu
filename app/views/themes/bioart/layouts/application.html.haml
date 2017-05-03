@@ -68,7 +68,7 @@
                 %li= link_to 'About', '/about'
                 %li.search
                   = form_tag '/search' do
-                    = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center , url(/assets/bioart/images/layout/menubar_arrow_blk.png) no-repeat right center #{@project.custom_background_colour};"
+                    = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #{@project.custom_background_colour};"
                 -#%li= link_to 'Contact', page_path('contact')
     - unless flash.empty?
       #flash
