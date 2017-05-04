@@ -227,6 +227,7 @@
       float: left;
       margin: -2.5rem 5rem 0rem 3.25rem;
       color: #FFF;
+      position: relative;
       font-size: 3.5rem;
       @include breakpoint(small only) {
         font-size: 8vw;
