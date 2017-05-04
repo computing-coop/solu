@@ -41,6 +41,7 @@
         = image_tag f.object.image.url(:box)
         = f.input :remove_image, as: :boolean
       = f.input :image
+      
   = f.fields_for :photos do |ff|
     - if ff.object.image?
       = image_tag ff.object.image.url(:box)

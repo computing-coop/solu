@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   
   def index
     @ongoing = Project.ongoing.published.order(year_range: :asc)
-    @old = Project.older.published.order(year_range: :desc)
+    @old = Project.older.published
+    @old = @old.sort_by{|x| x.year_range.split('-').last.to_i}.reverse
     set_meta_tags title: 'Projects'
   end
   
