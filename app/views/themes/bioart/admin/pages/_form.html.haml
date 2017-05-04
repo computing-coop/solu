@@ -42,7 +42,7 @@
         = f.input :remove_image, as: :boolean
       = f.input :image
   = f.fields_for :photos do |ff|
-    = if ff.object.image?
+    - if ff.object.image?
       = image_tag ff.object.image.url(:box)
     = ff.input :image
     = ff.link_to_remove "Remove this photo"
