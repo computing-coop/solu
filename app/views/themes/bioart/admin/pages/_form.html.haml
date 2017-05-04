@@ -30,6 +30,7 @@
       - if f.object.background?
         = image_tag f.object.background.url
         = f.input :remove_background, as: :boolean
+        
       = f.input :background, label: 'Background image (for front page)'
 
   .row
