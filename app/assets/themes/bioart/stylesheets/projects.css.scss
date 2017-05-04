@@ -205,7 +205,7 @@
   
   .project_indented {
     margin-left: 2.75rem;
-    @include breakpoint(small only) {
+    @include breakpoint(medium down) {
       margin-left: 0;
     }
   }
@@ -230,6 +230,10 @@
       font-size: 3.5rem;
       @include breakpoint(small only) {
         font-size: 8vw;
+        line-height: 100%;
+      }
+      @include breakpoint(medium only) {
+        font-size: 5vw;
         line-height: 100%;
       }
       clear: left;

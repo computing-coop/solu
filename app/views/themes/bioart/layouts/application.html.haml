@@ -50,7 +50,7 @@
       ga('send', 'pageview');
   %body
     %header{style: @project.nil? ? '' : "background-color: #{@project.custom_background_colour}"}
-      .pattern{class: @project.nil? ? false : @project.slug, style: @project.nil? ? '' : "background: url(#{@project.custom_background_image.url}) repeat;"}
+      .pattern{class: @project.nil? ? false : @project.slug, style: @project.nil? ? '' : (@project.custom_background_image? ? "background: url(#{@project.custom_background_image.url}) repeat;" : false)}
         .row
           = link_to '/' do
             .logo.medium-2.columns.small-12
