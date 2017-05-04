@@ -214,15 +214,18 @@
       clear: left;
       line-height: 1em;
       padding: 1rem 1.5rem;
-      position: absolute;
+//      position: absolute;
       z-index: 50;
+      &.has_image {
+        position: absolute;
+      }
       a {
         color: #FFF;
       }
     
     }
     .body {
-      &.about_excerpt { padding: 2rem; }
+      &.about_excerpt { padding: 4rem 2rem 1rem 2rem; }
       padding: 4rem 2rem;
       &.has_call {
         padding: 2rem 2rem 4rem 2rem;

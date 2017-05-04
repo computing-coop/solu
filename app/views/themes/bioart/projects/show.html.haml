@@ -15,7 +15,7 @@
     .small-12.columns.project_indented
       - unless @about.nil?
         .text_box
-          .red= link_to @about.title, project_page_path(@project, @about)
+          .red{class: @about.image? ? :has_image : false}= link_to @about.title, project_page_path(@project, @about)
           - if @about.image?
             .image= image_tag @about.image.url.gsub(/development/, 'production')
           .body.about_excerpt{class: [@calls.empty? ? false : :has_call]}
