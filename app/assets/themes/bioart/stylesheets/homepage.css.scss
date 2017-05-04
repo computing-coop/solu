@@ -248,32 +248,24 @@
       line-height: 1.8rem;
     }
 
-    .side_links {
-      display: none;
-      position: relative;
-      left: 96%;
-      margin-top: -6%;
-      @include breakpoint(small only) {
-        left: initial;
-        margin-top: initial;
-      }
-      .side_link {
-        float: left;
-        clear: both;
-        margin-bottom: 1em;
-        background-color: #000;
-        background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
-
-        padding: 0.5rem 0.4em 0.5em 1.8em;
-        a {
-          text-transform: uppercase;
+    .side_link {
+      float: left;
+      clear: both;
+      margin-bottom: 1em;
+      background-color: #FFF;
+      border: 1px solid #000;
+      background: white url(/assets/bioart/images/layout/menubar_arrow_blk.png)  0.4em no-repeat;
+      font-family: $titillium;
+      padding: 0.5rem 0.4em 0.5em 1.8em;
+      a {
+        text-transform: uppercase;
+        color: #000;
+        &:hover {
           color: #C5C5C5;
-          &:hover {
-            color: #FFF;
-          }
         }
       }
     }
+
   }
 }
 .featured_projects {
