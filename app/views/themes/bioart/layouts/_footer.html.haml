@@ -11,9 +11,9 @@
         FI-00540 Helsinki
   .small-6.columns.medium-3 &nbsp;
   .small-7.medium-3.columns
-    .form
-      = form_tag '/search' do
-        = text_field_tag :searchterm, params[:searchterm], style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center , url(/assets/bioart/images/layout/menubar_arrow_blk.png) no-repeat right center #{@project.custom_background_colour};"
+    / .form
+    /   = form_tag '/search' do
+    /     = text_field_tag :searchterm, params[:searchterm], style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center , url(/assets/bioart/images/layout/menubar_arrow_blk.png) no-repeat right center #{@project.custom_background_colour};"
     .icons.float-right
       .email= link_to image_tag(theme_image_path('layout/email_icon.png')), '#'
       .fb= link_to image_tag(theme_image_path('layout/fb_icon.png')), 'https://www.facebook.com/groups/bioartsociety/', target: :_blank
