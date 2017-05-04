@@ -14,7 +14,8 @@ class Page
   field :background, type: String
   
   field :excerpt, type: String
-  field :is_project_overview, type: Boolean
+  field :is_project_overview, type: Mongoid::Boolean
+  field :hide_from_menu, type: Mongoid::Boolean
   
   field :image_size, type: Integer
   field :image_width, type: Integer
@@ -34,7 +35,7 @@ class Page
   field :wordpress_author, type: String
   field :wordpress_id, type: Integer
   
-  field :split_on_h3, type: Boolean
+  field :split_on_h3, type: Mongoid::Boolean
   
   mount_uploader :image, ImageUploader
   mount_uploader :background, BackgroundUploader

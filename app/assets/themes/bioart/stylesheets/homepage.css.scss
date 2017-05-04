@@ -47,7 +47,9 @@
     opacity: 0.9;
     @include breakpoint(small only) {
       font-size: 3.4em;
-      padding: 2.24rem 0;
+      font-size: 13vw;
+      line-height: 4.15rem;
+      padding: 0 0 1rem 0;
     }
     span.white {
       color: #FFF;
@@ -100,6 +102,9 @@
     font-size: 5rem;
     @include breakpoint(small only) {
       font-size: 3.4rem;
+      font-size: 13vw;
+      line-height: 4.15rem;
+      margin: 2.8rem 0;
     }
     text-transform: uppercase;
     font-family: $rubik;
@@ -140,8 +145,12 @@
       padding: 5.347rem 2rem 3.347rem;
       @include breakpoint(small only) {
         padding-top: 10rem;
+        margin-bottom: 2rem;
       }
       p {
+        @include breakpoint(small only) {
+          font-size: 1rem;
+        }
         font-size: 1.25rem;
         font-weight: normal;
         font-family: $titillium;
@@ -186,7 +195,9 @@
     font-size: 5.659em;
     @include breakpoint(small only) {
       font-size: 3.4em;
-      padding: 2.24rem 0;
+      font-size: 13vw;
+      line-height: 4.15rem;
+      padding: 0 0 1rem 0;
     }
     span.white {
       color: #FFF;
@@ -258,8 +269,10 @@
     text-transform: uppercase;
     font-size: 5rem;
     @include breakpoint(small only) {
-      font-size: 3.4em;
-      padding: 2.24rem 0;
+      font-size: 3.4rem;
+      line-height: 4.15rem;
+      font-size: 13vw;
+      padding: 0 0 1rem 0;
     }
     span.featured {
       color: #FFF;

@@ -16,7 +16,9 @@
   .row
     .large-5.small-12.columns= f.input :title
   .row
-    .large-5.small-12.columns= f.input :is_project_overview, as: :boolean    
+    .large-5.small-12.columns= f.input :is_project_overview, as: :boolean
+  .row
+    .large-5.small-12.columns= f.input :hide_from_menu, as: :boolean    
   .row
     .large-8.small-12.columns= f.input :body, as: :text, input_html: {class: :ckeditor}
   .row
