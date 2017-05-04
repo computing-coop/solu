@@ -16,6 +16,9 @@
 
     margin: 7.75rem 0 2rem 0;
     padding: 2.75rem 0;
+    @include breakpoint(small only) {
+      margin: 2.75rem 0;
+    }
     
     .red {
       background-color: $fuschia;
@@ -28,7 +31,10 @@
       line-height: 1em;
       padding: 1rem 1.5rem;
      
-    
+      @include breakpoint(small only) {
+        font-size: 8vw;
+        line-height: 100%;
+      }
     }
     .deadline {
       background-color: #e0e0e0;
@@ -39,6 +45,10 @@
       font-size: 2rem;
       text-transform: uppercase;
       color: #333;
+      @include breakpoint(small only) {
+        font-size: 5vw;
+        line-height: 100%;
+      }
     }
     .call_text {
       padding: 14.25rem 6.75rem 0rem 3.25rem;

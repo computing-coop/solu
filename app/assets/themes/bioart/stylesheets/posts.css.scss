@@ -12,7 +12,9 @@
     font-size: 5.659em;
     @include breakpoint(small only) {
       font-size: 3.4em;
-      padding: 2.24rem 0;
+      font-size: 13vw;
+      line-height: 100%;
+      padding: 1.24rem 0;
     }
     
   }

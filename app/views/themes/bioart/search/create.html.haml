@@ -44,10 +44,17 @@
       - @news.each do |post|
         = link_to post, class: [:post, :columns] do
 
-          .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+          .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box)}) center/cover no-repeat"}
             .hashtag
               = "##{post.node.name}"
           .post_content
             .title= post.title
-            .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)      
+            .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
+            - if post.project
+              - if post.project.slug == 'ars-bioarctica'
+                .index_author
+                  - if post.wordpress_author.blank?
+                    = "#{post.user.name} | #{post.published_at.strftime('%-d %B %Y')}"
+                  - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
+                    = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}" 
       

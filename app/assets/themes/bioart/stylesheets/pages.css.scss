@@ -13,6 +13,9 @@
     font-size: 5rem;
     @include breakpoint(small only) {
       font-size: 3.4rem;
+      font-size: 11vw;
+      line-height: 120%;
+      margin-left: 0;
     }
     text-transform: uppercase;
     font-family: $rubik;
@@ -31,7 +34,9 @@
       float: left;
       margin: -2rem 0 0 3.25rem;
       @include breakpoint(small only) {
-        margin: 0 2rem 0 -1rem;
+        font-size: 8vw;
+        line-height: 100%;
+        margin-bottom: 5rem;
       }
       color: #FFF;
       font-size: 3.5rem;
@@ -54,13 +59,16 @@
     .excerpt {
       padding: 3.347rem 2rem 3.347rem;
       @include breakpoint(small only) {
-        padding-top: 10rem;
+        padding: 1rem 2rem 3rem 2rem;
       }
       p {
         font-size: 1.15rem;
         font-weight: normal;
         font-family: $titillium;
         line-height: 1.8rem;
+        @include breakpoint(small only) {
+          font-size: 0.9rem;
+        }
       }
     }
 //    .side_links {
@@ -124,6 +132,10 @@
   
   .staff_box {
     margin-top: 3rem;
+    @include breakpoint(small only) {
+      margin-bottom: 3rem;
+
+    }
     .excerpt {
       h3 {
         font-family: $abel;

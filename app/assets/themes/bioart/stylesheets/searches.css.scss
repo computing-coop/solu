@@ -15,6 +15,10 @@
     font-family: $rubik;
     line-height: 6.3rem;
     text-transform: uppercase;
+    @include breakpoint(small only) {
+      font-size: 10vw;
+      line-height: 120%;
+    }
     em {
       background-color: $headerblue;
       text-transform: none;
@@ -29,6 +33,10 @@
     line-height: 6.3rem;
     text-transform: uppercase;
     color: #FFF;
+    @include breakpoint(small only) {
+      font-size: 13vw;
+      line-height: 100%;
+    }
   }
   
   a.project {
@@ -108,6 +116,13 @@
         font-size: 1rem;
         line-height: 1.25em;
         color: #000;
+      }
+      .index_author {
+        font-family: $titillium;
+        font-size: 0.8em;
+        line-height: 1.1em;
+        color: #666;
+        margin-top: 1.2rem;
       }
     }
   }
