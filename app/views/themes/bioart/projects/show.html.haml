@@ -95,7 +95,12 @@
                   .page_image{style: "background: url(#{child.image? ?  child.image.url(:box).gsub(/development/, 'production') : @project.image.url }) center/cover no-repeat"}
                   .page_content
                     .title= child.title
-                    .excerpt= truncate_html(sanitize(child.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
+                    .excerpt
+                      - if child.excerpt.blank?
+                        = truncate_html(sanitize(child.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
+                      - else
+                        = raw sanitize(page.excerpt, tags: %w{b strong bold i p italic em u underline br})
+                      
                     
       / - unless @project.partners.empty?
       /   .collaborators_container
