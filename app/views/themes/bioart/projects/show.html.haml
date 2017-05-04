@@ -99,7 +99,7 @@
                       - if child.excerpt.blank?
                         = raw truncate_html(sanitize(child.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
                       - else
-                        = raw truncate_html(sanitize(page.excerpt, tags: %w{b strong bold i p italic em u underline br}), length: 150)
+                        = raw truncate_html(sanitize(child.excerpt, tags: %w{b strong bold i p italic em u underline br}), length: 150)
                       
                     
       / - unless @project.partners.empty?
