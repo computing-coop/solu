@@ -11,9 +11,10 @@
     .post_content
       .title= link_to post.title, post
       .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)  
-      - if post.project.slug == 'ars-bioarctica'
-        .index_author
-          - if post.wordpress_author.blank?
-            = "#{post.user.name} | #{post.published_at.strftime('%-d %B %Y')}"
-          - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
-            = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}"
+      - if post.project
+        - if post.project.slug == 'ars-bioarctica'
+          .index_author
+            - if post.wordpress_author.blank?
+              = "#{post.user.name} | #{post.published_at.strftime('%-d %B %Y')}"
+            - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
+              = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}"
