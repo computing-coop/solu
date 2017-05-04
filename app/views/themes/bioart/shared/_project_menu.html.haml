@@ -3,8 +3,9 @@
 %ul.dropdown.menu.project_menu{:'data-dropdown-menu' => ''}
   - unless @project.pages.where(is_project_overview: true).empty?
     %li= link_to @project.pages.where(is_project_overview: true).first.title, project_page_path(@project, @project.pages.where(is_project_overview: true).first),  class: [controller.controller_name == 'pages' && @page && (@page == @project.pages.where(is_project_overview: true).first || @page.descendant_of?(@project.pages.where(is_project_overview: true).first)) ? :active : false]
-  %li= link_to 'blog', project_posts_path(@project), class: [(controller.controller_name == 'posts' || controller.controller_name == 'postcategories') && @page.nil? ? :active : false]
-  - lastslug = 'blog'
+  - unless @project.posts.published.empty?
+    %li= link_to 'blog', project_posts_path(@project), class: [(controller.controller_name == 'posts' || controller.controller_name == 'postcategories') && @page.nil? ? :active : false]
+    - lastslug = 'blog'
   
   - @project.pages.roots.each do |page|
 

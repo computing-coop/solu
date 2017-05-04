@@ -51,6 +51,12 @@
       line-height: 4.15rem;
       padding: 0 0 1rem 0;
     }
+    @include breakpoint(medium only) {
+      font-size: 3.4em;
+      font-size: 10vw;
+      line-height: 110%;
+      padding: 2rem 0;
+    }
     span.white {
       color: #FFF;
     }
