@@ -140,7 +140,17 @@
 }
 
 .page_detail {
-
+  .section_title {
+    padding: 2.7rem 0;
+    font-family: $rubik;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 5.659em;
+    @include breakpoint(small only) {
+      font-size: 10vw;
+      padding: 2.24rem 0;
+    }
+  }
   .chunked {
     padding: 1.875em 2rem;
     background-color: white;
