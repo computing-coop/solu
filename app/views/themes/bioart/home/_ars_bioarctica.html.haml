@@ -11,8 +11,8 @@
           = image_tag @ars.image.url
       .ars_content
         = raw @ars.body
-        - if @ars.project
-          - unless @calls.empty?
-            - @calls.each do |call|
-              %p
-                .side_link= link_to call.name, call
+        - unless @calls.empty?
+      
+          - @calls.each do |call|
+            %p
+              .side_link= link_to call.name, call
