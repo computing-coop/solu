@@ -63,10 +63,12 @@
   }
   
   a.post {
+
     .post_image {
       overflow: hidden;
-      height: 392px;
+      padding-bottom: 100%;
       .hashtag {
+        position: absolute;
         float: left;
         margin: 0.813em 0.688em;
         font-family: $titillium;
