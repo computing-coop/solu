@@ -97,10 +97,10 @@
                     .title= child.title
                     .excerpt= truncate_html(sanitize(child.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
                     
-      - unless @project.partners.empty?
-        .collaborators_container
-          .red Collaborators
-          .row.small-up-2.medium-up-3.large-up-4.xxlarge-up-5.collaborators
-            - @project.partners.each do |collaborator|
-              = link_to collaborator.website, target: :_blank, class: [:collaborator, :columns] do
-                = image_tag collaborator.logo.url.gsub(/development/, 'production')
+      / - unless @project.partners.empty?
+      /   .collaborators_container
+      /     .red Collaborators
+      /     .row.small-up-2.medium-up-3.large-up-4.xxlarge-up-5.collaborators
+      /       - @project.partners.each do |collaborator|
+      /         = link_to collaborator.website, target: :_blank, class: [:collaborator, :columns] do
+      /           = image_tag collaborator.logo.url.gsub(/development/, 'production')
