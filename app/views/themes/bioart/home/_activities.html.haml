@@ -1,4 +1,4 @@
-.whats_new
+.whats_new.green
   .row
     .small-10.small-centered.medium-12.columns.section_title
       Activities
@@ -16,7 +16,9 @@
         .activity_content
           .title= activity.name
           .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)
-      
+          .activity_metadata
+            = "#{date_range(activity.start_at, activity.end_at)} | #{activity.location}"
+
 = content_for :jquery do
   :plain
     $('.activity_carousel').slick({infinite: true,
