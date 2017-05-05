@@ -51,11 +51,16 @@
   %body
     %header{style: @project.nil? ? '' : "background-color: #{@project.custom_background_colour}"}
       .pattern{class: @project.nil? ? false : @project.slug, style: @project.nil? ? '' : (@project.custom_background_image? ? "background: url(#{@project.custom_background_image.url}) repeat;" : false)}
+        .row.search_field#search_field_container
+          = form_tag '/search' do
+            = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #{@project.custom_background_colour.blank? ? '#66ffcc' : @project.custom_background_colour};"
         .row
           = link_to '/' do
             .logo.medium-2.columns.small-12
               BIOART
               SOCIETY
+            .search_icon.show-for-small-only
+              = link_to fa_icon('search'), '#', onclick: '$("#search_field_container").slideToggle();$(".search_icon").fadeOut();'
           .title-bar.large-9.columns.small-12.medium-12
             .title-bar-left
               %ul.horizontal.menu
@@ -66,7 +71,7 @@
 
                 %li= link_to 'Activities', activities_path
                 %li= link_to 'About', '/about'
-                %li.search
+                %li.search.hide-for-small-only
                   = form_tag '/search' do
                     = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #{@project.custom_background_colour.blank? ? '#66ffcc' : @project.custom_background_colour};"
                 -#%li= link_to 'Contact', page_path('contact')
