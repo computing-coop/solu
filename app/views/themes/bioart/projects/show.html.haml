@@ -37,6 +37,13 @@
                 .post_content
                   .title= truncate_html(post.title, length: 40)
                   .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attr: %w{href target src}), length: 150)
+                  - if post.project
+                    - if post.project.slug == 'ars-bioarctica'
+                      .index_author
+                        - if post.wordpress_author.blank?
+                          = "#{post.user.name} | #{post.published_at.strftime('%-d %B %Y')}"
+                        - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
+                          = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}"
         = content_for :jquery do
           :plain
             $('.post_carousel').slick({infinite: true,
