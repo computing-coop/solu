@@ -3,10 +3,11 @@
     
     .row.frontitem_blurb
       .small-9.medium-6.columns.medium-uncentered.small-centered
-        - unless frontitem.smallblurb_text.blank?
+        - unless frontitem.no_text == true
+          - unless frontitem.smallblurb_text.blank?
 
-          .small_blurb{style: "background-color: #{frontitem.smallblurb_background_colour}; color: #{frontitem.smallblurb_text_colour};"}= frontitem.smallblurb_text
-        - unless frontitem.middleblurb_text.blank?
-          .middle_blurb{style: "background-color: #{frontitem.middleblurb_background_color}; color: #{frontitem.middleblurb_text_colour};", class: frontitem.thirdblurb_text.blank? ? :last : false }= frontitem.middleblurb_text
-        - unless frontitem.thirdblurb_text.blank?
-          .third_blurb.last{style: "background-color: #{frontitem.thirdblurb_background_colour}; color: #{frontitem.thirdblurb_text_colour};"}= frontitem.thirdblurb_text        
+            .small_blurb{style: "background-color: #{frontitem.smallblurb_background_colour}; color: #{frontitem.smallblurb_text_colour};"}= frontitem.smallblurb_text
+          - unless frontitem.middleblurb_text.blank?
+            .middle_blurb{style: "background-color: #{frontitem.middleblurb_background_color}; color: #{frontitem.middleblurb_text_colour};", class: frontitem.thirdblurb_text.blank? ? :last : false }= frontitem.middleblurb_text
+          - unless frontitem.thirdblurb_text.blank?
+            .third_blurb.last{style: "background-color: #{frontitem.thirdblurb_background_colour}; color: #{frontitem.thirdblurb_text_colour};"}= frontitem.thirdblurb_text        
