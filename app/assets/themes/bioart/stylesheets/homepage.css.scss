@@ -51,7 +51,7 @@
       font-size: 3.4em;
       font-size: 13vw;
       line-height: 4.15rem;
-      padding: 0 0 1rem 0;
+      padding: 1rem 0;
     }
     @include breakpoint(medium only) {
       font-size: 3.4em;
@@ -220,7 +220,7 @@
       font-size: 3.4em;
       font-size: 13vw;
       line-height: 4.15rem;
-      padding: 0 0 1rem 0;
+      padding: 1rem 0;
     }
     @include breakpoint(medium only) {
       font-size: 3.4em;
@@ -245,6 +245,9 @@
     background-color: white;
     margin-bottom: 5rem;
     padding: 1.875em 0.625em 5rem 2.625rem;
+    @include breakpoint(small only) {
+      padding: 0.875rem 0.875rem 5rem 0.875rem;
+    }
     h2 {
       font-family: $titillium;
       font-size: 1.914rem;
@@ -293,7 +296,7 @@
       font-size: 3.4rem;
       line-height: 4.15rem;
       font-size: 13vw;
-      padding: 0 0 1rem 0;
+      padding: 1rem 0;
     }
     @include breakpoint(medium only) {
       font-size: 3.4em;
@@ -312,6 +315,7 @@
 //    height: 152px;
     @include breakpoint(small only) {
       height: initial;
+      margin-bottom: 2rem;
     }
     margin-bottom: 0.75em;
     .project_icon {
@@ -335,6 +339,7 @@
 
       @include breakpoint(small only) { 
         height: initial;
+        padding: 1rem;
       }
       font-family: $titillium;
       background-color: white;
