@@ -56,6 +56,8 @@
             /   %li= link_to 'Works', admin_works_path
             - if can? :edit, User
               %li= link_to 'Users', admin_users_path
+            - if can?  :edit, Frontitem
+              %li= link_to 'Front items', admin_frontitems_path
             / - if can? :manage, Subsite
             /   %li.last= link_to 'Subdomains', admin_subsites_path
               

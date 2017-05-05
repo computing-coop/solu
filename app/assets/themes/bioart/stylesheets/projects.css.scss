@@ -50,8 +50,12 @@
     }
     .project_content {
       height: 152px;
+      overflow: hidden;
       @include breakpoint(small only) { 
         height: initial;
+      }
+      @include breakpoint(medium only) {
+        padding: 1rem;
       }
       font-family: $titillium;
       background-color: white;
