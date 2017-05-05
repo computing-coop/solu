@@ -78,7 +78,7 @@
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
     = yield
-    %footer{style: @project.nil? ? '' : "background: #{@project.custom_background_colour} url(#{@project.custom_background_image.url}) repeat;" }= render partial: 'layouts/footer'
+    %footer{style: @project.nil? ? '' : (@project.custom_background_image? ? "background: url(#{@project.custom_background_image.url}) repeat;" : false) }= render partial: 'layouts/footer'
 
     :javascript
       $(document).ready(function() { #{yield :jquery}  });
