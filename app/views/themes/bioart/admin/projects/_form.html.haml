@@ -42,7 +42,9 @@
     = f.input :custom_body_background_image, label: 'Custom background image for body'
 
   .small-10.medium-6.columns
-    = f.input :ongoing, as: :boolean    
+    = f.input :ongoing, as: :boolean
+  .small-10.medium-6.columns
+    = f.input :is_featured, as: :boolean, label: 'Show as featured on frontpage?'
   .small-10.medium-6.columns
     = f.input :published, as: :boolean
   .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'

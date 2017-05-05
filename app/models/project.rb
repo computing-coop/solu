@@ -16,10 +16,11 @@ class Project
   field :image_height, type: Integer
   field :image_size, type: String
   field :image_content_type, type: String
-  field :published, type: Boolean
+  field :published, type: Mongoid::Boolean
   field :redirect_url, type: String
-  field :ongoing, type: Boolean
-
+  field :ongoing, type: Mongoid::Boolean
+  field :is_featured, type: Mongoid::Boolean
+  
   # search_in :description, :title, :subtitle
   index({ description: "text", title: "text", subtitle: "text" })
   field :has_groups, type: Boolean
@@ -47,6 +48,7 @@ class Project
   
   scope :published, ->() { where(published: true) }
   scope :ongoing, ->() { where(ongoing: true) }
+  scope :featured, ->() { where(is_featured: true) }
   scope :older, -> () {where(:ongoing.in => ["", nil, false])}
   
   def self.search(q)

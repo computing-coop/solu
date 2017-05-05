@@ -1,0 +1,55 @@
+.whats_new
+  .row
+    .small-10.small-centered.medium-12.columns.section_title
+      Activities
+  .row.small-up-1.medium-up-3.xxlarge-up-4.activity_carousel
+    - @activities.each do |activity|
+      = link_to activity, class: [:activity, :columns] do
+
+        .activity_image{style: "background: url(#{activity.photos.empty? ? theme_image_path('placeholder.png') : activity.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+          - if activity.project
+            .hashtag
+              = "#{activity.project.to_hashtag}"
+          - elsif activity.node != @node
+            .hashtag
+              = "#{activity.node.to_hashtag}"
+        .activity_content
+          .title= activity.name
+          .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)
+      
+= content_for :jquery do
+  :plain
+    $('.activity_carousel').slick({infinite: true,
+        arrows: true,
+        slide: '.activity',
+        adaptiveHeight: false,
+        prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+        nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+        variableWidth: false,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        slidesToScroll: 1,
+        slidesToShow: 3,
+        responsive: [
+            {
+              breakpoint: 480,
+              settings: {
+                autoplay: true,
+                autoplaySpeed: 3500,
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+          },
+            {
+              breakpoint: 959,
+              settings: {
+                autoplay: true,
+                autoplaySpeed: 3500,
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+          }
+        ]
+      });;
+    
+    

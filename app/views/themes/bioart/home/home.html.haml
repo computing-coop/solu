@@ -14,6 +14,9 @@
 
   = render partial: 'projects'
   
+- unless @activities.empty?
+  = render partial: 'activities'
+  
 = render partial: 'about'
   
 = render partial: 'contact'

@@ -58,8 +58,8 @@ class HomeController < ApplicationController
       @about = @node.pages.find('about-the-bioart-society') rescue nil
       @ars = @node.pages.find('ars-bioarctica-front') rescue nil
       @calls = Project.find('ars-bioarctica').calls.active
-
-      @projects = Project.published
+      @activities = Activity.by_node(@node.id).desc(:start_at).limit(12)
+      @projects = Project.featured.published
     end
   end
 end

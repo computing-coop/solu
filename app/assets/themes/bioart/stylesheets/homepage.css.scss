@@ -62,9 +62,9 @@
     }
   }
   
-  a.post {
+  a.post, a.activity {
 
-    .post_image {
+    .post_image, .activity_image {
       overflow: hidden;
       padding-bottom: 100%;
       .hashtag {
@@ -79,7 +79,7 @@
         padding: 0.3em 0.313em;
       }
     }
-    .post_content {
+    .post_content, .activity_content {
       padding: 1.875em 2.625em;
       background-color: white;
       margin-bottom: 2.2rem;
@@ -300,17 +300,19 @@
     }
   }
   .project {
-    height: 152px;
+//    height: 152px;
     @include breakpoint(small only) {
       height: initial;
     }
     margin-bottom: 0.75em;
     .project_icon {
       padding: 0;
-      background-color: white;
+      background-color: transparent;
       img {
-        height: 152px;
-        width: auto;
+//        height: 152px;
+//        width: auto;
+        width: 100%;
+        height: auto;
         @include breakpoint(small only) {
           width: 100%;
           height: auto;
@@ -318,15 +320,17 @@
       }
     }
     .project_content {
-      height: 152px;
+//      height: 152px;
       overflow: hidden;
+     
+
       @include breakpoint(small only) { 
         height: initial;
       }
       font-family: $titillium;
       background-color: white;
       opacity: 0.9;
-      padding: 1rem;
+      padding: 0.3rem;
       .title {
         font-size: 1.4rem;
       }

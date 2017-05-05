@@ -8,10 +8,10 @@
     .small-10.columns.medium-11.small-centered
       - @projects.each do |project|
         - next if project.slug == 'ars-bioarctica'
-        .row.project[project]
-          .small-12.medium-2.project_icon.columns
-            = image_tag project.image.url(:box)
-          .small-12.medium-10.project_content.columns
+        .row.project[project]{:'data-equalizer' => ''}
+          .small-12.large-2.medium-3.project_icon.columns{:'data-equalizer-watch' => ''}
+            = image_tag project.image.url.gsub(/development/, 'production')
+          .small-12.large-10.medium-9.project_content.columns{:'data-equalizer-watch' => ''}
             .title= project.name
             .years= project.year_range
             .description= project.description
