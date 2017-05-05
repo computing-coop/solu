@@ -24,7 +24,7 @@
           %p.side_link= link_to 'See all blog posts', "/category/#{@activity.postcategory.slug}"
         - if @activity.project
           - if @activity.project.published == true
-            %p.side_link= link_to 'Find out more', "/category/#{@activity.postcategory.slug}"
+            %p.side_link= link_to 'Find out more', "/projects/#{@activity.project.slug}"
           
   - unless @activity.related_content.empty?
     .related_container
