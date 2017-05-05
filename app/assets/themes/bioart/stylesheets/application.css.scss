@@ -39,10 +39,16 @@
 }
 
 
+button.slick-arrow {
+  @include breakpoint(small only) {
+    display: none !important;
+  }
+}
 .slick-next, .slick-prev {
   height: inherit;
   width: inherit;
   top: 64%;
+
 }
 .slick-prev {
   left: -3rem;

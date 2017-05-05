@@ -21,7 +21,11 @@
         %p= @activity.location
         .description= raw @activity.description
         - unless @activity.postcategory.blank?
-          %h2= link_to 'See all blog posts...', "/category/#{@activity.postcategory.slug}"
+          %p.side_link= link_to 'See all blog posts', "/category/#{@activity.postcategory.slug}"
+        - if @activity.project
+          - if @activity.project.published == true
+            %p.side_link= link_to 'Find out more', "/category/#{@activity.postcategory.slug}"
+          
   - unless @activity.related_content.empty?
     .related_container
       .row
