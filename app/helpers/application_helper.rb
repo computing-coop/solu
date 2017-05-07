@@ -5,7 +5,7 @@ module ApplicationHelper
     document.css('p').find_all.each do |p|
         # Ruby on Rails Solution:
 
-        p.remove if p.inner_html.strip =~ /^\s*$/
+        p.remove if p.inner_html.strip.blank?
     end
     return document
   end
