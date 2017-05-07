@@ -59,7 +59,7 @@ class HomeController < ApplicationController
       @ars = @node.pages.find('ars-bioarctica-front') rescue nil
       @calls = Project.find('ars-bioarctica').calls.active
       @activities = Activity.by_node(@node.id).desc(:start_at).limit(12)
-      @projects = Project.featured.published
+      @projects = Project.featured.published.sort_by{|x| x.year_range.split('-').last.to_i}.reverse
     end
   end
 end
