@@ -40,7 +40,7 @@
 
         .author
           - if @post.wordpress_author.blank?
-            = "posted by #{@post.user.name} on #{@post.published_at.strftime('%-d %B %Y')}"
+            = "posted by #{@post.user.name} on #{@post.published_at.strftime('%-d %B %Y') rescue 'unpublished'}"
           - elsif !@post.wordpress_author.blank? && @post.user.email == 'erich.berger@bioartsociety.fi'
             = "posted by #{@post.wordpress_author} on #{@post.published_at.strftime('%-d %B %Y')}"
             
