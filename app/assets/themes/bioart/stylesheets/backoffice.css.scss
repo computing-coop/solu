@@ -20,15 +20,43 @@
 
 @import 'foundation-datetimepicker';
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: $rubik;
+}
 body {
   background-color: #f7f7f6;
 }
 form {
+  select, input {
+    margin-bottom: 0.2rem;
+  }
+  label.label, label {
+    font-family: $titillium;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  label > [type='checkbox'] {
+    margin: 0 0.5rem 0 0;
+  }
   li {
     list-style-type: none;
+    p.inline-hints {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #555;
+    }
+  }
+  #post_published_input {
+    margin: 0.8rem 0;
   }
 }
 
+.fields {
+  border-bottom: 1px dotted black;
+  padding: 1rem 0;
+  margin: 1rem 0;
+
+}
 table.cms {
   tr:nth-child(even) {background: #FFF}
   td {

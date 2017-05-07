@@ -8,11 +8,12 @@
           - @post.errors.full_messages.each do |msg|
             %li= msg
   .row.expanded
-    .small-12.large-6.columns= f.input :node, input_html: {required: ''}  
+    .small-12.large-3.columns= f.input :node, input_html: {required: ''}  
   .row.expanded
-    .small-12.large-6.columns= f.input :title, input_html: {required: ''}
+    .small-12.large-6.columns= f.input :title, input_html: {required: ''}, label: 'Post title'
   .row.expanded
-    .small-12.large-6.columns= f.input :project
+    .small-12.large-6.columns= f.input :project, collection: Project.all.order(name: :asc), label: 'Assign to a project?', hint: 'If chosen, this post will display under the sub-theme of that project and show in that project\'s blog section.'
+    
   .row.expanded
     .small-12.columns= f.input :body, as: :ckeditor, input_html: {required: ''}
 
@@ -29,32 +30,35 @@
         = if ff.object.image?
           = image_tag ff.object.image.url(:box)
         = ff.input :image
-        = ff.link_to_remove "Remove this photo"
-      = f.link_to_add "Add a photo", :photos
+        = ff.link_to_remove "Remove this photo", class: [:button, :secondary, :alert, :tiny]
+      = f.link_to_add "Add a photo", :photos, class: [:button, :secondary, :small]
     
   .row.expanded
     .small-10.medium-6.columns= f.input :hide_featured_image, as: :boolean, label: 'Hide photo in detail view?', hint: 'If photos are attached, the first photo will show in the index view of posts, cropped into a box. If you tick this box, no photos will actually show above the post in the detail view. Use this if you want to put a photo for the index view instead of the default "no image" image, but not actually display the photo above the post.'    
   .row.expanded
-    .small-10.medium-6.columns
-      = f.input :activities, input_html: {class: :chosen_select}, label: 'Related to any activities?'
+    / .small-10.medium-6.columns
+    /   = f.input :activities, input_html: {class: :chosen_select}, label: 'Related to any activities?'
     .small-10.medium-6.columns
       = f.input :postcategories, input_html: {class: :chosen_select}, label: 'Post categories?'
       
   .row.expanded
-    .small-12.large-6.columns= f.input :published, as: :boolean
-  .row.expanded
-    .small-12.large-6.columns= f.input :subsite, label: 'Also feature on sub-site: '   
-        
+    .small-12.large-6.columns= f.input :published, as: :boolean, label: 'Published?', hint: 'You MUST tick this box for the post to appear on the site/feeds'
+  / .row.expanded
+  /   .small-12.large-6.columns= f.input :subsite, label: 'Also feature on sub-site: '
+  /
   .row.expanded
     .small-6.large-3.columns= f.input :published_at, as: :string,  :input_html => { :class => "datetime_picker", value: f.object.published_at.blank? ? '' : f.object.published_at.strftime('%Y-%m-%d %H:%M') }
+  / .row.expanded
+  /   .small-10.medium-6.columns= f.input :sticky, label: 'Make post sticky', hint: 'Will appear in floating blue box atop site', as: :boolean
   .row.expanded
-    .small-10.medium-6.columns= f.input :sticky, label: 'Make post sticky', hint: 'Will appear in floating blue box atop site', as: :boolean   
-  .row
-    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'     
+    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas. To be used potentially to link "related content" in activities; not fully implemented yet.'     
+  / .row.expanded
+  /   .small-10.medium-6.columns= f.input :short_abstract, label: 'Few sentences to show if sticky:', as: :text
   .row.expanded
-    .small-10.medium-6.columns= f.input :short_abstract, label: 'Few sentences to show if sticky:', as: :text
-  .row.expanded
-    .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]
+    .small-12.large-6.columns
+      = f.submit 'Save', class: [:button, :small]
+      = link_to 'Cancel', admin_posts_path, class: [:button, :small, :secondary], data: {confirm: 'Are you sure you wish to abandon this post?'}
+      
 = content_for :jquery do 
   :plain  
 
