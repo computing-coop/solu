@@ -4,7 +4,8 @@ module ApplicationHelper
     document = Nokogiri::HTML.parse(text.gsub(/(<br\ ?\/?>)+/, '<br />'))
     document.css('p').find_all.each do |p|
         # Ruby on Rails Solution:
-        p.remove if p.content.blank?
+
+        p.remove if p.inner_html.strip =~ /^\s*$/
     end
     return document
   end
