@@ -65,5 +65,19 @@ table.cms {
       font-size: 0.7em;
       color: #666;
     }
+    .subpages {
+      font-size: 0.9em;
+      .subpage {
+        cursor: pointer;
+        border: 1px solid black;
+        background-color: $headerblue;
+        padding: 0.25rem;
+        margin: 0.25rem 0;
+      }
+    }
+    .subsite {
+      font-size: 0.8em;
+      color: #666;
+    }
   }
 }
