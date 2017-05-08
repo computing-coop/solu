@@ -31,5 +31,5 @@
   .row
     .small-12.columns.staff_box
       .text
-        .red Board and staff
+        .red= link_to 'Board and staff', page_path('board-and-staff')
         .excerpt= raw sanitize(@board_staff.body, tags: %w{br p bold strong b i em underline u})

@@ -38,6 +38,9 @@
         line-height: 100%;
         margin-bottom: 5rem;
       }
+      a {
+        color: #FFF;
+      }
       color: #FFF;
       font-size: 3.5rem;
       clear: left;
@@ -60,6 +63,13 @@
       padding: 3.347rem 2rem 3.347rem;
       @include breakpoint(small only) {
         padding: 1rem 2rem 3rem 2rem;
+      }
+      table {
+        tbody {
+          border: none;
+          background-color: transparent;
+          vertical-align: top;
+        }
       }
       p {
         font-size: 1.15rem;
