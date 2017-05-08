@@ -1,0 +1,163 @@
+.row
+  .small-12.columns
+    %h3= @call.name
+    
+.row
+  .small-12.columns
+    %h4 
+      Submission by
+      = @submission.name
+      - unless @submission.organisation_name.blank?
+        = " (#{@submission.organisation_name})"
+    %h6= "submitted: #{l @submission.created_at, format: :long}"
+    
+.row
+  .small-12.medium-6.columns
+    %fieldset
+      %legend Contact details
+      .row
+        .small-12.columns
+          %strong= @submission.name
+      - unless @submission.organisation_name.blank?
+        .row
+          .small-12.columns= @submission.organisation_name
+      .row
+        .small-12.columns
+          = @submission.address
+          %br/
+          = [@submission.city, (@submission.country.nil? ? nil : ISO3166::Country[@submission.country].name)].compact.join(', ')
+      .row
+        .small-12.columns
+          Date of birth:
+          = @submission.date_of_birth.strftime('%d %b %Y')
+      .row
+        .small-12.columns
+          Nationality:
+          = ISO3166::Country[@submission.nationality].name rescue @submission.nationality
+      .row
+        .small-12.columns
+          = link_to @submission.email, "mailto:#{@submission.email}"
+          - unless @submission.website.blank?
+            %br/
+            = link_to @submission.website, @submission.website, target: :_blank
+
+  .small-12.medium-6.columns
+    %fieldset
+      %legend Files
+      - @submission.answers.each do |a|
+        -#- next unless a.question.question_type == 'file'
+
+        - if a.attachment?
+          = link_to a[:attachment], a.attachment.url
+          %br/
+        - else
+          - next
+        
+  .small-12.columns
+    %fieldset
+      %legend Short bio
+      = simple_format(@submission.short_biography)
+      
+- @submission.answers.each do |a|
+  - next if a.attachment?
+  - next if a.nil? || (a.attachment.blank? && a.answer_text.blank? && a.answer_boolean.blank? )
+  .row
+    .small-12.columns
+      - if a.question.nil?
+        
+        %fieldset
+          %legend= a.question_id.to_s
+          = raw simple_format(a.answer_text)
+      - else
+        - if a.question.question_type == 'string' || a.question.question_type == 'text'
+          %fieldset
+            %legend= a.question.question
+            = raw simple_format(a.answer_text)
+        - else
+          %fieldset
+            %legend= a.question.question
+            - if a.question.question_type.to_sym == :group_select
+              - if @call
+                - if @call.symposium
+                  = @call.symposium.groups.find(a.answer_text).name rescue 'error'
+                - else 
+                  no symposium defined
+              - else
+                no call defined
+            - else
+              = raw simple_format(a.answer_text)
+              = raw a.answer_boolean.to_s
+
+.row
+  .small-12.medium-6.columns
+    - if @vote.vote.blank?
+      %h4 Your vote?
+      -#- @vote = @submission.votes.build(user: current_user)
+    - else
+      %h4 
+        You voted: 
+        = @vote.vote
+      
+    .row
+      = form_for [:admin, @call, @submission, @vote] do |f|
+        .small-12.columns  
+          %p 1 is worst, 5 is best
+          = f.select :vote, [1, 2, 3, 4, 5], include_blank: true
+          = f.hidden_field :user_id, value: current_user.id
+          = f.submit (@vote.new_record? ? '' : "Change ") + 'Vote', class: [:tiny, :secondary, :button]
+
+  - unless @submission.votes.empty?
+
+    .small-12.columns.medium-6
+      %h4 
+        Current score:
+        = @submission.vote_average
+      %p
+        %strong All votes:
+        - @submission.votes.each do |vote|
+          - next if vote.vote.blank? || vote.new_record?
+          .vote
+            = vote.user.try(:name)
+            = ": #{vote.vote}"
+      
+.row
+  .small-12.columns
+    %h4 Comments   
+    %p Please vote above, and only add comments on your vote if necessary here.
+           
+- @submission.comments.order(&:created_at).each do |comment|
+  .row.comment_row{class: cycle('odd', 'even')}
+    .medium-3.columns.metadata
+      Comment by
+      = comment.user.name
+      .date
+        at
+        = comment.created_at.strftime("%d %b %Y %H:%M")
+        = " (#{time_ago_in_words(comment.created_at)} ago)"
+      - if comment.user.avatar?
+        = image_tag comment.user.avatar.url(:thumb)
+      -# @vote = @submission.votes.find_by(user: comment.user) rescue nil
+      - if !@vote.nil?
+        .vote_tally= "Voted: #{@vote.vote}"
+      - if comment.user == current_user
+        .vote_tally= link_to 'Edit comment', edit_admin_call_submission_comment_path(@call, @submission, comment)
+        .vote_tally= link_to 'Delete comment', [:admin, @call, @submission, comment ], method: :delete, :data => {confirm: 'Are you sure?'}
+    .medium-7.columns.end
+      = raw simple_format(comment.comment)
+      
+- if can? :create, @comment = @submission.comments.build
+  .row
+    .medium-4.columns
+      = semantic_form_for [:admin, @call, @submission, @comment ], html: {:"data-abide" => ''} do |f|
+        = f.input :comment, as: :text, label: 'Add a comment', input_html: {"required" => ''}
+        = f.input :user_id, as: :hidden, input_html: {value: current_user.id }
+        = f.submit 'Submit', class: [:tiny, :button, :secondary]
+
+%hr
+.row
+  .small-12.columns
+    - unless @submission.previous.nil?
+      = link_to "Previous submission (#{@submission.previous.name})", admin_call_submission_path(@call, @submission.previous), class: [:button, :small]
+    = link_to 'Back to submissions', admin_call_submissions_path(@call), class: [:button, :small]
+    - unless @submission.next.nil?
+      = link_to "Next submission (#{@submission.next.name})", admin_call_submission_path(@call, @submission.next), class: [:button, :small]

@@ -1,0 +1,33 @@
+.row
+  .small-12.columns
+    %h1
+      Submissions for
+      = @call.name
+      
+- unless @submissions.empty?
+  .row
+    .small-12.columns
+      %table
+        %thead
+          %th= sortable_column "Received?"
+          %th= sortable_column "Submitted by"
+          %th= sortable_column "Score", column: :vote_average
+          %th= sortable_column "Comments"
+          %th Actions
+        %tbody
+          - @submissions.each do |sub|
+            %tr
+              %td= l sub.created_at, format: :short
+              %td
+                = sub.name
+                - unless sub.organisation_name.blank?
+                  .organisation= sub.organisation_name
+              %td
+                - unless sub.vote_average.nil?
+                  = sub.vote_average.to_s
+                  %br/
+                  %small= pluralize(sub.votes.size, 'vote')
+              %td= sub.comments.size
+              %td
+                = link_to 'View/comment', admin_call_submission_path(@call, sub), class: [:button, :small]
+                = link_to 'Delete', [:admin, @call, sub], method: :delete, data: {confirm: 'Are you sure?' }, class: [:button, :alert, :small]
