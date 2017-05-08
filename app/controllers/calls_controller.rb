@@ -52,9 +52,17 @@ class CallsController < ApplicationController
     @call.submissions << @submission
     if @call.save
       unless @call.end_at.to_date < Time.now.to_date
-        SubmissionMailer.submission_received(@submission).deliver
+        if @call.node.name == 'bioart'
+          SubmissionMailer.bioart_submission_received(@submission).deliver
+        else
+          SubmissionMailer.submission_received(@submission).deliver
+        end
       end
-      SubmissionMailer.submission_notification_to_hm(@submission).deliver
+      if @call.node.name == 'bioart'
+        SubmissionMailer.submission_notification_to_bioart(@submission).deliver
+      else
+        SubmissionMailer.submission_notification_to_hm(@submission).deliver
+      end
       redirect_to thanks_calls_path
     else
       flash[:error] = 'There was an error with your submission: ' + @call.errors.full_messages.join('; ')
