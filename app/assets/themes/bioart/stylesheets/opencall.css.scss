@@ -19,7 +19,42 @@
     @include breakpoint(small only) {
       margin: 2.75rem 0;
     }
-    
+    &.has_photos {
+      .image_carousel {
+        margin-top: -3rem;
+        z-index: -10;
+        .slide {
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .red {
+        position: absolute;
+        margin-right: 14rem;
+        @include breakpoint(medium only) {
+          margin-right: 4rem;
+        }
+      }
+      .deadline {
+        position: absolute;
+        margin-top: 3rem;
+        @include breakpoint(medium only) {
+          margin-top: 7rem;
+        }
+      }
+      .image {
+//        position: absolute;
+        margin-top: -3rem;
+        z-index: -10;
+        img {
+          width: 100%;
+        }
+      }
+      .call_text {
+        padding-top: 2rem;
+      }
+    }
     .red {
       background-color: $fuschia;
       font-family: $rubik;
