@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   
   def get_node
     # if Rails.env.development?
-      if request.host =~ /^bioartsociety/ 
+      if request.host =~ /bioartsociety/ 
         @node = Node.find_by(name: 'bioart')
       else
         @node = Node.find_by(name: 'hybrid_matters')
