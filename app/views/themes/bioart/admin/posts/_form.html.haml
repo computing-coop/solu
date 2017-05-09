@@ -32,7 +32,19 @@
         = ff.input :image
         = ff.link_to_remove "Remove this photo", class: [:button, :secondary, :alert, :tiny]
       = f.link_to_add "Add a photo", :photos, class: [:button, :secondary, :small]
-    
+
+  .row.expanded
+    .small-12.large-7.columns
+      %hr
+      %b Videos gallery:
+      %p Videos will display above a post, but it's much much much better if you host them elsewhere and embed them from Vimeo/YouTube into the main text.
+      = f.fields_for :videos do |ff|
+        - if ff.object.videofile?
+          = ff.object.videofile.url
+        = ff.input :videofile
+        = ff.link_to_remove "Remove this video", class: [:button, :secondary, :alert, :tiny]
+      = f.link_to_add "Add a video", :videos, class: [:button, :secondary, :small]
+          
   .row.expanded
     .small-10.medium-6.columns= f.input :hide_featured_image, as: :boolean, label: 'Hide photo in detail view?', hint: 'If photos are attached, the first photo will show in the index view of posts, cropped into a box. If you tick this box, no photos will actually show above the post in the detail view. Use this if you want to put a photo for the index view instead of the default "no image" image, but not actually display the photo above the post.'    
   .row.expanded

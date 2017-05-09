@@ -56,6 +56,7 @@ class Admin::PostsController < Admin::BaseController
       params.require(:post).permit(:title, :body, :sticky, :subsite_id, :short_abstract, :published, :user_id, :node_id, :project_id,
                                    :published_at, :hide_featured_image, :tags,
                                    photos_attributes: [:image, :id,  :_destroy], 
+                                   videos_attributes:  [:videofile, :id, :_destroy],
                                    activity_ids: [], postcategory_ids: [] )
     end
 end
