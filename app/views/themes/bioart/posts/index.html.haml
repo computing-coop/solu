@@ -28,15 +28,15 @@
 - elsif @project
   = content_for :jquery do
     :plain
-      $('#results').pageless({ totalPages: 10
-                             , url: '/projects/#{@project.slug}/posts/'
+      $('#results').pageless({ 
+                              url: '/projects/#{@project.slug}/posts/'
                              , loaderMsg: 'Loading more posts....'
                              });
 
 - else
   = content_for :jquery do
     :plain
-      $('#results').pageless({ totalPages: 10
-                             , url: '/posts/'
+      $('#results').pageless({ 
+                             url: '/posts/'
                              , loaderMsg: 'Loading more posts....'
                              });
