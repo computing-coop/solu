@@ -9,6 +9,8 @@ class Call
   field :published, type: Mongoid::Boolean
   field :overview, type: String
   
+  field :add_to_project_menu, type: Mongoid::Boolean
+  
   slug :name
   
   belongs_to :node
