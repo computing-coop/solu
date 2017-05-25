@@ -68,8 +68,9 @@
           /       columnWidth:  '.chunked',
           /     });
       - else
-        .excerpt
-          = raw clean_whitespace(sanitize(@page.body, tags: %w{table tr th h2 h3 h4 h5 h6 h1 td tbody thead img a p br i em bold strong b u}, attr: %w{href alt target src}))
+        .text
+          .excerpt
+            = raw clean_whitespace(sanitize(@page.body, tags: %w{table tr th h2 h3 h4 h5 h6 h1 td tbody thead img a p br i em bold strong b u}, attr: %w{href alt target src}))
           
   - if @page.postcategory
     .posts_index{class: @project.nil? ? false : :project_detail}
