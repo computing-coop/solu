@@ -173,6 +173,34 @@
       padding: 2.24rem 0;
     }
   }
+  .grid {
+    .full_width {
+      margin-bottom: 2rem 0 4.5rem 0;
+      float: left;
+      clear: both;
+      width: 100%;
+      .large_title {
+        background-color: $fuschia;
+        font-family: $rubik;
+        float: left;
+        margin: -2rem 0 0 0;
+        @include breakpoint(small only) {
+          font-size: 8vw;
+          line-height: 100%;
+          margin-bottom: 5rem;
+        }
+        a {
+          color: #FFF;
+        }
+        color: #FFF;
+        font-size: 3.5rem;
+        clear: left;
+        line-height: 1em;
+        padding: 0.25rem 0.5rem;
+        position: absolute;
+      }
+    }
+  }
   .chunked {
     padding: 1.875em 2rem;
     background-color: white;
@@ -181,6 +209,28 @@
     max-width: 340px;
     
     .box_chunk {
+      .box_title {
+        
+          background-color: $fuschia;
+          font-family: $rubik;
+          float: left;
+          margin: -3rem 0 0 0;
+          @include breakpoint(small only) {
+            font-size: 6vw;
+            line-height: 100%;
+            margin-bottom: 5rem;
+          }
+          a {
+            color: #FFF;
+          }
+          color: #FFF;
+          font-size: 2rem;
+          clear: left;
+          line-height: 1em;
+          padding: 0.25rem 0.5rem;
+          position: absolute;
+    
+      }
       p {
         font-family: $titillium;
         font-size: 1rem;

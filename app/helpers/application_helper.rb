@@ -67,7 +67,10 @@ module ApplicationHelper
     
     document = Nokogiri::HTML.parse(body)
     sections = document.xpath('//body').children.inject([]) do |chapters_hash, child|
-      if child.name == 'h3'
+      if child.name == 'h2'
+        title = child.inner_text
+        chapters_hash << { :larger_title => title.gsub(/[\r|\n]/, ''), :contents => ''}
+      elsif child.name == 'h3'
         title = child.inner_text
         chapters_hash << { :title => title.gsub(/[\r|\n]/, ''), :contents => ''}
       else
