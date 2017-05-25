@@ -185,7 +185,7 @@
         float: left;
         margin: -2rem 0 0 0;
         @include breakpoint(small only) {
-          font-size: 8vw;
+          font-size: 8vw; 
           line-height: 100%;
           margin-bottom: 5rem;
         }
