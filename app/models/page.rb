@@ -36,6 +36,7 @@ class Page
   field :wordpress_id, type: Integer
   
   field :split_on_h3, type: Mongoid::Boolean
+  field :two_columns, type: Mongoid::Boolean
   
   mount_uploader :image, ImageUploader
   mount_uploader :background, BackgroundUploader
