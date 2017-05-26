@@ -32,4 +32,4 @@
     .small-12.columns.staff_box
       .text
         .red= link_to 'Board and staff', page_path('board-and-staff')
-        .excerpt= raw sanitize(@board_staff.body, tags: %w{br p bold strong b i em underline u})
+        .excerpt= raw sanitize(@board_staff.body, tags: %w{br p bold strong a b i em underline u},  attr: %w{href mailto alt target src})
