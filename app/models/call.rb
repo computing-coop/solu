@@ -27,6 +27,7 @@ class Call
   embeds_many :submissions , cascade_callbacks: true
   
   scope :active, ->() { where(:start_at.lte => Time.current.to_date, :end_at.gte =>  Time.current.to_date) }
+  scope :on_menu, ->() { where(add_to_project_menu: true) }
   
   def headings
     Nokogiri::HTML(self.overview).search('a[name]').map{|x| [x['name'], x.text] }.delete_if{|x| x.first.blank? }

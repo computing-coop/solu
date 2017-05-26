@@ -6,6 +6,7 @@
   - unless @project.posts.published.empty?
     %li= link_to 'blog', project_posts_path(@project), class: [(controller.controller_name == 'posts' || controller.controller_name == 'postcategories') && @page.nil? ? :active : false]
     - lastslug = 'blog'
+
   
   - @project.pages.roots.each do |page|
 
@@ -16,6 +17,9 @@
         %ul.menu
           - page.children.delete_if{|x| x.hide_from_menu == true }.each do |pp|
             %li= link_to pp.title, project_page_path(@project, pp), class: [(controller.controller_name == 'pages' || controller.controller_name == 'posts') && @page && (@page == pp || @page.descendant_of?(pp)) ? :active : false]
+  - unless @project.calls.on_menu.active.empty?
+    - @project.calls.on_menu.active.each do |call|
+      %li= link_to call.name, call
 / - if @page
 /   - unless @page.children.empty? && @page.depth == 0
 /     %ul.horizontal.menu.project_submenu{class: "depth_#{@page.depth.to_s}"}
