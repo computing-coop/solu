@@ -18,7 +18,10 @@
     }
     
   }
-  .post {
+  .post, a.post {
+    &:hover {
+      color: #666;
+    }
     .post_image {
       overflow: hidden;
       padding-bottom: 100%;
@@ -51,17 +54,15 @@
         line-height: 1.25em;
         font-weight: bold;
         margin-bottom: 1em;
-        a {
-          color: black;
-          &:hover {
-            color: #666;
-          }
-        }
+        color: black;
+
+
       }
       .excerpt, .excerpt p {
         font-family: $titillium;
         font-size: 1rem;
         line-height: 1.25em;
+        color: black;
       }
       .index_author {
         font-family: $titillium;

@@ -1,6 +1,6 @@
 
 - @posts.each do |post|
-  .post.column
+  = link_to post, class: [:post, :column] do
     .post_image{style: "background: url(#{post.photos.empty? ? (@project.nil? ? theme_image_path('placeholder.png') : @project.image.url(:box) ) :  post.photos.first.image.url(:box).gsub('development', 'production')}) #{!@project.nil? && post.photos.empty? ? 'center' : 'center/cover'} no-repeat"}
       - if post.project
         .hashtag
@@ -9,7 +9,7 @@
         .hashtag
           = "#{post.node.to_hashtag}"
     .post_content
-      .title= link_to post.title, post
+      .title= post.title
       .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)  
       - if post.project
         - if post.project.slug == 'ars-bioarctica'
