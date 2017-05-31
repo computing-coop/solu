@@ -1,7 +1,7 @@
 class Admin::PostsController < Admin::BaseController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  # skip_load_resource
   respond_to :html
   has_scope :by_project
   has_scope :by_node
@@ -10,9 +10,9 @@ class Admin::PostsController < Admin::BaseController
 
   def index
     sortable_column_order do |column, direction|
-      @posts = apply_scopes(Post) #.sort_by(column, direction)
+      @posts = apply_scopes(Post).accessible_by(current_ability) #.sort_by(column, direction)
     end
-    @posts ||= apply_scopes(Post).desc(:published_at)
+    @posts ||= apply_scopes(Post).accessible_by(current_ability).desc(:published_at)
     set_meta_tags title: 'Posts'
     respond_with(@posts)
   end
@@ -23,28 +23,49 @@ class Admin::PostsController < Admin::BaseController
 
   def new
     @post = Post.new
+    current_ability.attributes_for(:new, Post).each do |key, value|
+      @post.send("#{key}=", value)
+    end
+    @post.attributes = params[:post]
     set_meta_tags title: 'New post'
-    respond_with(@post)
+    authorize! :new, @post
+
   end
 
   def edit
     set_meta_tags title: 'Edit post'
+    authorize! :edit, @post
   end
 
   def create
+    # @post = Post.new
+    # current_ability.attributes_for(:create, Post).each do |key, value|
+    #   @post.send("#{key}=", value)
+    # end
+    # @post.attributes = post_params
+    #
+    # authorize! :create, @post, :message => "Unable to create this post."
     @post = Post.new(post_params)
-    @post.save
-    respond_with(@post)
+    if @post.save
+      flash[:notice] = 'Post has been created.'
+      redirect_to admin_posts_path
+    end
+
   end
 
   def update
-    @post.update(post_params)
-    redirect_to admin_posts_path
+    if @post.update_attributes(post_params)
+      flash[:notice] = 'post has been updated.'
+      redirect_to admin_posts_path
+    end
+      
   end
 
   def destroy
     @post.destroy
-    respond_with(@post)
+    flash[:notice] = 'Post has been deleted.'
+    redirect_to admin_posts_path
+    
   end
 
   private

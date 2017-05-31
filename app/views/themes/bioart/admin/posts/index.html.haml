@@ -10,7 +10,8 @@
           %option{:value => project.id, :selected => (params[:by_project] == project.id.to_s ? :selected : false)}= project.name
 .row.expanded
   .small-12.columns
-    = link_to 'New post', new_admin_post_path, class: [:button, :small]
+    - if can? :create, Post
+      = link_to 'New post', new_admin_post_path, class: [:button, :small]
     %table.cms
       %thead
         %tr
@@ -43,12 +44,14 @@
             %td= post.published_at.blank? ? '' : post.published_at.strftime("%d %b %Y")
             %td
               = link_to 'Show', post, class: [:button, :tiny], target: :_blank
-              = link_to 'Edit', edit_admin_post_path(post), class: [:button, :tiny]
-              = link_to 'Destroy', [:admin, post], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+              - if can? :edit, post
+                = link_to 'Edit', edit_admin_post_path(post), class: [:button, :tiny]
+              - if can? :destroy, post
+                = link_to 'Destroy', [:admin, post], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
 
     %br
-
-    = link_to 'New Post', new_admin_post_path, class: [:button, :small]
+    - if can? :create, Post
+      = link_to 'New Post', new_admin_post_path, class: [:button, :small]
 = content_for :jquery do
   :plain
     $('.filter_box select').change(function() {

@@ -8,19 +8,20 @@
           - @post.errors.full_messages.each do |msg|
             %li= msg
   .row.expanded
-    .small-12.large-3.columns= f.input :node, input_html: {required: ''}  
+    .small-12.large-3.columns= f.input :node, input_html: {required: ''}, collection: Node.accessible_by(current_ability)
   .row.expanded
     .small-12.large-6.columns= f.input :title, input_html: {required: ''}, label: 'Post title'
   .row.expanded
-    .small-12.large-6.columns= f.input :project, collection: Project.all.order(name: :asc), label: 'Assign to a project?', hint: 'If chosen, this post will display under the sub-theme of that project and show in that project\'s blog section.'
+    .small-12.large-6.columns= f.input :project, collection: Project.all.order(name: :asc), label: 'Assign to a project?', hint: 'If chosen, this post will display under the sub-theme of that project and show in that project\'s blog section.', collection: Project.accessible_by(current_ability), include_blank: can?(:create, Post.new(project_id: nil))
     
   .row.expanded
     .small-12.columns= f.input :body, as: :ckeditor, input_html: {required: ''}
 
   .row.expanded
     .small-12.large-6.columns
-      %label.label Posted by:
-      = f.collection_select :user_id, User.all, :id, :email, input_html: {required: ''}, label: 'Posted as:'
+
+
+      = f.input :user, collection: User.accessible_by(current_ability), label: 'Posted by: ', member_label: Proc.new{|x| x.name + " / " + x.email}, include_blank: false
   .row.expanded
     .small-12.large-7.columns
       %hr

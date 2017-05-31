@@ -1,0 +1,34 @@
+= semantic_nested_form_for [:admin, @user], html: {multipart: true, :"data-abide" => ''} do |f|
+  - if @user.errors.any?
+    .row
+      .large-6.small-12.columns#error_explanation
+        %h2= "#{pluralize(@user.errors.count, "error")} prohibited this admin_partner from being saved:"
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+  .row
+    .large-5.small-12.columns= f.input :name, input_html: {required: ''}
+  .row
+    .large-5.small-12.columns= f.input :email, input_html: {required: ''}    
+  .row
+    .large-5.small-12.columns= f.input :website
+  - if current_user.has_role? :admin
+    .row
+      .large-5.small-12.columns
+        %label Permissions:
+        = f.select :role_ids,  Role.all.map{|x| [x.name, x.id]}, {}, {:multiple => true}
+  .row
+
+    .large-12.small-12.columns= f.input :biography, as: :ckeditor
+
+  .row
+    .large-6.small-12.columns
+      - if f.object.avatar?
+        = image_tag f.object.avatar.url(:box)
+        = f.input :remove_avatar, as: :boolean, label: 'Remove this photo'
+      = f.input :avatar, label: "Profile photo"
+      
+
+
+  .row
+    .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]

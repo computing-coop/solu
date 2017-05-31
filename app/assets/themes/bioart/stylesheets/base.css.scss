@@ -2,6 +2,17 @@
 @import '_settings';
 
 header {
+  
+  .login_options {
+    float: right;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    a {
+      color: black;
+      font-size: 1rem;
+    }
+  }
   background-color: $headerblue;
   .pattern {
     background: url(/assets/bioart/images/layout/menu_dot.png) repeat;

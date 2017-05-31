@@ -14,4 +14,6 @@ class Admin::BaseController < ApplicationController
     authorize! :create, resource
   end
   
+
+  
 end

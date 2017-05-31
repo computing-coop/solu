@@ -55,6 +55,10 @@
           = form_tag '/search' do
             = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #{@project.custom_background_colour.blank? ? '#66ffcc' : @project.custom_background_colour};"
         .row
+          - if user_signed_in?
+            .login_options
+              = link_to fa_icon('pencil'), '/admin'
+              = link_to fa_icon('sign-out'), destroy_user_session_path, :method => :delete
           = link_to '/' do
             .logo.medium-2.columns.small-12
               BIOART
