@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Sign up</h2>
+  </div>
+</div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= devise_error_messages! %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= f.label 'Your name' %><br />
+        <%= f.email_field :name, autofocus: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= f.label 'Your email' %><br />
+        <%= f.email_field :email %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <%= f.submit "Sign up" %>
+      </div>
+  </div>
+<% end %>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
