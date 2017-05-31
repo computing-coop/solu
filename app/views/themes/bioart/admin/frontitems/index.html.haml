@@ -17,7 +17,7 @@
     - @frontitems.each do |frontitem|
       %tr
         %td
-          = image_tag frontitem.wideimage.url, width: 300
+          = image_tag frontitem.wideimage.url, width: 300 rescue ''
 
         %td= frontitem.smallblurb_text
 
