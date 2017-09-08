@@ -29,7 +29,7 @@
       .row
         .small-12.columns
           Date of birth:
-          = @submission.date_of_birth.strftime('%d %b %Y')
+          = @submission.date_of_birth.strftime('%d %b %Y') rescue 'Not provided'
       .row
         .small-12.columns
           Nationality:
