@@ -51,6 +51,7 @@
   %body
     %header{style: @project.nil? ? '' : "background-color: #{@project.custom_background_colour}"}
       .pattern{class: @project.nil? ? false : @project.slug, style: @project.nil? ? '' : (@project.custom_background_image? ? "background: url(#{@project.custom_background_image.url}) repeat;" : false)}
+  
         .row.search_field#search_field_container
           = form_tag '/search' do
             = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #{@project.custom_background_colour.blank? ? '#66ffcc' : @project.custom_background_colour};"

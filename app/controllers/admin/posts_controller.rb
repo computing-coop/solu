@@ -2,6 +2,7 @@ class Admin::PostsController < Admin::BaseController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   # skip_load_resource
+  # load_and_authorize_resource
   respond_to :html
   has_scope :by_project
   has_scope :by_node

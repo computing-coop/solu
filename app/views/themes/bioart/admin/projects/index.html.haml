@@ -22,8 +22,10 @@
           - if project.image?
             = image_tag project.image.url(:thumb)
         %td= project.published == true ? 'yes' : 'no'
-
-        %td= link_to 'Edit', edit_admin_project_path(project), class: [:button, :tiny]
+        
+        %td
+          = link_to 'View', project, target: :_blank, class: [:button, :tiny, :secondary]
+          = link_to 'Edit', edit_admin_project_path(project), class: [:button, :tiny]
         %td= link_to 'Destroy', [:admin, project], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
 
 %br

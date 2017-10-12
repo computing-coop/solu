@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :set_subdomain
+  before_action :set_subdomain
   
   def index
     @groups = @site.symposium.groups.order(name: :asc)

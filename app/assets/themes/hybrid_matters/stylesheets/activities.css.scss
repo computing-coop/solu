@@ -108,7 +108,7 @@ nav.activities-bar {
       margin: 0 0.688em 0.688em 0.688em;
       #map_left {
   //      background-size: contain;
-        background: url(image_path('map-left-dotless.png')) no-repeat left top #dbd9d9;
+        background: url('/assets/hybrid_matters/images/map-left-dotless.png') no-repeat left top #dbd9d9;
         width: 44%;
         min-height: 1847px;
         float: left;
@@ -117,7 +117,7 @@ nav.activities-bar {
     
       #map_right {
         
-        background: url(image_path('map-right-dotless.png')) no-repeat right 96px #dbd9d9;
+        background: url('/assets/hybrid_matters/images/map-right-dotless.png') no-repeat right 96px #dbd9d9;
         float: right;
         width: 56%;
         min-height: 1900px;

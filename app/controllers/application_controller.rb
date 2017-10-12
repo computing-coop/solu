@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include ThemesForRails::UrlHelpers
 
   protect_from_forgery with: :exception
-  skip_before_filter :verify_authenticity_token, if: -> { controller_name == 'sessions' && action_name == 'create' }
+  skip_before_action :verify_authenticity_token, if: -> { controller_name == 'sessions' && action_name == 'create' }
   before_action :protect_with_staging_password if Rails.env.staging?
  
   before_action :get_sticky_posts

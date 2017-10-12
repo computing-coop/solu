@@ -76,7 +76,7 @@ class CallsController < ApplicationController
   protected 
   
   def submission_params
-    params[:call].require(:submission).permit(:first_name,:short_biography,  :last_name, :address, :city, :country, :date_of_birth, :organisation_name, :nationality, :email, :website, answers_attributes: [:id, :question_id, :answer_text, :attachment, :answer_boolean ])
+    params[:call].require(:submission).permit(:first_name,:short_biography,  :last_name, :address, :city, :country, :date_of_birth, :organisation_name, :nationality, :profession, :preferred_start, :preferred_end, :email, :website, answers_attributes: [:id, :question_id, :answer_text, :attachment, :answer_boolean ])
   end
   
 end

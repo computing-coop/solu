@@ -96,7 +96,7 @@
         }
       });
   .all_partners
-    = link_to image_tag('all_button.png'), '#', onclick: 'clearAllActivityFilters();return false'
+    = link_to image_tag(theme_image_path('all_button.png')), '#', onclick: 'clearAllActivityFilters();return false'
 #activity_map_wrapper
   %table.vertical-line
     - @activities.each do |activity|

@@ -34,6 +34,7 @@ function scrollTo(target) {
 
 function clearAllActivityFilters() {
   $('.secondary_activities_filter ul.top-bar-menu li').removeClass('active');
+  $('.filter_box li.active').removeClass('active');
   $('.activity_row').removeClass('hidden'); 
 }
 

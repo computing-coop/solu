@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 
 gem 'mongoid'
 
-ruby '2.3.1'
+ruby '2.4.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.1'
+gem 'rails', '5.1.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -45,7 +45,7 @@ gem 'puma'
 #gem 'bson_ext'
 
 gem 'cancancan'
-
+gem 'cancancan-mongoid'
 gem 'capistrano'
 gem 'capistrano-rails'#, '1.1.3'
 gem 'capistrano-rvm'
@@ -64,7 +64,7 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'devise' #, github: 'plataformatec/devise', branch: :master
 gem 'figaro'
 gem 'formtastic'
-gem 'foundation-rails'
+gem 'foundation-rails', '6.2.4.0'
 gem 'foundation-datetimepicker-rails'
 gem 'font-awesome-rails'
 gem 'geocoder'
@@ -72,7 +72,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'has_scope'
 gem 'handles_sortable_columns', github: 'cenotaph/handles_sortable_columns'
-gem 'kaminari'
+gem 'kaminari-mongoid'
 gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'
 gem 'mongoid_rails_migrations'
@@ -94,7 +94,7 @@ gem 'videojs_rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'better_errors'
+  gem 'better_errors', github: 'workingnotworking/better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
   gem 'nifty-generators'
