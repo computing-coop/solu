@@ -6,13 +6,13 @@ class Admin::PostsController < Admin::BaseController
   respond_to :html
   has_scope :by_project
   has_scope :by_node
-  
-  
+
+
 
   def index
-    sortable_column_order do |column, direction|
-      @posts = apply_scopes(Post).accessible_by(current_ability) #.sort_by(column, direction)
-    end
+    order = sortable_column_order # do |column, direction|
+    @posts = apply_scopes(Post).accessible_by(current_ability).order(order)
+    # end
     @posts ||= apply_scopes(Post).accessible_by(current_ability).desc(:published_at)
     set_meta_tags title: 'Posts'
     respond_with(@posts)
@@ -59,14 +59,14 @@ class Admin::PostsController < Admin::BaseController
       flash[:notice] = 'post has been updated.'
       redirect_to admin_posts_path
     end
-      
+
   end
 
   def destroy
     @post.destroy
     flash[:notice] = 'Post has been deleted.'
     redirect_to admin_posts_path
-    
+
   end
 
   private
@@ -77,7 +77,7 @@ class Admin::PostsController < Admin::BaseController
     def post_params
       params.require(:post).permit(:title, :body, :sticky, :subsite_id, :short_abstract, :published, :user_id, :node_id, :project_id,
                                    :published_at, :hide_featured_image, :tags,
-                                   photos_attributes: [:image, :id,  :_destroy], 
+                                   photos_attributes: [:image, :id,  :_destroy],
                                    videos_attributes:  [:videofile, :id, :_destroy],
                                    activity_ids: [], postcategory_ids: [] )
     end

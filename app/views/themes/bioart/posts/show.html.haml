@@ -8,24 +8,24 @@
             %span.years= @project.year_range
     .row
       .small-12.columns= render partial: 'shared/project_menu'
-      
+
   .row
     .small-12.columns
       - unless @post.hide_featured_image == true
         - unless @post.photos.empty?
-        
+
           .post_image
             - if @post.photos.size == 1
 
               = image_tag @post.photos.first.image.url.gsub('development', 'production')
             - else
               .image_carousel{style: @post.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
-    
+
                 - @post.photos.each do |photo|
                   .slide[photo]
                     = image_tag photo.image.url(:standard).gsub('development', 'production'), align: :center
                     .thumb= image_tag photo.image.url(:thumb).gsub('development', 'production')
-      - unless @post.videos.empty?                  
+      - unless @post.videos.empty?
         - @post.videos.each do |video|
           - if video.videofile.url =~ /mp4$/i || video.videofile.url =~ /m4v$/i
             = videojs_rails sources: { mp4: video.videofile.url }, setup: "{}", controls: true
@@ -43,7 +43,7 @@
             = "posted by #{@post.user.name} on #{@post.published_at.strftime('%-d %B %Y') rescue 'unpublished'}"
           - elsif !@post.wordpress_author.blank? && @post.user.email == 'erich.berger@bioartsociety.fi'
             = "posted by #{@post.wordpress_author} on #{@post.published_at.strftime('%-d %B %Y')}"
-            
+
         .description
           - unless @post.soundfiles.empty?
             - @post.soundfiles.each do |sound|
@@ -51,19 +51,19 @@
               .controls
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.skipBackward()"}
                   %i.fa.fa-step-backward
-                  
+
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.playPause()"}
                   %i.fa.fa-play
-                  
+
                   \/
                   %i.fa.fa-pause
-                  
+
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.skipForward()"}
                   %i.fa.fa-step-forward
-                  
+
                 %button.button.primary{:onclick => "wavesurfer_#{sound.id.to_s}.toggleMute()"}
                   %i.fa.fa-volume-off
-                  
+
               = content_for :jquery do
                 :plain
                   wavesurfer_#{sound.id.to_s} = WaveSurfer.create({
@@ -72,8 +72,8 @@
                       progressColor: 'purple'
                   });
                   wavesurfer_#{sound.id.to_s}.load('#{sound.soundfile.url}');
-                  
-          = raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b u}, attr: %w{href target src}))
+
+          = raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b ol ul li u}, attributes: %w(href target src)))
         .navigation
           - if @project.nil?
             - unless @post.previous.nil?
@@ -86,14 +86,14 @@
               .side_link.float-right= link_to 'Next', @post.next, class: :next_post
           - else
             - unless @post.next_by_project.nil?
-              .side_link.float-right= link_to 'Next', @post.next_by_project, class: :next_post        
+              .side_link.float-right= link_to 'Next', @post.next_by_project, class: :next_post
 
       = content_for :jquery do
         :plain
           $('.image_carousel').slick({infinite: true,
             arrows: true,
-      
-      
+
+
             adaptiveHeight: false,
             prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
             nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
