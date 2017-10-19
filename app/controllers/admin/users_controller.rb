@@ -1,21 +1,21 @@
 class Admin::UsersController < Admin::BaseController
   respond_to :html
-    
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy!
     redirect_to admin_users_path
   end
-  
+
   def edit
     @user = User.find(params[:id])
     set_meta_tags title: 'Edit user record'
   end
-  
+
   def index
     @users = User.all
   end
-  
+
   def update
     unless current_user.has_role? :god
       params[:user].delete([:role_ids])
@@ -30,9 +30,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
   protected
-  
+
   def user_params
      params.require(:user).permit(:name, :website, :biography, :avatar, :remove_avatar,  :partner_id, :email, role_ids: [] )
   end
-  
+
 end
