@@ -18,14 +18,14 @@
 
   .row
     .small-12.columns
-      - if @page.split_on_h3 != true 
+      - if @page.split_on_h3 != true
         .text
           - if @page.image?
             .page_image= image_tag @page.image.url.gsub(/development/, 'production')
           - elsif !@page.photos.empty?
             .page_image
               .image_carousel{style: @page.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
-  
+
                 - @page.photos.each do |photo|
                   .slide[photo]
                     = image_tag photo.image.url(:standard).gsub('development', 'production'), align: :center
@@ -35,7 +35,7 @@
                     $('.image_carousel').slick({infinite: true,
                       arrows: true,
 
-    
+
                       adaptiveHeight: false,
                       prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
                       nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
@@ -72,9 +72,8 @@
       - else
         .text
           .excerpt
-            = raw clean_whitespace(sanitize(@page.body, tags: %w{table tr th h2 h3 h4 h5 h6 h1 td tbody thead img a p br i em bold strong b u}, attr: %w{href alt target src}))
-          
+            = raw clean_whitespace(sanitize(@page.body, tags: %w{table tr th h2 h3 h4 h5 h6 h1 td tbody thead img a p br i em bold strong b u}, attributes: %w(href alt target src)))
+
   - if @page.postcategory
     .posts_index{class: @project.nil? ? false : :project_detail}
       .row.small-up-1.medium-up-2.large-up-3#results= render partial: 'posts/postspage'
-      

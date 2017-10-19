@@ -2,14 +2,14 @@
   .row
     .small-10.small-centered.medium-12.columns
       .heading About
-      
+
   .row
     .small-10.small-centered.medium-12.columns
       .text
         .excerpt
           = raw @about_text.excerpt
           -# .side_link= link_to 'Association rules', page_path('association-rules')
-  
+
   .row
     .small-12.medium-6.columns.member_box
       .member_image{style: "background: url(#{@members.image.url}) center/cover no-repeat"}
@@ -18,7 +18,7 @@
         .excerpt
           = raw sanitize(@members.excerpt, tags: %w{br p bold strong b i em underline u})
 
-          
+
     .small-12.medium-6.columns.member_box
       .member_image{style: "background: url(#{@collaborators.image.url}) center/cover no-repeat"}
       .member_content
@@ -26,10 +26,10 @@
         .excerpt
           = raw sanitize(@collaborators.excerpt, tags: %w{br p bold strong b i em underline u})
 
-          
+
 
   .row
     .small-12.columns.staff_box
       .text
         .red= link_to 'Board and staff', page_path('board-and-staff')
-        .excerpt= raw sanitize(@board_staff.body, tags: %w{br p bold strong a b i em underline u},  attr: %w{href mailto alt target src})
+        .excerpt= raw sanitize(@board_staff.body, tags: %w{br p bold strong a b i em underline u},  attributes: %w(href mailto alt target src))

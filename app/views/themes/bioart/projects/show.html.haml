@@ -6,11 +6,11 @@
         - unless @project.ongoing == true
           %span.years= @project.year_range
       %h3.project_subtitle= @project.subtitle
-      
+
   .row
     .small-12.columns= render partial: 'shared/project_menu'
 
-            
+
   .row
     .small-12.columns.project_indented
       - unless @about.nil?
@@ -24,7 +24,7 @@
               - @calls.each do |call|
                 .side_link= link_to call.name, call
 
-            
+
       - unless @project.posts.empty?
         .blog_container
           .red= link_to 'Blog', project_posts_path(@project)
@@ -36,7 +36,7 @@
                   -#  = "##{post.node.name}"
                 .post_content
                   .title= truncate_html(post.title, length: 40)
-                  .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attr: %w{href target src}), length: 150)
+                  .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
                   - if post.project
                     - if post.project.slug == 'ars-bioarctica'
                       .index_author
@@ -48,7 +48,7 @@
           :plain
             $('.post_carousel').slick({infinite: true,
                 arrows: true,
-     
+
                 adaptiveHeight: false,
                 prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
                 nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
@@ -91,7 +91,7 @@
                   = raw truncate_html(sanitize(page.body, tags: %w{b p strong bold i italic em u underline br}), length: 150)
                 - else
                   = raw truncate_html(sanitize(page.body, tags: %w{b p strong bold i italic em u underline br}), length: 450)
-                  
+
                 .side_link= link_to 'Read more', page
             - if page.image?
               .image= image_tag page.image.url
@@ -107,8 +107,8 @@
                         = raw truncate_html(sanitize(child.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
                       - else
                         = raw truncate_html(sanitize(child.excerpt, tags: %w{b strong bold i p italic em u underline br}), length: 150)
-                      
-                    
+
+
       / - unless @project.partners.empty?
       /   .collaborators_container
       /     .red Collaborators
