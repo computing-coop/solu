@@ -29,7 +29,7 @@
         .blog_container
           .red= link_to 'Blog', project_posts_path(@project)
           .row.small-up-1.medium-up-2.large-up-3.xxlarge-up-4.post_carousel
-            - @project.posts.published.each do |post|
+            - @project.posts.published.order(published_at: :desc).take(12).each do |post|
               = link_to post, class: [:post, :columns] do
                 .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
                   -#.hashtag
