@@ -7,6 +7,7 @@ class Call
   field :start_at, type: Date
   field :end_at, type: Date
   field :published, type: Mongoid::Boolean
+  field :active, type: Mongoid::Boolean
   field :overview, type: String
   
   field :add_to_project_menu, type: Mongoid::Boolean
@@ -14,7 +15,7 @@ class Call
   slug :name
   
   belongs_to :node
-  
+  has_and_belongs_to_many :users
   belongs_to :project, optional: true
   belongs_to :symposium, optional: true
   

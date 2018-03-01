@@ -13,16 +13,21 @@
       
       %tbody
         - @calls.each do |call|
+          - next unless can? :read, call
           %tr
             %td= call.node.name
             %td= call.name
             %td= l call.end_at, format: :short
             %td
-              = link_to "View all #{call.submissions.count}", admin_call_submissions_path(call), class: [:button, :tiny]
+              - if can? :read, call
+                = link_to "View all #{call.submissions.count}", admin_call_submissions_path(call), class: [:button, :tiny]
             %td{colspan: 3}
-              = link_to 'Show', call, class: [:button, :tiny], target: :_blank
-              = link_to 'Edit', edit_admin_call_path(call), class: [:button, :tiny]
-              = link_to 'Destroy',[:admin, call], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+              - if can? :read, call
+                = link_to 'Show', call, class: [:button, :tiny], target: :_blank
+              - if can? :edit, call
+                = link_to 'Edit', edit_admin_call_path(call), class: [:button, :tiny]
+              - if can? :destroy, call
+                = link_to 'Destroy',[:admin, call], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
               
 .row
   .small-12.columns= link_to 'New call', new_admin_call_path, class: [:button, :tiny]

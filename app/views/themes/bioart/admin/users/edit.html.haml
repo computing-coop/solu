@@ -18,7 +18,12 @@
         %label Permissions:
         = f.select :role_ids,  Role.all.map{|x| [x.name, x.id]}, {}, {:multiple => true}
   .row
+    .large-12.columns
+      - if @user.has_role? :reviewer
+        Open calls to have access to review:
 
+        -#= f.fields_for :calls do |ff|
+        = f.input :calls, as: :check_boxes#, collection: Call
     .large-12.small-12.columns= f.input :biography, as: :ckeditor
 
   .row

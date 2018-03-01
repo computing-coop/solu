@@ -20,6 +20,9 @@ class Admin::UsersController < Admin::BaseController
     unless current_user.has_role? :god
       params[:user].delete([:role_ids])
     end
+    unless current_user.has_role? :god
+      params[:user].delete([:call_ids])
+    end    
     @user.update(user_params)
     flash[:notice] = 'Profile has been updated.'
     if can? :edit, User
@@ -32,7 +35,7 @@ class Admin::UsersController < Admin::BaseController
   protected
 
   def user_params
-     params.require(:user).permit(:name, :website, :biography, :avatar, :remove_avatar,  :partner_id, :email, role_ids: [] )
+     params.require(:user).permit(:name, :website, :biography, :avatar, :remove_avatar,  :partner_id, :email, role_ids: [] , call_ids: [])
   end
 
 end

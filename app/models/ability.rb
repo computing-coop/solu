@@ -21,6 +21,20 @@ class Ability
       can :manage, user
       cannot :manage, Project
       cannot :manage, Subsite
+    elsif user.has_role? :reviewer
+      #  can read submissions on the tokyo one
+      # can create comments and votes
+      can :read, Call do |call|
+        user.calls.include?(call)
+      end
+      can :read, Submission do |sub|
+        user.calls.include?(sub.call)
+      end
+      can :manage, Vote do |vote|
+        user.calls.include?(vote.submission.call)
+      end
+      can :manage, Comment, user_id: user.id
+
     elsif user.has_role? :resident
       can :read, Node, id: '58a8ccd0cbbb983e2b597fa9'
       can :read, Project, id: '58a8d22fcbbb985887fe8820'

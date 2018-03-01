@@ -7,7 +7,7 @@ class User
   accepts_nested_attributes_for :roles
   #has_many :comments
   has_many :posts, :dependent => :delete
-  
+  has_and_belongs_to_many :calls
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -51,7 +51,8 @@ class User
   field :avatar_height, type: Integer
   field :avatar_content_type, type: String
   
-  
+  accepts_nested_attributes_for :calls
+
   mount_uploader :avatar, ImageUploader
   # def self.serialize_from_session(key, salt)
   #   (key = key.first) if key.kind_of? Array

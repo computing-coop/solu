@@ -4,7 +4,7 @@ class Submission
   include Mongoid::Slug
   
   embedded_in :call
-  
+
   field :first_name, type: String
   field :last_name, type: String
   field :address, type: String
@@ -24,13 +24,14 @@ class Submission
   field :preferred_end, type: Date
   slug :name, :scope => :call
   
-  embeds_many :comments #, as: :commentable, cascade_callbacks: true
-  accepts_nested_attributes_for :comments, allow_destroy: true
-  
+  embeds_many :comments , cascade_callbacks: true#, as: :commentable, cascade_callbacks: true
   embeds_many :votes, cascade_callbacks: true
   embeds_many :answers, cascade_callbacks: true
+
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :votes, allow_destroy: true
+  accepts_nested_attributes_for :comments, allow_destroy: true
+  
   before_save :update_average
   
   def update_average
