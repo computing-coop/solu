@@ -26,6 +26,7 @@
       
       %tbody
         - @posts.each do |post|
+          - next unless can? :manage, post
           %tr
             %td
               = link_to post.title, post, target: :_blank

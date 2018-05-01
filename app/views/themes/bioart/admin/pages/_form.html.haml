@@ -1,4 +1,4 @@
-= semantic_nested_form_for [:admin, @page], html: {multipart: true} do |f|
+= semantic_nested_form_for [:admin, @page], html: {:'data-abide' => true, multipart: true} do |f|
   - if @page.errors.any?
     .row
       .large-6.small-12.columns
@@ -8,13 +8,13 @@
             - @page.errors.full_messages.each do |msg|
               %li= msg
   .row
-    .large-5.small-12.columns= f.input :node              
+    .large-5.small-12.columns= f.input :node, input_html: {required: ''}           
   .row
     .large-5.small-12.columns= f.input :project
   .row
     .large-5.small-12.columns= f.input :parent
   .row
-    .large-5.small-12.columns= f.input :title
+    .large-5.small-12.columns= f.input :title, input_html: {required: ''}
   .row
     .large-5.small-12.columns= f.input :is_project_overview, as: :boolean
   .row
@@ -54,3 +54,12 @@
   .row
     .large-5.small-12.columns
       = f.submit 'Save', class: [:small, :button]
+
+= content_for :jquery do
+  :plain
+
+    $('form.page').on('invalid.zf.abide', function(e) {
+      $(document).scrollTo('form.page', {duration: 2000})
+      
+    })
+  

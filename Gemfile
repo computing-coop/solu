@@ -76,6 +76,7 @@ gem 'handles_sortable_columns', github: 'cenotaph/handles_sortable_columns'
 gem 'kaminari-mongoid'
 gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'
+gem 'mongoid-compatibility'
 gem 'mongoid_rails_migrations'
 gem 'mongoid-slug', github: 'mongoid/mongoid-slug', branch: 'master'
 gem 'mongoid-tree', :require => 'mongoid/tree'
@@ -92,7 +93,7 @@ gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master' #,
 gem 'truncate_html'
 gem 'videojs_rails'
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'better_errors', github: 'workingnotworking/better_errors'
@@ -102,4 +103,13 @@ group :development, :test do
   # gem 'rails-footnotes',  '>= 3.7.9'
   # gem 'quiet_assets'
   gem 'spring'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'mongoid-rspec', github: 'mongoid-rspec/mongoid-rspec'
 end

@@ -39,7 +39,7 @@ class Partner
   accepts_nested_attributes_for :projects, reject_if: lambda {|x| x.blank?}
 
   
-  belongs_to :node
+  belongs_to :node, optional: true
   
   slug :name
   
@@ -55,7 +55,7 @@ class Partner
   
   include Geocoder::Model::Mongoid
   geocoded_by :full_address
-  after_validation :geocode   
+  after_validation :geocode if Rails.env.production?
   
   def full_address
     [address1, address2, [postcode, city].compact.join(' '), country].compact.join(', ')

@@ -5,7 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Node.create(
+  name: 'bioart', description: 'Finnish Society of Bioart', subdomains: 'bioartsociety'
+)
 
+Node.create(
+  name: 'hybrid_matters', description: 'HYBRID_MATTERs', subdomains: 'hybridmatters'
+)
 
 Partner.create(name: 'Finnish Society of Bioart', website: 'http://bioartsociety.fi', country: 'FI')
 Partner.create(name: 'ITU Copenhagen', website: 'http://www.itu.dk', country: 'DK')
@@ -83,10 +89,3 @@ Activity.create(
   responsible_organisations: [  Partner.find_by(name: 'Finnish Society of Bioart'),  Partner.find_by(name: 'Forum Box')]
 )
 
-Node.create(
-  name: 'bioart', description: 'Finnish Society of Bioart', subdomains: 'bioartsociety'
-)
-
-Node.create(
-  name: 'hybrid_matters', description: 'HYBRID_MATTERs', subdomains: 'hybridmatters'
-)

@@ -60,6 +60,7 @@ class Page
   scope :by_node, ->(node) { where(node: node)}
   scope :by_project,  ->(x) {where(project: x)}
   
+  validates_presence_of :title, :body
   validates_uniqueness_of :title, scope: [:node, :project]
   
   before_save :update_image_attributes

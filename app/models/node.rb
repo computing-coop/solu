@@ -10,6 +10,7 @@ class Node
   slug :name, history: true
   
   validates_uniqueness_of :name
+  validates_presence_of :name, :description, :subdomains
   
   embeds_many :frontitems
   has_many :pages, inverse_of: :node

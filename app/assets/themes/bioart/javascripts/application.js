@@ -3,6 +3,7 @@
 //= require jquery-ui/core
 //= require jquery.slick
 //= require video
+//= require bioart/javascripts/jquery.scrollTo.min
 //= require bioart/javascripts/masonry.pkgd.min
 //= require foundation
 //= require bioart/javascripts/jquery.pageless

@@ -17,6 +17,7 @@ class Ability
       can :manage, Event
       can :manage, Artist
       can :manage, Work
+
       can :manage, Page
       can :manage, user
       cannot :manage, Project
