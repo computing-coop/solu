@@ -24,5 +24,43 @@ RSpec.describe 'Static pages', type: :request do
     end
   end
   
+  describe 'Admin access to pages', type: :request do
+    let!(:admin_user) { FactoryBot.create(:user, :admin) }
+
+    context 'should not allow creating a page with a blank title' do
+      before {
+        sign_in admin_user
+
+        post "/admin/pages", params: { 
+          page: {title: nil, body:  Faker::Lorem.paragraph(2, true, 4), node: Node.find_by(name: "bioart") } 
+        }
+
+      }
+
+      it "should return 422" do
+        expect(response).to have_http_status(422)
+      end
+    end
+
+
+    context 'should create a page with valid content' do
+    
+      before {
+        sign_in admin_user
+        post "/admin/pages", params: { page: {title: 'Test title',
+         body:  Faker::Lorem.paragraph(2, true, 4),
+          node: Node.find_by(name: "bioart") 
+          } 
+        }
+
+      }
+
+      it "should return 200" do
+        expect(response).to have_http_status(200)
+      end
+
+    end
+  
+  end
 
 end

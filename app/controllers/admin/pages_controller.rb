@@ -34,10 +34,14 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def create
+
     @page = Page.new(page_params)
     @page.node = @node
-    @page.save
-    redirect_to admin_pages_path
+    if @page.save
+      redirect_to admin_pages_path
+    else
+      render template: 'admin/pages/new', status: 422
+    end
   end
 
   def update
