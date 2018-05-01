@@ -77,6 +77,11 @@ header {
           float: left;
           margin-bottom: 1rem;
         }
+        ul.submenu {
+          background: transparent;
+          border: 0;
+          padding-top: 7px;
+        }
         &.search {
           width: 20%;
           @include breakpoint(small only) {
@@ -106,6 +111,16 @@ header {
         font-family: $titillium;
         padding: 0 0 0 0.15em;
         font-weight: 600;
+        &.is-active {
+          ul.submenu {
+            li.is-submenu-item {
+              a:hover {
+                color: white;;
+              }
+            }
+          }
+
+        }
         a {
           color: #FFF;
           background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
@@ -118,6 +133,7 @@ header {
           }
           text-transform: uppercase;
         }
+
         &:hover {
           a {
             color: $fuschia;

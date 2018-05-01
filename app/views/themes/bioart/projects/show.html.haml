@@ -19,7 +19,10 @@
           - if @about.image?
             .image= image_tag @about.image.url.gsub(/development/, 'production')
           .body.about_excerpt{class: [@calls.empty? ? false : :has_call]}
-            = raw @about.excerpt
+            - if @project.slug == 'ars-bioarctica'
+              = raw @about.body
+            - else
+              = raw @about.excerpt
             - unless @calls.empty?
               - @calls.each do |call|
                 .side_link= link_to call.name, call
