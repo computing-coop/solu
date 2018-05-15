@@ -36,7 +36,7 @@
           .small-12.columns.medium-8= ff.input :question
         .row
           .medium-8.small-12.columns= ff.input :hint
-          .small-8.columns.medium-3= ff.input :question_type, as: :select, collection: ['string', 'text', 'file', 'boolean', 'group_select']
+          .small-8.columns.medium-3= ff.input :question_type, as: :select, collection: ['string', 'text', 'file', 'boolean', 'group_select'], input_html: {"required" => ''}
           .small-4.columns.medium-1= ff.input :required, as: :boolean
         .row
           .small-12.columns.medium-8= ff.input :char_limit, label: 'Character limit?', hint: 'Leave blank for unlimited'
