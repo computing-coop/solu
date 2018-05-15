@@ -9,6 +9,6 @@ class Question
   validates_presence_of :question_type
   belongs_to :call
   
-  index({ question: 1 }, { unique: true, drop_dups: true, name: "question_index" })
+  # index({ question: 1 }, { unique: true, drop_dups: true, name: "question_index" })
     
 end
