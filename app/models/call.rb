@@ -9,6 +9,7 @@ class Call
   field :published, type: Mongoid::Boolean
   field :active, type: Mongoid::Boolean
   field :overview, type: String
+  field :ask_preferred_period, type: Mongoid::Boolean
   
   field :add_to_project_menu, type: Mongoid::Boolean
   

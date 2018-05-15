@@ -11,7 +11,7 @@ class Activity
   field :description, type: String
   field :start_at, type: Date
   field :end_at, type: Date
-  field :published, type: Boolean
+  field :published, type: Mongoid::Boolean
   field :place_slug, type: String
   
   field :location, type: String
