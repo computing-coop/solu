@@ -11,7 +11,7 @@ class Activity
   field :description, type: String
   field :start_at, type: Date
   field :end_at, type: Date
-
+  field :published, type: Boolean
   field :place_slug, type: String
   
   field :location, type: String
@@ -39,6 +39,7 @@ class Activity
   
   index({ description: "text", name: "text", location: "text" })
   
+  scope :published, -> () { where(published: true) }
   scope :by_node, -> (x) { where(node_id: x) }
     
   def self.search(q)

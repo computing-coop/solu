@@ -3,6 +3,9 @@
     %h1 Activities
 
     %p= link_to "Edit activity types", admin_activitytypes_path, class: [:button, :secondary, :small]
+.row.expanded
+  .small-12.columns
+    = link_to 'New Activity', new_admin_activity_path, class: [:button, :small]    
     %table
       %thead
         %tr
@@ -12,6 +15,7 @@
           %th Description
           %th= sortable_column "Start at", column: :start_at
           %th End at
+          %th Published?
           %th
 
       
@@ -27,9 +31,11 @@
                     = link_to ro.name, ro, target: :_blank
           
             %td= activity.activitytype.try(:name)
-            %td= truncate_html(activity.description, length: 100)
+            %td
+              %small= truncate_html(activity.description, length: 100)
             %td= activity.start_at
             %td= activity.end_at
+            %td= activity.published == true ? 'yes' : 'nah'
             %td
               = link_to 'Show', activity, class: [:button, :tiny], target: :_blank
               = link_to 'Edit', edit_admin_activity_path(activity), class: [:button, :tiny]
@@ -37,4 +43,4 @@
 
 .row
   .small-12.columns
-    = link_to 'New Activity', new_admin_activity_path, class: [:button, :tiny]
+    = link_to 'New Activity', new_admin_activity_path, class: [:button, :small]

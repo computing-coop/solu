@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/adacosta/mongoid_rails_migrations.git
+  revision: dd3f9c6d52cf11f666903aa24a07a1c01549f007
+  branch: master
+  specs:
+    mongoid_rails_migrations (1.1.0)
+      activesupport (>= 4.2.0)
+      bundler (>= 1.0.0)
+      mongoid (>= 4.0.0)
+      rails (>= 4.2.0)
+      railties (>= 4.2.0)
+
+GIT
   remote: git://github.com/ahoward/mongoid-grid_fs.git
   revision: f86e16773473a466b5310dcf2b4ca64520e9e3be
   specs:
@@ -22,12 +34,12 @@ GIT
 
 GIT
   remote: git://github.com/mongoid-rspec/mongoid-rspec.git
-  revision: 87bc166a2a52aeb8e8eac10958911b131ab24058
+  revision: 68c95b133be1a1482fe882e39afd33262147d1f4
   specs:
     mongoid-rspec (4.0.1)
       activesupport (>= 3.0.0)
       mongoid (>= 3.1)
-      mongoid-compatibility
+      mongoid-compatibility (>= 0.5.1)
       rspec (~> 3.3)
 
 GIT
@@ -111,7 +123,7 @@ GEM
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
-    aws-partitions (1.82.0)
+    aws-partitions (1.87.0)
     aws-sdk-core (3.20.2)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.0)
@@ -119,7 +131,7 @@ GEM
     aws-sdk-kms (1.5.0)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
-    aws-sdk-s3 (1.9.1)
+    aws-sdk-s3 (1.10.0)
       aws-sdk-core (~> 3)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)
@@ -281,27 +293,21 @@ GEM
     mini_mime (1.0.0)
     mini_portile (0.6.2)
     minitest (5.11.3)
-    money (6.11.1)
+    money (6.11.3)
       i18n (>= 0.6.4, < 1.1)
-    mongo (2.5.1)
+    mongo (2.5.3)
       bson (>= 4.3.0, < 5.0.0)
-    mongoid (6.4.0)
+    mongoid (6.4.1)
       activemodel (>= 5.1, < 6.0.0)
       mongo (>= 2.5.1, < 3.0.0)
     mongoid-compatibility (0.5.1)
       activesupport
       mongoid (>= 2.0)
-    mongoid-tree (2.1.0)
-      mongoid (>= 4.0, < 7.0)
+    mongoid-tree (2.1.1)
+      mongoid (>= 4.0, < 8)
     mongoid_magic_counter_cache (1.1.1)
       mongoid
       rake
-    mongoid_rails_migrations (1.1.0)
-      activesupport (>= 4.2.0)
-      bundler (>= 1.0.0)
-      mongoid (>= 4.0.0)
-      rails (>= 4.2.0)
-      railties (>= 4.2.0)
     mongoid_search (0.3.5)
       fast-stemmer (~> 1.0.0)
       mongoid (>= 3.0.0)
@@ -314,7 +320,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
     nifty-generators (0.4.6)
-    nio4r (2.3.0)
+    nio4r (2.3.1)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -494,7 +500,7 @@ DEPENDENCIES
   mongoid-slug!
   mongoid-tree
   mongoid_magic_counter_cache
-  mongoid_rails_migrations
+  mongoid_rails_migrations!
   mongoid_search
   mongoid_taggable
   nested_form

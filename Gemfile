@@ -77,7 +77,7 @@ gem 'kaminari-mongoid'
 gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'
 gem 'mongoid-compatibility'
-gem 'mongoid_rails_migrations'
+gem 'mongoid_rails_migrations', github: 'adacosta/mongoid_rails_migrations', branch: :master
 gem 'mongoid-slug', github: 'mongoid/mongoid-slug', branch: 'master'
 gem 'mongoid-tree', :require => 'mongoid/tree'
 gem 'mongoid_search'
