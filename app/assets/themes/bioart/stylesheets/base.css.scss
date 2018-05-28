@@ -242,7 +242,12 @@ footer {
     }
   }
   
-
+  .privacy {
+    text-align: right;
+    a {
+      color: black;
+    }
+    }
   .icons {
     .email, .fb, .twitter, .instagram, .rss {
       float: left;
