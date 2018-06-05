@@ -1,0 +1,22 @@
+.residency_index
+  .row
+    .small-10.small-centered.medium-12.columns
+      .section_title
+        Residents
+
+  = render partial: 'residencies/year_menu'
+
+  
+
+  .row
+    .small-12.columns
+      .post_content
+        - @artists.sort_by(&:alphabetical_name).each do |artist|
+          - next if artist.stays.empty?
+          .artist
+            = link_to_if artist.has_page?, artist.name, artist
+            %span.dates
+              - if artist.stays.size == 1
+                = date_range(artist.stays.first.start_at, artist.stays.first.end_at)
+              - else
+                = artist.stays.sort_by(&:start_at).map{|x| x.start_at.strftime("%B %Y")}.join('; ')

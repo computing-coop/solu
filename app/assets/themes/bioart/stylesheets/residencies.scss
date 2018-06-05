@@ -1,0 +1,124 @@
+@import 'variables';
+@import '_settings';
+
+.residency_detail, .residency_index {
+  background: #FFF url(/assets/bioart/images/layout/grey_dots_small.png) repeat;
+
+  .section_title {
+    padding: 2.7rem 0;
+    font-family: $rubik;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 5.659em;
+    @include breakpoint(small only) {
+      font-size: 3.4em;
+      font-size: 13vw;
+      line-height: 100%;
+      padding: 1.24rem 0;
+    }
+  }
+
+  .post_image {
+     background-color: white;
+    min-height: 200px;
+    .hashtag {
+      float: left;
+      margin: 0.813em 0.688em;
+      font-family: $titillium;
+      color: #333;
+      font-size: 1rem;
+      background-color: $headerblue;
+      padding: 0.5em 0.313em;
+      position: absolute;
+      top: 23%;
+      
+    }
+  }
+  .post_content {
+    padding: 1.875em 2.625em;
+    background-color: white;
+    margin-bottom: 2.2rem;
+    .title {
+      font-family: $titillium;
+      font-size: 1.4em;
+      line-height: 1.45em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+    .website, .stay .dates {
+      margin-bottom: 1em;
+      font-family: $titillium;
+      font-size: 1rem;
+      line-height: 1.25em;
+      color: #666;
+      a {
+        color: #666;
+        &:hover {
+          color: #ABA;
+        }
+      }
+    }
+    .stay {
+      padding: 1rem 0 2.5rem 0;
+      .description, .description p {
+        font-family: $titillium;
+        font-size: 1rem;
+        line-height: 1.25em;
+        img {
+          clear: both;
+          display: block;
+          padding: 1rem 0;
+        }
+        .controls {
+          margin-bottom: 3rem;
+          border-bottom: 1px solid black;
+          button {
+            &.primary {
+              background-color: white;
+            }
+          }
+        }
+        iframe {
+          &::before {
+             clear: both;
+           }
+          padding: 2rem 0;
+        }
+      }
+    }
+    .navigation {
+      padding: 1.5rem 0 2.5rem 0;
+      .side_link {
+        float: left;
+        font-family: $titillium;
+        margin-bottom: 1em;
+        background-color: #000;
+        background: #fff url(/assets/bioart/images/layout/menubar_arrow_blk.png) 0.4em no-repeat;
+        border: 1px solid #000;
+        padding: 0.4em 0.4em 0.4em 2em;
+        &.prev_post {
+          background: #fff url(/assets/bioart/images/layout/menubar_arrow_reverse_blk.png) 0.4em no-repeat;
+        }
+        padding: 0.5rem 0.4em 0.5em 1.8em;
+        a {
+          text-transform: uppercase;
+          color: #000;
+          &:hover {
+            color: #C5C5C5;
+          }
+        }
+      }
+    }
+  }
+}
+
+.residency_index {
+  .post_content {
+    .artist {
+      span.dates {
+        font-size: 0.8rem;
+        color: #999;
+      }
+    }
+  }
+}

@@ -3,9 +3,18 @@ class Admin::ArtistsController < Admin::BaseController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  handles_sortable_columns
 
   def index
-    @artists = Artist.all
+    order = sortable_column_order do |column, direction|
+      case column
+      when "name"
+        "alphabetical_name #{direction}"
+      else
+        "alphabetical_name asc"
+      end
+    end
+    @artists = Artist.all.order(order)
     set_meta_tags title: 'Artists'
     respond_with(@artists)
   end
@@ -40,13 +49,15 @@ class Admin::ArtistsController < Admin::BaseController
     respond_with @artist , location: admin_artists_path
   end
 
-  private
+  protected
+
     def set_artist
       @artist = Artist.find(params[:id])
     end
 
     def artist_params
-      params.require(:artist).permit(:name, :alphabetical_name, :bio, :country, :website, 
-                                      photos_attributes: [:image, :id,  :_destroy])
+      params.require(:artist).permit(:name, :alphabetical_name, :bio, :country,
+                                      :website, :user_id, photos_attributes:
+                                        [:image, :id,  :_destroy])
     end
 end

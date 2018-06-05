@@ -38,6 +38,7 @@ RSpec.describe 'Static pages', type: :request do
       }
 
       it "should return 422" do
+        pp response.body
         expect(response).to have_http_status(422)
       end
     end

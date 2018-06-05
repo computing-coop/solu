@@ -66,7 +66,8 @@ gem 'devise' #, github: 'plataformatec/devise', branch: :master
 gem 'figaro'
 gem 'formtastic'
 gem 'foundation-rails', '6.2.4.0'
-gem 'foundation-datetimepicker-rails'
+# gem 'foundation-datetimepicker-rails'
+gem 'foundation-datepicker-rails'
 gem 'font-awesome-rails'
 gem 'geocoder'
 gem 'haml'
@@ -84,7 +85,7 @@ gem 'mongoid_search'
 gem 'mongoid_magic_counter_cache'
 gem 'mongoid_taggable'
 gem 'nested_form'
-gem 'nokogiri', '1.6.6.2'
+gem 'nokogiri'#, '1.6.6.2'
 gem "recaptcha", '3.0', require: "recaptcha/rails"
 gem 'redis-rails', '~> 5.0.1'
 gem 'redis'
@@ -106,10 +107,13 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   gem 'mongoid-rspec', github: 'mongoid-rspec/mongoid-rspec'
 end

@@ -1,0 +1,35 @@
+.row
+  .small-12.columns
+    Artist
+
+= semantic_nested_form_for [:admin, @artist], html: {multipart: true, 'data-abide' => ''} do |f|
+  .row
+    .small-12.large-6.columns= f.input :name, input_html: {required: ''}
+    
+  .row
+    .small-6.large-3.columns= f.input :alphabetical_name, input_html: {required: ''}
+  .row
+    .small-6.large-3.columns= f.input :country, as: :country, priority_countries: ["FI", "SE", "DK", "NO"]
+    
+  .row
+    .small-6.large-4.columns= f.input :website
+  .row  
+    .small-12.columns= f.input :bio, as: :ckeditor, input_html: {required: ''}
+
+  .row
+    .small-12.large-6.columns= f.input :user, as: :select, collection: User.with_role(:resident).sort_by(&:name), label: 'Link to a user account (blog posts, etc.)?'
+
+  .row
+    .small-12.large-7.columns
+      = f.fields_for :photos do |ff|
+        = if ff.object.image?
+          = image_tag ff.object.image.url(:box)
+        = ff.input :image
+        = ff.link_to_remove "Remove this photo"
+      = f.link_to_add "Add a photo", :photos
+
+      
+
+  .row
+    .small-12.large-6.columns= f.submit 'Save', class: [:button, :small]
+

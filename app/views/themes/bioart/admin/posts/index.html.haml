@@ -34,6 +34,11 @@
                 %strong In Announcement box!
               - if post.project
                 %p.project= post.project.name
+              - if post.stay
+                %p.stay
+                  Residency:
+                  = post.stay.artist.name + ": "
+                  = date_range(post.stay.start_at, post.stay.end_at)
             %td
               = post.node.name
               %br/

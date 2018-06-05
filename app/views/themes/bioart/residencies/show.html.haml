@@ -1,0 +1,58 @@
+.residency_detail
+  .row
+    .small-10.small-centered.medium-12.columns
+      .section_title
+        Residents
+
+  = render partial: 'residencies/year_menu'
+
+  
+
+  .row
+    .small-12.columns
+      - unless @artist.stays.map(&:photos).flatten.empty?
+
+        .post_image
+          - if @artist.stays.map(&:photos).flatten.size == 1
+
+            = image_tag @artist.stays.map(&:photos).flatten.first.image.url
+          - else
+            .image_carousel{style: @artist.stays.map(&:photos).flatten.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
+
+              - @artist.stays.map(&:photos).flatten.each do |photo|
+                .slide[photo]
+                  = image_tag photo.image.url(:standard)
+                  .thumb= image_tag photo.image.url(:thumb)
+
+            = content_for :jquery do
+              :plain
+                $('.image_carousel').slick({infinite: true,
+                  arrows: true,
+
+
+                  adaptiveHeight: false,
+                  prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+                  nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+                  dots: true,
+                  customPaging: function(slick,index) {
+                     return slick.$slides.eq(index).find('.thumb').html() ;
+                  },
+                  variableWidth: false,
+                  autoplay: true,
+                  autoplaySpeed: 2400,
+                  slidesToScroll: 1,
+                });  
+        .post_content
+          .title= @artist.name
+          - unless @artist.website.blank?
+            .website
+              Website:
+              = link_to @artist.website, @artist.website, target: :_blank
+          - @artist.stays.sort_by(&:start_at).each do |stay|
+            .stay
+              .dates
+                Residency period:
+                = date_range(stay.start_at, stay.end_at)
+              .description
+                = raw stay.residency_description
+

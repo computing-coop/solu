@@ -1,0 +1,36 @@
+.artists_container
+  .row
+    .small-12.columns
+      %h2 Artists
+  .row
+    .small-12.columns
+      %table
+        %thead
+          %tr
+            %th= sortable_column "Name"
+            %th Activities
+            %th
+        %tbody
+          - @artists.each do |artist|
+            %tr
+              %td= artist.name
+              %td
+                - unless artist.exhibitions.empty?
+                  HYBRID MATTERs:
+                  = raw artist.exhibition_list.join(', ')
+                %br/
+                = link_to 'Add a residency period', new_admin_artist_stay_path(artist), class: [:button, :small, :secondary]
+                - artist.stays.sort_by(&:start_at).each do |stay|
+                  %p
+                    %strong= l(stay.start_at, format: :long) + " - " + l(stay.end_at, format: :long)
+                    - if can? :edit, stay
+                      = link_to 'Edit', edit_admin_artist_stay_path(artist, stay),class: [:button, :tiny]
+                    - if can? :destroy, stay
+                      = link_to 'Destroy', [:admin, artist, stay], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :tiny]
+              %td
+                = link_to 'Show', residency_path(artist), class: [:button, :small], target: :_blank
+                - if can? :edit, artist
+                  = link_to 'Edit', edit_admin_artist_path(artist), class:  [:button, :small]
+                - if can? :destroy, artist
+                  = link_to 'Destroy', [:admin, artist], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :small]
+ 

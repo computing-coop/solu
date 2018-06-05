@@ -8,6 +8,7 @@ class User
   #has_many :comments
   has_many :posts, :dependent => :delete
   has_and_belongs_to_many :calls
+  has_one :artist
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -15,7 +15,7 @@ class Post
   belongs_to :subsite, optional: true
   belongs_to :node
   belongs_to :project, optional: true
-  
+  belongs_to :stay, optional: true
   field :wordpress_scope, type: String
   field :wordpress_author, type: String
   field :wordpress_id, type: Integer

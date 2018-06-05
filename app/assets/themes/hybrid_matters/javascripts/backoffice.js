@@ -11,4 +11,4 @@
 // about supported directives.
 //
 //= require chosen-jquery
-//= require foundation-datetimepicker
+//= require foundation-datepicker

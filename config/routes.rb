@@ -66,7 +66,9 @@ Rails.application.routes.draw do
         post :sort
       end
     end
-    resources :artists
+    resources :artists do
+      resources :stays
+    end
     resources :frontitems
     resources :backgrounds
     resources :events
@@ -91,9 +93,9 @@ Rails.application.routes.draw do
     resources :users
     resources :works
   end
-  
+ 
   resources :events
-  
+
   resources :partners
   resources :home
   resources :calls do
@@ -112,6 +114,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  get '/residencies', to: 'artists#index'
+  get '/residencies/:id', to: 'artists#show', as: :residency
   # You can have the root of your site routed with "root"
   get '/' => 'pages#show', id: 'statement', :constraints => { :subdomain => 'symposium' } 
   root to: 'home#home'
