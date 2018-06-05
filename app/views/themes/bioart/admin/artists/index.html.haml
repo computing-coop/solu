@@ -4,6 +4,9 @@
       %h2 Artists
   .row
     .small-12.columns
+      = link_to 'Create new artist', new_admin_artist_path, class: [:button]
+  .row
+    .small-12.columns
       %table
         %thead
           %tr
@@ -33,4 +36,6 @@
                   = link_to 'Edit', edit_admin_artist_path(artist), class:  [:button, :small]
                 - if can? :destroy, artist
                   = link_to 'Destroy', [:admin, artist], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :small]
- 
+.row
+  .small-12.columns
+    = link_to 'Create new artist', new_admin_artist_path, class: [:button]
