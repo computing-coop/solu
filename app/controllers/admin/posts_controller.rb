@@ -27,6 +27,7 @@ class Admin::PostsController < Admin::BaseController
     current_ability.attributes_for(:new, Post).each do |key, value|
       @post.send("#{key}=", value)
     end
+    @post.user = current_user
     @post.attributes = params[:post]
     set_meta_tags title: 'New post'
     authorize! :new, @post
