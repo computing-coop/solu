@@ -31,6 +31,7 @@ class Call
   scope :active, ->() { where(:start_at.lte => Time.current.to_date, :end_at.gte =>  Time.current.to_date) }
   scope :on_menu, ->() { where(add_to_project_menu: true) }
   
+  validates_presence_of :start_at, :end_at, :name
   def headings
     Nokogiri::HTML(self.overview).search('a[name]').map{|x| [x['name'], x.text] }.delete_if{|x| x.first.blank? }
   end

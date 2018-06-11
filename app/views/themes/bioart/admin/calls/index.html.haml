@@ -17,7 +17,9 @@
           %tr
             %td= call.node.name
             %td= call.name
-            %td= l call.end_at, format: :long
+            %td
+              - unless call.end_at.nil?
+                = l call.end_at, format: :long
             %td
               - if can? :read, call
                 = link_to "View all #{call.submissions.count}", admin_call_submissions_path(call), class: [:button, :tiny]
