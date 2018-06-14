@@ -28,7 +28,8 @@ class Project
   field :custom_background_image, type: String
   field :custom_body_background_image, type: String
   field :custom_heading_background_colour, type: String
-  
+
+
   belongs_to :node, optional: true
   belongs_to :subsite, optional: true
   mount_uploader :image, ImageUploader
@@ -45,7 +46,8 @@ class Project
   has_many :pages 
   has_many :activities
   has_many :calls
-  
+  has_and_belongs_to_many :artists
+  accepts_nested_attributes_for :artists
   scope :published, ->() { where(published: true) }
   scope :ongoing, ->() { where(ongoing: true) }
   scope :featured, ->() { where(is_featured: true) }

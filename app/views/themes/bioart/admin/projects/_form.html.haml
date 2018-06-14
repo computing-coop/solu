@@ -48,6 +48,9 @@
   .small-10.medium-6.columns
     = f.input :published, as: :boolean
   .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'
+  - unless f.object.new_record?
+    - if f.object.slug != 'ars-bioarctica'
+      .small-12.large-8.columns= f.input :artists, label: 'Artists involved in this project?', hint: 'Choose as many as necessary.', input_html: {class: :chosen_select} 
   .small-10.medium-6.columns
     = f.input :redirect_url
   .row
@@ -55,6 +58,7 @@
 
 = content_for :jquery do
   :plain
+    $('.chosen_select').chosen();
     $('.colour_picker').spectrum({showInput: true,
     allowEmpty:true,
     preferredFormat: "hex"});
