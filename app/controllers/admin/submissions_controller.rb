@@ -1,7 +1,7 @@
 class Admin::SubmissionsController < Admin::BaseController
   skip_load_resource :only => [:show, :destroy]
   handles_sortable_columns
-  
+  require 'csv'
   def destroy
     @call = Call.find(params[:call_id])
     @submission = @call.submissions.find(params[:id])

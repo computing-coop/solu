@@ -1,0 +1,7 @@
+Name,Email,Date Received,Nationality,Lives
+<%= CSV.generate do |csv|
+   @submissions.each do |cs|
+     csv << [ cs.name, cs.email, l(cs.created_at, format: :long), (ISO3166::Country[cs.nationality].name rescue cs.nationality), [cs.city, (cs.country.nil? ? nil : ISO3166::Country[cs.country].name)].compact.join(', ') ]
+   end 
+  end .html_safe
+  %>

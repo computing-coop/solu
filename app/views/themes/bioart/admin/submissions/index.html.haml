@@ -4,7 +4,9 @@
       %h1
         Submissions for
         = @call.name
-        
+  .row
+    .small-12.columns
+      = link_to 'Export to .CSV', admin_call_submissions_path(@call, format: :csv), class: [:button]
   - unless @submissions.empty?
     .row
       .small-12.columns
