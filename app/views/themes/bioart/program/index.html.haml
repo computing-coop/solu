@@ -1,0 +1,45 @@
+.activities_index.projects_index.program_index
+  .row
+    .small-10.medium-12.columns
+      .bigheading
+        Program
+
+  .row
+    .medium-6.medium-uncentered.columns
+      .row
+        .small-12.columns
+          .heading
+            %span.featured Highlights
+      - @highlights.each do |activity|
+        .row
+          .small-12.columns
+            = link_to activity, class: [:activity, :column] do
+              .activity_image{style: "background: url(#{activity.image.nil? ? theme_image_path('placeholder.png') : activity.image.url(:box).gsub(/development/, 'production')}) center/cover no-repeat"}
+                - if @project
+                  .hashtag
+                    = "##{@project.name}"
+              .activity_content
+                .title= activity.name
+                .date= activity.year_range
+
+                .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)      
+
+    .medium-6.medium-uncentered.columns
+      .row
+        .small-12.columns
+          .heading
+            %span.featured Latest
+      - @activities.reverse.each do |activity|
+        = link_to activity, class: [:activity, :column] do
+          - next if activity.project
+          .activity_image{style: "background: url(#{activity.photos.empty? ? theme_image_path('placeholder.png') : activity.photos.first.image.url(:box).gsub(/development/, 'production')}) center/cover no-repeat"}
+            - if @project
+              .hashtag
+                = "##{@project.name}"
+          .activity_content
+            .title= activity.name
+            .date
+              = date_range(activity.start_at, activity.end_at)
+              %br/
+              = activity.location
+            .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)       

@@ -2,6 +2,7 @@
 @import '_settings';
 
 
+
 .projects_index {
   padding: 1rem 0 2.5rem 1rem;
   .heading {
@@ -405,6 +406,39 @@
   ul.slick-dots {
     li.slick-active {
       border: 3px solid $red !important;
+    }
+  }
+}
+
+.program_index {
+  .bigheading {
+    margin-left: 0;
+    font-size: 6rem;
+    text-transform: uppercase;
+    font-family: $rubik;
+    @include breakpoint(small only) {
+      font-size: 3.4em;
+      font-size: 12vw;
+      line-height: 100%;
+      padding: 1.24rem 0 2.24rem 0;
+    }
+  }
+  .heading {
+    margin-left: 0;
+    padding: 1rem 0 3.5rem 0;
+  }
+  a.activity.column {
+    padding-left: 0;
+    .activity_content {
+      .date {
+        color: #666;
+      }
+      .location {
+        color: #666;
+      }
+      .excerpt {
+        margin-top: 1rem;    
+      }
     }
   }
 }
