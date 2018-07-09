@@ -21,7 +21,7 @@ class Artist
 
   def has_page?
     (!stays.map(&:residency_description).flatten.delete_if{|x| x.blank? }.empty? && 
-      !stays.map(&:photos).flatten.compact.empty?) || !bio.blank? || stays.map(&:posts).flatten.size > 0
+      !stays.map(&:photos).flatten.compact.empty?) || !bio.blank? || stays.map(&:posts).flatten.size > 0 || !projects.empty?
   end
 
   def sort_order
