@@ -33,5 +33,17 @@ class Work
   def artist_names
     artists.blank? ? '' :  artists.sort_by(&:alphabetical_name).map{|x| '<a href="/artists/' + x.slug + '">' + x.name + '</a>'}.join(' and ')
   end
+
+  def image
+    photos&.first.image
+  end
+
+  def name
+    title + ' in ' + activities.first.name
+  end
+
+  def year_range
+    activities.first.start_at.year
+  end
   
 end

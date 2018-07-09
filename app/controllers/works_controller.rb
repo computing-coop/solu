@@ -42,10 +42,12 @@ class WorksController < ApplicationController
           render layout: @site.layout
         end
       else
-
-        set_meta_tags title: @work.title
-        render layout: @site.layout
-
+        if request.host !~ /exhibitions/
+          redirect_to 'http://exhibitions.hybridmatters.net' + request.path.gsub(/\/(grenland|nikolaj|forumbox)/, '')
+        else
+          set_meta_tags title: @work.title
+          render layout: @site.layout
+        end
       end
     end
 

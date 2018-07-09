@@ -72,4 +72,20 @@
                       .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
                       .index_author
                         = "#{post.published_at.strftime('%-d %B %Y')}"            
+      - unless @artist.projects.empty? && @artist.works.empty?
+        .post_content
+          .title= @artist.name + ": Other projects"
 
+          - [@artist.works, @artist.projects].flatten.compact.uniq.each do |project|
+            .row.projects_container
+              .small-12.columns
+                = link_to project do
+                  .row
+                    .columns.small-12.project
+                      .row.inner
+                        .small-12.large-2.hide-for-medium-only.project_icon.columns
+                          = image_tag project.image.url(:box).gsub(/development/, 'production')
+                        .small-12.medium-12.large-10.project_content.columns
+                          .title= project.name
+                          .years= project.year_range
+                          .description= raw truncate_html(project.description, length: 250)
