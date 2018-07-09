@@ -31,7 +31,6 @@
             %span.featured Latest
       - @activities.reverse.each do |activity|
         = link_to activity, class: [:activity, :column] do
-          - next if activity.project
           .activity_image{style: "background: url(#{activity.photos.empty? ? theme_image_path('placeholder.png') : activity.photos.first.image.url(:box).gsub(/development/, 'production')}) center/cover no-repeat"}
             - if @project
               .hashtag

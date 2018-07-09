@@ -58,6 +58,9 @@
         }
       }
     }
+    .year {
+      margin-bottom: 2rem;
+    }
     .stay {
       padding: 1rem 0 2.5rem 0;
       .description, .description p {
@@ -115,6 +118,9 @@
 .residency_index {
   .post_content {
     .artist {
+      a {
+        color: $fuschia;
+      }
       span.dates {
         font-size: 0.8rem;
         color: #999;
