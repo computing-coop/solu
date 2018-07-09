@@ -42,17 +42,34 @@
                   autoplaySpeed: 2400,
                   slidesToScroll: 1,
                 });  
-        .post_content
-          .title= @artist.name
-          - unless @artist.website.blank?
-            .website
-              Website:
-              = link_to @artist.website, @artist.website, target: :_blank
-          - @artist.stays.sort_by(&:start_at).each do |stay|
-            .stay
-              .dates
-                Residency period:
-                = date_range(stay.start_at, stay.end_at)
+      .post_content
+        .title= @artist.name
+        - unless @artist.website.blank?
+          .website
+            Website:
+            = link_to @artist.website, @artist.website, target: :_blank
+        - unless @artist.bio.blank?
+          .bio
+            = simple_format  @artist.bio
+        - @artist.stays.sort_by(&:start_at).each do |stay|
+          .stay
+            .dates
+              Residency period:
+              = date_range(stay.start_at, stay.end_at)
+            - unless stay.residency_description.blank?
               .description
                 = raw stay.residency_description
+          - unless stay.posts.published.empty?
+            .residency_blog_index
+              .row.small-up-1.medium-up-2.large-up-3.xxlarge-up-3.post_carousel
+                - stay.posts.published.order(published_at: :desc).take(12).each do |post|
+                  = link_to post, class: [:post, :columns] do
+                    .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
+                      -#.hashtag
+                      -#  = "##{post.node.name}"
+                    .post_content
+                      .title= truncate_html(post.title, length: 40)
+                      .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
+                      .index_author
+                        = "#{post.published_at.strftime('%-d %B %Y')}"            
 

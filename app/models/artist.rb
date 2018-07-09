@@ -16,11 +16,12 @@ class Artist
   validates_presence_of :name, :country
   has_and_belongs_to_many :works
   has_and_belongs_to_many :projects
+  has_many :posts, foreign_key: :user_id
   belongs_to :user, optional: true
 
   def has_page?
-    !stays.map(&:residency_description).flatten.delete_if{|x| x.blank? }.empty? && 
-      !stays.map(&:photos).flatten.compact.empty?
+    (!stays.map(&:residency_description).flatten.delete_if{|x| x.blank? }.empty? && 
+      !stays.map(&:photos).flatten.compact.empty?) || !bio.blank? || stays.map(&:posts).flatten.size > 0
   end
 
   def sort_order

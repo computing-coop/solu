@@ -61,8 +61,27 @@
     .year {
       margin-bottom: 2rem;
     }
+    .residency_blog_index {
+      .post_carousel {
+        a.post {
+          .post_content {
+            background-color: #CCC;
+            color: black;
+            padding: 1rem 1.5rem;
+            .index_author {
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              font-family: $rubik;
+              margin-top: 0.5rem;
+            }
+          }
+        }
+      }  
+    }
+
     .stay {
       padding: 1rem 0 2.5rem 0;
+
       .description, .description p {
         font-family: $titillium;
         font-size: 1rem;
@@ -128,3 +147,4 @@
     }
   }
 }
+

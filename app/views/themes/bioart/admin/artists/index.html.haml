@@ -12,6 +12,7 @@
           %tr
             %th= sortable_column "Name"
             %th Activities
+            %th metadata
             %th
         %tbody
           - @artists.each do |artist|
@@ -30,6 +31,8 @@
                       = link_to 'Edit', edit_admin_artist_stay_path(artist, stay),class: [:button, :tiny]
                     - if can? :destroy, stay
                       = link_to 'Destroy', [:admin, artist, stay], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :tiny]
+              %td
+                = pluralize(artist.stays.map(&:posts).flatten.size, 'residency blog post')
               %td
                 = link_to 'Show', residency_path(artist), class: [:button, :small], target: :_blank
                 - if can? :edit, artist
