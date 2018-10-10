@@ -73,7 +73,7 @@
                   });
                   wavesurfer_#{sound.id.to_s}.load('#{sound.soundfile.url}');
 
-          = raw clean_whitespace(sanitize(@post.body, tags: %w{img a p br i em bold strong b ol ul li u}, attributes: %w(href target src)))
+          = raw clean_whitespace(sanitize(@post.body.gsub(/&nbsp;/, ' '), tags: %w{img a p br i em bold strong b ol ul li u}, attributes: %w(href target src)))
         .navigation
           - if @project.nil?
             - unless @post.previous.nil?

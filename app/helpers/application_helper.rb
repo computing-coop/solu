@@ -7,7 +7,7 @@ module ApplicationHelper
 
         p.remove if p.inner_html.strip.blank?
     end
-    return document.gsub(/&nbsp;/, ' ')
+    return document
   end
   
   def date_range(from_date, until_date, options = {})
