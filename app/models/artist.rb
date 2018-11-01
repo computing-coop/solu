@@ -11,7 +11,7 @@ class Artist
   slug :name, history: true
 
   embeds_many :photos, as: :photographic, cascade_callbacks: true
-  has_many :stays
+  has_many :stays, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true
   validates_presence_of :name, :country
   has_and_belongs_to_many :works
