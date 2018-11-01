@@ -28,7 +28,7 @@
       = f.input :user, collection: User.accessible_by(current_ability).sort_by(&:name), label: 'Posted by: ', member_label: Proc.new{|x| x.name + " / " + x.email}, include_blank: false
 
       - if (!current_user&.artist.nil? && !current_user&.artist.stays.empty? ) || (f.object.user&.artist && !f.object.user&.artist.stays.empty?)
-        = f.input :stay, collection: [current_user.artist&.stays, f.object.user.artist.stays].flatten.compact.sort_by(&:start_at), label: 'Part of residency: ', member_label: Proc.new{|stay| stay.artist.name + ": " + date_range(stay.start_at, stay.end_at) }
+        = f.input :stay, collection: [current_user&.artist&.stays, f.object.user&.artist.stays].flatten.compact.sort_by(&:start_at), label: 'Part of residency: ', member_label: Proc.new{|stay| stay.artist.name + ": " + date_range(stay.start_at, stay.end_at) }
       - elsif !f.object.wordpress_author.blank?
         = f.input :stay, collection: Stay.all.order(&:start_at), label: 'Part of residency: ', member_label: Proc.new{|stay| stay.artist.name + ": " + date_range(stay.start_at, stay.end_at) }
   .row.expanded
