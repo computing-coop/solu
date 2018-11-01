@@ -391,6 +391,8 @@ GEM
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     rolify (5.2.0)
+    rollbar (2.18.0)
+      multi_json
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -534,6 +536,7 @@ DEPENDENCIES
   redis
   redis-rails (~> 5.0.1)
   rolify
+  rollbar
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   selenium-webdriver

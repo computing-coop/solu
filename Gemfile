@@ -15,15 +15,11 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 # gem 'coffee-rails', '~> 4.1.0'
 
-
-
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'execjs', :group => :production
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-
 
 # bundle exec rake doc:rails generates the API under doc/api.
 #gem 'sdoc', '~> 0.4.0', group: :doc
@@ -90,6 +86,7 @@ gem "recaptcha", '3.0', require: "recaptcha/rails"
 gem 'redis-rails', '~> 5.0.1'
 gem 'redis'
 gem 'rolify'
+gem 'rollbar'
 gem 'themes_for_rails', github: 'cenotaph/themes_for_rails', branch: 'master' #, ref: '98c8db2'
 gem 'truncate_html'
 gem 'videojs_rails'
