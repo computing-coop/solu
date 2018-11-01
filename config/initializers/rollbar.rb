@@ -61,7 +61,7 @@ Rollbar.configure do |config|
   #   user: 'username_if_auth_required',
   #   password: 'password_if_auth_required'
   # }
-
+  config.exception_level_filters.merge!('ActionController::RoutingError' => 'ignore')
   # If you run your staging application instance in production environment then
   # you'll want to override the environment reported by `Rails.env` with an
   # environment variable like this: `ROLLBAR_ENV=staging`. This is a recommended
