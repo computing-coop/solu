@@ -59,8 +59,8 @@
             .menu_wrapper
               .social.hide-for-small-only
                 = link_to image_tag('hybrid_matters/images/icon_fb.png', onmouseover: "this.src='#{asset_path('hybrid_matters/images/icon_fb_hover.png')}'", onmouseout: "this.src='#{asset_path('hybrid_matters/images/icon_fb.png')}'"), 'https://www.facebook.com/groups/437255773056631/', target: :_blank, class: :facebook_link
-                = link_to image_tag('/assets/hybrid_matters/images/icon_twitter.png', onmouseover: "this.src='#{asset_path('hybrid_matters/images/icon_twitter_hover.png')}'", onmouseout: "this.src='#{asset_path('hybrid_matters/images/icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
-                = link_to image_tag('/assets/hybrid_matters/images/icon_post.png', onmouseover: "this.src='#{asset_path('hybrid_matters/images/icon_post_hover.png')}'", onmouseout: "this.src='#{asset_path('hybrid_matters/images/icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
+                = link_to image_tag('hybrid_matters/images/icon_twitter.png', onmouseover: "this.src='#{asset_path('hybrid_matters/images/icon_twitter_hover.png')}'", onmouseout: "this.src='#{asset_path('hybrid_matters/images/icon_twitter.png')}'"), 'http://twitter.com/hybridmatters', target: :_blank, class: :twitter_link
+                = link_to image_tag('hybrid_matters/images/icon_post.png', onmouseover: "this.src='#{asset_path('hybrid_matters/images/icon_post_hover.png')}'", onmouseout: "this.src='#{asset_path('hybrid_matters/images/icon_post.png')}'"), 'mailto:info@bioartsociety.fi', class: :maillink
               .rest
                 .row.show-for-small-only
                   = render partial: 'layouts/mobile_dropdown'
