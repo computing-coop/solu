@@ -6,7 +6,7 @@ class User
   belongs_to :partner, optional: true
   accepts_nested_attributes_for :roles
   #has_many :comments
-  has_many :posts, :dependent => :delete
+  has_many :posts, :dependent => :restrict_with_exception
   has_and_belongs_to_many :calls
   has_one :artist
   # Include default devise modules. Others available are:

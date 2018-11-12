@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 # source 'http://gems.github.com'
 
-gem 'mongoid'
+gem 'mongoid', '6.4.2'
 
 ruby '2.4.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.4'
+gem 'rails', '5.1.6'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

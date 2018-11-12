@@ -69,7 +69,10 @@ class Post
   end
   
   def category
-    [activities.map{|x| x.subsite? ? '<a href="http://' + x.subsite.hostname + '">' + x.name + '</a>' : '<a href="/activities/' + x.slug + '/posts">' + x.name + '</a>'}, postcategories.map{|x|  '<a href="/category/' + x.slug + '">' + x.name + '</a>'}].flatten.compact.join(' / ')
+    [activities.map{|x| x.subsite? ? 
+      '<a href="http://' + x.subsite.hostname + '">' + x.name + '</a>' :
+       '<a href="/activities/' + x.slug + '/posts">' + x.name + '</a>'}, postcategories.map{|x|  '<a href="/category/' + x.slug + '">' + x.name + '</a>'}
+     ].flatten.compact.join(' / ')
   end
   
   def previous_by_project

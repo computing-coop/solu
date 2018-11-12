@@ -2,7 +2,7 @@ class Activitytype
   include Mongoid::Document
   field :name, type: String
   field :sort_order, type: Integer
-  has_many :activities, :dependent => :delete
+  has_many :activities, dependent: :restrict_with_exception 
   field :show_in_secondary_menu, type: Boolean
   field :secondary_menu_name, type: String
   
