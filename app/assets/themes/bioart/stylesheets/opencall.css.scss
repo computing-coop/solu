@@ -7,7 +7,7 @@
     padding: 1.5rem 0;
   }
   
-  background: url(/assets/bioart/images/layout/pink_dots_small.png) repeat;
+  background: asset-url("bioart/images/layout/pink_dots_small.png") repeat;
   .text {
     opacity: 0.9;
     clear: both;
@@ -175,7 +175,7 @@
           float: right;
         }
         &.choice > label > input:checked +img {
-          background: url(/assets/bioart/images/icons/checked_radio.png);
+          background: asset-url("bioart/images/icons/checked_radio.png");
         	background-repeat: no-repeat;
         	background-position:center center;
         	background-size:30px 30px;

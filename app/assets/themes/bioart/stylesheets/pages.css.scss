@@ -95,7 +95,7 @@
       clear: both;
       margin-bottom: 1em;
 //      background-color: #000;
-      background: white url(/assets/bioart/images/layout/menubar_arrow_blk.png)  0.4em no-repeat;
+      background: white asset-url("bioart/images/layout/menubar_arrow_blk.png")  0.4em no-repeat;
       border: 1px solid #000;
       padding: 0.4em 0.4em 0.4em 2em;
       a {
@@ -154,7 +154,7 @@
       ul {
         li {
           font-family: $titillium;
-          list-style-image: url(/assets/bioart/images/grey_box.png);
+          list-style-image: asset-url("bioart/images/grey_box.png");
         }
       }
     }
@@ -243,7 +243,7 @@
         ul {
           li {
             font-family: $titillium;
-            list-style-image: url(/assets/bioart/images/grey_box.png);
+            list-style-image: asset-url("bioart/images/grey_box.png");
           }
         }
       }
@@ -272,7 +272,7 @@
       ul {
         li {
           font-family: $titillium;
-          list-style-image: url(/assets/bioart/images/grey_box.png);
+          list-style-image: asset-url("bioart/images/grey_box.png");
         }
       }
     }

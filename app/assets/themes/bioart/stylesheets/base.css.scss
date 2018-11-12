@@ -15,7 +15,7 @@ header {
   }
   background-color: $headerblue;
   .pattern {
-    background: url(/assets/bioart/images/layout/menu_dot.png) repeat;
+    background: asset-url("bioart/images/layout/menu_dot.png") repeat;
     max-height: 11.25em;
     padding: 3.125em 0;
     @include breakpoint(small only) {
@@ -34,7 +34,7 @@ header {
         border: none;
         height: 2.75rem;
         padding-left: 20px;
-        background:  url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #66ffcc;
+        background:  asset-url("bioart/images/layout/mag_glass.png") no-repeat 2px center  #66ffcc;
         &::-webkit-input-placeholder {font-family: $titillium; color: #000; text-transform: uppercase; 
          
         }
@@ -97,7 +97,7 @@ header {
               border: none;
               height: 2.75rem;
               padding-left: 20px;
-              background:  url(/assets/bioart/images/layout/mag_glass.png) no-repeat 2px center  #66ffcc;
+              background:  asset-url("bioart/images/layout/mag_glass.png") no-repeat 2px center  #66ffcc;
               &::-webkit-input-placeholder {font-family: $titillium; color: #000; text-transform: uppercase; 
                
               }
@@ -123,7 +123,7 @@ header {
         }
         a {
           color: #FFF;
-          background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
+          background: black asset-url("bioart/images/layout/menubar_arrow.png")  0.4em no-repeat;
 
           padding: 1em 0.7em 1em 2em;
           margin-right: 0.5em;
@@ -224,7 +224,7 @@ header {
 }
 
 footer {
-  background: $headerblue url(/assets/bioart/images/layout/menu_dot.png) repeat;
+  background: $headerblue asset-url("bioart/images/layout/menu_dot.png") repeat;
   min-height: 7.5rem;
   padding: 2rem 0;
   font-size: 1rem;

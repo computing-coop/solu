@@ -62,7 +62,7 @@
 
 
 .activity_detail {
-  background: #FFF url(/assets/bioart/images/layout/grey_dots_small.png) repeat;
+  background: #FFF asset-url("bioart/images/layout/grey_dots_small.png") repeat;
   padding: 2.7rem 0;
   .activity_image {
 
@@ -90,7 +90,7 @@
       clear: both;
       margin-bottom: 0.25rem;
 //      background-color: #;
-      background: white url(/assets/bioart/images/layout/menubar_arrow_blk.png)  0.4em no-repeat;
+      background: white asset-url("bioart/images/layout/menubar_arrow_blk.png")  0.4em no-repeat;
       border: 1px solid #000;
       padding: 0.4em 0.4em 0.4em 2em;
       a {
