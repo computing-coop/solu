@@ -3,7 +3,7 @@
 
 .activities_index {
   padding: 3rem 0;
-  background: #FFF url(/assets/bioart/images/layout/grey_dots_small.png) repeat;
+  background: #FFF asset-url("bioart/images/layout/grey_dots_small.png") repeat;
 
   .red {
     background-color: $fuschia;

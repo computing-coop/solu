@@ -36,9 +36,9 @@
 }
 
 .whats_new {
-  background: #f7f7f6 url(/assets/bioart/images/layout/grey_dots_small.png) repeat;
+  background: #f7f7f6 asset-url("bioart/images/layout/grey_dots_small.png") repeat;
   &.green {
-    background: $headerblue url(/assets/bioart/images/layout/green_dots_small.png) repeat;
+    background: $headerblue asset-url("bioart/images/layout/green_dots_small.png") repeat;
   }
   .section_title {
     padding: 4.24rem 0;
@@ -194,7 +194,7 @@
         clear: both;
         margin-bottom: 1em;
         background-color: #000;
-        background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
+        background: black asset-url("bioart/images/layout/menubar_arrow.png")  0.4em no-repeat;
 
         padding: 0.5rem 0.4em 0.5em 1.8em;
         a {
@@ -268,7 +268,7 @@
       margin-bottom: 1em;
       background-color: #FFF;
       border: 1px solid #000;
-      background: white url(/assets/bioart/images/layout/menubar_arrow_blk.png)  0.4em no-repeat;
+      background: white asset-url("bioart/images/layout/menubar_arrow_blk.png")  0.4em no-repeat;
       font-family: $titillium;
       padding: 0.5rem 0.4em 0.5em 1.8em;
       a {
@@ -283,7 +283,7 @@
   }
 }
 .featured_projects {
-  background: #ececee url(/assets/bioart/images/fp_bg.png) center/cover no-repeat;
+  background: #ececee asset-url("bioart/images/fp_bg.png") center/cover no-repeat;
   padding-bottom: 8.75rem;
   .section_title {
     padding: 2.625rem 0;
@@ -364,7 +364,7 @@
 
 .contact {
   display: none;
-  background: #FFF url(/assets/bioart/images/layout/blue_halftone.png) repeat;
+  background: #FFF asset-url("bioart/images/layout/blue_halftone.png") repeat;
   padding: 3rem 0 5.375rem 0 ;
   .text {
     opacity: 0.9;
@@ -419,7 +419,7 @@
         clear: both;
         margin-bottom: 1em;
         background-color: #000;
-        background: black url(/assets/bioart/images/layout/menubar_arrow.png)  0.4em no-repeat;
+        background: black asset-url("bioart/images/layout/menubar_arrow.png")  0.4em no-repeat;
 
         padding: 0.5rem 0.4em 0.5em 1.8em;
         a {
