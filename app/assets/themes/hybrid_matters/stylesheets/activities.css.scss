@@ -108,7 +108,7 @@ nav.activities-bar {
       margin: 0 0.688em 0.688em 0.688em;
       #map_left {
   //      background-size: contain;
-        background: url('/assets/hybrid_matters/images/map-left-dotless.png') no-repeat left top #dbd9d9;
+        background: asset-url('hybrid_matters/images/map-left-dotless.png') no-repeat left top #dbd9d9;
         width: 44%;
         min-height: 1847px;
         float: left;
@@ -117,7 +117,7 @@ nav.activities-bar {
     
       #map_right {
         
-        background: url('/assets/hybrid_matters/images/map-right-dotless.png') no-repeat right 96px #dbd9d9;
+        background: asset-url('hybrid_matters/images/map-right-dotless.png') no-repeat right 96px #dbd9d9;
         float: right;
         width: 56%;
         min-height: 1900px;
@@ -280,7 +280,7 @@ nav.activities-bar {
 }
 
 .vertical-line {
-  background: url(image_path('/assets/hybrid_matters/images/arrowline.png')) repeat-y 23px top;
+  background: asset-url('hybrid_matters/images/arrowline.png') repeat-y 23px top;
   padding-top: 2rem;
   border-collapse: collapse;
   border: none;
@@ -306,7 +306,7 @@ nav.activities-bar {
   .circle {
 //    float: left;
     display: table-cell;
-    background: url(image_path('/assets/hybrid_matters/images/circle.png')) no-repeat center center;
+    background: asset-url('hybrid_matters/images/circle.png') no-repeat center center;
     font-weight: 300;
     color: #FFFFFF;
     width: 55px;

@@ -124,7 +124,7 @@
         display: none;
       }
       #map_right {
-        background: url(image_path('map_transp_mobile.png')) no-repeat right 840px #dbd9d9;
+        background: asset-url('map_transp_mobile.png') no-repeat right 840px #dbd9d9;
         width: 100%;
         float: left;
 
@@ -262,13 +262,13 @@
       font-size: 0.6rem;
     }
     &.type1 {
-      background: url(image_path('mobile_top_image1.png')) no-repeat top center;
+      background: asset-url('mobile_top_image1.png') no-repeat top center;
     }
     &.type2 {
-      background: url(image_path('mobile_top_image2.png')) no-repeat top center;
+      background: asset-url('mobile_top_image2.png') no-repeat top center;
     }
     &.type3 {
-      background: url(image_path('mobile_top_image3.png')) no-repeat top center;
+      background: asset-url('mobile_top_image3.png') no-repeat top center;
     }
     height: 175px;
     .logo-container {

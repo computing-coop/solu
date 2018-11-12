@@ -6,7 +6,7 @@
 header.symposium  {
 
   nav.top-bar {
-    background: url(image_path('/assets/hybrid_matters/images/menu_module_s.png')) repeat-x;
+    background: asset-url('hybrid_matters/images/menu_module_s.png') repeat-x;
     
     .hor-container .menu_wrapper ul.top-bar-menu, .hor-container .down_arrow_wrapper ul.top-bar-menu {
       left: calc(21% - 110px);
@@ -15,11 +15,11 @@ header.symposium  {
     .down_arrow_wrapper {
       ul.top-bar-menu {
         li {
-          &.active { background: url(image_path('/assets/hybrid_matters/images/selected_down_s.png')) no-repeat center center; }
+          &.active { background: asset-url('hybrid_matters/images/selected_down_s.png') no-repeat center center; }
         }
         .together {
           &.active {
-            background: url(image_path('/assets/hybrid_matters/images/selected_down_s.png')) no-repeat center center; 
+            background: asset-url('hybrid_matters/images/selected_down_s.png') no-repeat center center; 
           }
         }
       }

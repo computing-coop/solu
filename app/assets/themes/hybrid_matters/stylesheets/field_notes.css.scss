@@ -15,7 +15,7 @@ nav.sticky  {
 
 header.field_notes  {
   .top-bar {
-    background: url(image_path('/assets/hybrid_matters/images/menu_module_fn.png')) repeat-x;
+    background: asset-url('hybrid_matters/images/menu_module_fn.png') repeat-x;
   }
   nav.top-bar {
     .menu_wrapper, .down_arrow_wrapper {
@@ -28,11 +28,11 @@ header.field_notes  {
     .down_arrow_wrapper {
       ul.top-bar-menu {
         li {
-          &.active { background: url(image_path('/assets/hybrid_matters/images/selected_down_fn.png')) no-repeat center center; }
+          &.active { background: asset-url('hybrid_matters/images/selected_down_fn.png') no-repeat center center; }
         }
         .together {
           &.active {
-            background: url(image_path('/assets/hybrid_matters/images/selected_down_fn.png')) no-repeat center center; 
+            background: asset-url('hybrid_matters/images/selected_down_fn.png') no-repeat center center; 
           }
         }
       }

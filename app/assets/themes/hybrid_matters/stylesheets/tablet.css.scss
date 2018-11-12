@@ -54,11 +54,11 @@
       }
       .inner_container {
         #map_left {
-          background: url(image_path('map-left-mid.png')) no-repeat left top #dbd9d9;
+          background: asset-url('map-left-mid.png') no-repeat left top #dbd9d9;
           min-height: 1062px;
         }
         #map_right {
-          background: url(image_path('map-right-mid.png')) no-repeat right top #dbd9d9;
+          background: asset-url('map-right-mid.png') no-repeat right top #dbd9d9;
           min-height: 1062px;
           
 

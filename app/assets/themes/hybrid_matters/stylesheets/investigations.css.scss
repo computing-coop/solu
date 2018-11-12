@@ -2,15 +2,15 @@
 header.investigations  {
 
   nav.top-bar {
-    background: url(image_path('/assets/hybrid_matters/images/menu_module_investigations.png')) repeat-x;
+    background: asset-url('hybrid_matters/images/menu_module_investigations.png') repeat-x;
     .down_arrow_wrapper {
       ul.top-bar-menu {
         li {
-          &.active { background: url(image_path('/assets/hybrid_matters/images/selected_down_investigations.png')) no-repeat center center; }
+          &.active { background: asset-url('hybrid_matters/images/selected_down_investigations.png') no-repeat center center; }
         }
         .together {
           &.active {
-            background: url(image_path('/assets/hybrid_matters/images/selected_down_investigations.png')) no-repeat center center; 
+            background: url('hybrid_matters/images/selected_down_investigations.png') no-repeat center center; 
           }
         }
       }
