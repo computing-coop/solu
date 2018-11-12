@@ -1,7 +1,7 @@
 .row.expanded
   .medium-2.columns.medium-offset-1.hide-for-small-only
     - if post.photos.empty?
-      = link_to  image_tag('/assets/hybrid_matters/images/hm_logo.png'), post
+      = link_to  image_tag('hybrid_matters/images/hm_logo.png'), post
     - else
       .front_icon= link_to image_tag(post.photos.first.image.url(:blog)), post
   .medium-9.small-12.columns
