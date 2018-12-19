@@ -1,5 +1,5 @@
 class ParticipantsController < ApplicationController
-  
+ 
   def create
     if @site.nil?
       redirect_to '/'
@@ -18,10 +18,12 @@ class ParticipantsController < ApplicationController
       end
     end
   end
-  
+
   def index
     if @site.nil?
       redirect_to '/'
+    elsif @site.symposium.nil?
+      redirect_to 'https://hybridmatters.net/'
     else
       @participants = @site.symposium.groups.map{|x| x.participants.approved }.flatten.sort_by{|x| x.last_name.strip }.to_a.delete_if{|x| x.group.name == 'Public'}
       set_meta_tags title: @site.symposium.name + ": Participants"
