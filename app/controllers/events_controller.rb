@@ -1,24 +1,26 @@
 class EventsController < ApplicationController
-  
+
   def index
     if @site.nil?
       @events = Event.published.order(start_at: :desc)
       set_meta_tags title: "Events"
     else
-      @events = @site.activity.events.published.order(start_at: :desc)
-      set_meta_tags title: @site.name + ": Events"
-      render layout: @site.layout
+      if @site.activity.nil?
+        redirect_to 'https://hybridmatters.net/'
+      else
+        @events = @site.activity.events.published.order(start_at: :desc)
+        set_meta_tags title: @site.name + ": Events"
+        render layout: @site.layout
+      end
     end
   end
-  
-  def show
 
+  def show
     if @site.nil?
 
       @event = Event.find(params[:id])
       if @event.subsite
-        # render layout: @event.subsite.layout
-        
+        # render layout: @event.subsite.layout     
         redirect_to subdomain: @event.subsite.subdomain
       elsif @event.activity
         if @event.activity.subsite
@@ -26,8 +28,6 @@ class EventsController < ApplicationController
         end
       end
     else
-
-
       if @site.symposium
         if @site.activity
           begin
@@ -44,8 +44,7 @@ class EventsController < ApplicationController
         end
       end
       render layout: @site.layout
-    
+
     end
-  end
-      
+  end 
 end
