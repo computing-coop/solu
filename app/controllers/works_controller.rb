@@ -1,19 +1,19 @@
 class WorksController < ApplicationController
-  
+ 
   def index
-
+    if params[:place]
+      @activity = Activity.find_by(place_slug: params[:place])
+    end
     if @activity.nil?
       @works = Work.order(start_at: :desc)
       set_meta_tags title: "Works"
-     
     else
       @works = @activity.works.order(title: :asc)
       set_meta_tags title: @activity.name + ": Works"
-
     end
-    render layout: @site.layout
+    render layout: 'exhibitions' #@site.layout
   end
-  
+
   def show
     @work = Work.find(params[:id])
 

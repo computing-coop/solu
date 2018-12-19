@@ -1,6 +1,6 @@
 class PartnersController < ApplicationController
   respond_to :html
-  
+
   def index
     if @node.name =='bioart'
       redirect_to host: 'hybridmatters.net'
@@ -10,11 +10,11 @@ class PartnersController < ApplicationController
       respond_with @partners
     end
   end
- 
+
   def show
-    if @node.name =='bioart'
+    if @node.name == 'bioart'
       redirect_to host: 'hybridmatters.net'
-    else    
+    else 
       @partner = Partner.find(params[:id])
       set_meta_tags title: @partner.name
       respond_with @partner
