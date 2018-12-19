@@ -70,7 +70,11 @@ class PostsController < ApplicationController
     else
       @post = Post.find(params[:id])
       if @post.node != @node
-        redirect_to subdomain: @post.node.subdomains
+        if @post.node.name == 'bioart'
+          redirect_to host: 'bioartsociety.fi'
+        else
+          redirect_to subdomain: @post.node.subdomains
+        end
       else
         set_meta_tags title: @post.title
         if @site.nil?
