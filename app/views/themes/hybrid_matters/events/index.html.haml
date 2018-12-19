@@ -4,10 +4,10 @@
       .medium-2.columns.navigator.right
         .magellan-scrollnav
           %div
-            -#{:"data-magellan-expedition" => :fixed, :"data-options" => "threshold:120;destination_threshold:120;fixed_top:220;offset_by_height:false" }
-            / %dl.events_list
-            /   - @events.each_with_index do |g, count|
-            /     %li= link_to (count + 1).to_s + ". " +  g.name, '#', onclick: "scrollTo('a[name=#{g.slug}]');return false;"
+            -# -#{:"data-magellan-expedition" => :fixed, :"data-options" => "threshold:120;destination_threshold:120;fixed_top:220;offset_by_height:false" }
+            -# / %dl.events_list
+            -# /   - @events.each_with_index do |g, count|
+            -# /     %li= link_to (count + 1).to_s + ". " +  g.name, '#', onclick: "scrollTo('a[name=#{g.slug}]');return false;"
 
     .medium-2.columns.medium-offset-1.hide-for-small-only
       - if event.photos.empty?
