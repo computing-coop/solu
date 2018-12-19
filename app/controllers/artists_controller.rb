@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
- 
+
   def index
     if @node.name == 'bioart'
       @artists = Artist.all.order(alphabetical_name: :asc)
@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
         set_meta_tags title: @activity.name + ": Artists"
 
       end
-      render layout: @site.layout
+      render layout: 'exhibitions'
     end
   end
 
