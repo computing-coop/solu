@@ -2,7 +2,7 @@ class SymposiumRegistrationsController <  ApplicationController
 
   
   def new
-    if @site.nil?
+    if @site.nil? || @site.symposium.nil?
       redirect_to '/'
     else
       @participant = Participant.new
