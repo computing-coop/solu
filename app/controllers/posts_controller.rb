@@ -71,33 +71,34 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       if @post.node != @node
         redirect_to subdomain: @post.node.subdomains
-      end
-      set_meta_tags title: @post.title
-      if @site.nil?
-        if @post.subsite
-          redirect_to subdomain: @post.subsite.subdomain #layout: @post.subsite.layout
-        elsif !@post.activities.empty?
-          if @post.activities.first.subsite
-            redirect_to subdomain: @post.activities.first.subsite.subdomain #render layout: @post.activity.first.subsite.layout
-          end
-        end
-
       else
-        # check it's right layout
-        if @post.subsite
-          if @site != @post.subsite
-            redirect_to request.url.sub(@site.subdomain, @post.subsite.subdomain)
-          else
-            render layout: @site.layout
+        set_meta_tags title: @post.title
+        if @site.nil?
+          if @post.subsite
+            redirect_to subdomain: @post.subsite.subdomain #layout: @post.subsite.layout
+          elsif !@post.activities.empty?
+            if @post.activities.first.subsite
+              redirect_to subdomain: @post.activities.first.subsite.subdomain #render layout: @post.activity.first.subsite.layout
+            end
           end
-        elsif !@post.activities.empty?
-          if @site != @post.activities.first.subsite
-            redirect_to request.url.sub(@site.subdomain, @post.activities.first.subsite.subdomain)
-          else
-            render layout: @site.layout
-          end
+
         else
-          render layout: @site.layout
+          # check it's right layout
+          if @post.subsite
+            if @site != @post.subsite
+              redirect_to request.url.sub(@site.subdomain, @post.subsite.subdomain)
+            else
+              render layout: @site.layout
+            end
+          elsif !@post.activities.empty?
+            if @site != @post.activities.first.subsite
+              redirect_to request.url.sub(@site.subdomain, @post.activities.first.subsite.subdomain)
+            else
+              render layout: @site.layout
+            end
+          else
+            render layout: @site.layout
+          end
         end
       end
     end
