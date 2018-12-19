@@ -30,9 +30,10 @@ class PostsController < ApplicationController
             redirect_to "http://exhibitions.hybridmatters.net/#{@activity.url_name}/posts"
           end
         else
+
           @posts = @activity.posts.published.order(:published_at.desc)
           set_meta_tags title: 'Posts for  ' + @activity.name
-          render layout: @site.layout
+          render layout: 'application' #@site.layout
         end
       else
         if @site
