@@ -95,7 +95,7 @@ class PostsController < ApplicationController
               render layout: @site.layout
             end
           elsif !@post.activities.empty?
-            if @site != @post.activities.first.subsite
+            if @site != @post.activities.first.subsite && !@post.activities.first.subsite.nil?
               redirect_to request.url.sub(@site.subdomain, @post.activities.first.subsite.subdomain)
             else
               render layout: @site.layout
