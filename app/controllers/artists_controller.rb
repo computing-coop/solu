@@ -18,6 +18,7 @@ class ArtistsController < ApplicationController
   end
 
   def show
+
     @artist = Artist.find(params[:id])
     set_meta_tags title: @artist.name
     if @node.name == 'bioart'
@@ -26,7 +27,7 @@ class ArtistsController < ApplicationController
       if @artist.works.empty?
         redirect_to artist_url(@artist, host: Rails.env.development? ? 'bioartsociety.local' : Node.find('bioart').subdomains + '.fi')
       else
-        render layout: @site.layout
+        render layout: 'exhibitions'
       end
     end
   end
