@@ -39,7 +39,7 @@ class WorksController < ApplicationController
           end
         else
           set_meta_tags title: @work.title
-          render layout: @site.layout
+          redirect_to 'http://exhibitions.hybridmatters.net' + request.path       
         end
       else
         if request.host !~ /exhibitions/
