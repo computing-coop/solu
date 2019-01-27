@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     set_meta_tags title: @activity.name
     if !@activity.published?
-      if user_signed_in? && user.has_role?(:admin)
+      if user_signed_in? && current_user.has_role?(:admin)
         flash[:notice] = 'DRAFT, not published yet'
         render template: 'activities/show'
       else
