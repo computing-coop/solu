@@ -6,6 +6,10 @@
   .row.boolean {
     padding: 1.5rem 0;
   }
+  .indent {
+    padding-left: 3.25rem;
+    padding-top: 3rem;
+  }
   
   background: asset-url("bioart/images/layout/pink_dots_small.png") repeat;
   .text {
@@ -54,6 +58,7 @@
       .call_text {
         padding-top: 2rem;
       }
+
     }
     .red {
       background-color: $fuschia;
@@ -101,6 +106,9 @@
         padding: 0.3rem 0.4rem;
         font-weight: bold;
       }
+      .file {
+        margin-bottom: 1rem;
+      }
       .text {
         margin: 0;
         padding: 0;
@@ -124,6 +132,7 @@
           font-size: 1.2rem;
         }
         input[type=file] {
+
           position: fixed;
           left: -1000px;
 

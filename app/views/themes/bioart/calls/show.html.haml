@@ -38,80 +38,90 @@
                 });
         .call_text= raw @call.overview
 
-  .row
-    .small-12.columns
-      .text
-        .red Application form
+  - if @call.end_at.blank? || @call.end_at > Time.current
+    .row
+      .small-12.columns
+        .text
+          .red Application form
 
-        = semantic_form_for @call, html: {multipart: true, :"data-abide" => '' } do |form|
-          = form.fields_for @submission do |f|
-            .row
-              .medium-2.small-offset-1.small-4.columns.left_form
-                .form_label.text-left= "First name"
-              .small-7.medium-4.end.columns= f.input :first_name, input_html: {required: ''}, label: false
-
-            .row
-              .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Last name"
-              .small-7.medium-4.end.columns= f.input :last_name, input_html: {required: '' }, label: false
-
-            .row
-              .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Profession"
-              .small-7.medium-4.end.columns= f.input :profession, input_html: {required: '' }, label: false
-
-            .row
-              .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Address"
-              .small-7.medium-4.end.columns= f.input :address, input_html: {required: '' }, label: false
-              
-            .row
-              .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Date of birth"
-              .small-7.medium-4.end.columns= f.input :date_of_birth, input_html: {required: '' }, label: false
-              
-            .row
-              .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Nationality"
-              .small-7.medium-4.end.columns= f.input :nationality, input_html: {required: '' }, label: false
-              
-            .row
-              .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Email address"
-              .small-7.medium-4.end.columns= f.input :email, input_html: {required: '' }, label: false
-
-            .row
-              .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Website"
-              .small-7.medium-4.end.columns= f.input :website, input_html: {required: '' }, label: false
-            - if @call.ask_preferred_period == true
+          = semantic_form_for @call, html: {multipart: true, :"data-abide" => '' } do |form|
+            = form.fields_for @submission do |f|
               .row
-                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Preferred period"
-                .small-7.medium-4.end.columns
-                  = f.input :preferred_start, as: :string, input_html: {required: '' }, label: false
-                  %span.between to
-                  = f.input :preferred_end, as: :string, input_html: {required: '' }, label: false
+                .medium-2.small-offset-1.small-4.columns.left_form
+                  .form_label.text-left= "First name"
+                .small-7.medium-4.end.columns= f.input :first_name, input_html: {required: ''}, label: false
 
-            = f.fields_for :answers do |ff|
-              .row{class:  [ff.object.question.question_type.to_sym == :text ? :has_topline : false,  ff.object.question.question_type.to_sym]}
-                .medium-2.small-offset-1.small-4.columns.text-left.left_form
-                  .form_label= ff.object.question.question
-                  = ff.input :question_id, as: :hidden
-                  - unless ff.object.question.hint.blank?
-                    .hint= ff.object.question.hint
-                .small-7.end.columns{class: [ ff.object.question.question_type, ff.object.question.question_type.to_sym == :text ? "medium-7" : "medium-4"] }
-                  - if ff.object.question.question_type.to_sym == :file
-                    %label.file
-                      = ff.input :attachment, label: false, input_html: { required: ff.object.question.required == true ? '' : false }
-                      %span Upload
-                      .selected_file
-                  - elsif ff.object.question.question_type.to_sym == :boolean
-                    = raw ff.input :answer_boolean, label: false,  as: :radio, collection: [[ 'Yes <img />'.html_safe, true], ['No <img />'.html_safe, false]]
-                    
-                    
-                  - elsif ff.object.question.question_type.to_sym == :group_select
-                    = ff.input :answer_text, as: :select, collection: @call.symposium.groups, label: false, input_html: { required: ff.object.question.required == true ? '' : false }
-                  - else
-                    = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false, input_html: { required: ff.object.question.required == true ? '' : 'ssss', rel: ff.object.question.char_limit }
-                    - if  ff.object.question.question_type.to_sym == :text && !ff.object.question.char_limit.blank?
-                      %p.counter= ff.object.new_record? ? "#{ff.object.question.char_limit.to_s} characters remaining" : "#{ff.object.question.char_limit.to_i - f.object.description.length} characters remaining"
+              .row
+                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Last name"
+                .small-7.medium-4.end.columns= f.input :last_name, input_html: {required: '' }, label: false
+
+              .row
+                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Profession"
+                .small-7.medium-4.end.columns= f.input :profession, input_html: {required: '' }, label: false
+
+              .row
+                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Address"
+                .small-7.medium-4.end.columns= f.input :address, input_html: {required: '' }, label: false
+                
+              .row
+                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Date of birth"
+                .small-7.medium-4.end.columns= f.input :date_of_birth, input_html: {required: '' }, label: false
+                
+              .row
+                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Nationality"
+                .small-7.medium-4.end.columns= f.input :nationality, input_html: {required: '' }, label: false
+                
+              .row
+                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Email address"
+                .small-7.medium-4.end.columns= f.input :email, input_html: {required: '' }, label: false
+
+              .row
+                .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Website"
+                .small-7.medium-4.end.columns= f.input :website, input_html: {required: '' }, label: false
+              - if @call.ask_preferred_period == true
+                .row
+                  .medium-2.small-offset-1.small-4.columns.form_label.text-left.left_form= "Preferred period"
+                  .small-7.medium-4.end.columns
+                    = f.input :preferred_start, as: :string, input_html: {required: '' }, label: false
+                    %span.between to
+                    = f.input :preferred_end, as: :string, input_html: {required: '' }, label: false
+
+              = f.fields_for :answers do |ff|
+                .row{class:  [ff.object.question.question_type.to_sym == :text ? :has_topline : false,  ff.object.question.question_type.to_sym]}
+                  .medium-2.small-offset-1.small-4.columns.text-left.left_form
+                    .form_label= ff.object.question.question
+                    = ff.input :question_id, as: :hidden
+                    - unless ff.object.question.hint.blank?
+                      .hint= ff.object.question.hint
+                  .small-7.end.columns{class: [ ff.object.question.question_type, ff.object.question.question_type.to_sym == :text ? "medium-7" : "medium-4"] }
+                    - if ff.object.question.question_type.to_sym == :file
+                      %label.file
+                        = ff.input :attachment, label: false, input_html: { required: ff.object.question.required == true ? '' : false }
+                        %span Upload
+                        .selected_file
+                    - elsif ff.object.question.question_type.to_sym == :boolean
+                      = raw ff.input :answer_boolean, label: false,  as: :radio, collection: [[ 'Yes <img />'.html_safe, true], ['No <img />'.html_safe, false]]
+                      
+                      
+                    - elsif ff.object.question.question_type.to_sym == :group_select
+                      = ff.input :answer_text, as: :select, collection: @call.symposium.groups, label: false, input_html: { required: ff.object.question.required == true ? '' : false }
+                    - else
+                      = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false, input_html: { required: ff.object.question.required == true ? '' : 'ssss', rel: ff.object.question.char_limit }
+                      - if  ff.object.question.question_type.to_sym == :text && !ff.object.question.char_limit.blank?
+                        %p.counter= ff.object.new_record? ? "#{ff.object.question.char_limit.to_s} characters remaining" : "#{ff.object.question.char_limit.to_i - f.object.description.length} characters remaining"
 
 
-          .row
-            .small-12.medium-7.columns.small-offset-3.submit_container= form.submit "Submit", class: [:button, :application ]
+            .row
+              .small-12.medium-7.columns.small-offset-3.submit_container= form.submit "Submit", class: [:button, :application ]
+
+  - else
+    .row
+      .small-12.columns.opencall_detail
+        .text
+          .red Application form
+
+          .indent
+            %h4 The application period is now closed.
 
 = content_for :jquery do
   :plain
