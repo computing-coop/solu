@@ -1,9 +1,9 @@
 class SearchController < ApplicationController
   
   def create
-    @projects = Project.search(params[:searchterm])
-    @news = Post.search(params[:searchterm])
-    @activities = Activity.search(params[:searchterm])
+    @projects = Project.published.search(params[:searchterm])
+    @news = Post.published.search(params[:searchterm])
+    @activities = Activity.published.search(params[:searchterm])
     
   end
   

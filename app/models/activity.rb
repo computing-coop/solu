@@ -94,11 +94,13 @@ class Activity
       ''
     end
   end
-  
-  def index_image
 
+  def index_image
     photos.empty? ? "background: #d8d9db url(/assets/bioart/images/placeholder.png) center/cover no-repeat" :  "background: #d8d9db url(#{photos.first.image.url(:box)}) center/cover no-repeat;"
   end
-  
+
+  def published?
+    published
+  end
   
 end
