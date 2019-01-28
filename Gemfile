@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.0'
 
 gem "jquery-slick-rails"
 gem 'jquery-ui-rails'
-gem 'foundation-datepicker-rails'
 
 # Use Unicorn as the app server
 gem 'puma'
