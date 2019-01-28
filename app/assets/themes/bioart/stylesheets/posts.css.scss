@@ -119,6 +119,13 @@
       font-family: $titillium;
       font-size: 1rem;
       line-height: 1.25em;
+
+      .left_aligned {
+        a {
+          float: left;
+          margin-right: 25px;
+        }
+      }
       img {
         clear: both;
         display: block;
