@@ -70,7 +70,7 @@ gem 'haml-rails'
 gem 'has_scope'
 gem 'handles_sortable_columns', github: 'cenotaph/handles_sortable_columns'
 gem 'kaminari-mongoid'
-gem 'meta-tags', require: 'meta_tags'
+gem 'meta-tags' #, require: 'meta_tags'
 gem 'mini_magick'
 gem 'mongoid-compatibility'
 gem 'mongoid_rails_migrations', github: 'adacosta/mongoid_rails_migrations', branch: :master
