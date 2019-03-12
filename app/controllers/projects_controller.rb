@@ -19,7 +19,12 @@ class ProjectsController < ApplicationController
         redirect_to project_url(@project, subdomain: Node.find('bioart').subdomains)
       else
         @about = @project.pages.find_by(is_project_overview: true) rescue nil
-        set_meta_tags title: @project.name
+        set_meta_tags title: @project.name,
+          open_graph: { title: @project.name, type: 'article',
+            url: url_for(@project),
+            image: @project.image.url(:box)
+          },
+          canonical: url_for(@project)
       end
 
     end
