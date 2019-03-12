@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-
+  include ActionView::Helpers::TextHelper
   def index
     @activities = Activity.by_node(@node.id).published.asc(:start_at)
     set_meta_tags title: "Activities"

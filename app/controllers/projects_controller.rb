@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
- 
+  include ActionView::Helpers::TextHelper
   def index
     @ongoing = Project.ongoing.published.order(year_range: :asc)
     @old = Project.older.published
@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
         set_meta_tags title: @project.name,
           og: { title: @project.name, type: 'article',
             url: url_for(@project),
-            description: ActionView::Base.full_sanitizer.sanitize(truncate(strip_tags(@project.description), length: 400)),
+            description: ActionView::Base.full_sanitizer.sanitize(truncate(ActionController::Base.helpers.strip_tags(@project.description), length: 400)),
             image: @project.image.url(:box)
           },
           canonical: url_for(@project)
