@@ -56,6 +56,12 @@ class PostsController < ApplicationController
       if params[:project_id]
         @project = Project.find(params[:project_id])
         @post = @project.posts.find(params[:id])
+        set_meta_tags title: @post.title,
+          og: { title: @post.title, type: 'article',
+            url: url_for(@post),
+            image: @post.photos.empty? ? false : @post.photos.first.image.url(:box)
+          },
+          canonical: url_for(@post)
         unless @post.postcategories.empty?
           unless @post.postcategories.map(&:page).compact.empty?
             @page = @post.postcategories.map(&:page).first
