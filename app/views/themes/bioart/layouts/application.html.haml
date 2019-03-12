@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = display_meta_tags :site => 'the Bioart Society', og: {image: "http://#{request.host}#{image_path('bioart/images/logo.png')}" }
+    = display_meta_tags :site => 'the Bioart Society', og: {image: "https://#{request.host}#{asset_url('bioart/images/solu_bioart.png')}" }
     = stylesheet_link_tag 'bioart/stylesheets/application', media: 'all'
     = javascript_include_tag 'bioart/javascripts/application', 'data-turbolinks-track' => true 
     -# if controller.controller_name == 'partners'
