@@ -63,6 +63,12 @@ class PostsController < ApplicationController
         end
       else
         @post = Post.find(params[:id])
+        set_meta_tags title: @post.title,
+          og: { title: @post.title, type: 'article',
+            url: url_for(@post),
+            image: @post.photos.empty? ? false : @post.photos.first.image.url(:box)
+          },
+          canonical: url_for(@post)
         if @post.project
           redirect_to project_post_url(@post.project, @post)
         end

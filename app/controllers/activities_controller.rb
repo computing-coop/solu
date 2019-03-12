@@ -7,7 +7,12 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
-    set_meta_tags title: @activity.name
+    set_meta_tags title: @activity.name,
+      og: { title: @activity.name, type: 'article',
+        url: url_for(@activity),
+        image: @activity.photos.empty? ? false : @activity.photos.first.image.url(:box)
+      },
+      canonical: url_for(@activity)
     if !@activity.published?
       if user_signed_in? && current_user.has_role?(:admin)
         flash[:notice] = 'DRAFT, not published yet'
