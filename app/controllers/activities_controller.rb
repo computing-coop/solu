@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
     set_meta_tags title: @activity.name,
       og: { title: @activity.name, type: 'article',
         url: url_for(@activity),
+        description: ActionView::Base.full_sanitizer.sanitize(truncate(strip_tags(@activity.description), length: 400)),
         image: @activity.photos.empty? ? false : @activity.photos.first.image.url(:box)
       },
       canonical: url_for(@activity)

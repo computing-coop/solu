@@ -59,6 +59,7 @@ class PostsController < ApplicationController
         set_meta_tags title: @post.title,
           og: { title: @post.title, type: 'article',
             url: url_for(@post),
+            description: ActionView::Base.full_sanitizer.sanitize(truncate(strip_tags(@post.body), length: 400)),                  
             image: @post.photos.empty? ? false : @post.photos.first.image.url(:box)
           },
           canonical: url_for(@post)
@@ -72,6 +73,7 @@ class PostsController < ApplicationController
         set_meta_tags title: @post.title,
           og: { title: @post.title, type: 'article',
             url: url_for(@post),
+            description: ActionView::Base.full_sanitizer.sanitize(truncate(strip_tags(@post.body), length: 400)),
             image: @post.photos.empty? ? false : @post.photos.first.image.url(:box)
           },
           canonical: url_for(@post)

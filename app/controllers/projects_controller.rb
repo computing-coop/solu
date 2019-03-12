@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
         set_meta_tags title: @project.name,
           og: { title: @project.name, type: 'article',
             url: url_for(@project),
+            description: ActionView::Base.full_sanitizer.sanitize(truncate(strip_tags(@project.description), length: 400)),
             image: @project.image.url(:box)
           },
           canonical: url_for(@project)
