@@ -1,5 +1,5 @@
 class CallsController < ApplicationController
-  
+  include ActionView::Helpers::TextHelper
   def apply
     @call = Call.find(params[:id])
     @submission = Submission.new(call: @call)
@@ -40,7 +40,13 @@ class CallsController < ApplicationController
     #   @submission.answers.build(question: qs)
     # end
     
-    set_meta_tags title: @call.name
+    set_meta_tags title: @call.name,
+      og: { title: @call.name, type: 'article',
+        url: url_for(@call),
+        description: ActionView::Base.full_sanitizer.sanitize(truncate(strip_tags(@call.overview), length: 400)),
+        image: @call.photos.empty? ? false : @call.photos.first.image.url(:box)
+      },
+      canonical: url_for(@call)
   end
   
   def thanks
