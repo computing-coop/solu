@@ -39,7 +39,7 @@
                 });
         .call_text= raw @call.overview
 
-  - if @call.end_at.blank? || @call.end_at > Time.current
+  - if @call.end_at.blank? || (@call.end_at.to_date.end_of_day.to_time.utc) > Time.current.utc
     .row
       .small-12.columns
         .text
