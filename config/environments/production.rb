@@ -67,7 +67,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mail.smtp_settings = {
+  config.action_mailer.smtp_settings = {
     address:             'auth-smtp.nebula.fi',
     port:                465,
     domain:              'bioartsociety.fi',
