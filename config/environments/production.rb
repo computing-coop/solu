@@ -66,7 +66,18 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mail.smtp_settings = {
+    address:             'auth-smtp.nebula.fi',
+    port:                465,
+    domain:              'bioartsociety.fi',
+    user_name:           Figaro.env.smtp_username,
+    password:            Figaro.env.smtp_password,
+    authentication:      :login,
+    ssl:                 true,
+    enable_starttls_auto: true
+  }
+
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'info@bioartsociety.fi' }
 
