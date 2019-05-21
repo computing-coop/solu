@@ -81,7 +81,7 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
-
+ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
   address:             'auth-smtp.nebula.fi',
   port:                465,
