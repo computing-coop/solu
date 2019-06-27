@@ -104,7 +104,7 @@
                       = raw ff.input :answer_boolean, label: false,  as: :radio, collection: [[ 'Yes <img />'.html_safe, true], ['No <img />'.html_safe, false]]
 
 
-                    - elsif ff.object.question.question_type.to_sym == :group_select
+                    - elsif ff.object.question.question_type.to_sym == :group_select && @call.symposium
                       = ff.input :answer_text, as: :select, collection: @call.symposium.groups, label: false, input_html: { required: ff.object.question.required == true ? '' : false }
                     - else
                       = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false, input_html: { required: ff.object.question.required == true ? '' : 'ssss', rel: ff.object.question.char_limit }
