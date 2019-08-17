@@ -8,7 +8,7 @@
     min-height: 300px;
     padding-bottom: 0 !important;
     height: initial;
-    background-size: cover !important; 
+    background-size: cover !important;
   }
   .frontitem_blurb {
     padding-top: 20%;
@@ -63,7 +63,7 @@
       color: #FFF;
     }
   }
-  
+
   a.post, a.activity {
 
     .post_image, .activity_image {
@@ -88,7 +88,7 @@
       opacity: 0.9;
       .title {
         font-family: $titillium;
-        padding: 0.1em 0.2em; 
+        padding: 0.1em 0.2em;
         font-size: 1.4rem;
         line-height: 1.25em;
         font-weight: bold;
@@ -100,6 +100,13 @@
         font-size: 1rem;
         line-height: 1.25em;
         color: #000;
+      }
+      .index_author {
+        font-family: $titillium;
+        font-size: 0.8em;
+        line-height: 1.1em;
+        color: #666;
+        margin-top: 1.2rem;
       }
       .activity_metadata {
         font-family: $titillium;
@@ -153,7 +160,7 @@
       line-height: 1em;
       padding: 0.25rem 0.5rem;
       position: absolute;
-    
+
     }
     clear: both;
     background-color: #fff;
@@ -163,7 +170,7 @@
     @include breakpoint(small only) {
       margin: 0;
     }
-    
+
     .excerpt {
       padding: 5.347rem 2rem 3.347rem;
       @include breakpoint(small only) {
@@ -336,9 +343,9 @@
     .project_content {
 //      height: 152px;
       overflow: hidden;
-     
 
-      @include breakpoint(small only) { 
+
+      @include breakpoint(small only) {
         height: initial;
         padding: 1rem;
       }
@@ -354,7 +361,7 @@
         font-style: italic;
       }
       .description, .description p {
-   
+
         font-size: 1rem;
         font-weight: normal;
         line-height: 1.4rem;
@@ -380,14 +387,14 @@
       line-height: 1em;
       padding: 0.25rem 0.5rem;
       position: absolute;
-    
+
     }
     clear: both;
     background-color: #fff;
     font-family: $titillium;
 
     margin: 3.75rem 2.75rem;
-    
+
     .address {
       margin-bottom: 5.375rem;
       padding: 5.347rem 2rem 3.347rem;

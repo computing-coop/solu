@@ -31,7 +31,7 @@
       padding: 0.5em 0.313em;
       position: absolute;
       top: 23%;
-      
+
     }
   }
   .post_content {
@@ -69,14 +69,19 @@
             color: black;
             padding: 1rem 1.5rem;
             .index_author {
-              font-size: 0.8rem;
-              text-transform: uppercase;
-              font-family: $rubik;
-              margin-top: 0.5rem;
+              font-family: $titillium;
+              font-size: 0.8em;
+              line-height: 1.1em;
+              color: #666;
+              margin-top: 1.2rem;
+              // font-size: 0.8rem;
+              // text-transform: uppercase;
+              // font-family: $rubik;
+              // margin-top: 0.5rem;
             }
           }
         }
-      }  
+      }
     }
 
     .stay {

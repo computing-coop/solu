@@ -21,6 +21,15 @@
               = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
             - else
               = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 325)
+          .index_author
+            - unless post.user.has_role?(:admin)
+              Guest post
+              |
+              - if post.wordpress_author.blank?
+                = "#{post.user.name} |"
+              - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
+                = "#{post.wordpress_author} |"
+            = post.published_at.strftime('%-d %B %Y')
 
 = content_for :jquery do
   :plain

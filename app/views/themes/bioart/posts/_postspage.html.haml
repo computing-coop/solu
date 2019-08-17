@@ -11,14 +11,16 @@
     .post_content{:'data-equalizer-watch' => ''}
       .title= post.title
       .excerpt
-        - if post.short_abstract
+        - if !post.short_abstract.blank?
           = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
         - else
           = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
-      - if post.project
-        - if post.project.slug == 'ars-bioarctica'
-          .index_author
-            - if post.wordpress_author.blank?
-              = "#{post.user.name} | #{post.published_at.strftime('%-d %B %Y')}"
-            - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
-              = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}"
+      .index_author
+        - unless post.user.has_role?(:admin)
+          Guest post
+          |
+          - if post.wordpress_author.blank?
+            = "#{post.user.name} |"
+          - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
+            = "#{post.wordpress_author} |"
+        = post.published_at.strftime('%-d %B %Y')

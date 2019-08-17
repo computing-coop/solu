@@ -40,17 +40,19 @@
                 .post_content{:'data-equalizer-watch' => ''}
                   .title= truncate_html(post.title, length: 40)
                   .excerpt
-                    - if post.short_abstract
+                    - if !post.short_abstract.blank?
                       = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline }, attributes: %w(href target src))
                     - else
                       = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
-                  - if post.project
-                    - if post.project.slug == 'ars-bioarctica'
-                      .index_author
-                        - if post.wordpress_author.blank?
-                          = "#{post.user.name} | #{post.published_at.strftime('%-d %B %Y')}"
-                        - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
-                          = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}"
+                  .index_author
+                    - unless post.user.has_role?(:admin)
+                      Guest post
+                      |
+                      - if post.wordpress_author.blank?
+                        = "#{post.user.name} |"
+                      - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
+                        = "#{post.wordpress_author} |"
+                    = post.published_at.strftime('%-d %B %Y')
         = content_for :jquery do
           :plain
             $('.post_carousel').slick({infinite: true,
