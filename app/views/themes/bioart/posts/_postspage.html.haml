@@ -10,7 +10,11 @@
           = "#{post.node.to_hashtag}"
     .post_content
       .title= post.title
-      .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)  
+      .excerpt
+        - if post.short_abstract
+          = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
+        - else
+          = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
       - if post.project
         - if post.project.slug == 'ars-bioarctica'
           .index_author

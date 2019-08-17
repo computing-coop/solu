@@ -7,10 +7,17 @@ class Admin::PostsController < Admin::BaseController
   has_scope :by_project
   has_scope :by_node
 
-
-
   def index
-    order = sortable_column_order # do |column, direction|
+    order = sortable_column_order do |column, direction|
+      case column
+      when 'title'
+        "#{column} #{direction}"
+      when "created_at", "updated_at", "published", "posted_by"
+        "#{column} #{direction}, title ASC"
+      else
+        "published_at DESC, title ASC"
+      end
+    end
     @posts = apply_scopes(Post).accessible_by(current_ability).order(order)
     # end
     @posts ||= apply_scopes(Post).accessible_by(current_ability).desc(:published_at)

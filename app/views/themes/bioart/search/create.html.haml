@@ -5,7 +5,7 @@
         No
       Search results for:
       %em= params[:searchterm]
-        
+
   - unless @projects.empty?
     .row
       .small-12.columns.section_title Projects
@@ -13,14 +13,14 @@
     - @projects.each do |project|
       .row
         = link_to project, class: [:project] do
-        
+
           .small-12.columns[project]
             .small-12.medium-2.project_icon.columns
               = image_tag project.image.url(:box).gsub(/development/, 'production')
             .small-12.medium-10.project_content.columns
               .title= project.name
               .years= project.year_range
-              .description= project.description 
+              .description= project.description
   - unless @activities.empty?
     .row
       .small-12.columns.section_title Activities
@@ -36,8 +36,8 @@
             .date= date_range(activity.start_at, activity.end_at)
             %p= activity.location
             .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)
-                           
-  - unless @news.empty?  
+
+  - unless @news.empty?
     .row
       .small-12.columns.section_title News
     .row.small-up-1.medium-up-2.large-up-3
@@ -49,12 +49,16 @@
               = "##{post.node.name}"
           .post_content
             .title= post.title
-            .excerpt= truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
+            .excerpt
+              - if post.short_abstract
+                = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
+              -else
+                = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
             - if post.project
               - if post.project.slug == 'ars-bioarctica'
                 .index_author
                   - if post.wordpress_author.blank?
                     = "#{post.user.name} | #{post.published_at.strftime('%-d %B %Y')}"
                   - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
-                    = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}" 
-      
+                    = "#{post.wordpress_author} | #{post.published_at.strftime('%-d %B %Y')}"
+

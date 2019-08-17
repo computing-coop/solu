@@ -39,7 +39,11 @@
                   -#  = "##{post.node.name}"
                 .post_content
                   .title= truncate_html(post.title, length: 40)
-                  .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
+                  .excerpt
+                    - if post.short_abstract
+                      = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline }, attributes: %w(href target src))
+                    - else
+                      = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
                   - if post.project
                     - if post.project.slug == 'ars-bioarctica'
                       .index_author

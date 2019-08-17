@@ -65,11 +65,22 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:             'auth-smtp.nebula.fi',
+    port:                465,
+    domain:              'bioartsociety.fi',
+    user_name:           Figaro.env.smtp_username,
+    password:            Figaro.env.smtp_password,
+    authentication:      :login,
+    ssl:                 true,
+    enable_starttls_auto: true
+  }
+
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'no-reply@hybridmatters.net' }
-  
-  config.action_mailer.default_url_options = { :host => 'hybridmatters.net' }
+  config.action_mailer.default_options = {from: 'info@bioartsociety.fi' }
+
+  config.action_mailer.default_url_options = { :host => 'bioartsociety.fi' }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -80,3 +91,14 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  address:             'auth-smtp.nebula.fi',
+  port:                465,
+  domain:              'bioartsociety.fi',
+  user_name:           Figaro.env.smtp_username,
+  password:            Figaro.env.smtp_password,
+  authentication:      :login,
+  ssl:                 true,
+  enable_starttls_auto: true
+}

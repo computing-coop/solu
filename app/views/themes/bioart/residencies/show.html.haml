@@ -6,7 +6,7 @@
 
   = render partial: 'residencies/year_menu'
 
-  
+
 
   .row
     .small-12.columns
@@ -41,7 +41,7 @@
                   autoplay: true,
                   autoplaySpeed: 2400,
                   slidesToScroll: 1,
-                });  
+                });
       .post_content
         .title= @artist.name
         - unless @artist.website.blank?
@@ -69,9 +69,13 @@
                       -#  = "##{post.node.name}"
                     .post_content
                       .title= truncate_html(post.title, length: 40)
-                      .excerpt= truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
+                      .excerpt
+                        - if post.short_abstract
+                          = sanitize(post.short_abstract, tags: %w{b  astrong bold i italic em u underline }, attributes: %w(href target src))
+                        - else
+                          = truncate_html(sanitize(post.body, tags: %w{b  astrong bold i italic em u underline }, attributes: %w(href target src)), length: 150)
                       .index_author
-                        = "#{post.published_at.strftime('%-d %B %Y')}"            
+                        = "#{post.published_at.strftime('%-d %B %Y')}"
       - unless @artist.projects.empty? && @artist.works.empty?
         .post_content
           .title= @artist.name + ": Other projects"
