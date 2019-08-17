@@ -52,7 +52,7 @@
     .project_content {
       height: 152px;
       overflow: hidden;
-      @include breakpoint(small only) { 
+      @include breakpoint(small only) {
         height: initial;
       }
       @include breakpoint(medium only) {
@@ -77,14 +77,14 @@
       }
     }
   }
-  
-  
-  
+
+
+
 }
 
 .project_detail {
   background: #f7f7f6 asset-url("bioart/images/layout/grey_dots_small.png") repeat;
-  
+
   .text {
     p, .excerpt, .excerpt p {
       a {
@@ -98,7 +98,7 @@
     @include breakpoint(small only) {
       padding: 0;
     }
-    li {  
+    li {
       @include breakpoint(small only) {
         display: inline;
         float: left;
@@ -115,15 +115,15 @@
                   color: #FFF;
                 }
               }
-              
+
               &:hover {
                 a {
                   color: $red;
                   &.active {
-                    
+
                   }
                 }
-                
+
               }
             }
           }
@@ -135,7 +135,7 @@
             color: #FFF;
           }
         }
-        
+
         li.is-submenu-item {
           a {
              background: #f7f7f6 asset-url("bioart/images/layout/menubar_arrow_blk.png")  0.4em no-repeat;
@@ -154,13 +154,13 @@
         padding: 1em 0.7em 1em 2em;
         margin-right: 0.5em;
         font-size: 0.933em;
-        
+
         text-transform: uppercase;
         &.active {
           background: $red asset-url("bioart/images/layout/menubar_arrow.png")  0.4em no-repeat;
-          
+
           color: #FFF;
-          
+
         }
       }
       &:hover {
@@ -169,8 +169,8 @@
         }
       }
     }
-    
-    
+
+
   }
 //  ul.project_submenu {
 //    padding: 0 0 2rem;
@@ -180,7 +180,7 @@
 //        font-size: 0.7em;}
 //    }
 //  }
-  
+
   h1.project_title {
     font-family: $rubik;
     font-size: 5.75rem;
@@ -207,7 +207,7 @@
     }
     font-family: $rubik;
   }
-  
+
   .project_indented {
     margin-left: 2.75rem;
     @include breakpoint(medium down) {
@@ -221,8 +221,8 @@
     font-family: $titillium;
 
     margin: 3.75rem 0 2rem 0;
-    
-    
+
+
     &.has_children {
       background: transparent;
     }
@@ -253,7 +253,7 @@
       a {
         color: #FFF;
       }
-    
+
     }
     .body {
       &.about_excerpt { padding: 4rem 2rem 1rem 2rem; }
@@ -287,7 +287,7 @@
       }
     }
   }
-  
+
   .blog_container {
     margin: 6rem 0 0 0;
   }
@@ -295,7 +295,7 @@
     margin: 6rem 0;
   }
   .blog_container, .collaborators_container {
-    
+
     .red {
       @include breakpoint(small only) {
         font-size: 8vw;
@@ -317,7 +317,7 @@
       }
     }
     .collaborators {
-      
+
       margin-left: -0.45rem;
       a.collaborator {
         height: 200px;
@@ -373,6 +373,7 @@
   .page_children {
     a.page {
       margin-top: -2.5rem;
+      margin-bottom: 2.5rem;
       .page_image {
         overflow: hidden;
         padding-bottom: 100%;
@@ -400,7 +401,7 @@
       }
     }
   }
-  
+
 }
 .image_carousel {
   ul.slick-dots {
@@ -437,7 +438,7 @@
         color: #666;
       }
       .excerpt {
-        margin-top: 1rem;    
+        margin-top: 1rem;
       }
     }
   }

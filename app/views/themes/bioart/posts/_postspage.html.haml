@@ -8,7 +8,7 @@
       - elsif post.node != @node
         .hashtag
           = "#{post.node.to_hashtag}"
-    .post_content
+    .post_content{:'data-equalizer-watch' => ''}
       .title= post.title
       .excerpt
         - if post.short_abstract

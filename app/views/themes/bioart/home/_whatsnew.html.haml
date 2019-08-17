@@ -3,7 +3,7 @@
     .small-10.small-centered.medium-12.columns.section_title
       %span.white What's
       New
-  .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel
+  .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel{:'data-equalizer' => '', :'data-equalize-on' => 'medium'}
     - @posts.each do |post|
       = link_to post, class: [:post, :columns] do
 
@@ -14,13 +14,13 @@
           - elsif post.node != @node
             .hashtag
               = "#{post.node.to_hashtag}"
-        .post_content
+        .post_content{:'data-equalizer-watch' => ''}
           .title= post.title
           .excerpt
             - if post.short_abstract
               = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
             - else
-              = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 150)
+              = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 325)
 
 = content_for :jquery do
   :plain
