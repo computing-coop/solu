@@ -53,7 +53,7 @@ gem 'carrierwave-mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
 gem 'chosen-rails'
-gem 'ckeditor'
+gem 'ckeditor', '4.3.0'
 gem 'countries'
 gem 'country_select', github: 'stefanpenner/country_select'
 
@@ -104,12 +104,12 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 3.8.2'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'faker'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem 'mongoid-rspec', github: 'mongoid-rspec/mongoid-rspec'
+  gem 'mongoid-rspec'#, github: 'mongoid-rspec/mongoid-rspec'
 end

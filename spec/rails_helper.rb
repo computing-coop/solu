@@ -7,7 +7,7 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'capybara/rails'
+# require 'capybara/rails'
 # Rails.application.load_seed
 # require 'devise'
 
@@ -70,7 +70,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  # config.include Devise::Test::ControllerHelpers, :type => :controller 
+  # config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include FactoryBot::Syntax::Methods
    # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
   # config.after(:all) do
@@ -84,19 +84,19 @@ RSpec.configure do |config|
   #     example.run
   #   end
   # end
-  config.before(:suite) do
-      Rails.application.load_seed # loading seeds
-    end
+  # config.before(:suite) do
+  #     Rails.application.load_seed # loading seeds
+  #   end
   config.after(:all) do
-    if Rails.env.test? 
+    if Rails.env.test?
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test"])
-    end 
-  end 
+    end
+  end
 
 
 end
 
-Capybara.configure do |config| 
+Capybara.configure do |config|
   config.default_host = 'http://bioartsociety.local:3000'
   config.app_host   = 'http://bioartsociety.local:3000'
 end

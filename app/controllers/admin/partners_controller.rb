@@ -1,6 +1,6 @@
 class Admin::PartnersController < Admin::BaseController
   before_action :set_admin_partner, only: [:show, :edit, :update, :destroy]
-  
+
   respond_to :html
 
   def index
@@ -50,7 +50,7 @@ class Admin::PartnersController < Admin::BaseController
     end
 
     def partner_params
-      params.require(:partner).permit(:name, :website, :address1, :css_colour, :address2, :city, :country, :is_funder,
+      params.require(:partner).permit(:name, :website, :is_general, :start_year, :end_year, :address1, :css_colour, :address2, :city, :country, :is_funder,
       :postcode, :latitude, :longitude, :logo, :hmlogo, :remove_logo, :remove_hmlogo, :node_id, :description,
       photos_attributes:[:image, :id,  :_destroy],
        project_ids: [] )

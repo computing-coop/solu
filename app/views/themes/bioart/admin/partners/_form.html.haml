@@ -7,11 +7,17 @@
           - @partner.errors.full_messages.each do |msg|
             %li= msg
   .row
-    .large-5.small-12.columns= f.input :node, input_html: {required: ''}            
+    .large-5.small-12.columns= f.input :node, input_html: {required: ''}
   .row
     .large-5.small-12.columns= f.input :name, input_html: {required: ''}
   .row
-    .large-5.small-12.columns= f.input :is_funder, as: :boolean
+    .large-5.small-12.columns= f.input :is_funder, as: :boolean, label: 'Is a funder?'
+  .row
+    .large-5.small-12.columns= f.input :is_general, as: :boolean, label: 'Is a general/overall funder?'
+  .row
+    .large-5.small-12.columns= f.input :start_year, label: 'Starting year of funding', hint: 'Optional'
+  .row
+    .large-5.small-12.columns= f.input :end_year, label: 'Ending year of funding', hint: 'Optional'
   .row
     .large-5.small-12.columns= f.input :website
   .row
@@ -25,7 +31,7 @@
   .row
     .large-5.small-12.columns
       - if f.object.logo?
-        = image_tag f.object.logo.url(:thumb)
+        = image_tag f.object.logo.url
         = f.input :remove_logo, as: :boolean
       = f.input :logo
 
@@ -44,7 +50,7 @@
       = f.input :country, as: :country, priority_countries: ["FI", "SE", "DK", "NO"]
       = f.input :postcode
 
-      
+
   .row.photo_fields
     .small-12.large-7.columns
       = f.fields_for :photos do |ff|
