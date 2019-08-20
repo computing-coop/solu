@@ -37,7 +37,7 @@ class Partner
   validate :years_are_real
 
   has_and_belongs_to_many :activities_leading, class_name: 'Activity', inverse_of: :responsible_organisation
-
+  has_and_belongs_to_many :activities, class_name: 'Activity', inverse_of: :partners
   has_and_belongs_to_many :projects
   accepts_nested_attributes_for :projects, reject_if: lambda {|x| x.blank?}
 
