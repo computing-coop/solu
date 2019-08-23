@@ -13,16 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require foundation-datepicker
+//= require foundation-datetimepicker
 //= require jquery_nested_form
 //= require jquery.slick
 //= require ckeditor/init
 //= require jquery-ui
-  
-  
-  
 
-function scrollTo(target) { 
+
+
+
+function scrollTo(target) {
   $('html, body').stop().animate({
       'scrollTop': $(target).offset().top - 40
   }, 900, 'swing', function () {
@@ -35,14 +35,14 @@ function scrollTo(target) {
 function clearAllActivityFilters() {
   $('.secondary_activities_filter ul.top-bar-menu li').removeClass('active');
   $('.filter_box li.active').removeClass('active');
-  $('.activity_row').removeClass('hidden'); 
+  $('.activity_row').removeClass('hidden');
 }
 
 function toggleActivitytype(activitytype) {
   var jsid = "#activitytype_" + activitytype;
   var jsclass = ".activitytype_" + activitytype;
-  
-  
+
+
   // if this is first active:
   if ($('#map_right .filter_box .active').length == 0) {
     // hide everything except me
@@ -52,7 +52,7 @@ function toggleActivitytype(activitytype) {
   }
   else {
     // something is alerady filtered, so...
-    
+
     // am i the only one active?
     if ($('#map_right .filter_box ' + jsid).hasClass('active')) {
       if ($('#map_right .filter_box .active').length == 1) {
@@ -62,30 +62,30 @@ function toggleActivitytype(activitytype) {
 
       } else {
         // not the only one, so just remove me
-        
+
         $('.activity_row' + jsclass).addClass('hidden');
 
       }
       $('#map_right .filter_box ' + jsid).toggleClass('active');
-      
+
     } else {
       // not active yet so toggling on
       $('.activity_row' + jsclass).removeClass('hidden');
       $('#map_right .filter_box ' + jsid).toggleClass('active');
-    
+
     }
-    
+
 
   }
-  
-    
-    
 
-  
+
+
+
+
 }
 
-$(function() { 
-  $(document).foundation();  
+$(function() {
+  $(document).foundation();
 
 });
 

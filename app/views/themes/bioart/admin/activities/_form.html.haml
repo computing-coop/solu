@@ -7,11 +7,11 @@
           - @activity.errors.full_messages.each do |msg|
             %li= msg
   .row
-    .small-12.large-8.columns= f.input :node, input_html: {:required => ''}            
+    .small-12.large-8.columns= f.input :node, input_html: {:required => ''}
   .row
     .small-12.large-8.columns= f.input :name, input_html: {:required => ''}
   .row
-    .small-12.large-8.columns= f.input :location, input_html: {:required => ''}    
+    .small-12.large-8.columns= f.input :location, input_html: {:required => ''}
   .row
     .small-12.large-8.columns= f.input :activitytype, input_html: {:required => ''}
   .row
@@ -19,21 +19,34 @@
   .row
     .small-12.large-8.columns= f.input :project, label: 'Associate to project?', hint: 'If selected, a link to this project will be created on the activity page'
   .row
-    .small-12.large-8.columns= f.input :postcategory, label: 'Associate to post category?', hint: 'If selected, a link to this all posts with this category will be created on the activity page'    
+    .small-12.large-8.columns= f.input :postcategory, label: 'Associate to post category?', hint: 'If selected, a link to this all posts with this category will be created on the activity page'
   .row
     .small-12.columns= f.input :description, as: :text, input_html: {class: :ckeditor}
   .row
-    .small-12.large-8.columns= f.input :start_at, as: :string, input_html: {:required => '', class: :fdatepicker}
+    .small-12.large-8.columns= f.input :start_at, as: :string, input_html: {:required => '', class: :fdatepicker}, label: 'Overall start date of activity'
   .row
-    .small-12.large-8.columns= f.input :end_at, as: :string, input_html: {class: :fdatepicker}
+    .small-12.large-8.columns= f.input :end_at, as: :string, input_html: {class: :fdatepicker}, label: 'Overall ending date of activity'
   / .row
   /   .small-12.large-8.columns= f.input :responsible_organisation_ids, collection: Partner.all,  input_html: {class: :chosen_select}, multiple: true, label: 'Responsible organisations'
 
   .row
-    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'    
+    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'
   / = f.fields_for :responsible_organisations do |ff|
   /   .row
   /     .small-12.large-8.columns= f.input
+  .row.photo_fields
+    .small-12.large-7.columns
+      %h4 Event meeting times
+      %p You must enter the start and end times of each session of this activity, if you want it to appear on the calendar.
+    .small-12.large-7.columns
+      = f.fields_for :eventsessions do |ff|
+        :javascript
+          $('.fdatetimepicker').fdatetimepicker({format: 'yyyy-mm-dd hh:ii', pickTime: true});
+        = ff.input :start_at, as: :string, input_html: { class: :fdatetimepicker, value: ff.object.new_record? ? '' : ff.object.start_at.localtime.strftime('%Y-%m-%d %H:%M %z')}, label: 'Start date/time of this session'
+        = ff.input :end_at, as: :string, input_html: { class: :fdatetimepicker, value: ff.object.new_record? ? '' : ff.object.end_at.localtime.strftime('%Y-%m-%d %H:%M %z') }, label: 'End date/time of this session'
+        = ff.input :location, label: 'Location of this session, if not SOLU'
+        = ff.link_to_remove 'Remove this session'
+      = f.link_to_add 'Add a meeting/session', :eventsessions, class: [:button]
   .row
     .small-12.large-7.columns
       = f.fields_for :photos do |ff|
@@ -46,8 +59,23 @@
     .small-12.large-8.columns= f.input :published, as: :boolean
   .row
     .small-12.large-8.columns= f.submit 'Save', class: [:button, :small]
-= content_for :jquery do 
-  :plain  
-    $('.fdatepicker').fdatepicker({format: 'yyyy-mm-dd'});
+= content_for :jquery do
+  :plain
+    $('.fdatetimepicker').click(function(e)  {
+      let initial = e.currentTarget.value.replace(/\s*\+0300$/, '');
+      $(this).fdatetimepicker('update', initial);
+    });
 
+    $('.fdatepicker').fdatetimepicker({format: 'yyyy-mm-dd'})
+    $('.fdatetimepicker').fdatetimepicker({format: 'yyyy-mm-dd hh:ii', pickTime: true}).on('changeDate', function (ev) {
+      $('.fdatepicker').fdatetimepicker('hide')
+    });;
+    $
     $('.chosen_select').chosen();
+    $('form').submit(function(form) {
+      $('.fdatetimepicker').each(function(i, obj) {
+        if ($(this).val().length > 4) {
+          $(this).val($(this).val().replace(/\s*\+0300$/, '') + ' +0300');
+        }
+      });
+    });

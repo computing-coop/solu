@@ -13,7 +13,7 @@
  *= require_self
  *= require hybrid_matters/stylesheets/foundation_and_overrides
 
- *= require hybrid_matters/stylesheets/foundation-datepicker
+ *= require foundation-datetimepicker
  *= require slick
  *= require hybrid_matters/stylesheets/partners
  *= require hybrid_matters/stylesheets/pages
@@ -37,7 +37,7 @@
 
 
 html {
-  max-width: 100%; 
+  max-width: 100%;
   overflow-x: hidden;
 }
 * {
@@ -121,11 +121,11 @@ header {
   top: 0;
   // position: absolute;
   width: 100%;
-  
+
   .logo {
     margin: 5.625rem 0 2.5rem 0;
   }
-  
+
   .top-bar {
     background: asset-url('hybrid_matters/images/menu_module.png') repeat-x;
     z-index: 100;
@@ -141,7 +141,7 @@ header {
             }
           }
           &.active {
-            background: asset-url('hybrid_matters/images/selected_down.png') no-repeat center center; 
+            background: asset-url('hybrid_matters/images/selected_down.png') no-repeat center center;
           }
         }
         li {
@@ -161,7 +161,7 @@ header {
       }
     }
   }
-  
+
 }
 
 .hor-container {
@@ -250,7 +250,7 @@ header {
   .row {
     padding-top: 0;
     &.down_arrow {
-      padding-top: 0; 
+      padding-top: 0;
       img {
         vertical-align: top;
       }
@@ -268,7 +268,7 @@ header {
 
   padding-bottom: 3rem;
   padding-top: 80px;
-  
+
 }
 
 footer {
@@ -291,7 +291,7 @@ footer {
       margin: 0;
     }
   }
-  
+
   .row.lined {
     padding: 1.2rem 0;
     .columns {
@@ -300,15 +300,15 @@ footer {
 
     }
   }
-  
+
   .contact_info {
     margin-top: -25px;
     padding: 1.7rem 0;
     background-color: $beige;
   }
-  
+
   clear: both;
-  
+
   .rest {
     margin-bottom: 26px;
     display: none;
@@ -318,16 +318,16 @@ footer {
 
   .logo_strips {
     padding: 1.5rem 0;
-  
+
     .footer_title {
       padding: 1.5rem 0;
       font-weight: 400;
       color: #777;
     }
-    
-    
+
+
     .partners {
-    
+
       a {
         padding: 0 1rem;
       }
@@ -363,11 +363,11 @@ footer {
   .heading {
    cursor: move;
    font-size: 0.780rem;
-   
+
     span.white {
       color: #FFF;
     }
-    
+
   }
   .title_box {
     border-top: 2px solid #000;
@@ -389,7 +389,7 @@ footer {
     display: none;
     padding: 1.75rem 0.75;
     font-size: 0.875rem;
-    
+
     a {
       color: #FFF;
     }
@@ -405,7 +405,7 @@ footer {
   h2 {
     font-size: 2.063rem;
     color: #444;
-    a { 
+    a {
       color: #444;
     }
   }
@@ -444,14 +444,14 @@ footer {
         }
         border-bottom: 1px solid $turq;
       }
-      
+
     }
   }
 }
 
 .event_single_container {
   margin-top: 3rem;
-  
+
   .event_info {
     .blue_heading {
       color: $turq;
@@ -464,7 +464,7 @@ footer {
       color: #999;
     }
   }
-  
+
   .event_short_description, .event_short_description p {
     font-size: 0.9rem;
     line-height: 1.4rem;
@@ -472,7 +472,7 @@ footer {
     font-weight: 400;
     margin: 1.5rem 0 0.8rem 0;
   }
-  
+
   .event_paginator {
     margin-top: 1rem;
     float: left;
@@ -483,11 +483,11 @@ footer {
     }
     letter-spacing: 0.3rem;
     a { color: #333; &:hover { color: $turq; } }
-    padding: 0.2rem 0.65rem; 
+    padding: 0.2rem 0.65rem;
     text-transform: uppercase;
     font-size: 1rem;
   }
-  
+
 }
 
 

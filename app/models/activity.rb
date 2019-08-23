@@ -29,7 +29,8 @@ class Activity
 
   has_and_belongs_to_many :responsible_organisations, class_name: 'Partner', inverse_of: :activities_leading
   has_many :events
-
+  embeds_many :eventsessions, cascade_callbacks: true
+  accepts_nested_attributes_for :eventsessions, allow_destroy: true, reject_if: ->(attrs) { attrs[:start_at].blank? || attrs[:end_at].blank? }
   accepts_nested_attributes_for :responsible_organisations, allow_destroy: true
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true

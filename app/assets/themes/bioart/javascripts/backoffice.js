@@ -1,8 +1,9 @@
 //= require chosen-jquery
-//= require foundation-datepicker
+//= require foundation-datetimepicker
 //= require jquery_nested_form
 //= require bioart/javascripts/spectrum
 //= require ckeditor/init
+//= require moment
 
 CKEDITOR.on('instanceReady', function(ev)
 {

@@ -12,7 +12,7 @@
  *
  *= require_self
  *= require chosen
- *= require foundation-datepicker
+ *= require foundation-datetimepicker
  */
 
 @import 'variables';
@@ -75,7 +75,7 @@
 }
 
 form {
-  
+
   .fields {
     position: relative;
     width: 50%;
@@ -87,7 +87,7 @@ form {
   select[multiple=multiple] {
     height: 100px;
   }
-  
+
 }
 
 table {

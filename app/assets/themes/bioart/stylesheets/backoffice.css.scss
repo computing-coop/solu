@@ -12,7 +12,7 @@
  *
  *= require_self
  *= require chosen
- *= require foundation-datepicker
+ *= require foundation-datetimepicker
  *= require bioart/stylesheets/spectrum
  */
 
@@ -81,5 +81,29 @@ table.cms {
       font-size: 0.8em;
       color: #666;
     }
+  }
+}
+
+.datetimepicker thead tr:first-child th {
+  background-color: #666;
+}
+i.fi-arrow-left {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  color: white;
+  &:before {
+    content: "\f053";
+  }
+
+}
+
+i.fi-arrow-right {
+  color: white;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  &:before {
+    content: "\f054";
   }
 }
