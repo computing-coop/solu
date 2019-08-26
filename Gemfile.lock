@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: git://github.com/cenotaph/themes_for_rails.git
-  revision: 813d84fe8673b375ceb3b4d4b2acbb9c4b74c1df
+  revision: bd732664565cd00016ba26507a8bf9d28638e71a
   branch: master
   specs:
     themes_for_rails (0.5.1)
@@ -236,6 +236,10 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
+    fullcalendar-rails (3.9.0.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     geocoder (1.5.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -496,6 +500,7 @@ DEPENDENCIES
   formtastic
   foundation-datetimepicker-rails
   foundation-rails (= 6.2.4.0)
+  fullcalendar-rails
   geocoder
   haml
   haml-rails

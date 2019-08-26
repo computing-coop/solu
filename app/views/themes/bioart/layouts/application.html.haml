@@ -5,7 +5,7 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = display_meta_tags :site => 'SOLU / Bioart Society', og: {image: asset_url('bioart/images/solu_bioart.png') }
     = stylesheet_link_tag 'bioart/stylesheets/application', media: 'all'
-    = javascript_include_tag 'bioart/javascripts/application', 'data-turbolinks-track' => true 
+    = javascript_include_tag 'bioart/javascripts/application', 'data-turbolinks-track' => true
     -# if controller.controller_name == 'partners'
     -#  %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
     = csrf_meta_tags
@@ -51,7 +51,7 @@
   %body
     %header{style: @project.nil? ? '' : "background-color: #{@project.custom_background_colour}"}
       .pattern{class: @project.nil? ? false : @project.slug, style: @project.nil? ? '' : (@project.custom_background_image? ? "background: url(#{@project.custom_background_image.url}) repeat;" : false)}
-  
+
         .row.search_field#search_field_container
           = form_tag '/search' do
             = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: #{asset_url('bioart/images/layout/mag_glass.png')} no-repeat 2px center  #{@project.custom_background_colour.blank? ? '#66ffcc' : @project.custom_background_colour};"
@@ -89,8 +89,15 @@
             - flash.each do |name, msg|
               - if msg.is_a?(String)
                 = content_tag :div, msg, :id => "flash_#{name}"
-    = yield
+    .calendar#calendar_container
+      #calendar
+
+      .calendar_tab
+        = link_to fa_icon("calendar"), '#', onclick: 'javascript:toggleCalendar();return false;'
+    #container= yield
     %footer{style: @project.nil? ? '' : (@project.custom_background_image? ? "background: url(#{@project.custom_background_image.url}) repeat;" : false) }= render partial: 'layouts/footer'
 
     :javascript
-      $(document).ready(function() { #{yield :jquery}  });
+      $(document).ready(function() { #{yield :jquery}
+        $.getScript("calendar.js");
+      });
