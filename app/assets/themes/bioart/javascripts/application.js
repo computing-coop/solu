@@ -15,6 +15,7 @@ $(document).on('ready page:load', function () {
   $(document).foundation();
   $('.downarrow_overlay .static').click(function() {
     scroll_To('#frontitem_1');
+    $('.downarrow_overlay').fadeOut();
     return false;
   });
 });
