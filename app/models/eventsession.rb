@@ -7,7 +7,7 @@ class Eventsession
   field :location, type: String
 
   embedded_in :activity
-
+  validate :end_after_start
   # before_save :set_timezone
 
   # def set_timezone
@@ -28,5 +28,14 @@ class Eventsession
       :url => Rails.application.routes.url_helpers.activity_path(self.activity.slug)
     }
 
+  end
+
+  private
+
+  def end_after_start
+    return if end_at.blank? || start_at.blank?
+    if end_at < start_at
+      errors.add(:end_at, "must be after starting time")
+    end
   end
 end
