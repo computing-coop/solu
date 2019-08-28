@@ -7,6 +7,9 @@
 //= require bioart/javascripts/masonry.pkgd.min
 //= require foundation
 //= require bioart/javascripts/jquery.pageless
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
 
 $(document).on('ready page:load', function () {
   $(document).foundation();
@@ -14,17 +17,17 @@ $(document).on('ready page:load', function () {
 
 function toggleCalendar() {
 
-  if ( jQuery('#calendar_container').css("left") == "0px")  {
-    jQuery('#calendar_container').animate({left:"-85%"}, 600);
-    jQuery('#calendar_container').animate({top: parseInt($('#container').offset().top) + 'px' }, 600);
-
+  if ( jQuery('#calendar_container').css("top") == "180px")  {
+    jQuery('#calendar_container').animate({top:"-100%"}, 600);
+    // jQuery('#calendar_container').animate({top: parseInt($('#container').offset().top) + 'px' }, 600);
     jQuery('#calendar_container').css('position', 'fixed');
+    return false;
   } else {
 
     var eTop = $('#calendar_container').offset().top;
     jQuery('#calendar_container').css('position', 'absolute');
     jQuery('#calendar_container').css('top', parseInt(eTop) + 'px');
-        jQuery('#calendar_container').animate({left:"0%"}, 100);
+        jQuery('#calendar_container').animate({top:"180px"}, 600);
   }
 
 }

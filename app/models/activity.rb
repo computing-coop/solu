@@ -43,6 +43,8 @@ class Activity
   scope :published, -> () { where(published: true) }
   scope :by_node, -> (x) { where(node_id: x) }
 
+
+
   def self.search(q)
     Activity.where({ :$text => { :$search => q, :$language => "en" } })
   end

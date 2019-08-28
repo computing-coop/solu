@@ -11,7 +11,7 @@
  * file per style scope.
  *
  *= require_self
-
+ *= require fullcalendar
  *= require bioart/stylesheets/base
  *= require bioart/stylesheets/homepage
  *= require bioart/stylesheets/pages
@@ -76,14 +76,62 @@ button.slick-arrow {
 
 
 .calendar {
-  width: 85%;
-  left: -85%;
+  width: 80%;
+  top: -100%;
+  left: 10%;
   position: fixed;
   z-index: 899;
   opacity: 0.95;
   background-color: $headerblue;
   background: asset-url("bioart/images/layout/menu_dot.png") repeat;
   padding: 1.5rem;
+
+  #calendar {
+    float: left;
+    width: 100%;
+    .fc-view-container * {
+      box-sizing: content-box;
+    }
+    .fc-event-container .fc-event {
+      background-color: $headerblue;
+
+    }
+    a.fc-day-grid-event {
+      color: white;
+    }
+    .fc-day-grid-event .fc-content {
+      background-color: #ABA;
+      white-space: inherit;
+    }
+    .fc-toolbar {
+      margin-bottom: 0.2rem;
+      .fc-left, .fc-left .fc-button-group, .fc-right .fc-button-group {
+        button {
+          box-sizing: border-box;
+          margin: 0;
+          height: 1.4rem;
+          padding: 0 .3rem;
+          font-size: 0.75rem;
+          white-space: nowrap;
+          cursor: pointer;
+        }
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        font-family: $titillium;
+
+      }
+      .fc-center {
+
+      }
+    }
+    .fc-row {
+      th {
+        font-family: $titillium;
+      }
+    }
+  }
   .calendar_tab {
     border-radius: 0px 0px 30px 0px;
     padding: 0.75rem;

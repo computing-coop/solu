@@ -5,7 +5,7 @@
         %h1.project_title= link_to @project.name, @project
     .row
       .small-12.columns= render partial: 'shared/project_menu'
-      
+
   .row
     .small-12.columns
       - unless @activity.photos.empty?
@@ -17,15 +17,28 @@
               = "##{@project.name}"
       .activity_content
         .title= @activity.name
-        %p.date= date_range(@activity.start_at, @activity.end_at)
-        %p= @activity.location
+        - if @activity.eventsessions.blank?
+          %p.date= date_range(@activity.start_at, @activity.end_at)
+          %p= @activity.location
+        - else
+          - @activity.eventsessions.sort_by(&:start_at).each do |session|
+            %p.date
+              = date_range(session.start_at.localtime, session.end_at.localtime)
+              %br/
+              - if @activity.eventsessions.map(&:location).uniq.count > 1
+                = session.location.blank? ? 'SOLU' : session.location
+        - if @activity.eventsessions.map(&:location).uniq.count == 1
+          %p
+            Location:
+            = @activity.eventsessions.map(&:location).uniq.first.blank? ? 'SOLU' : @activity.eventsessions.map(&:location).uniq.first
+
         .description= raw @activity.description
         - unless @activity.postcategory.blank?
           %p.side_link= link_to 'See all blog posts', "/category/#{@activity.postcategory.slug}"
         - if @activity.project
           - if @activity.project.published == true
             %p.side_link= link_to 'Find out more', "/projects/#{@activity.project.slug}"
-          
+
   - unless @activity.related_content.empty?
     .related_container
       .row
@@ -40,11 +53,11 @@
                 .hashtag
                   = "#{related.to_hashtag}"
 
-                
+
               -elsif related.project
                 .hashtag
                   = "#{related.project.to_hashtag}"
-                  
+
               - elsif related.node != @node
                 .hashtag
                   = "#{related.node.to_hashtag}"
