@@ -7,6 +7,8 @@ class Eventsession
   field :location, type: String
 
   embedded_in :activity
+  validates :end_at, presence: true
+  validates :start_at, presence: true
   validate :end_after_start
   # before_save :set_timezone
 
