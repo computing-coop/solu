@@ -18,7 +18,7 @@ $(document).on('ready page:load', function () {
 function toggleCalendar() {
 
   if ( jQuery('#calendar_container').css("top") == "180px")  {
-    jQuery('#calendar_container').animate({top:"-100%"}, 600);
+    jQuery('#calendar_container').animate({top:"-300%"}, 600);
     // jQuery('#calendar_container').animate({top: parseInt($('#container').offset().top) + 'px' }, 600);
     jQuery('#calendar_container').css('position', 'fixed');
     return false;
