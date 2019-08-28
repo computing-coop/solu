@@ -1,9 +1,9 @@
-.whats_new
+.whats_new{id: @frontitems.size == 1 ? "frontitem_1" : false}
   .row
     .small-10.small-centered.medium-12.columns.section_title
       %span.white What's
       New
-  .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel{:'data-equalizer' => '', :'data-equalize-on' => 'medium'}
+  .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel#results{:'data-equalizer' => '', :'data-equalize-on' => 'medium'}
     - @posts.each do |post|
       = link_to post, class: [:post, :columns] do
 
@@ -33,36 +33,42 @@
 
 = content_for :jquery do
   :plain
-    $('.post_carousel').slick({infinite: true,
-        arrows: true,
+    $('#results').pageless({
+                           url: '/posts/'
+                           , loaderMsg: 'Loading more posts....'
+                           });
 
-        adaptiveHeight: false,
-        prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
-        nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
-        variableWidth: false,
-        autoplay: true,
-        autoplaySpeed: 4500,
-        slidesToScroll: 1,
-        slidesToShow: 3,
-        responsive: [
-            {
-              breakpoint: 480,
-              settings: {
-                autoplay: true,
-                autoplaySpeed: 3000,
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-          },
-            {
-              breakpoint: 959,
-              settings: {
-                autoplay: true,
-                autoplaySpeed: 3000,
-                slidesToShow: 2,
-                slidesToScroll: 2
-              }
-          }
-        ]
-      });;
+-#   :plain
+-#     $('.post_carousel').slick({infinite: true,
+-#         arrows: true,
+
+-#         adaptiveHeight: false,
+-#         prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+-#         nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+-#         variableWidth: false,
+-#         autoplay: true,
+-#         autoplaySpeed: 4500,
+-#         slidesToScroll: 1,
+-#         slidesToShow: 3,
+-#         responsive: [
+-#             {
+-#               breakpoint: 480,
+-#               settings: {
+-#                 autoplay: true,
+-#                 autoplaySpeed: 3000,
+-#                 slidesToShow: 1,
+-#                 slidesToScroll: 1
+-#               }
+-#           },
+-#             {
+-#               breakpoint: 959,
+-#               settings: {
+-#                 autoplay: true,
+-#                 autoplaySpeed: 3000,
+-#                 slidesToShow: 2,
+-#                 slidesToScroll: 2
+-#               }
+-#           }
+-#         ]
+-#       });;
 

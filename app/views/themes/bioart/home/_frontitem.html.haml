@@ -1,13 +1,19 @@
 = link_to frontitem.url_override.blank? ? '#' : frontitem.url_override  do
-  .frontitem{style: "background: url(#{frontitem.wideimage.url}) center/contain no-repeat; padding-bottom: #{(frontitem.wideimage_height.to_f / frontitem.wideimage_width.to_f) * 100}%"}
-    
+  .frontitem{style: "background: url(#{frontitem.wideimage.url}) center/contain no-repeat; padding-bottom: #{(frontitem.wideimage_height.to_f / frontitem.wideimage_width.to_f) * 100}%", class: [frontitem.wideimage_height && frontitem.wideimage_height > 400 ? :downarrow : false], id: "frontitem_#{index}"}
+
     .row.frontitem_blurb
       .small-9.medium-6.columns.medium-uncentered.small-centered
         - unless frontitem.no_text == true
           - unless frontitem.smallblurb_text.blank?
 
-            .small_blurb{style: "background-color: #{frontitem.smallblurb_background_colour}; color: #{frontitem.smallblurb_text_colour};"}= frontitem.smallblurb_text
+            .small_blurb{style: "background-color: #{frontitem.smallblurb_background_colour}; color: #{frontitem.smallblurb_text_colour};"}
+              = frontitem.smallblurb_text
           - unless frontitem.middleblurb_text.blank?
             .middle_blurb{style: "background-color: #{frontitem.middleblurb_background_color}; color: #{frontitem.middleblurb_text_colour};", class: frontitem.thirdblurb_text.blank? ? :last : false }= frontitem.middleblurb_text
           - unless frontitem.thirdblurb_text.blank?
-            .third_blurb.last{style: "background-color: #{frontitem.thirdblurb_background_colour}; color: #{frontitem.thirdblurb_text_colour};"}= frontitem.thirdblurb_text        
+            .third_blurb.last{style: "background-color: #{frontitem.thirdblurb_background_colour}; color: #{frontitem.thirdblurb_text_colour};"}
+              = frontitem.thirdblurb_text
+        - if frontitem.wideimage_height.to_i > 400 && index == 0
+          .downarrow_overlay
+            .static{class: frontitem.invert_down_arrow_colour ? :hidden : false}= image_tag asset_url('bioart/images/layout/down_arrow.png')
+            .static{class: frontitem.invert_down_arrow_colour ? false : :hidden}= image_tag asset_url('bioart/images/layout/down_arrow_inverted.png')

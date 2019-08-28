@@ -22,12 +22,12 @@ class Frontitem
   field :sortorder, type: Integer
   field :no_text, type: Mongoid::Boolean
   field :dont_scale, type: Mongoid::Boolean
-
+  field :invert_down_arrow_colour, type: Mongoid::Boolean
   embedded_in :node
-  
+
   mount_uploader :wideimage, BackgroundUploader
   before_save :update_image_attributes
-  
+
   scope :published, -> () { where(published: true) }
   def update_image_attributes
     if wideimage.present? && wideimage_changed?
@@ -38,5 +38,5 @@ class Frontitem
       end
     end
   end
-  
+
 end

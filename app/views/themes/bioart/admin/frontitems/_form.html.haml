@@ -44,6 +44,8 @@
       = f.input :no_text, as: :boolean
     .large-4.columns
       = f.input :dont_scale, as: :boolean
+    .large-4.columns
+      = f.input :invert_down_arrow_colour, as: :boolean
   .row
     .large-4.columns.actions
       = f.submit 'Save', class: [:button, :small]
@@ -52,4 +54,3 @@
   :plain
     $('.colour_picker').spectrum({
     preferredFormat: "hex"});
-    

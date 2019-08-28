@@ -13,6 +13,10 @@
 
 $(document).on('ready page:load', function () {
   $(document).foundation();
+  $('.downarrow_overlay .static').click(function() {
+    scroll_To('#frontitem_1');
+    return false;
+  });
 });
 
 function toggleCalendar() {
@@ -41,3 +45,5 @@ function scroll_To(target) {
   });
   return false;
 }
+
+

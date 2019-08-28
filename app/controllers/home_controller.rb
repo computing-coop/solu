@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-  
-  
+
+
   def about
     @about_text = @node.pages.find('about-the-bioart-society') rescue nil
     @board_staff = @node.pages.find('board-and-staff') rescue nil
@@ -8,12 +8,12 @@ class HomeController < ApplicationController
     @collaborators = @node.pages.find('collaborators') rescue Page.new
     set_meta_tags title: "About"
   end
-  
+
   def index
     @call = Call.first
     redirect_to @call
   end
-  
+
   def home
     if @node.name == 'hybrid_matters'
       if @activity # if activity already exists from exhibitions URL
@@ -38,15 +38,15 @@ class HomeController < ApplicationController
       else
 
         if @site
-          
+
             @posts = Post.by_subsite(@site.id).published.order(published_at: :desc)
             set_meta_tags title: @site.name + ": News"
             render layout: @site.layout, template: 'posts/index'
-  
+
         else
 
           @posts = Post.by_node(@node).published.order(published_at: :desc)
-          
+
           set_meta_tags title: "News"
           render template: 'posts/index'
         end
@@ -54,12 +54,15 @@ class HomeController < ApplicationController
 
     else
       @frontitems = @node.frontitems.published
-      @posts = Post.published.order(published_at: :desc).limit(8)
+      @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)
       @about = @node.pages.find('about-the-bioart-society') rescue nil
       @ars = @node.pages.find('ars-bioarctica-front') rescue nil
       @calls = Project.find('ars-bioarctica').calls.active
       @activities = Activity.by_node(@node.id).desc(:start_at).limit(12)
       @projects = Project.featured.published.sort_by{|x| x.year_range.split('-').last.to_i}.reverse
+      if request.xhr?
+        render layout: false, partial: 'postspage'
+      end
     end
   end
 end

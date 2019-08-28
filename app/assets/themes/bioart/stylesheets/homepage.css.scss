@@ -10,6 +10,36 @@
     height: initial;
     background-size: cover !important;
   }
+  &.downarrow {
+    .downarrow_overlay {
+      &:hover {
+        .static {
+          opacity: 0;
+          &.hidden {
+            opacity: 1;
+            transition: opacity .25s ease-in-out;
+            -moz-transition: opacity .25s ease-in-out;
+            -webkit-transition: opacity .25s ease-in-out;
+          }
+        }
+      }
+      .static {
+        max-width: 10%;
+        left: 50%;
+        margin-left: -5%;
+        position: absolute;
+        bottom: 0%;
+        opacity: 1;
+        transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out;
+        &.hidden {
+          opacity: 0;
+        }
+
+      }
+    }
+  }
   .frontitem_blurb {
     padding-top: 20%;
     .small_blurb {
