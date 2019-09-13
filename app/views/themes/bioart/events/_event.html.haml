@@ -1,0 +1,24 @@
+
+- @activities.each do |activity|
+  = link_to activity, class: [:activity, :column] do
+    .activity_image{style: "background: url(#{activity.photos.empty? ? theme_image_path('placeholder.png') : activity.photos.first.image.url(:box)}) center/cover no-repeat"}
+      - if @project
+        .hashtag
+          = "##{@project.name}"
+    .activity_content
+      .title= activity.name
+      - if activity.eventsessions.blank?
+        %p.date= date_range(activity.start_at, activity.end_at)
+      - else
+        - activity.eventsessions.sort_by(&:start_at).each do |session|
+          %p.date
+            = date_range(session.start_at.localtime, session.end_at.localtime)
+            %br/
+            - if activity.eventsessions.map(&:location).uniq.count > 1
+              = session.location.blank? ? 'SOLU' : session.location
+      - if activity.eventsessions.map(&:location).uniq.count == 1
+        %p
+          Location:
+          = activity.eventsessions.map(&:location).uniq.first.blank? ? 'SOLU' : activity.eventsessions.map(&:location).uniq.first
+      %p= activity.location
+      .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)

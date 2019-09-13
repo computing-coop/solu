@@ -2,7 +2,8 @@ class EventsController < ApplicationController
 
   def index
     if @site.nil?
-      @events = Event.published.order(start_at: :desc)
+      # @events = Activity.where(:eventsessions.ne => nil).desc("eventsessions.start_at").page(params[:page]).per(12)
+      @activities = Activity.by_node(@node.id).published.desc(:start_at)
       set_meta_tags title: "Events"
     else
       if @site.activity.nil?
@@ -20,7 +21,7 @@ class EventsController < ApplicationController
 
       @event = Event.find(params[:id])
       if @event.subsite
-        # render layout: @event.subsite.layout     
+        # render layout: @event.subsite.layout
         redirect_to subdomain: @event.subsite.subdomain
       elsif @event.activity
         if @event.activity.subsite
@@ -46,5 +47,5 @@ class EventsController < ApplicationController
       render layout: @site.layout
 
     end
-  end 
+  end
 end

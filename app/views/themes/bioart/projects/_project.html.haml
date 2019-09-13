@@ -1,0 +1,8 @@
+
+- projects.each do |project|
+  = link_to project, class: [:project, :column] do
+    .project_image{style: "background: url(#{project.image? ? project.image.url(:box).gsub(/development/, 'production') : theme_image_path('placeholder.png') }) center/cover no-repeat"}
+    .project_content
+      .title= project.name
+      %p.date= project.year_range
+      .excerpt= truncate_html(sanitize(project.description, tags: %w{b strong bold i italic em u underline br}), length: 150)

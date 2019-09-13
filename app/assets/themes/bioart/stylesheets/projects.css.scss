@@ -6,17 +6,16 @@
 .projects_index {
   padding: 1rem 0 2.5rem 1rem;
   .heading {
-    margin-left: -2.4rem;
     padding: 2.625rem 0;
     font-family: $rubik;
     color: #000;
     text-transform: uppercase;
-    font-size: 4.375rem;
+    font-size: 2.375rem;
     @include breakpoint(small only) {
-      font-size: 3.4em;
+      font-size: 1.8em;
       font-size: 12vw;
       line-height: 100%;
-      padding: 2.24rem 0;
+      padding: 1.24rem 0;
     }
     span.featured {
       color: #FFF;
@@ -24,7 +23,8 @@
       background-color: $headerblue;
     }
   }
-
+}
+.old_projects_index {
   a.project {
     color: #000;
     height: 152px;

@@ -4,8 +4,8 @@ class Project
   include Mongoid::Timestamps
   include Mongoid::Search
   include Mongoid::Taggable
-  
-  
+
+
   field :year_range, type: String
   field :name, type: String
   field :subtitle, type: String
@@ -20,7 +20,8 @@ class Project
   field :redirect_url, type: String
   field :ongoing, type: Mongoid::Boolean
   field :is_featured, type: Mongoid::Boolean
-  
+  field :short_abstract, type: String
+
   # search_in :description, :title, :subtitle
   index({ description: "text", title: "text", subtitle: "text" })
   field :has_groups, type: Boolean
@@ -35,15 +36,15 @@ class Project
   mount_uploader :image, ImageUploader
   mount_uploader :custom_background_image, BackgroundUploader
   mount_uploader :custom_body_background_image, BackgroundUploader
-  
+
   slug :name, history: true
   include Imageable
-  
+
   validates_uniqueness_of :name
   before_save :update_image_attributes
   has_and_belongs_to_many :partners
   has_many :posts
-  has_many :pages 
+  has_many :pages
   has_many :activities
   has_many :calls
   has_and_belongs_to_many :artists
@@ -52,15 +53,15 @@ class Project
   scope :ongoing, ->() { where(ongoing: true) }
   scope :featured, ->() { where(is_featured: true) }
   scope :older, -> () {where(:ongoing.in => ["", nil, false])}
-  
+
   def self.search(q)
     Project.where({ :$text => { :$search => q, :$language => "en" } })
   end
-  
+
   def to_hashtag
     "##{name.gsub(/\s*/, '')}"
   end
-  
+
   def index_image
     image? ? "background: #{custom_heading_background_colour.blank? ? '#d8d9db' : custom_heading_background_colour} url(#{image.url}) center center no-repeat;" : ''
   end
