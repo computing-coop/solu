@@ -62,13 +62,14 @@
                 .box_chunk
                   .box_title= raw section[:title]
                   = raw section[:contents]
-          = content_for :jquery do
-            :plain
-              $('.grid').masonry({
-                // options
-                itemSelector: '.chunked',
-                columnWidth:  '.chunked',
-              });
+          - if split_on_h3(@page.body).size > 3
+            = content_for :jquery do
+              :plain
+                $('.grid').masonry({
+                  // options
+                  itemSelector: '.chunked',
+                  columnWidth:  '.chunked',
+                });
       - else
         .text
           .excerpt
