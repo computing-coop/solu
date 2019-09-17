@@ -1,33 +1,39 @@
-%h1 Projects
+.row.expanded
+  .small-12.columns
+    %h1 Projects
+.row.expanded
+  .small-12.columns
 
-%table
-  %thead
-    %tr
-      %th Node
-      %th Name
-      %th Years
-      %th Icon
-      %th Published
-      %th
-      %th
-      %th
+    = link_to 'New Project', new_admin_project_path, class: [:button, :tiny]
 
-  %tbody
-    - @projects.each do |project|
-      %tr
-        %td= project.node.try(:name)
-        %td= project.name
-        %td= project.year_range
-        %td
-          - if project.image?
-            = image_tag project.image.url(:thumb)
-        %td= project.published == true ? 'yes' : 'no'
-        
-        %td
-          = link_to 'View', project, target: :_blank, class: [:button, :tiny, :secondary]
-          = link_to 'Edit', edit_admin_project_path(project), class: [:button, :tiny]
-        %td= link_to 'Destroy', [:admin, project], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+    %table
+      %thead
+        %tr
+          %th Node
+          %th Name
+          %th Years
+          %th Icon
+          %th Published
+          %th
+          %th
+          %th
 
-%br
+      %tbody
+        - @projects.each do |project|
+          %tr
+            %td= project.node.try(:name)
+            %td= project.name
+            %td= project.year_range
+            %td
+              - if project.image?
+                = image_tag project.image.url(:thumb)
+            %td= project.published == true ? 'yes' : 'no'
 
-= link_to 'New Project', new_admin_project_path, class: [:button, :tiny]
+            %td
+              = link_to 'View', project, target: :_blank, class: [:button, :tiny, :secondary]
+              = link_to 'Edit', edit_admin_project_path(project), class: [:button, :tiny]
+            %td= link_to 'Destroy', [:admin, project], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
+
+    %br
+
+    = link_to 'New Project', new_admin_project_path, class: [:button, :tiny]

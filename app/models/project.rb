@@ -54,6 +54,7 @@ class Project
   scope :featured, ->() { where(is_featured: true) }
   scope :older, -> () {where(:ongoing.in => ["", nil, false])}
 
+  search_in :name, :description, :subtitle
   def self.search(q)
     Project.where({ :$text => { :$search => q, :$language => "en" } })
   end

@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Slug
+  include Mongoid::Search
   rolify
   validates_uniqueness_of :email
   belongs_to :partner, optional: true
@@ -38,8 +39,8 @@ class User
   field :confirmed_at,         type: Time
   field :confirmation_sent_at, type: Time
   field :unconfirmed_email,    type: String # Only if using reconfirmable
-  
-  
+
+
   # custom HM fields
   field :website,            type: String, default: ""
   field :biography,         type: String
@@ -51,10 +52,14 @@ class User
   field :avatar_width, type: Integer
   field :avatar_height, type: Integer
   field :avatar_content_type, type: String
-  
+
   accepts_nested_attributes_for :calls
 
   mount_uploader :avatar, ImageUploader
+
+
+  search_in :name
+
   # def self.serialize_from_session(key, salt)
   #   (key = key.first) if key.kind_of? Array
   #   (key = BSON::ObjectId.from_string(key['$oid'])) if key.kind_of? Hash
@@ -73,5 +78,5 @@ class User
   #   end
   #   key
   # end
-  
+
 end

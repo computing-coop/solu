@@ -74,7 +74,11 @@ Rails.application.routes.draw do
     resources :events
     resources :partners
     resources :postcategories
-    resources :posts
+    resources :posts do
+      collection do
+        post :search
+      end
+    end
     resources :projects
     resources :subsites
     resources :symposia do

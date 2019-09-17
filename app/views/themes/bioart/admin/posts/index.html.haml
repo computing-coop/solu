@@ -8,6 +8,10 @@
         %option{:value => ""} &nbsp;
         - Project.all.sort_by{|x| x.name.downcase}.each do |project|
           %option{:value => project.id, :selected => (params[:by_project] == project.id.to_s ? :selected : false)}= project.name
+    .medium-6.columns
+      .filter_title Filter by text
+      = form_tag '/admin/posts/search' do
+        = text_field_tag  :searchterm, params[:searchterm]
 .row.expanded
   .small-12.columns
     - if can? :create, Post
@@ -23,7 +27,7 @@
           %th= sortable_column "Published at"
           %th
 
-      
+
       %tbody
         - @posts.each do |post|
           - next unless can? :manage, post
@@ -67,4 +71,4 @@
       } else {
         window.location.href=parts[0] + "?" + $(this).attr('id') + "=" + $(this).val();
       }
-    });  
+    });

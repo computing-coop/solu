@@ -62,6 +62,28 @@ class Admin::PostsController < Admin::BaseController
 
   end
 
+  def search
+    if params[:searchterm].blank?
+      redirect_to admin_posts_path
+    else
+      order = sortable_column_order do |column, direction|
+        case column
+        when 'title'
+          "#{column} #{direction}"
+        when "created_at", "updated_at", "published", "posted_by"
+          "#{column} #{direction}, title ASC"
+        else
+          "published_at DESC, title ASC"
+        end
+      end
+      @posts = [Post.full_text_search(params[:searchterm]), User.full_text_search(params[:searchterm]).map(&:posts), Project.full_text_search(params[:searchterm]).map(&:posts)].flatten.uniq.sort_by{|x| x.published_at.to_i }.reverse
+      # end
+      # @posts ||= apply_scopes(Post.search(params[:searchterm])).accessible_by(current_ability).desc(:published_at)
+      set_meta_tags title: 'Posts'
+      render :index
+    end
+  end
+
   def update
     if @post.update_attributes(post_params)
       flash[:notice] = 'post has been updated.'
