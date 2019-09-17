@@ -10,9 +10,7 @@
     font-family: $rubik;
     float: left;
     margin: -2rem 0 0 2rem;
-    @include breakpoint(small only) {
-      margin: 0 2rem 0 -1rem;
-    }
+
     color: #FFF;
     font-size: 3.5rem;
     clear: left;
