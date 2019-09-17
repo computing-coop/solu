@@ -3,9 +3,17 @@
 
   var screenWidth = $(window).width();
   var options = {
+      customButtons: {
+          download: {
+            text: 'download',
+            click: function() {
+              window.location.href='/calendar.ics'
+            }
+          }
+        },
         editable: true,
         header: {
-          left: 'prev,next today',
+          left: 'prev,next today download',
           center: 'title',
           right: 'month,agendaWeek,agendaDay'
         },

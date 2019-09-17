@@ -263,6 +263,9 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
+    icalendar (2.5.3)
+      ice_cube (~> 0.16)
+    ice_cube (0.16.3)
     io-like (0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
@@ -506,6 +509,7 @@ DEPENDENCIES
   haml-rails
   handles_sortable_columns!
   has_scope
+  icalendar
   jbuilder (~> 2.0)
   jquery-rails
   jquery-slick-rails
