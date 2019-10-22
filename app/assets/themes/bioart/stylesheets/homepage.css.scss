@@ -130,6 +130,7 @@
         margin-bottom: 1rem;
       }
       .excerpt, .excerpt p, .date {
+        word-break:   break-word;
         font-family: $titillium;
         font-size: 1rem;
         line-height: 1.25em;
