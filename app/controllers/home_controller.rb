@@ -54,12 +54,14 @@ class HomeController < ApplicationController
 
     else
       @frontitems = @node.frontitems.published
-      @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)
-      @about = @node.pages.find('about-the-bioart-society') rescue nil
-      @ars = @node.pages.find('ars-bioarctica-front') rescue nil
-      @calls = Project.find('ars-bioarctica').calls.active
-      @activities = Activity.by_node(@node.id).desc(:start_at).limit(12)
-      @projects = Project.featured.published.sort_by{|x| x.year_range.split('-').last.to_i}.reverse
+      whatsnew = [Post.published.order(published_at: :desc), Activity.where(:eventsessions.ne => nil)].flatten.sort_by(&:sort_date).reverse
+      # @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)
+      @posts = Kaminari.paginate_array(whatsnew).page(params[:page]).per(12)
+      # @about = @node.pages.find('about-the-bioart-society') rescue nil
+      # @ars = @node.pages.find('ars-bioarctica-front') rescue nil
+      # @calls = Project.find('ars-bioarctica').calls.active
+      # @activities = Activity.by_node(@node.id).desc(:start_at).limit(12)
+      # @projects = Project.featured.published.sort_by{|x| x.year_range.split('-').last.to_i}.reverse
       if request.xhr?
         render layout: false, partial: 'postspage'
       end

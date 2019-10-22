@@ -57,6 +57,18 @@ class Activity
     end
   end
 
+  def sort_date
+    eventsessions.empty? ? end_at : eventsessions.sort_by(&:start_at).last.end_at
+  end
+
+  def title
+    name
+  end
+
+  def short_abstract
+    description
+  end
+
   def box_colour
     if responsible_organisations.empty?
       "ffffff"

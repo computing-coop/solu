@@ -1,5 +1,5 @@
 class Admin::ArtistsController < Admin::BaseController
-  
+
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -8,13 +8,13 @@ class Admin::ArtistsController < Admin::BaseController
   def index
     order = sortable_column_order do |column, direction|
       case column
-      when "name"
+      when "alphabetical_name"
         "alphabetical_name #{direction}"
       else
         "alphabetical_name asc"
       end
     end
-    @artists = Artist.all.order(order)
+    @artists = Artist.includes(:stays).order(order)
     set_meta_tags title: 'Artists'
     respond_with(@artists)
   end
@@ -26,7 +26,7 @@ class Admin::ArtistsController < Admin::BaseController
   def new
     @artist = Artist.new
     set_meta_tags title: 'New artist'
-    respond_with @artist 
+    respond_with @artist
   end
 
   def edit

@@ -11,25 +11,36 @@
           - if post.project
             .hashtag
               = "#{post.project.to_hashtag}"
+          - elsif post.class == Activity
+            .hashtag
+              = "#SOLUEvents"
           - elsif post.node != @node
             .hashtag
               = "#{post.node.to_hashtag}"
         .post_content{:'data-equalizer-watch' => ''}
           .title= post.title
+          - if post.class == Activity
+            - post.eventsessions.sort_by(&:start_at).each do |session|
+              .date
+                = date_range(session.start_at.localtime, session.end_at.localtime)
+                %br/
+                - if post.eventsessions.map(&:location).uniq.count > 1
+                  = session.location.blank? ? 'SOLU' : session.location
           .excerpt
             - if post.short_abstract
               = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
             - else
               = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 325)
-          .index_author
-            - unless post.user.has_role?(:admin)
-              Guest post
-              |
-              - if post.wordpress_author.blank?
-                = "#{post.user.name} |"
-              - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
-                = "#{post.wordpress_author} |"
-            = post.published_at.strftime('%-d %B %Y')
+          - if post.class == Post
+            .index_author
+              - unless post.user.has_role?(:admin)
+                Guest post
+                |
+                - if post.wordpress_author.blank?
+                  = "#{post.user.name} |"
+                - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
+                  = "#{post.wordpress_author} |"
+              = post.published_at.strftime('%-d %B %Y')
 
 = content_for :jquery do
   :plain

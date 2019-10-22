@@ -5,11 +5,11 @@
     %table
       %thead
         %tr
-          %th Name
+          %th= sortable_column "Name", column: :name
           %th Partner
           %th Roles
           %th Actions
-      
+
       %tbody
         - @users.each do |user|
           %tr

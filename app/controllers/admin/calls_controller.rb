@@ -1,11 +1,23 @@
 class Admin::CallsController < Admin::BaseController
-  
+
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+  handles_sortable_columns
 
   def index
-    @calls = Call.all
+    order = sortable_column_order do |column, direction|
+      case column
+      when "name"
+        "name #{direction}"
+      when "end_at"
+        "end_at #{direction}"
+
+      else
+        "end_at desc"
+      end
+    end
+    @calls = Call.all.order(order)
     set_meta_tags title: 'Open calls'
     respond_with(@calls)
   end

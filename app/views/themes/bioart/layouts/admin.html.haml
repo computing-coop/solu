@@ -5,12 +5,12 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = display_meta_tags :site => 'Bioart Society backoffice'
     %link{:href => "https://fonts.googleapis.com/css?family=Rubik|Titillium+Web|Abel", :rel => "stylesheet", :type => "text/css"}/
-    = stylesheet_link_tag 'bioart/stylesheets/application', media: 'all', 'data-turbolinks-track' => true 
+    = stylesheet_link_tag 'bioart/stylesheets/application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag 'bioart/stylesheets/backoffice', media: 'all', 'data-turbolinks-track' => false
-    = javascript_include_tag 'bioart/javascripts/application', 'data-turbolinks-track' => true 
-    = javascript_include_tag 'bioart/javascripts/backoffice', 'data-turbolinks-track' => false 
+    = javascript_include_tag 'bioart/javascripts/application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'bioart/javascripts/backoffice', 'data-turbolinks-track' => false
 
-    = csrf_meta_tags 
+    = csrf_meta_tags
   %body
     - unless flash.empty?
       #flash
@@ -27,7 +27,7 @@
           = current_user.name
           = link_to ' [Edit profile]', edit_admin_user_path(current_user)
           = link_to ' [sign out]', destroy_user_session_path, :method => :delete
-        .right 
+        .right
         .title-bar-left
 
           %ul.menu.horizontal
@@ -35,13 +35,13 @@
               %li= link_to 'Projects', admin_projects_path
             - if can? :edit, Partner
               %li= link_to 'Partners', admin_partners_path
-            - if can? :edit, Post              
+            - if can? :edit, Post
               %li= link_to 'Blog', admin_posts_path
-            - if can? :edit, Activity              
-              %li= link_to 'Activities', admin_activities_path
-            - if can? :edit, Page              
+            - if can? :edit, Activity
+              %li= link_to 'Events', admin_activities_path
+            - if can? :edit, Page
               %li= link_to 'Static pages', admin_pages_path
-            - if can? :read, Submission              
+            - if can? :read, Submission
               %li= link_to 'Open calls', admin_calls_path
             / - if can? :edit, Symposium
             /   %li= link_to 'Symposia', admin_symposia_path
@@ -49,7 +49,7 @@
             /   %li= link_to 'Events', admin_events_path
             / - if can? :edit, Background
             /   %li= link_to 'Header images', admin_backgrounds_path
-            - if can? :edit, Postcategory           
+            - if can? :edit, Postcategory
               %li= link_to 'Post categories', admin_postcategories_path
             - if can? :edit, Artist
               %li= link_to 'Artists', admin_artists_path
@@ -61,9 +61,9 @@
               %li= link_to 'Front items', admin_frontitems_path
             / - if can? :manage, Subsite
             /   %li.last= link_to 'Subdomains', admin_subsites_path
-              
-          
+
+
     = yield
-    
+
     :javascript
       $(document).ready(function() { #{yield :jquery} });

@@ -1,10 +1,23 @@
 class Admin::ProjectsController < Admin::BaseController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  handles_sortable_columns
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    order = sortable_column_order do |column, direction|
+      case column
+      when "name"
+        "name #{direction}"
+      when "years"
+        "year_range #{direction}"
+      when "published"
+        "published #{direction}"
+      else
+        "year_range desc, name asc"
+      end
+    end
+    @projects = Project.all.order(order)
   end
 
   # GET /projects/1

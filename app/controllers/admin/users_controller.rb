@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   respond_to :html
+  handles_sortable_columns
 
   def destroy
     @user = User.find(params[:id])
@@ -13,7 +14,16 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def index
-    @users = User.all
+    order = sortable_column_order do |column, direction|
+      case column
+      when "name"
+        "name #{direction}"
+
+      else
+        "name asc"
+      end
+    end
+    @users = User.includes(:partner, :roles).order(order)
   end
 
   def update
@@ -22,7 +32,7 @@ class Admin::UsersController < Admin::BaseController
     end
     unless current_user.has_role? :god
       params[:user].delete([:call_ids])
-    end    
+    end
     @user.update(user_params)
     flash[:notice] = 'Profile has been updated.'
     if can? :edit, User

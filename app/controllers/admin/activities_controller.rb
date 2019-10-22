@@ -14,7 +14,7 @@ class Admin::ActivitiesController < Admin::BaseController
         "start_at #{direction}"
 
       else
-        "start_at asc"
+        "start_at desc"
       end
     end
     @activities = Activity.by_node(@node.id).order(order)

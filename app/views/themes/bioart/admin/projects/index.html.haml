@@ -10,10 +10,10 @@
       %thead
         %tr
           %th Node
-          %th Name
-          %th Years
+          %th= sortable_column "Name"
+          %th= sortable_column "Years", column: :year_range
           %th Icon
-          %th Published
+          %th= sortable_column "Published"
           %th
           %th
           %th

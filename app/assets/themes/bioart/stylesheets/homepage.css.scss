@@ -125,7 +125,11 @@
         margin-bottom: 1em;
         color: #000;
       }
-      .excerpt, .excerpt p {
+
+      .date {
+        margin-bottom: 1rem;
+      }
+      .excerpt, .excerpt p, .date {
         font-family: $titillium;
         font-size: 1rem;
         line-height: 1.25em;

@@ -67,6 +67,10 @@ class Post
     self.body = self.body.gsub(/<p><iframe\s*/, '<iframe ').gsub(/<\/iframe><\/p>/, '</iframe>')
   end
 
+  def sort_date
+    self.published_at
+  end
+
   def check_published_date
     if self.published == true
       self.published_at ||= Time.now

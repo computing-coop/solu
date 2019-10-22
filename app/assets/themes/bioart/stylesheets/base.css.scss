@@ -2,7 +2,20 @@
 @import '_settings';
 
 header {
+  .icons {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    float: right;
+    .email, .fb, .twitter, .instagram, .rss {
+      float: left;
 
+      img {
+        height: 20px;
+        padding: 0 0.4rem;
+      }
+    }
+  }
   .login_options {
     float: right;
     position: absolute;
@@ -97,6 +110,12 @@ header {
         display: inline;
         float: left;
         margin-bottom: 1rem;
+      }
+      &.active {
+        a {
+          color: red;
+          background: #000 asset-url("bioart/images/layout/menubar_arrow_down.png")  0.4em no-repeat;
+        }
       }
       ul.submenu {
         background: transparent;

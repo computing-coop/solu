@@ -64,16 +64,23 @@
 
           -# .search_icon.show-for-small-only
           -# = link_to fa_icon('search'), '#', onclick: '$("#search_field_container").slideToggle();$(".search_icon").fadeOut();'
+        - else
+          .icons.float-right
+            -#.email= link_to image_tag(theme_image_path('layout/email_icon.png')), '#'
+            .fb= link_to image_tag(image_url('bioart/images/layout/fb_icon.png')), 'https://www.facebook.com/bioartsociety/', target: :_blank
+            .twitter= link_to image_tag(image_url('bioart/images/layout/twitter_icon.png')), 'https://twitter.com/bioartsociety', target: :_blank
+            .instagram= link_to image_tag(image_url('bioart/images/layout/instagram_icon.png')), 'https://www.instagram.com/bioartsociety/', target: :_blank
+            .rss= link_to image_tag(image_url('bioart/images/layout/rss_icon.png')), '/feed', target: :_blank
         .title-bar{:'data-responsive-toggle' => 'top_menu', :'data-hide-for' => 'large'}
           %button.menu-icon{type: 'button', :'data-toggle' => 'top_menu'}
         .top-bar#top_menu
           .top-bar-left
             %ul.horizontal.menu
               %li.menu-text.show-for-large= link_to image_tag(asset_url('bioart/images/solu_bioart.png')), '/'
-              %li= link_to 'Events', events_path
-              %li= link_to 'Projects', projects_path
-              %li= link_to 'Residency', project_path('ars-bioarctica')
-              %li= link_to 'About', '/about'
+              %li{class: controller.controller_name == 'activities' || controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
+              %li{class: controller.controller_name == 'projects' && @project&.slug != 'ars-bioarctica' ? :active : false}= link_to 'Projects', projects_path
+              %li{class: @project && @project.slug == 'ars-bioarctica' ? :active : false}= link_to 'Residency', project_page_path('ars-bioarctica', 'residency')
+              %li{class: controller.controller_name == 'home' && controller.action_name == 'about' ? :active : false}= link_to 'About', '/about'
               %li= link_to fa_icon("calendar"), '#', onclick: 'javascript:toggleCalendar();return false;', class: :calendar_menu
               %li.search
                 = form_tag '/search' do

@@ -7,10 +7,10 @@
         %tr
           %th Project
           %th= sortable_column "Name"
-          %th Deadline
+          %th= sortable_column "Deadline", column: :end_at
           %th Submissions
           %th Actions
-      
+
       %tbody
         - @calls.each do |call|
           - next unless can? :read, call
@@ -30,6 +30,6 @@
                 = link_to 'Edit', edit_admin_call_path(call), class: [:button, :tiny]
               - if can? :destroy, call
                 = link_to 'Destroy',[:admin, call], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :tiny, :alert]
-              
+
 .row
   .small-12.columns= link_to 'New call', new_admin_call_path, class: [:button, :tiny]

@@ -9,12 +9,12 @@ module ApplicationHelper
     end
     return document
   end
-  
+
   def date_range(from_date, until_date, options = {})
     if until_date.nil? # || from_date.class == Date
       if from_date.class == Date
         return I18n.l(from_date.to_date, :format => :long)
-      elsif from_date.range_time.blank? 
+      elsif from_date.range_time.blank?
         return I18n.l(from_date.to_date, :format => :short)
       else
         return I18n.l(from_date, :format => :long)
@@ -39,9 +39,9 @@ module ApplicationHelper
         if from_date.day == until_date.day
           if until_date.strftime("%H:%M") == from_date.strftime("%H:%M")
             if from_date.strftime("%H:%M") == "00:00"
-              I18n.t("date_range.#{format}.same_day_no_time", from_day: from_date.day, from_month: from_month, year: from_date.year, start_time: from_date.strftime("%H:%M"), sep: separator, end_time: until_date.strftime("%H:%M"), :format => :long)      
+              I18n.t("date_range.#{format}.same_day_no_time", from_day: from_date.day, from_month: from_month, year: from_date.year, start_time: from_date.strftime("%H:%M"), sep: separator, end_time: until_date.strftime("%H:%M"), :format => :long)
             else
-              I18n.t("date_range.#{format}.same_day_start_time", from_day: from_date.day, from_month: from_month, year: from_date.year, start_time: from_date.strftime("%H:%M"), sep: separator, end_time: until_date.strftime("%H:%M"), :format => :long)      
+              I18n.t("date_range.#{format}.same_day_start_time", from_day: from_date.day, from_month: from_month, year: from_date.year, start_time: from_date.strftime("%H:%M"), sep: separator, end_time: until_date.strftime("%H:%M"), :format => :long)
             end
           else
             I18n.t("date_range.#{format}.same_day", from_day: from_date.day, from_month: from_month, year: from_date.year, start_time: from_date.strftime("%H:%M"), sep: separator, end_time: until_date.strftime("%H:%M"), :format => :long)
@@ -49,7 +49,7 @@ module ApplicationHelper
         elsif from_date.class == Date && until_date.class == Date
           I18n.t("date_range.#{format}.same_month_no_time", from_day: from_date.day, until_day: until_date.day, month: from_month, year: from_year, sep: separator, start_time: nil, end_time: nil)
         else
-          I18n.t("date_range.#{format}.same_month", from_day: from_date.day, until_day: until_date.day, month: from_month, year: from_year, sep: separator, start_time: from_date.range_time, end_time: until_date.range_time)
+          I18n.t("date_range.#{format}.same_month", from_day: from_date.day, until_day: until_date.day, month: from_month, year: from_year, sep: separator, start_time: from_date, end_time: until_date)
         end
       else
         until_month = month_names[until_date.month]
@@ -62,9 +62,9 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def split_on_h3(body)
-    
+
     document = Nokogiri::HTML.parse(body)
     sections = document.xpath('//body').children.inject([]) do |chapters_hash, child|
       if child.name == 'h2'
@@ -80,5 +80,5 @@ module ApplicationHelper
       end
     end
   end
-  
+
 end

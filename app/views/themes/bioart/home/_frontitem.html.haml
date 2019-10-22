@@ -14,6 +14,12 @@
             .third_blurb.last{style: "background-color: #{frontitem.thirdblurb_background_colour}; color: #{frontitem.thirdblurb_text_colour};"}
               = frontitem.thirdblurb_text
         - if frontitem.wideimage_height.to_i > 400 && index == 0
-          .downarrow_overlay
+          .downarrow_overlay#downarrow
             .static{class: frontitem.invert_down_arrow_colour ? :hidden : false}= image_tag asset_url('bioart/images/layout/down_arrow.png')
             .static{class: frontitem.invert_down_arrow_colour ? false : :hidden}= image_tag asset_url('bioart/images/layout/down_arrow_inverted.png')
+          = content_for :jquery do
+            :plain
+              $('#downarrow .static').css('top', $('#frontitem_1').position().top - 140 + 'px')
+              $(window).on('resize', function () {
+                $('#downarrow .static').css('top', $('#frontitem_1').position().top - 140 + 'px')
+              })
