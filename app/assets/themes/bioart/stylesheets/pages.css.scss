@@ -32,6 +32,21 @@
   }
   .text {
     opacity: 0.9;
+    &.press_release {
+      .date {
+        font-family: $titillium;
+        font-size: 1.85rem;
+        margin-bottom: 1rem;
+      }
+      a.button.pressrelease {
+        background-color: $headerblue;
+        color: black;
+        &:hover {
+          background-color: $fuschia;
+          color: white;
+        }
+      }
+    }
     .red {
       background-color: $fuschia;
       font-family: $rubik;

@@ -14,8 +14,9 @@
     .small-12.columns
       - if @pressrelease.image?
         .page_image= image_tag @pressrelease.image.url
-        .text
+        .text.press_release
           .excerpt
-            = link_to 'Download as PDF', @pressrelease.attachment.url, class: [:button]
+            .date= l @pressrelease.published_at.to_date, format: :long
+            = link_to 'Download as PDF', @pressrelease.attachment.url, class: [:pressrelease, :button]
             = raw clean_whitespace(sanitize(@pressrelease.body, tags: %w{table tr th h2 h3 h4 h5 h6 h1 td tbody thead img a p br i em bold strong b u}, attributes: %w(href alt target src)))
 .page_detail{class: @project.nil? ? false : :project_detail}
