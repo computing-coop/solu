@@ -1,0 +1,33 @@
+.artists_container
+  .row
+    .small-12.columns
+      %h2 Press releases
+  .row
+    .small-12.columns
+      = link_to 'Create new press release', new_admin_pressrelease_path, class: [:button]
+  .row
+    .small-12.columns
+      %table
+        %thead
+          %tr
+            %th= sortable_column "Release Date", column: :created_at
+            %th= sortable_column "Title"
+            %th= sortable_column "Published?"
+            %th= sortable_column "Last updated"
+            %th
+        %tbody
+          - @pressreleases.each do |pr|
+            %tr
+              %td= pr.published_at.nil? ? '--' : l(pr.published_at, format: :long)
+              %td= pr.title
+              %td= pr.published ? 'yes' : 'no'
+              %td= l pr.updated_at, format: :long
+              %td
+                = link_to 'Show', pr, class: [:button, :small], target: :_blank
+                - if can? :edit, pr
+                  = link_to 'Edit', edit_admin_pressrelease_path(pr), class:  [:button, :small]
+                - if can? :destroy, pr
+                  = link_to 'Destroy', [:admin, pr], :method => :delete, :data => { :confirm => 'Are you sure?' }, class: [:button, :alert,  :small]
+.row
+  .small-12.columns
+    = link_to 'Create new press release', new_admin_pressrelease_path, class: [:button]

@@ -1,35 +1,47 @@
-.about_page{style: "background: url(#{@about_text.background.url}) center top no-repeat #d5d7d8;"}
+.about_page.project_detail
   .row
     .small-10.small-centered.medium-12.columns
       .heading About
-
   .row
-    .small-10.small-centered.medium-12.columns
+    .small-10.small-centered.medium-12.columns= render partial: 'shared/about_menu'
+  .row
+    .small-12.columns
+
+      .page_image= image_tag @about_text.background.url
       .text
-        .excerpt
-          = raw @about_text.excerpt
-          -# .side_link= link_to 'Association rules', page_path('association-rules')
+        .excerpt= raw @about_text.body
+-# .about_page{style: "background: url(#{@about_text.background.url}) center top no-repeat #d5d7d8;"}
+-#   .row
+-#     .small-10.small-centered.medium-12.columns
+-#       .heading About
 
-  .row
-    .small-12.medium-6.columns.member_box
-      .member_image{style: "background: url(#{@members.image.url}) center/cover no-repeat"}
-      .member_content
-        .title= link_to 'Members', page_path('members')
-        .excerpt
-          = raw sanitize(@members.excerpt, tags: %w{br p bold strong b i em underline u})
+-#   .row
+-#     .small-10.small-centered.medium-12.columns
+-#       .text
+-#         .excerpt
+-#           = raw @about_text.excerpt
+-#           -# .side_link= link_to 'Association rules', page_path('association-rules')
+
+-#   .row
+-#     .small-12.medium-6.columns.member_box
+-#       .member_image{style: "background: url(#{@members.image.url}) center/cover no-repeat"}
+-#       .member_content
+-#         .title= link_to 'Members', page_path('members')
+-#         .excerpt
+-#           = raw sanitize(@members.excerpt, tags: %w{br p bold strong b i em underline u})
 
 
-    .small-12.medium-6.columns.member_box
-      .member_image{style: "background: url(#{@collaborators.image.url}) center/cover no-repeat"}
-      .member_content
-        .title= link_to 'Collaborators', page_path('collaborators')
-        .excerpt
-          = raw sanitize(@collaborators.excerpt, tags: %w{br p bold strong b i em underline u})
+-#     .small-12.medium-6.columns.member_box
+-#       .member_image{style: "background: url(#{@collaborators.image.url}) center/cover no-repeat"}
+-#       .member_content
+-#         .title= link_to 'Collaborators', page_path('collaborators')
+-#         .excerpt
+-#           = raw sanitize(@collaborators.excerpt, tags: %w{br p bold strong b i em underline u})
 
 
 
-  .row
-    .small-12.columns.staff_box
-      .text
-        .red= link_to 'Board and staff', page_path('board-and-staff')
-        .excerpt= raw sanitize(@board_staff.body, tags: %w{br p bold strong a b i em underline u},  attributes: %w(href mailto alt target src))
+-#   .row
+-#     .small-12.columns.staff_box
+-#       .text
+-#         .red= link_to 'Board and staff', page_path('board-and-staff')
+-#         .excerpt= raw sanitize(@board_staff.body, tags: %w{br p bold strong a b i em underline u},  attributes: %w(href mailto alt target src))

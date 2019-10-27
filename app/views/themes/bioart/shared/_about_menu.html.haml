@@ -1,0 +1,5 @@
+%ul.dropdown.menu.project_menu{:'data-dropdown-menu' => ''}
+  %li{class: @page&.slug == 'members' ? :active : false }= link_to 'Members', page_path('members')
+  %li{class: @page&.slug == 'board-and-staff' ? :active : false }= link_to 'Board and staff', page_path('board-and-staff')
+  %li{class: controller.controller_name == 'pressreleases' ? :active : false }= link_to 'Media', pressreleases_path
+  %li= link_to 'Supporters and funders', '#'

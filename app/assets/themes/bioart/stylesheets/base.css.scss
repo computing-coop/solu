@@ -1,6 +1,24 @@
 @import 'bioart/stylesheets/variables';
 @import '_settings';
 
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+#container {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+}
+
+
 header {
   .icons {
     position: absolute;
@@ -111,10 +129,24 @@ header {
         float: left;
         margin-bottom: 1rem;
       }
+      &.logo {
+        a {
+          background: none !important;
+
+        }
+      }
+      a {
+        background: #000 asset-url("bioart/images/layout/menubar_arrow.png") 0.4em no-repeat !important;
+      }
+      &.noarrow {
+        a {
+          background-image: none !important;
+                }
+      }
       &.active {
         a {
           color: red;
-          background: #000 asset-url("bioart/images/layout/menubar_arrow_down.png")  0.4em no-repeat;
+          background-color: #000 ;
         }
       }
       ul.submenu {
@@ -275,7 +307,10 @@ header {
   }
 }
 
+footer, .push
+
 footer {
+
   background: $headerblue asset-url("bioart/images/layout/menu_dot.png") repeat;
   min-height: 7.5rem;
   padding: 2rem 0;

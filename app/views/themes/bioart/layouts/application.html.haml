@@ -76,12 +76,12 @@
         .top-bar#top_menu
           .top-bar-left
             %ul.horizontal.menu
-              %li.menu-text.show-for-large= link_to image_tag(asset_url('bioart/images/solu_bioart.png')), '/'
+              %li.logo.menu-text.show-for-large= link_to image_tag(asset_url('bioart/images/solu_bioart.png')), '/'
               %li{class: controller.controller_name == 'activities' || controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
               %li{class: controller.controller_name == 'projects' && @project&.slug != 'ars-bioarctica' ? :active : false}= link_to 'Projects', projects_path
               %li{class: @project && @project.slug == 'ars-bioarctica' ? :active : false}= link_to 'Residency', project_page_path('ars-bioarctica', 'residency')
-              %li{class: controller.controller_name == 'home' && controller.action_name == 'about' ? :active : false}= link_to 'About', '/about'
-              %li= link_to fa_icon("calendar"), '#', onclick: 'javascript:toggleCalendar();return false;', class: :calendar_menu
+              %li{class: (controller.controller_name == 'home' && controller.action_name == 'about') || controller.controller_name == 'pressreleases' ? :active : false}= link_to 'About', '/about'
+              %li.noarrow= link_to fa_icon("calendar"), '#', onclick: 'javascript:toggleCalendar();return false;', class: :calendar_menu
               %li.search
                 = form_tag '/search' do
                   = text_field_tag :searchterm, params[:searchterm], placeholder: 'Search', style: @project.nil? ? '' : "background: #{asset_url('bioart/images/layout/mag_glass.png')} no-repeat 2px center  #{@project.custom_background_colour.blank? ? '#66ffcc' : @project.custom_background_colour};"

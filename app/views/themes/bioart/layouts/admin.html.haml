@@ -55,8 +55,11 @@
               %li= link_to 'Artists', admin_artists_path
             / - if can? :edit, Work
             /   %li= link_to 'Works', admin_works_path
+            - if can? :edit, Pressrelease
+              %li= link_to 'Press releases', admin_pressreleases_path
             - if can? :edit, User
               %li= link_to 'Users', admin_users_path
+
             - if can?  :edit, Frontitem
               %li= link_to 'Front items', admin_frontitems_path
             / - if can? :manage, Subsite

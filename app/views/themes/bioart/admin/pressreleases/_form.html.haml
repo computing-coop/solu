@@ -1,0 +1,26 @@
+.row
+  .small-12.columns
+    %h2 Press release
+
+= semantic_nested_form_for [:admin, @pressrelease], html: {multipart: true, 'data-abide' => ''} do |f|
+  .row
+    .small-12.large-6.columns= f.input :title, input_html: {required: ''}
+  .row
+    .small-12.large-10.columns= f.input :body, as: :ckeditor, input_html: {required: ''}
+  .row
+    .small-12.large-6.columns
+      - if @pressrelease.attachment.blank?
+        = f.input :attachment, input_html: {required: ''}, label: 'PDF attachment'
+      - else
+        = link_to 'Download', @pressrelease.attachment.url, class: [:button, :secondary]
+        = f.input :attachment, label: 'Replace with different PDF attachment'
+  .row
+    .small-12.large-6.columns= f.input :image, label: 'Image to display on HTML version', hint: 'Optional.'
+  .row
+    .small-12.large-6.columns= f.input :published, as: :boolean, label: 'Published?', hint: 'You MUST tick this box for the post to appear on the site'
+  .row
+    .small-6.large-3.columns= f.input :published_at, as: :string,  :input_html => { :class => "datetime_picker", value: f.object.published_at.blank? ? '' : f.object.published_at.strftime('%Y-%m-%d %H:%M') }
+  .row
+    .small-12.large-6.columns
+      = f.submit 'Save', class: [:button, :small]
+      = link_to 'Cancel', admin_pressreleases_path, class: [:button, :small, :secondary], data: {confirm: 'Are you sure you wish to abandon this press release?'}

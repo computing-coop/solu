@@ -8,7 +8,7 @@
             - @page.errors.full_messages.each do |msg|
               %li= msg
   .row
-    .large-5.small-12.columns= f.input :node, input_html: {required: ''}           
+    .large-5.small-12.columns= f.input :node, input_html: {required: ''}
   .row
     .large-5.small-12.columns= f.input :project
   .row
@@ -28,13 +28,13 @@
   .row
     .large-5.small-12.columns= f.input :split_on_h3, as: :boolean, label: 'Split text into boxes along Header 3s', hint: 'If ticked, use the style dropdown in the editor to specify headings as HEADER 3 and the site will render this page with the different sections in different boxes.'
   .row
-    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'     
+    .small-12.large-8.columns= f.input :tags, hint: 'Separate with commas'
   .row
     .large-8.small-12.columns
       - if f.object.background?
         = image_tag f.object.background.url
         = f.input :remove_background, as: :boolean
-        
+
       = f.input :background, label: 'Background image (for front page)'
 
   .row
@@ -43,14 +43,15 @@
         = image_tag f.object.image.url(:box)
         = f.input :remove_image, as: :boolean
       = f.input :image
-      
+
   = f.fields_for :photos do |ff|
     - if ff.object.image?
       = image_tag ff.object.image.url(:box)
     = ff.input :image
     = ff.link_to_remove "Remove this photo"
-  = f.link_to_add "Add a photo", :photos 
-      
+  = f.link_to_add "Add a photo", :photos
+  .row
+    .large-5.small-12.columns= f.input :show_about_menu, as: :boolean, label: 'Show the ABOUT menu above this page'
   .row
     .large-5.small-12.columns
       = f.submit 'Save', class: [:small, :button]
@@ -60,6 +61,5 @@
 
     $('form.page').on('invalid.zf.abide', function(e) {
       $(document).scrollTo('form.page', {duration: 2000})
-      
+
     })
-  

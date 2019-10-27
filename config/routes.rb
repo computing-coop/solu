@@ -80,6 +80,7 @@ Rails.application.routes.draw do
       end
     end
     resources :projects
+    resources :pressreleases
     resources :subsites
     resources :symposia do
       resources :groups do
@@ -101,6 +102,7 @@ Rails.application.routes.draw do
   resources :events
 
   resources :partners
+  resources :pressreleases
   resources :home
   resources :calls do
     member do

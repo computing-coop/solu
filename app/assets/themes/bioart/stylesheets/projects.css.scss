@@ -84,7 +84,9 @@
 
 .project_detail {
   background: #f7f7f6 asset-url("bioart/images/layout/grey_dots_small.png") repeat;
-
+  &.nobg {
+    background: transparent;
+  }
   .text {
     p, .excerpt, .excerpt p {
       a {
@@ -104,6 +106,13 @@
         float: left;
         margin-bottom: 1rem;
       }
+      &.active {
+        a {
+          background: $red asset-url("bioart/images/layout/menubar_arrow_down.png")  0.4em no-repeat;
+          color: #FFF;
+        }
+
+      }
       &.is-dropdown-submenu-parent {
         &:hover {
           ul {
@@ -111,7 +120,7 @@
               a {
                 color: #000;
                 &.active {
-                  background: $red asset-url("bioart/images/layout/menubar_plus.png")  0.4em no-repeat;
+                  background: $red asset-url("bioart/images/layout/menubar_arrow_down.png")  0.4em no-repeat;
                   color: #FFF;
                 }
               }
@@ -131,7 +140,7 @@
         a {
           background: #f7f7f6 asset-url("bioart/images/layout/menubar_plus_blk.png")  0.4em no-repeat;
           &.active {
-            background: $red asset-url("bioart/images/layout/menubar_plus.png")  0.4em no-repeat;
+            background: $red asset-url("bioart/images/layout/menubar_arrow_down.png")  0.4em no-repeat;
             color: #FFF;
           }
         }
@@ -157,7 +166,7 @@
 
         text-transform: uppercase;
         &.active {
-          background: $red asset-url("bioart/images/layout/menubar_arrow.png")  0.4em no-repeat;
+          background: $red asset-url("bioart/images/layout/menubar_arrow_down.png")  0.4em no-repeat;
 
           color: #FFF;
 

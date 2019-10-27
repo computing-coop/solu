@@ -8,6 +8,7 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
       can :destroy, User
+      can :manage, Pressrelease
     elsif user.has_role? :partner
       can :manage, Submission
       can :manage, Call
@@ -42,7 +43,7 @@ class Ability
       can :read, User, id: user.id
       can :create, Post, node_id: '58a8ccd0cbbb983e2b597fa9', project_id: '58a8d22fcbbb985887fe8820', user_id: user.id
       can :manage, Post,  user_id: user.id
-     
+
     elsif user.has_role? :participant
       can :manage, Post # lock to Field_notes only -- to be done
       cannot :manage, Artist
