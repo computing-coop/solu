@@ -79,9 +79,12 @@
     }
 
     .excerpt {
-      padding: 3.347rem 2rem 3.347rem;
+      padding: 1.5rem 2rem 1.5rem;
       @include breakpoint(small only) {
         padding: 1rem 2rem 3rem 2rem;
+      }
+      a {
+        color: $fuschia;
       }
       table {
         tbody {
@@ -89,6 +92,13 @@
           background-color: transparent;
           vertical-align: top;
         }
+      }
+      .supporter {
+        text-align: center;
+      }
+      h3 {
+        font-family: $rubik;
+        text-transform: uppercase;
       }
       p {
         font-size: 1.15rem;
@@ -284,7 +294,10 @@
       font-family: $titillium;
       font-size: 1rem;
       line-height: 1.4rem;
-
+      h3 {
+        font-family: $rubik;
+        text-transform: uppercase;
+      }
       img {
         padding: 1.5rem 0;
         display: block;

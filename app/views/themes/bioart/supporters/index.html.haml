@@ -1,0 +1,26 @@
+.about_page.project_detail
+  .row
+    .small-10.small-centered.medium-12.columns
+      .heading Supporters and funders
+  .row
+    .small-10.small-centered.medium-12.columns= render partial: 'shared/about_menu'
+
+  .row
+    .small-10.small-centered.medium-12.columns
+      .text
+        .excerpt
+          %h3
+            %strong Supporters:
+
+          - if @supporters.empty?
+            Sorry, no supporters yet.
+          - else
+            .row.small-up-1.medium-up-2.large-up-3
+              - @supporters.each do |partner|
+                .column.supporter
+                  = link_to partner.website do
+                    = image_tag partner.logo.url
+                    %br/
+                    = partner.name
+
+

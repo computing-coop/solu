@@ -10,10 +10,10 @@
     .large-5.small-12.columns= f.input :node, input_html: {required: ''}
   .row
     .large-5.small-12.columns= f.input :name, input_html: {required: ''}
+  -# .row
+  -#   .large-5.small-12.columns= f.input :is_funder, as: :boolean, label: 'Is a funder?'
   .row
-    .large-5.small-12.columns= f.input :is_funder, as: :boolean, label: 'Is a funder?'
-  .row
-    .large-5.small-12.columns= f.input :is_general, as: :boolean, label: 'Is a general/overall funder?'
+    .large-5.small-12.columns= f.input :is_general, as: :boolean, label: 'Is a funder?', hint: 'Ticking this box will cause this partner to appear on the Funders and Supporters page.'
   .row
     .large-5.small-12.columns= f.input :start_year, label: 'Starting year of funding', hint: 'Optional'
   .row

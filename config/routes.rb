@@ -55,6 +55,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :groups
   resources :participants
+  resources :supporters
   get '/speakers', to: "participants#index"
   resources :symposium_registrations
   resources :activities

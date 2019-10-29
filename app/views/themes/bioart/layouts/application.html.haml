@@ -80,7 +80,7 @@
               %li{class: controller.controller_name == 'activities' || controller.controller_name == 'events' ? :active : false}= link_to 'Events', events_path
               %li{class: controller.controller_name == 'projects' && @project&.slug != 'ars-bioarctica' ? :active : false}= link_to 'Projects', projects_path
               %li{class: @project && @project.slug == 'ars-bioarctica' ? :active : false}= link_to 'Residency', project_page_path('ars-bioarctica', 'residency')
-              %li{class: (controller.controller_name == 'home' && controller.action_name == 'about') || controller.controller_name == 'pressreleases' ? :active : false}= link_to 'About', '/about'
+              %li{class: (controller.controller_name == 'home' && controller.action_name == 'about') || controller.controller_name == 'pressreleases'  || controller.controller_name == 'supporters' ? :active : false}= link_to 'About', '/about'
               %li.noarrow= link_to fa_icon("calendar"), '#', onclick: 'javascript:toggleCalendar();return false;', class: :calendar_menu
               %li.search
                 = form_tag '/search' do

@@ -97,6 +97,15 @@
   ul.project_menu, ul.project_submenu {
     padding: 2.1em 0 0 0;
     margin-bottom: 3rem;
+    &.about_menu {
+      li {
+        &.active {
+          a {
+            background: $fuschia asset-url("bioart/images/layout/menubar_arrow_down.png")  0.4em no-repeat;
+          }
+        }
+      }
+    }
     @include breakpoint(small only) {
       padding: 0;
     }

@@ -1,14 +1,27 @@
 .about_page.project_detail
   .row
     .small-10.small-centered.medium-12.columns
-      .heading Press and media
+      .heading For media
   .row
     .small-10.small-centered.medium-12.columns= render partial: 'shared/about_menu'
 
   .row
-    .small-12.columns
+    .small-10.small-centered.medium-12.columns
       .text
         .excerpt
+          %h3
+            %strong Press releases
+          %p
+            For inquiries please contact:
+            %br/
+            Johanna Salmela
+            %br/
+            Communications and Office Manager
+            %br/
+            %em johanna.salmela@bioartsociety.fi
+            %br/
+            +358 40 158 8211
+            %br/
           - if @pressreleases.empty?
             Sorry, no press releases yet.
           - else

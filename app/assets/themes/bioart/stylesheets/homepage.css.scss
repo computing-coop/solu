@@ -112,6 +112,9 @@
       }
     }
     .post_content, .activity_content {
+      @include breakpoint(xxlarge only) {
+        padding: 1rem;
+      }
       padding: 1.875em 2.625em;
       background-color: white;
       margin-bottom: 2.2rem;

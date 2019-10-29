@@ -1,10 +1,22 @@
 class Admin::PartnersController < Admin::BaseController
   before_action :set_admin_partner, only: [:show, :edit, :update, :destroy]
-
+  handles_sortable_columns
   respond_to :html
 
   def index
-    @admin_partners = Partner.all
+    order = sortable_column_order do |column, direction|
+      case column
+      when 'name'
+        "#{column} #{direction}"
+      when 'funder'
+        "is_general DESC, name ASC"
+      when "created_at", "updated_at"
+        "#{column} #{direction}, title ASC"
+      else
+        "updated_at DESC, name ASC"
+      end
+    end
+    @admin_partners = apply_scopes(Partner).order(order)
     set_meta_tags title: 'Partners'
     respond_with(@admin_partners)
   end
@@ -35,8 +47,12 @@ class Admin::PartnersController < Admin::BaseController
   end
 
   def update
-    @admin_partner.update_attributes(partner_params)
-    redirect_to admin_partners_path
+    if @admin_partner.update_attributes(partner_params)
+      redirect_to admin_partners_path
+    else
+      flash[:error] = @admin_partner.errors.full_messages.join('; ')
+      render template: 'admin/partners/edit'
+    end
   end
 
   def destroy

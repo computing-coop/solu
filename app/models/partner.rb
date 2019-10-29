@@ -40,7 +40,7 @@ class Partner
   has_and_belongs_to_many :activities, class_name: 'Activity', inverse_of: :partners
   has_and_belongs_to_many :projects
   accepts_nested_attributes_for :projects, reject_if: lambda {|x| x.blank?}
-
+  validate :funders_must_have_url_and_logo
 
   belongs_to :node, optional: true
 
@@ -61,6 +61,10 @@ class Partner
   after_validation :geocode if Rails.env.production?
 
 
+  def funders_must_have_url_and_logo
+    errors[:base] << 'Funders and supporters must have website URL.' if self.is_general && self.website.blank?
+    errors[:base] << 'Funders and supporters must have logo.' if self.is_general && self.logo.blank?
+  end
   def full_address
     [address1, address2, [postcode, city].compact.join(' '), country].compact.join(', ')
   end

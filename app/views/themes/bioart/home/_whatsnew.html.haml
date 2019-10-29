@@ -30,7 +30,10 @@
             - if post.short_abstract
               = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
             - else
-              = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 325)
+              - if post.class == Activity
+                = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 200)
+              - else
+                = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 325)
           - if post.class == Post
             .index_author
               - unless post.user.has_role?(:admin)
@@ -46,7 +49,10 @@
   :plain
     $('#results').pageless({
                            url: '/posts/'
-                           , loaderMsg: 'Loading more posts....'
+                           , loaderMsg: 'Loading more posts....',
+                           complete: function () {
+                            Foundation.reInit('equalizer');
+                           }
                            });
 
 -#   :plain

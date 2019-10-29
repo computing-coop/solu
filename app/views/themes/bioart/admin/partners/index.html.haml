@@ -8,10 +8,11 @@
       %thead
         %tr
           %th Logo
-          %th Name
-          %th Website
+          %th= sortable_column "Name"
+          %th= sortable_column "Funder"
           %th Projects
-          %th Actions
+          %th= sortable_column "Last modified", column: :updated_at
+          %th &nbsp;
 
       %tbody
         - @admin_partners.each do |admin_partner|
@@ -22,11 +23,16 @@
                 %br/
               - if admin_partner.logo?
                 = image_tag admin_partner.logo.url(:standard)
-            %td= admin_partner.name
-            %td= link_to admin_partner.website, admin_partner.website, target: :_blank
+            %td
+              = admin_partner.name
+              %br/
+              - unless admin_partner.website.blank?
+                %small= link_to admin_partner.website, admin_partner.website, target: :_blank
+            %td= admin_partner.is_general ? 'yes' : 'no'
             %td
               - admin_partner.projects.each do |project|
                 %p= project.name
+            %td= l admin_partner.updated_at.to_date, format: :long
             %td{colspan: 3}
               = link_to 'Show', admin_partner, class: [:button, :small]
               = link_to 'Edit', edit_admin_partner_path(admin_partner), class: [:button, :small]
