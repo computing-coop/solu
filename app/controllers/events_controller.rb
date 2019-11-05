@@ -4,6 +4,9 @@ class EventsController < ApplicationController
     if @site.nil?
       # @events = Activity.where(:eventsessions.ne => nil).desc("eventsessions.start_at").page(params[:page]).per(12)
       @activities = Activity.by_node(@node.id).published.desc(:start_at)
+      if @node.name == 'hybrid_matters'
+        @events = @activities.map{|x| x.events.published.order(start_at: :desc) }.flatten
+      end
       set_meta_tags title: "Events"
     else
       if @site.activity.nil?
