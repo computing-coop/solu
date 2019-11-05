@@ -42,7 +42,7 @@ class Admin::PartnersController < Admin::BaseController
       redirect_to admin_partners_path
     else
       flash[:error] = 'error: ' + @admin_partner.errors.inspect
-      respond_with(@admin_partner)
+      render template: 'admin/partners/new'
     end
   end
 
