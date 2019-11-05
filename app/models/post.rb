@@ -57,8 +57,8 @@ class Post
   search_in :title
 
   def self.search(q)
-    posts = Post.where({ :$text => { :$search => q, :$language => "en" } })
-    users = User.where({ :$text => { :$search => q}})
+    posts = Post.full_text_search(q, match: :any) #({ :$text => { :$search => q, :$language => "en" } })
+    users = User.full_text_search(q, match: :any) #({ :$text => { :$search => q}})
     posts += users.map(&:posts).flatten
     return posts.uniq
   end
