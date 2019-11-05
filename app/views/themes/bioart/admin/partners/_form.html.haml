@@ -15,6 +15,8 @@
   .row
     .large-5.small-12.columns= f.input :is_general, as: :boolean, label: 'Is a funder?', hint: 'Ticking this box will cause this partner to appear on the Funders and Supporters page.'
   .row
+    .large-5.small-12.columns= f.input :sort_order, label: 'Enter a number (decimal points are OK) to organise the order in how these funders are displayed on the public page.'
+  .row
     .large-5.small-12.columns= f.input :start_year, label: 'Starting year of funding', hint: 'Optional'
   .row
     .large-5.small-12.columns= f.input :end_year, label: 'Ending year of funding', hint: 'Optional'

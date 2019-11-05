@@ -28,6 +28,7 @@ class Partner
   field :is_general, type:  Mongoid::Boolean
   field :start_year, type: Integer
   field :end_year, type: Integer
+  field :sort_order, type: Float
 
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
