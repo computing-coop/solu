@@ -44,9 +44,9 @@
       = f.fields_for :eventsessions do |ff|
         :javascript
           $('.fdatetimepicker').fdatetimepicker({format: 'yyyy-mm-dd hh:ii', pickTime: true});
-        = ff.object.start_at.localtime if ff.object.start_at
+        -# = ff.object.start_at.localtime if ff.object.start_at
         = ff.input :start_at, as: :string, input_html: { class: :fdatetimepicker, value: ff.object.new_record? ? '' : ff.object.start_at.localtime.strftime('%Y-%m-%d %H:%M')}, label: 'Start date/time of this session'
-        = ff.object.end_at
+        -# = ff.object.end_at
         = ff.input :end_at, as: :string, input_html: { class: :fdatetimepicker, value: ff.object.new_record? ? '' : ff.object.end_at.localtime.strftime('%Y-%m-%d %H:%M') }, label: 'End date/time of this session'
         = ff.input :location, label: 'Location of this session, if not SOLU'
         = ff.link_to_remove 'Remove this session'
@@ -79,7 +79,7 @@
     $('form').submit(function(form) {
       $('.fdatetimepicker').each(function(i, obj) {
         if ($(this).val().length > 4) {
-          $(this).val($(this).val().replace(/\s*\+0300$/, '') + ' +0300');
+          $(this).val($(this).val().replace(/\s*\+0300$/, '') + ' +0200');
         }
       });
     });
