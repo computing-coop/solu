@@ -22,7 +22,7 @@
           - if post.class == Activity
             - post.eventsessions.sort_by(&:start_at).each do |session|
               .date
-                = date_range(session.start_at.localtime, session.end_at.localtime)
+                = date_range(session.start_at.in_time_zone, session.end_at.in_time_zone)
                 %br/
                 - if post.eventsessions.map(&:location).uniq.count > 1
                   = session.location.blank? ? 'SOLU' : session.location
