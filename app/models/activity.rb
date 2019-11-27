@@ -9,6 +9,7 @@ class Activity
   field :name, type: String
   field :activity_type, type: String
   field :description, type: String
+  field :abstract, type: String
   field :start_at, type: Date
   field :end_at, type: Date
   field :published, type: Mongoid::Boolean
@@ -66,7 +67,7 @@ class Activity
   end
 
   def short_abstract
-    description
+    abstract.blank? ? description : abstract
   end
 
   def box_colour

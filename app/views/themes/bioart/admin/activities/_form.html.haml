@@ -23,6 +23,8 @@
   .row
     .small-12.columns= f.input :description, as: :text, input_html: {class: :ckeditor}
   .row
+    .small-12.columns= f.input :abstract, as: :text, input_html: {class: :ckeditor}
+  .row
     .small-12.large-8.columns= f.input :start_at, as: :string, input_html: {:required => '', class: :fdatepicker}, label: 'Overall start date of activity'
   .row
     .small-12.large-8.columns= f.input :end_at, as: :string, input_html: {class: :fdatepicker}, label: 'Overall ending date of activity'

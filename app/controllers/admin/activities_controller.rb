@@ -59,7 +59,7 @@ class Admin::ActivitiesController < Admin::BaseController
     end
 
     def activity_params
-      params.require(:activity).permit(:name, :published, :activitytype_id, :node_id, :location, :description, :place_slug,
+      params.require(:activity).permit(:name, :abstract, :published, :activitytype_id, :node_id, :location, :description, :place_slug,
       :start_at, :project_id, :end_at, :tags, :postcategory_id, photos_attributes: [:image, :id,  :_destroy],
       eventsessions_attributes: [:id, :_destroy, :start_at, :end_at, :location],
       partner_ids: [],
