@@ -23,8 +23,8 @@ class Eventsession
       :title =>  self.activity.name,
       :description => self.activity.description || "",
       location: location.blank? ? 'SOLU' : self.location,
-      :start => start_at.localtime.strftime('%Y-%m-%d %H:%M:00'),
-      :end => end_at.localtime.strftime('%H:%M') == '23:59' ? '??' : end_at.localtime.strftime('%Y-%m-%d %H:%M:00'),
+      :start => start_at.in_time_zone.strftime('%Y-%m-%d %H:%M:00'),
+      :end => end_at.in_time_zone.strftime('%H:%M') == '23:59' ? '??' : end_at.in_time_zone.strftime('%Y-%m-%d %H:%M:00'),
       :allDay => false,
       :recurring => false,
       :url => Rails.application.routes.url_helpers.activity_path(self.activity.slug)
