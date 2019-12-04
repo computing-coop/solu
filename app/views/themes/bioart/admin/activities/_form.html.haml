@@ -53,6 +53,9 @@
       = f.link_to_add 'Add a meeting/session', :eventsessions, class: [:button]
   .row
     .small-12.large-7.columns
+      = f.input :hide_from_whats_new, as: :boolean, label: 'Do not show these events on the Whats New frontpage feed'
+  .row
+    .small-12.large-7.columns
       = f.fields_for :photos do |ff|
         = if ff.object.image?
           = image_tag ff.object.image.url(:box)

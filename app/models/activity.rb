@@ -14,7 +14,7 @@ class Activity
   field :end_at, type: Date
   field :published, type: Mongoid::Boolean
   field :place_slug, type: String
-
+  field :hide_from_whats_new, type: Boolean
   field :location, type: String
 
   belongs_to :activitytype, optional: true
