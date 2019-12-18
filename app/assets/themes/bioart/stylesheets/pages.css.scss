@@ -2,6 +2,27 @@
 @import '_settings';
 
 .about_page {
+
+  .bMslyb {
+    padding: 0 2rem;
+
+  }
+  .text_box .red {
+    background-color: $fuschia;
+  }
+
+  form.js-cm-form {
+    padding-bottom: 2rem;
+    label {
+      font-family: $rubik !important;
+    }
+
+    button.jHkwuK {
+      background-color: $fuschia;
+      margin-left: 2rem;
+      font-family: $rubik !important;
+    }
+  }
   height: 100%;
   padding-bottom: 1.5rem;
   &.errors {

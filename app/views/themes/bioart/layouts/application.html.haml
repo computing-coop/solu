@@ -9,6 +9,7 @@
     -# if controller.controller_name == 'partners'
     -#  %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api_key}", :type => "text/javascript"}
     = csrf_meta_tags
+    = yield :head
     %link{:href => "/feed", :rel => "alternate", :title => "Bioartsociety RSS feed", :type => "application/rss+xml"}/
     %link{:href => "https://fonts.googleapis.com/css?family=Rubik|Titillium+Web|Abel", :rel => "stylesheet", :type => "text/css"}/
     - if @post
