@@ -1,15 +1,17 @@
 
 - lastslug = ''
 %ul.dropdown.menu.project_menu{:'data-dropdown-menu' => ''}
-  - unless @project.pages.where(is_project_overview: true).empty? 
+  - unless @project.pages.where(is_project_overview: true).empty?
     %li= link_to @project.pages.where(is_project_overview: true).first.title, project_page_path(@project, @project.pages.where(is_project_overview: true).first),  class: [controller.controller_name == 'pages' && @page && (@page == @project.pages.where(is_project_overview: true).first || @page.descendant_of?(@project.pages.where(is_project_overview: true).first)) ? :active : false]
   - unless @project.posts.published.empty?
     %li= link_to 'blog', project_posts_path(@project), class: [(controller.controller_name == 'posts' || controller.controller_name == 'postcategories') && @page.nil? ? :active : false]
     - lastslug = 'blog'
+  - unless @project.activities.published.empty?
+    %li= link_to 'Events', project_events_path(@project), class: [controller.controller_name == 'activities' ? :active : false]
+    - lastslug = 'events'
 
-  
   - @project.pages.roots.each do |page|
-    - next if page.hide_from_menu 
+    - next if page.hide_from_menu
     - next if page.is_project_overview == true
     %li
       = link_to page.title, project_page_path(@project, page), class: [(controller.controller_name == 'pages' || controller.controller_name == 'posts') && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]

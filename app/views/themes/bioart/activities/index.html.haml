@@ -1,7 +1,16 @@
 .activities_index{class: @project.nil? ? false : :project_detail}
-
+  - if @project
+    .row
+      .small-12.columns
+        %h1.project_title= link_to @project.name, @project
+    .row
+      .small-12.columns= render partial: 'shared/project_menu'
   .row
     .small-12.columns
-      .red Activities
+      .red
+        - if @project
+          Events
+        - else
+          Activities
   .row.small-up-1.medium-up-2.large-up-3#results= render partial: 'activitiespage'
- 
+

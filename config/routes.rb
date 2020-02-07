@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
 
   resources :projects do
+    get :events, to: 'activities#index'
     resources :posts
     resources :pages
     resources :calls

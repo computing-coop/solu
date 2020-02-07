@@ -1,7 +1,12 @@
 class ActivitiesController < ApplicationController
   include ActionView::Helpers::TextHelper
   def index
-    @activities = Activity.by_node(@node.id).published.asc(:start_at)
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+      @activities = @project.activities.published.desc(:start_at)
+    else
+      @activities = Activity.by_node(@node.id).published.asc(:start_at)
+    end
     set_meta_tags title: "Activities"
   end
 
