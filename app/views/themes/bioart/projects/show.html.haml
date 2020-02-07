@@ -27,7 +27,54 @@
               - @calls.each do |call|
                 .side_link= link_to call.name, call
 
+      - unless @project.activities.empty?
+        .blog_container
+          .red Events
+          .row.small-up-1.medium-up-2.large-up-3.xxlarge-up-4.event_carousel{:'data-equalizer' => '', :'data-equalize-on' => 'medium'}
+            - @project.activities.published.order(start_at: :desc).take(12).each do |activity|
+              = link_to activity, class: [:post, :column] do
+                .post_image{style: "background: url(#{activity.photos.empty? ? theme_image_path('placeholder.png') : activity.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
 
+                .post_content
+                  .title= activity.name
+                  .date= date_range(activity.start_at, activity.end_at)
+                  %p= activity.location
+                  .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)
+        - if @project.activities.published.count > 3
+          = content_for :jquery do
+            :plain
+              $('.event_carousel').slick({infinite: true,
+                  arrows: true,
+
+                  adaptiveHeight: false,
+                  prevArrow: '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: inline-block;"></button>',
+                  nextArrow: '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: inline-block;"></button>',
+                  variableWidth: false,
+                  autoplay: true,
+                  autoplaySpeed: 4500,
+                  slidesToScroll: 1,
+                  slidesToShow: 3,
+                  responsive: [
+                      {
+                        breakpoint: 480,
+                        settings: {
+                          autoplay: true,
+                          autoplaySpeed: 3000,
+                          slidesToShow: 1,
+                          slidesToScroll: 1
+                        }
+                    },
+                    {
+                      breakpoint: 767,
+                      settings: {
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                      }
+                    }
+                  ]
+                });
       - unless @project.posts.empty?
         .blog_container
           .red= link_to 'News', project_posts_path(@project)
@@ -86,7 +133,7 @@
                     }
                   }
                 ]
-              });;
+              });
       - @project.pages.roots.each do |page|
         - next if page.is_project_overview == true
         .text_box{class: page.children.empty? ? false : :has_children, :'data-equalizer' => '', :'data-equalize-on' => 'medium'}

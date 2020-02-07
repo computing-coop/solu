@@ -23,6 +23,9 @@ class ActivitiesController < ApplicationController
         redirect_to activities_path
       end
     else
+      if @activity.project
+        @project = @activity.project
+      end
       render template: 'activities/show'
     end
   end
