@@ -12,9 +12,9 @@
         .activity_image
           -#{style: "background: url(#{@activity.photos.empty? ? current_theme_image_path('placeholder.png') : @activity.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat; height: #{@activity.photos.first.image_height}px"}
           = image_tag @activity.photos.first.image.url.gsub(/development/, 'production')
-          - if @project
-            .hashtag
-              = "##{@project.name}"
+          -# - if @project
+          -#   .hashtag
+          -#     = "##{@project.name}"
       .activity_content
         .title= @activity.name
         - if @activity.eventsessions.blank?
