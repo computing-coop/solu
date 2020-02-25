@@ -335,7 +335,7 @@ GEM
     net-ssh (5.2.0)
     nifty-generators (0.4.6)
     nio4r (2.4.0)
-    nokogiri (1.10.4)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     public_suffix (3.1.1)
