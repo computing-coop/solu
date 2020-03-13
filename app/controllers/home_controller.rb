@@ -55,7 +55,7 @@ class HomeController < ApplicationController
     # SOLU site here
     else
       @frontitems = @node.frontitems.published
-      whatsnew = [Post.published.order(published_at: :desc), Activity.where(:eventsessions.ne => nil, :hide_from_whats_new.ne => true)].flatten.sort_by(&:sort_date).reverse
+      whatsnew = [Post.published.order(published_at: :desc), Activity.published.where(:eventsessions.ne => nil, :hide_from_whats_new.ne => true)].flatten.sort_by(&:sort_date).reverse
       # @posts = Post.published.order(published_at: :desc).page(params[:page]).per(12)
       @posts = Kaminari.paginate_array(whatsnew).page(params[:page]).per(12)
       # @about = @node.pages.find('about-the-bioart-society') rescue nil

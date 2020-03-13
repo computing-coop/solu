@@ -25,7 +25,7 @@ class Activity
   has_and_belongs_to_many :posts
   has_and_belongs_to_many :partners, inverse_of: :activities
   validates_uniqueness_of :name
-  validates_presence_of :name, :start_at, :activitytype_id
+  validates_presence_of :name, :start_at, :activitytype_id, :end_at
   index({ name: 1 }, { unique: true, drop_dups: true, name: "name_index" })
 
   has_and_belongs_to_many :responsible_organisations, class_name: 'Partner', inverse_of: :activities_leading
@@ -59,7 +59,8 @@ class Activity
   end
 
   def sort_date
-    eventsessions.empty? ? end_at : eventsessions.sort_by(&:start_at).last.end_at
+    s = eventsessions.empty? ? end_at : eventsessions.sort_by(&:start_at).last.end_at
+    s.nil? ? updated_at : s
   end
 
   def title
