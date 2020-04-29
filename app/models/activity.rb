@@ -3,7 +3,7 @@ class Activity
   include Mongoid::Slug
   include Mongoid::Timestamps
   include Mongoid::Taggable
-
+  include Mongoid::Search
   include Relatable
 
   field :name, type: String
@@ -44,7 +44,7 @@ class Activity
   scope :published, -> () { where(published: true) }
   scope :by_node, -> (x) { where(node_id: x) }
 
-
+  search_in :name, :description, :abstract
 
   def self.search(q)
     Activity.where({ :$text => { :$search => q, :$language => "en" } })
