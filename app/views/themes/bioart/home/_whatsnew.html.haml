@@ -9,7 +9,7 @@
 
         .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
           - if post.project
-            .hashtag
+            .hashtag{class: post.project.to_hashtag.size > 30 ? 'small' : false }
               = "#{post.project.to_hashtag}"
           - elsif post.class == Activity
             .hashtag

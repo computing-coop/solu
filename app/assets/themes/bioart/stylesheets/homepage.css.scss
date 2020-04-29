@@ -107,6 +107,9 @@
         color: #333;
         opacity: 0.9;
         font-size: 0.933rem;
+        &.small {
+          font-size: 0.75rem;
+        }
         background-color: $headerblue;
         padding: 0.3em 0.313em;
       }
