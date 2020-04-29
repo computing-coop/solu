@@ -3,7 +3,7 @@ class PressreleasesController < ApplicationController
   respond_to :html
 
   def index
-    @pressreleases = Pressrelease.published.order(date: :desc)
+    @pressreleases = Pressrelease.published.order(published_at: :desc)
     render template: 'pages/media'
   end
 
