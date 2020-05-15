@@ -101,9 +101,31 @@ button.slick-arrow {
     a.fc-day-grid-event {
       color: white;
     }
+
     .fc-day-grid-event .fc-content {
       background-color: #ABA;
       white-space: inherit;
+    }
+    .fc-day-grid-event.exhibition {
+      &.fc-not-start {
+        .fc-content .fc-title span.exhibition_hours {
+          display: none;
+        }
+      }
+      .fc-content {
+        background-color: $headerblue;
+        
+        .fc-time {
+          color: black;
+          font-weight: bold;
+        }
+        .fc-title {
+          color: #333;
+          span.exhibition_hours {
+            color: #666;
+          }
+        }
+      }
     }
     .fc-toolbar {
       margin-bottom: 0.2rem;

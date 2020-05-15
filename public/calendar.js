@@ -37,7 +37,14 @@
         },
         eventResize: function(event, dayDelta, minuteDelta, revertFunc) {
           return updateEvent(event);
+        },
+        eventRender: function(event, element) {
+          if (event.exhibition) {
+            element.addClass('exhibition')
+            element.find('.fc-title').append('<span class="exhibition_hours"><br />Open from Wed-Sat, see SOLU opening hours</span>')
+          }
         }
+      
       };
   var mobileOptions = {
     editable: true,

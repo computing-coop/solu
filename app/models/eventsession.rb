@@ -27,6 +27,7 @@ class Eventsession
       :end => end_at.in_time_zone.strftime('%H:%M') == '23:59' ? '??' : end_at.in_time_zone.strftime('%Y-%m-%d %H:%M:00'),
       :allDay => false,
       :recurring => false,
+      :exhibition => ((end_at - start_at) / 60 / 60 / 24 ) > 3 ? true : false,
       :url => Rails.application.routes.url_helpers.activity_path(self.activity.slug)
     }
 
