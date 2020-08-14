@@ -4,6 +4,13 @@
 
 @include breakpoint(small only) {
 
+
+  .calendar {
+    padding: 0.4rem;
+    #calendar {
+      font-size: 0.75rem;
+    }
+  }
   .activities_index {
     padding: 1rem 0;
     .red {
@@ -12,7 +19,16 @@
     }
   }
   header {
-
+    .icons {
+      right: 45px;
+      .instagram, .twitter, .fb, .rss {
+        a {
+          img {
+            height: 15px;
+          }
+        }
+      }
+    }
     padding: 0.25rem 0 0;
     .top-bar {
 
@@ -22,6 +38,7 @@
           margin-bottom: 0.25rem;
           a {
             padding: 0.75rem;
+            background-image: none !important;
             &.calendar_menu {
               i {
                 font-size: 1rem;

@@ -18,7 +18,7 @@
           right: 'month,agendaWeek,agendaDay'
         },
         defaultView: 'month',
-        contentHeight: '400px',
+        contentHeight: 'auto',
         lang: '#{I18n.locale.to_s}',
         contentHeight: 'auto',
         firstDay: 1,
@@ -56,7 +56,7 @@
     defaultView: 'listMonth',
 
     lang: '#{I18n.locale.to_s}',
-    contentHeight: 'auto',
+    contentHeight: 350,
     firstDay: 1,
 
     fixedWeekCount: false,
