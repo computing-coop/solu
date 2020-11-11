@@ -82,7 +82,7 @@
     $('form').submit(function(form) {
       $('.fdatetimepicker').each(function(i, obj) {
         if ($(this).val().length > 4) {
-          $(this).val($(this).val().replace(/\s*\+0300$/, '') + ' +0300');
+          $(this).val($(this).val().replace(/\s*\+0300$/, '') + ' +0200');
         }
       });
     });
