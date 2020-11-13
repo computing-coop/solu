@@ -40,7 +40,7 @@
                   .date= date_range(activity.start_at, activity.end_at)
                   %p= activity.location
                   .excerpt
-                    - if activity.abstract
+                    - if activity.abstract && activity.abstract.size > 10
                       = sanitize(activity.abstract, tags: %w{b strong bold i italic em u underline br})
                     - else
                       = truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 200)
