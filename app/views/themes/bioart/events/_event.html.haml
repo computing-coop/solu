@@ -21,4 +21,8 @@
           Location:
           = activity.eventsessions.map(&:location).uniq.first.blank? ? 'SOLU' : activity.eventsessions.map(&:location).uniq.first
       %p= activity.location
-      .excerpt= truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 150)
+      .excerpt
+        - if activity.abstract
+          = sanitize(activity.abstract, tags: %w{b strong bold i italic em u underline br})
+        - else
+          = truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 200)
