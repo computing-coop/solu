@@ -23,6 +23,6 @@
       %p= activity.location
       .excerpt
         - if activity.abstract && activity.abstract.size > 10
-          = sanitize(activity.abstract, tags: %w{b strong bold i italic em u underline br})
+          = sanitize(activity.abstract.gsub("\u00A0", " ").gsub("&nbsp;", " "), tags: %w{b strong bold i italic em u underline br})
         - else
-          = truncate_html(sanitize(activity.description, tags: %w{b strong bold i italic em u underline br}), length: 200)
+          = truncate_html(sanitize(activity.description.gsub("\u00A0", " ").gsub("\u00A0", " ").gsub("&nbsp;", " "), tags: %w{b strong bold i italic em u underline br}), length: 200)
