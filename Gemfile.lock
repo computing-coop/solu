@@ -534,7 +534,7 @@ DEPENDENCIES
   nokogiri
   puma
   rails (= 5.1.7)
-  recaptcha (= 3.0)
+  recaptcha
   redis
   redis-rails (~> 5.0.1)
   rolify

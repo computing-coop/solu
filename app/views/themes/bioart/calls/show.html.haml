@@ -111,10 +111,14 @@
                       = ff.input :answer_text, as: ff.object.question.question_type.to_sym, label: false, input_html: { required: ff.object.question.required == true ? '' : 'ssss', rel: ff.object.question.char_limit }
                       - if  ff.object.question.question_type.to_sym == :text && !ff.object.question.char_limit.blank?
                         %p.counter= ff.object.new_record? ? "#{ff.object.question.char_limit.to_s} characters remaining" : "#{ff.object.question.char_limit.to_i - f.object.description.length} characters remaining"
-
-
+            :javascript
+              function enableSubmit() {
+                $('#call_submit').attr('disabled', false);
+              }
             .row
-              .small-12.medium-7.columns.small-offset-3.submit_container= form.submit "Submit", class: [:button, :application ]
+              .small-12.medium-7.columns.small-offset-3.submit_container= recaptcha_tags callback: 'enableSubmit'
+            .row
+              .small-12.medium-7.columns.small-offset-3.submit_container= form.submit "Submit", id: :call_submit, disabled: true, disable_with: 'Submitting...' , class: [:button, :application ]
 
   - else
     .row
@@ -127,6 +131,7 @@
 
 = content_for :jquery do
   :plain
+
     $('input[type=file]').change(function(e){
       $(this).parents('label.file').find('.selected_file').text(e.target.files[0].name);
     });

@@ -56,7 +56,7 @@ class CallsController < ApplicationController
     @call = Call.find(params[:id])
     @submission = Submission.new(submission_params)
     @call.submissions << @submission
-    if @call.save
+    if verify_recaptcha(model: @submission) && @call.save
       unless @call.end_at.to_date < Time.now.to_date
         if @call.node.name == 'bioart'
           SubmissionMailer.bioart_submission_received(@submission).deliver
