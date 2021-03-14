@@ -64,7 +64,7 @@ class HomeController < ApplicationController
       # @activities = Activity.by_node(@node.id).desc(:start_at).limit(12)
       # @projects = Project.featured.published.sort_by{|x| x.year_range.split('-').last.to_i}.reverse
       if request.xhr?
-        render layout: false, partial: 'postspage'
+        render layout: false, partial: 'home/wnpiece'
       end
     end
   end

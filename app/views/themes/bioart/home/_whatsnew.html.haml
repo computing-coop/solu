@@ -3,57 +3,20 @@
     .small-10.small-centered.medium-12.columns.section_title
       %span.white What's
       New
-  .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel#results{:'data-equalizer' => '', :'data-equalize-on' => 'medium'}
-    - @posts.each do |post|
-      = link_to post, class: [:post, :columns] do
+  .row.small-up-1.medium-up-3.xxlarge-up-4.post_carousel#results{:'data-equalizer' => '', :'data-equalize-on' => 'medium'}= render partial: 'home/wnpiece'
+    
 
-        .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
-          - if post.project
-            .hashtag{class: post.project.to_hashtag.size > 30 ? 'small' : false }
-              = "#{post.project.to_hashtag}"
-          - elsif post.class == Activity
-            .hashtag
-              = "#SOLUEvents"
-          - elsif post.node != @node
-            .hashtag
-              = "#{post.node.to_hashtag}"
-        .post_content{:'data-equalizer-watch' => ''}
-          .title= post.title
-          - if post.class == Activity
-            - post.eventsessions.sort_by(&:start_at).each do |session|
-              .date
-                = date_range(session.start_at.in_time_zone, session.end_at.in_time_zone)
-                %br/
-                - if post.eventsessions.map(&:location).uniq.count > 1
-                  = session.location.blank? ? 'SOLU' : session.location
-          .excerpt
-            - if post.short_abstract
-              = sanitize(post.short_abstract, tags: %w{b strong bold i italic em u underline br})
-            - else
-              - if post.class == Activity
-                = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 200)
-              - else
-                = truncate_html(sanitize(post.body, tags: %w{b strong bold i italic em u underline br}), length: 325)
-          - if post.class == Post
-            .index_author
-              - unless post.user.has_role?(:admin)
-                Guest post
-                |
-                - if post.wordpress_author.blank?
-                  = "#{post.user.name} |"
-                - elsif !post.wordpress_author.blank? && post.user.email == 'erich.berger@bioartsociety.fi'
-                  = "#{post.wordpress_author} |"
-              = post.published_at.strftime('%-d %B %Y')
+
 
 = content_for :jquery do
   :plain
     $('#results').pageless({
-                           url: '/posts/'
-                           , loaderMsg: 'Loading more posts....',
-                           complete: function () {
+                          url: '/'
+                          , loaderMsg: 'Loading more posts....',
+                          complete: function () {
                             Foundation.reInit('equalizer');
-                           }
-                           });
+                          }
+                          });
 
 -#   :plain
 -#     $('.post_carousel').slick({infinite: true,
