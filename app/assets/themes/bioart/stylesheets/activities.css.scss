@@ -5,6 +5,9 @@
   padding: 5rem 0;
   background: #FFF asset-url("bioart/images/layout/grey_dots_small.png") repeat;
 
+  #results {
+    margin-top: 5rem;
+  }
   .red {
     background-color: $fuschia;
     font-family: $rubik;
