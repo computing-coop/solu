@@ -38,7 +38,7 @@ gem 'jquery-ui-rails'
 gem 'puma'
 
 #gem 'bson_ext'
-
+gem 'bcrypt_pbkdf'
 gem 'cancancan'
 gem 'cancancan-mongoid'
 gem 'capistrano'
@@ -58,6 +58,7 @@ gem 'countries'
 gem 'country_select', github: 'stefanpenner/country_select'
 
 gem 'devise' #, github: 'plataformatec/devise', branch: :master
+gem 'ed25519'
 gem 'figaro'
 gem 'formtastic'
 gem 'foundation-rails', '6.2.4.0'
