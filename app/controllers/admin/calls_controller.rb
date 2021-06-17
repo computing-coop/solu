@@ -28,7 +28,7 @@ class Admin::CallsController < Admin::BaseController
   end
 
   def new
-    @call = Call.new
+    @call = Call.new(node: @node)
     respond_with(@call)
   end
 

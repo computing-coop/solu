@@ -55,26 +55,34 @@ class CallsController < ApplicationController
   def update
     @call = Call.find(params[:id])
     @submission = Submission.new(submission_params)
-    @call.submissions << @submission
-    if verify_recaptcha(model: @submission) && @call.save
-      unless @call.end_at.to_date < Time.now.to_date
-        if @call.node.name == 'bioart'
-          SubmissionMailer.bioart_submission_received(@submission).deliver
-        else
-          SubmissionMailer.submission_received(@submission).deliver
-        end
-      end
-      if @call.node.name == 'bioart'
-        SubmissionMailer.submission_notification_to_bioart(@submission).deliver
-        flash[:notice] = 'Thank you for your submission!'
-        redirect_to '/'
-      else
-        SubmissionMailer.submission_notification_to_hm(@submission).deliver
-        redirect_to thanks_calls_path
-      end
+    
+    captcha_validated, captcha_response = verify_hcaptcha
 
+    if captcha_validated
+      @call.submissions << @submission
+      if @call.save
+        unless @call.end_at.to_date < Time.now.to_date
+          if @call.node.name == 'bioart'
+            SubmissionMailer.bioart_submission_received(@submission).deliver
+          else
+            SubmissionMailer.submission_received(@submission).deliver
+          end
+        end
+        if @call.node.name == 'bioart'
+          SubmissionMailer.submission_notification_to_bioart(@submission).deliver
+          flash[:notice] = 'Thank you for your submission!'
+          redirect_to '/'
+        else
+          SubmissionMailer.submission_notification_to_hm(@submission).deliver
+          redirect_to thanks_calls_path
+        end
+      else
+        flash[:error] = 'There was an error with your submission: ' + @call.errors.full_messages.join('; ')
+        render template: 'calls/show'
+      end
     else
       flash[:error] = 'There was an error with your submission: ' + @call.errors.full_messages.join('; ')
+      render template: 'calls/show'
     end
 
   end

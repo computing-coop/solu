@@ -116,9 +116,9 @@
                 $('#call_submit').attr('disabled', false);
               }
             .row
-              .small-12.medium-7.columns.small-offset-3.submit_container= recaptcha_tags callback: 'enableSubmit'
+              .small-12.medium-7.columns.small-offset-3.submit_container= hcaptcha_tags# size: :invisible # callback: 'enableSubmit'
             .row
-              .small-12.medium-7.columns.small-offset-3.submit_container= form.submit "Submit", id: :call_submit, disabled: true, disable_with: 'Submitting...' , class: [:button, :application ]
+              .small-12.medium-7.columns.small-offset-3.submit_container= form.submit "Submit", id: :call_submit, class: [:button, :application ]
 
   - else
     .row

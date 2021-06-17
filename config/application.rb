@@ -26,6 +26,7 @@ module HYBRIDMatters
     # config.time_zone = 'Central Time (US & Canada)'
     config.exceptions_app = self.routes
     config.time_zone = 'Helsinki'
+    config.action_view.automatically_disable_submit_tag = false
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

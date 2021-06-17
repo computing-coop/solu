@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'mongoid', '6.4.2'
 
-ruby '2.6.2'
+ruby '2.7.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.1.7'
@@ -47,7 +47,7 @@ gem 'capistrano-rvm'
 gem 'capistrano-bundler'#, '1.1.4'
 gem 'capistrano3-puma', github: "seuros/capistrano-puma"
 
-gem 'carrierwave', '~> 0.11'
+gem 'carrierwave'#, '~> 0.11'
 gem 'carrierwave-aws', '~> 1.0', '>= 1.0.2'
 gem 'carrierwave-mongoid'
 gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
@@ -70,6 +70,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'has_scope'
 gem 'handles_sortable_columns', github: 'cenotaph/handles_sortable_columns'
+gem 'hcaptcha'
 gem 'icalendar'
 gem 'kaminari-mongoid'
 gem 'meta-tags' #, require: 'meta_tags'
@@ -84,7 +85,7 @@ gem 'mongoid_magic_counter_cache'
 gem 'mongoid_taggable'
 gem 'nested_form'
 gem 'nokogiri'#, '1.6.6.2'
-gem "recaptcha", require: "recaptcha/rails"
+# gem "recaptcha", require: "recaptcha/rails"
 gem 'redis-rails', '~> 5.0.1'
 gem 'redis'
 gem 'rolify'
