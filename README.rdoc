@@ -7,3 +7,13 @@ HYBRID MATTERs is a two year Nordic art&science network program which investigat
 === Multiple projects per post
 
 If a post is associated to more than one project, then all of the projects will display as hashtags on the news grid items, separated by a '/'
+
+
+=== Hierarchies
+
+This is complicated.
+
+=== Post categories
+
+The backoffice contains the ability to define custom Post Categories which can be related to a project -- currently this is used only by MAKING_LIFE to organise some posts within the workshops. This will remain a many-to-one relationship, one project per custom post category, as it doesn't really make logical sense why you would want a custom post category over multiple projects.
+
