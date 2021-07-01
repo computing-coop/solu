@@ -2,9 +2,9 @@
 - @activities.reverse.each do |activity|
   = link_to activity, class: [:activity, :column] do
     .activity_image{style: "background: url(#{activity.photos.empty? ? theme_image_path('placeholder.png') : activity.photos.first.image.url(:box)}) center/cover no-repeat"}
-      - if activity.project && !@project
+      - if !activity.projects.empty? && !@project
         .hashtag
-          = "##{activity.project.name}"
+          = activity.projects.map(&:to_hashtag).join(' / ')
     .activity_content
       .title= activity.name
       .date= date_range(activity.start_at, activity.end_at)

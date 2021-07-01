@@ -41,7 +41,7 @@ class Ability
       can :read, Node, id: '58a8ccd0cbbb983e2b597fa9'
       can :read, Project, id: '58a8d22fcbbb985887fe8820'
       can :read, User, id: user.id
-      can :create, Post, node_id: '58a8ccd0cbbb983e2b597fa9', project_id: '58a8d22fcbbb985887fe8820', user_id: user.id
+      can :create, Post, node_id: '58a8ccd0cbbb983e2b597fa9', project_ids: ['58a8d22fcbbb985887fe8820'], user_id: user.id
       can :manage, Post,  user_id: user.id
 
     elsif user.has_role? :participant

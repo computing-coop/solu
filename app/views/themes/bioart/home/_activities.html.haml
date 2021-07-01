@@ -7,9 +7,9 @@
       = link_to activity, class: [:activity, :columns] do
 
         .activity_image{style: "background: url(#{activity.photos.empty? ? theme_image_path('placeholder.png') : activity.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
-          - if activity.project
+          - if !activity.projects.empty?
             .hashtag
-              = "#{activity.project.to_hashtag}"
+              = {activity.projects.map(&:to_hashtag}"
           - elsif activity.node != @node
             .hashtag
               = "#{activity.node.to_hashtag}"

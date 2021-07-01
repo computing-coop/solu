@@ -32,7 +32,7 @@ RSpec.describe 'Static pages', type: :request do
         sign_in admin_user
 
         post "/admin/pages", params: { 
-          page: {title: nil, body:  Faker::Lorem.paragraph(2, true, 4), node: Node.find_by(name: "bioart") } 
+          page: {title: nil, body:  Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4), node: Node.find_by(name: "bioart") } 
         }
 
       }
@@ -49,7 +49,7 @@ RSpec.describe 'Static pages', type: :request do
       before {
         sign_in admin_user
         post "/admin/pages", params: { page: {title: 'Test title',
-         body:  Faker::Lorem.paragraph(2, true, 4),
+         body:  Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4),
           node: Node.find_by(name: "bioart") 
           } 
         }

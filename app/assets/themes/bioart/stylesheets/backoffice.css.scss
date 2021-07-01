@@ -66,9 +66,21 @@ table.cms {
   tr:nth-child(even) {background: #FFF}
   td {
     padding: 1rem;
-    p.project {
-      font-size: 0.7em;
+    .partners {
+      padding: 1rem 0;
+      font-size: 0.8rem;
+
+      span.separator:last-of-type {
+        display: none;
+      }
+    }
+    span.projects {
+      font-size: 0.75rem;
       color: #666;
+    }
+    span.node {
+      font-size: 0.6rem;
+      color: #888;
     }
     .subpages {
       font-size: 0.9em;

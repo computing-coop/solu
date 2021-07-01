@@ -11,37 +11,41 @@ class Post
   field :published_at, type: Time
   field :sticky, type: Mongoid::Boolean
   field :short_abstract, type: String
-  belongs_to :user
-  belongs_to :subsite, optional: true
-  belongs_to :node
-  belongs_to :project, optional: true
-  belongs_to :stay, optional: true
+
   field :wordpress_scope, type: String
   field :wordpress_author, type: String
   field :wordpress_id, type: Integer
 
   field :hide_featured_image, type: Boolean, default: false
 
-  has_and_belongs_to_many :postcategories
-  has_and_belongs_to_many :activities
 
   slug :title, history: true
 
   before_save :remove_p_from_iframe
 
+  belongs_to :user
+  belongs_to :subsite, optional: true
+  belongs_to :node
+  # belongs_to :project, optional: true
+  
+  belongs_to :stay, optional: true
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   embeds_many :soundfiles, as: :soundable, cascade_callbacks: true
   embeds_many :videos, as: :videographic, cascade_callbacks: true
+  has_and_belongs_to_many :postcategories
+  has_and_belongs_to_many :activities
+  has_and_belongs_to_many :projects
 
   accepts_nested_attributes_for :soundfiles, allow_destroy: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   accepts_nested_attributes_for :videos, allow_destroy: true
+  accepts_nested_attributes_for :projects, allow_destroy: true
 
   scope :published, -> () { where(published: true)}
   scope :sticky, ->() { where(published: true, sticky: true) }
   scope :by_subsite, -> (x) { where(subsite_id: x).where(published: true)}
   scope :by_node, -> (x) { where(node: x)}
-  scope :by_project,  ->(x) {where(project: x)}
+  scope :by_project,  ->(x) {where(project_ids: x)}
 
   before_save :check_published_date
 
@@ -84,15 +88,15 @@ class Post
      ].flatten.compact.join(' / ')
   end
 
-  def previous_by_project
-    project.nil? ?
+  def previous_by_project(project = projects.first)
+    projects.empty? ?
       Post.published.by_node(node).where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
       :
       Post.published.by_node(node).by_project(project).where(:published_at.lt => published_at).order_by([:published_at, :asc]).last
   end
 
-  def next_by_project
-    project.nil? ?
+  def next_by_project(project = projects.first)
+    projects.empty? ?
       Post.published.by_node(node).where(:published_at.gt => published_at).order_by([:published_at, :asc]).first
       : Post.published.by_node(node).by_project(project).where(:published_at.gt => published_at).order_by([:published_at, :asc]).first
   end

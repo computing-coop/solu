@@ -39,7 +39,7 @@ responsible_organisations: [ Partner.find_by(name: 'å+k') ]
 Activity.create(
 name: 'Call for additional artworks', activity_type: 'production and curating of the exhibition',
 start_at: '2015-01-01', end_at: '2015-12-31', 
-responsible_organisations: [ Partner.all ]
+responsible_organisations: Partner.all.to_a
 )
 
 Activity.create(

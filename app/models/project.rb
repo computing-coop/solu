@@ -33,6 +33,7 @@ class Project
 
   belongs_to :node, optional: true
   belongs_to :subsite, optional: true
+  
   mount_uploader :image, ImageUploader
   mount_uploader :custom_background_image, BackgroundUploader
   mount_uploader :custom_body_background_image, BackgroundUploader
@@ -43,9 +44,9 @@ class Project
   validates_uniqueness_of :name
   before_save :update_image_attributes
   has_and_belongs_to_many :partners
-  has_many :posts
-  has_many :pages
-  has_many :activities
+  has_and_belongs_to_many :posts
+  has_and_belongs_to_many :pages
+  has_and_belongs_to_many :activities
   has_many :calls
   has_and_belongs_to_many :artists
   accepts_nested_attributes_for :artists

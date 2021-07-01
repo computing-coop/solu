@@ -1,5 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'database_cleaner'
+require 'database_cleaner-mongoid'
 require 'mongoid-rspec'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -73,10 +73,10 @@ RSpec.configure do |config|
   # config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include FactoryBot::Syntax::Methods
    # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
-  # config.after(:all) do
-  #   DatabaseCleaner.clean_with(:truncation)
-  #   DatabaseCleaner.strategy = :truncation
-  # end
+  config.after(:all) do
+    # DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner[:mongoid].strategy = :deletion
+  end
 
   # start the transaction strategy as examples are run
   # config.around(:each) do |example|
@@ -84,9 +84,10 @@ RSpec.configure do |config|
   #     example.run
   #   end
   # end
-  # config.before(:suite) do
-  #     Rails.application.load_seed # loading seeds
-  #   end
+  config.before(:suite) do
+    Rails.application.load_seed # loading seeds
+  end
+  
   config.after(:all) do
     if Rails.env.test?
       FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test"])

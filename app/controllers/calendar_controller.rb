@@ -13,7 +13,7 @@ class CalendarController < ApplicationController
 # end
   def index
     # render_cached_json("cal_" + params[:start] + "_" + params[:end], expires_in: 1.hour) do
-      events = Activity.where(nil)
+      # events = Activity.where(nil)
 
       events = Activity.where(:eventsessions.ne => nil)
 

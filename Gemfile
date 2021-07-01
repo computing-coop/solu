@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 # source 'http://gems.github.com'
 git_source(:github) { |name| "https://github.com/#{name}.git" }
-gem 'mongoid', '6.4.2'
+gem 'mongoid' #, '6.4.2'
 
 ruby '2.7.3'
 
@@ -60,7 +60,7 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'devise' #, github: 'plataformatec/devise', branch: :master
 gem 'ed25519'
 gem 'figaro'
-gem 'formtastic'
+gem 'formtastic', github: 'cenotaph/formtastic'
 gem 'foundation-rails', '6.2.4.0'
 # gem 'foundation-datetimepicker-rails'
 gem 'foundation-datetimepicker-rails'
@@ -77,7 +77,7 @@ gem 'kaminari-mongoid'
 gem 'meta-tags' #, require: 'meta_tags'
 gem 'mini_magick'
 gem 'momentjs-rails'
-gem 'mongoid-compatibility'
+# gem 'mongoid-compatibility'
 gem 'mongoid_rails_migrations', github: 'adacosta/mongoid_rails_migrations', branch: :master
 gem 'mongoid-slug', github: 'mongoid/mongoid-slug', branch: 'master'
 gem 'mongoid-tree', :require => 'mongoid/tree'

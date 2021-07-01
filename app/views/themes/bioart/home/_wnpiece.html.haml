@@ -1,9 +1,9 @@
 - @posts.each_with_index do |post, index|
   = link_to post, class: [:post, :columns] do
     .post_image{style: "background: url(#{post.photos.empty? ? theme_image_path('placeholder.png') : post.photos.first.image.url(:box).gsub('development', 'production')}) center/cover no-repeat"}
-      - if post.project
-        .hashtag{class: post.project.to_hashtag.size > 30 ? 'small' : false }
-          = "#{post.project.to_hashtag}"
+      - if !post.projects.empty?
+        .hashtag{class: post.projects.map(&:to_hashtag).join(' / ').size > 30 ? 'small' : false }
+          = "#{post.projects.map(&:to_hashtag).join(' / ')}"
       - elsif post.class == Activity
         .hashtag
           = "#SOLUEvents"

@@ -6,7 +6,7 @@
 .row.expanded
   .small-12.columns
     = link_to 'New Activity', new_admin_activity_path, class: [:button, :small]
-    %table
+    %table.cms
       %thead
         %tr
           %th Node
@@ -29,6 +29,13 @@
                 .partners
                   - activity.responsible_organisations.each do |ro|
                     = link_to ro.name, ro, target: :_blank
+              - unless activity.projects.empty?
+                .partners
+                  
+                  Projects:
+                  - activity.projects.each do |proj|
+                    = link_to proj.name, proj, target: :_blank
+                    %span.separator= " / "
 
             %td= activity.activitytype.try(:name)
             %td

@@ -10,7 +10,7 @@
   .row
     .large-5.small-12.columns= f.input :node, input_html: {required: ''}
   .row
-    .large-5.small-12.columns= f.input :project
+    .large-5.small-12.columns= f.input :projects, input_html: {class: :chosen_select}, label: 'Associate to projects?', hint: 'If chosen, this page will display under that project section, in the template ofthat project', collection: Project.accessible_by(current_ability).sort_by{|x| x.name.downcase}
   .row
     .large-5.small-12.columns= f.input :parent
   .row
@@ -58,7 +58,7 @@
 
 = content_for :jquery do
   :plain
-
+    $('.chosen_select').chosen();
     $('form.page').on('invalid.zf.abide', function(e) {
       $(document).scrollTo('form.page', {duration: 2000})
 

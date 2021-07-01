@@ -28,8 +28,7 @@ class Page
   field :background_content_type, type: String
 
   field :published, type: Boolean
-  belongs_to :activity, optional: true
-  belongs_to :project, optional: true
+
 
   field :wordpress_scope, type: String
   field :wordpress_author, type: String
@@ -42,14 +41,15 @@ class Page
 
   mount_uploader :image, ImageUploader
   mount_uploader :background, BackgroundUploader
-
+  belongs_to :activity, optional: true
+  # belongs_to :project, optional: true
+  has_and_belongs_to_many :projects
   belongs_to :subsite, optional: true
   belongs_to :node, inverse_of: :pages
 
   has_one :postcategory
 
-
-  slug :title, scope: [:node, :project]
+  slug :title, scope:  :project
 
   embeds_many :photos, as: :photographic, cascade_callbacks: true
   embeds_many :soundfiles, as: :soundable, cascade_callbacks: true
@@ -58,13 +58,14 @@ class Page
   accepts_nested_attributes_for :soundfiles, allow_destroy: true
   accepts_nested_attributes_for :photos, allow_destroy: true
   accepts_nested_attributes_for :videos, allow_destroy: true
+  accepts_nested_attributes_for :projects, allow_destroy: true
 
   scope :by_node, ->(node) { where(node: node)}
-  scope :by_project,  ->(x) {where(project: x)}
+  scope :by_project,  ->(x) {where(project_ids: x)}
 
   validates_presence_of :title, :body
-  validates_uniqueness_of :title, scope: [:node, :project]
-
+  validates_uniqueness_of :title, scope:  :project
+  # validates_presence_of :_slugs
   before_save :update_image_attributes
 
 
@@ -94,5 +95,12 @@ class Page
     body
   end
 
+  def rearrange
+    if parent.nil? && parent_id.present?
+      self.parent_id = nil
+      errors.add(:parent_id, :invalid)
+    end
+    super
+  end
 end
 

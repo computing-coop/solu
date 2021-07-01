@@ -35,9 +35,10 @@
         .description= raw @activity.description
         - unless @activity.postcategory.blank?
           %p.side_link= link_to 'See all blog posts', "/category/#{@activity.postcategory.slug}"
-        - if @activity.project
-          - if @activity.project.published == true
-            %p.side_link= link_to 'Find out more', "/projects/#{@activity.project.slug}"
+        - unless @activity.projects.empty?
+          - @activity.projects.each do |proj|
+            - if proj.published == true && proj == @project
+              %p.side_link= link_to 'Find out more', "/projects/#{proj.slug}"
 
   - unless @activity.related_content.empty?
     .related_container
@@ -54,9 +55,9 @@
                   = "#{related.to_hashtag}"
 
 
-              -elsif related.project
+              -elsif !related.projects.empty?
                 .hashtag
-                  = "#{related.project.to_hashtag}"
+                  = related.projects.map(&:to_hashtag).join(' / ')
 
               - elsif related.node != @node
                 .hashtag

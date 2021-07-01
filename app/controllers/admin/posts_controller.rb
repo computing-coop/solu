@@ -30,7 +30,7 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(node: @node)
     current_ability.attributes_for(:new, Post).each do |key, value|
       @post.send("#{key}=", value)
     end
@@ -105,10 +105,10 @@ class Admin::PostsController < Admin::BaseController
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :sticky, :subsite_id, :short_abstract, :published, :user_id, :node_id, :project_id,
+      params.require(:post).permit(:title, :body, :sticky, :subsite_id, :short_abstract, :published, :user_id, :node_id, 
                                    :published_at, :hide_featured_image, :tags, :stay_id,
                                    photos_attributes: [:image, :id,  :_destroy],
                                    videos_attributes:  [:videofile, :id, :_destroy],
-                                   activity_ids: [], postcategory_ids: [] )
+                                   activity_ids: [], postcategory_ids: [], project_ids: [] )
     end
 end

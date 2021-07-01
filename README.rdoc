@@ -2,3 +2,8 @@
 
 HYBRID MATTERs is a two year Nordic art&science network program which investigates the convergence of the physical and digital world into a hybrid ecology.
 
+= changes
+
+=== Multiple projects per post
+
+If a post is associated to more than one project, then all of the projects will display as hashtags on the news grid items, separated by a '/'

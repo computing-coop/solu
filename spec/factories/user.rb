@@ -2,7 +2,7 @@ FactoryBot.define do
   
   factory :user do 
     email { Faker::Internet.email }
-    name { Faker::TheThickOfIt.character }
+    name { Faker::TvShows::TheThickOfIt.character }
     encrypted_password { "password" }
     confirmed_at { Date.today }
     before :save do |b|

@@ -32,9 +32,7 @@
           - elsif video.videofile.url =~ /mov$/
             %video{controls: '', preload: true, width: '100%'}
               %source{src: video.videofile.url }
-          - unless @project
-            .hashtag
-              = "##{@post.project.name}"
+
       .post_content
         .title= @post.title
 
@@ -79,14 +77,14 @@
             - unless @post.previous.nil?
               .side_link.prev_post.float-left= link_to 'Previous', @post.previous
           - else
-            - unless @post.previous_by_project.nil?
-              .side_link.prev_post.float-left= link_to 'Previous', @post.previous_by_project
+            - unless @post.previous_by_project(@project).nil?
+              .side_link.prev_post.float-left= link_to 'Previous', @post.previous_by_project(@project)
           - if @project.nil?
             - unless @post.next.nil?
               .side_link.float-right= link_to 'Next', @post.next, class: :next_post
           - else
-            - unless @post.next_by_project.nil?
-              .side_link.float-right= link_to 'Next', @post.next_by_project, class: :next_post
+            - unless @post.next_by_project(@project).nil?
+              .side_link.float-right= link_to 'Next', @post.next_by_project(@project), class: :next_post
 
       = content_for :jquery do
         :plain

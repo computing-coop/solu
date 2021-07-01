@@ -4,7 +4,7 @@ class Activity
   include Mongoid::Timestamps
   include Mongoid::Taggable
   include Mongoid::Search
-  include Relatable
+  # include Relatable
 
   field :name, type: String
   field :activity_type, type: String
@@ -17,34 +17,39 @@ class Activity
   field :hide_from_whats_new, type: Boolean
   field :location, type: String
 
+  has_many :pages
+  has_and_belongs_to_many :works
   belongs_to :activitytype, optional: true
   has_one :subsite
   belongs_to :node
-  belongs_to :project, optional: true
+  # belongs_to :project, optional: true
+  has_and_belongs_to_many :projects
   belongs_to :postcategory, optional: true
   has_and_belongs_to_many :posts
-  has_and_belongs_to_many :partners, inverse_of: :activities
-  validates_uniqueness_of :name
-  validates_presence_of :name, :start_at, :activitytype_id, :end_at
-  index({ name: 1 }, { unique: true, drop_dups: true, name: "name_index" })
-
   has_and_belongs_to_many :responsible_organisations, class_name: 'Partner', inverse_of: :activities_leading
   has_many :events
   embeds_many :eventsessions, cascade_callbacks: true
+  embeds_many :photos, as: :photographic, cascade_callbacks: true
+  has_and_belongs_to_many :partners, inverse_of: :activities
+  
+  validates_uniqueness_of :name
+  validates_presence_of :name, :start_at, :activitytype_id, :end_at
+  
+  search_in :name, :description, :abstract
+  index({ name: 1 }, { unique: true, drop_dups: true, name: "name_index" })
+  index({ description: "text", name: "text", location: "text" })
+
   accepts_nested_attributes_for :eventsessions, allow_destroy: true, reject_if: ->(attrs) { attrs[:start_at].blank? || attrs[:end_at].blank? }
   accepts_nested_attributes_for :responsible_organisations, allow_destroy: true
-  embeds_many :photos, as: :photographic, cascade_callbacks: true
   accepts_nested_attributes_for :photos, allow_destroy: true
+  accepts_nested_attributes_for :projects, allow_destroy: true
+  
   slug :name, history: true
-  has_many :pages
-  has_and_belongs_to_many :works
-
-  index({ description: "text", name: "text", location: "text" })
 
   scope :published, -> () { where(published: true) }
   scope :by_node, -> (x) { where(node_id: x) }
 
-  search_in :name, :description, :abstract
+
 
   def self.search(q)
     Activity.where({ :$text => { :$search => q, :$language => "en" } })
@@ -120,4 +125,21 @@ class Activity
     published
   end
 
+    
+  def related_content
+    related = []
+    related += Post.tagged_with_any(self.tags_array)
+    related += Page.tagged_with_any(self.tags_array)
+    related += Activity.tagged_with_any(self.tags_array)
+    related += Project.tagged_with_any(self.tags_array)
+    if self.class == Activity
+      unless self.activitytype.nil?
+        related += self.activitytype.activities.delete_if{|x| x==self }
+      end
+    end
+    unless self.postcategory.nil?
+      related += self.postcategory.posts.delete_if{|x| x==self }
+    end
+    related.compact.delete_if{|x| x == self}.delete_if{|x| x.node != self.node}.uniq
+  end
 end

@@ -13,12 +13,25 @@
   - @project.pages.roots.each do |page|
     - next if page.hide_from_menu
     - next if page.is_project_overview == true
+    - next if page.leaf?
     %li
       = link_to page.title, project_page_path(@project, page), class: [(controller.controller_name == 'pages' || controller.controller_name == 'posts') && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]
       - unless page.children.delete_if{|x| x.hide_from_menu == true }.empty?
         %ul.menu
-          - page.children.delete_if{|x| x.hide_from_menu == true }.each do |pp|
+          - page.children.delete_if{|x| (!x.projects.include?(@project) || x.hide_from_menu == true) }.each do |pp|
             %li= link_to pp.title, project_page_path(@project, pp), class: [(controller.controller_name == 'pages' || controller.controller_name == 'posts') && @page && (@page == pp || @page.descendant_of?(pp)) ? :active : false]
+  - @project.pages.reject{|x| x.root? }.each do |page|
+    - next if page.hide_from_menu
+    - next if page.is_project_overview == true
+    - next if page.leaf?
+    - next unless page.projects.include?(@project)
+    %li
+      = link_to page.title, project_page_path(@project, page), class: [(controller.controller_name == 'pages' || controller.controller_name == 'posts') && @page && (@page == page || @page.descendant_of?(page)) ? :active : false]
+      - unless page.children.delete_if{|x| (!x.projects.include?(@project) || x.hide_from_menu == true) }.empty?
+        %ul.menu
+          - page.children.delete_if{|x| (!x.projects.include?(@project) || x.hide_from_menu == true) }.each do |pp|
+            %li= link_to pp.title, project_page_path(@project, pp), class: [(controller.controller_name == 'pages' || controller.controller_name == 'posts') && @page && (@page == pp || @page.descendant_of?(pp)) ? :active : false]
+
   - unless @project.calls.on_menu.active.empty?
     - @project.calls.on_menu.active.each do |call|
       %li= link_to call.name, call

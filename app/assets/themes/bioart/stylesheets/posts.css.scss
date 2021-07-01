@@ -3,7 +3,7 @@
 
 .posts_index {
   background: #FFF asset-url("bioart/images/layout/grey_dots_small.png") repeat;
-
+  height: 100%;
   .section_title {
     padding: 2.7rem 0;
     font-family: $rubik;
@@ -81,6 +81,7 @@
 
 
 .post_detail {
+  height: 100%;
   background: #FFF asset-url("bioart/images/layout/grey_dots_small.png") repeat;
   padding: 2.7rem 0;
   .post_image {

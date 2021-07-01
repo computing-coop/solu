@@ -36,8 +36,9 @@
               = link_to post.title, post, target: :_blank
               - if post.sticky == true
                 %strong In Announcement box!
-              - if post.project
-                %p.project= post.project.name
+              - post.projects.each do |proj|
+                
+                %p.project= proj.name
               - if post.stay
                 %p.stay
                   Residency:

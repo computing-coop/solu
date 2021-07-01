@@ -2,9 +2,9 @@
 - @posts.each_with_index do |post, index|
   = link_to post, class: [:post, :column] do
     .post_image{style: "background: url(#{post.photos.empty? ? (@project.nil? ? theme_image_path('placeholder.png') : @project.image.url(:box) ) :  post.photos.first.image.url(:box).gsub('development', 'production')}) #{!@project.nil? && post.photos.empty? ? 'center' : 'center/cover'} no-repeat"}
-      - if post.project
-        .hashtag{class: post.project.to_hashtag.size > 30 ? 'small' : false }
-          = "#{post.project.to_hashtag}"
+      - if post.projects
+        .hashtag{class: post.projects.map(&:to_hashtag).join(' / ').size > 30 ? 'small' : false }
+          = "#{post.projects.map(&:to_hashtag).join(' / ')}"
       - elsif post.node != @node
         .hashtag
           = "#{post.node.to_hashtag}"

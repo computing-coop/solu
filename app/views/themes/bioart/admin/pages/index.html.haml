@@ -39,14 +39,12 @@
               = page.title
 
 
-              %p.project
-                = page.node.name
+              %p
+                %span.node= page.node.name
                 = page.subsite.nil? ? '' : " : " + page.subsite.name
-                - if page.project
-                  = " : "
-                  = page.project.name
+                %br/
+                %span.projects= page.projects.map(&:name).join(', ')
             %td
-
               - unless page.children.empty?
                 .subpages
                   %u Subpages

@@ -77,8 +77,8 @@ class PostsController < ApplicationController
             image: @post.photos.empty? ? false : @post.photos.first.image.url(:box)
           },
           canonical: url_for(@post)
-        if @post.project
-          redirect_to project_post_url(@post.project, @post)
+        if @post.projects
+          redirect_to project_post_url(@post.projects.first, @post)
         end
       end
     else

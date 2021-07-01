@@ -17,7 +17,8 @@
   .row
     .small-12.large-8.columns= f.input :place_slug, label: 'Slug for exhibition URL'
   .row
-    .small-12.large-8.columns= f.input :project, label: 'Associate to project?', hint: 'If selected, a link to this project will be created on the activity page'
+    .small-12.large-8.columns= f.input :projects, input_html: {class: :chosen_select}, label: 'Associate to projects?', hint: 'If selected, a link to this project will be created on the activity page', collection: Project.accessible_by(current_ability).sort_by{|x| x.name.downcase}
+
   .row
     .small-12.large-8.columns= f.input :postcategory, label: 'Associate to post category?', hint: 'If selected, a link to this all posts with this category will be created on the activity page'
   .row

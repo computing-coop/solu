@@ -33,7 +33,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def new
-    @page = Page.new
+    @page = Page.new(node: @node)
     set_meta_tags title: 'New page'
     respond_with(@page)
   end
@@ -71,7 +71,7 @@ class Admin::PagesController < Admin::BaseController
     def page_params
       params.require(:page).permit(:title, :body, :image, :subsite_id, :background, :node_id, :is_project_overview, :excerpt,
                                     :hide_from_menu, :two_columns, :show_about_menu,
-                                    :project_id, :parent_id,  :activity_id, :published, :tags, :image, :remove_background,
-                                    :remove_image, :split_on_h3, photos_attributes: [:image, :id,  :_destroy])
+                                    :parent_id,  :activity_id, :published, :tags, :image, :remove_background,
+                                    :remove_image, :split_on_h3, photos_attributes: [:image, :id,  :_destroy], project_ids: [])
     end
 end
