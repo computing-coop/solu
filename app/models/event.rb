@@ -3,6 +3,14 @@ class Event
   include Mongoid::Slug
   include Mongoid::Timestamps
   
+  ###  This Event model is only used in the HYBRID_MATTERs project.
+  ##
+  ## 
+  ##   For SOLU/Bioart society events, use the Activity model.
+  ##
+  ##
+  ###
+
   field :name, type: String
   field :start_at, type: Date
   field :end_at, type: Date

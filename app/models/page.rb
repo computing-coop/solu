@@ -42,7 +42,7 @@ class Page
   mount_uploader :image, ImageUploader
   mount_uploader :background, BackgroundUploader
   belongs_to :activity, optional: true
-  # belongs_to :project, optional: true
+  belongs_to :project, optional: true
   has_and_belongs_to_many :projects
   belongs_to :subsite, optional: true
   belongs_to :node, inverse_of: :pages
