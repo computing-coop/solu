@@ -12,15 +12,9 @@
           %h3
             %strong Press releases
           %p
-            For inquiries please contact:
+            For inquiries please contact us at 
+            = link_to 'info@bioartsociety.fi', "mailto:info@bioartsociety.fi"
             %br/
-            Johanna Salmela
-            %br/
-            Communications and Office Manager
-            %br/
-            %em johanna.salmela@bioartsociety.fi
-            %br/
-            +358 40 158 8211
             %br/
           - if @pressreleases.empty?
             Sorry, no press releases yet.
