@@ -26,7 +26,7 @@ class Post
   belongs_to :user
   belongs_to :subsite, optional: true
   belongs_to :node
-  # belongs_to :project, optional: true
+  belongs_to :project, optional: true
   
   belongs_to :stay, optional: true
   embeds_many :photos, as: :photographic, cascade_callbacks: true
