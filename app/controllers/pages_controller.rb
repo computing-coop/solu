@@ -25,7 +25,7 @@ class PagesController < ApplicationController
       if @page.postcategory
         @posts = @page.postcategory.posts
       end
-      if @page.projects
+      unless @page.projects.empty?
         redirect_to project_page_url(@page.projects.first, @page)
       end
         

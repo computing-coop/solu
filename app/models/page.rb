@@ -83,7 +83,7 @@ class Page
 
   def index_image
     image? ? "background: #d8d9db url(#{image.url(:box)}) center/cover no-repeat;" :
-    (project? ? project.index_image :
+    (!projects.empty? ? projects.first.index_image :
       "background: #d8d9db url(/assets/bioart/images/placeholder.png) center/cover no-repeat" )
   end
 
