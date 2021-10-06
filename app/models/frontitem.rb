@@ -29,6 +29,7 @@ class Frontitem
   before_save :update_image_attributes
 
   scope :published, -> () { where(published: true) }
+
   def update_image_attributes
     if wideimage.present? && wideimage_changed?
       if wideimage.file.exists?
@@ -36,7 +37,7 @@ class Frontitem
         self.wideimage_size = wideimage.file.size
         self.wideimage_width, self.wideimage_height = `identify -format "%wx%h" #{wideimage.file.path}`.split(/x/)
         Rails.logger.error `identify -format "%wx%h" #{wideimage.file.path}`.split(/x/)
-        Rails.logger.error i"dentify -format '%wx%h' #{wideimage.file.path}.split(/x/)"
+        Rails.logger.error "dentify -format '%wx%h' #{wideimage.file.path}.split(/x/)"
       end
     end
   end
