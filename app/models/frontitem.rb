@@ -35,11 +35,11 @@ class Frontitem
       if wideimage.file.exists?
         self.wideimage_content_type = wideimage.file.content_type
         self.wideimage_size = wideimage.file.size
-        mm = MiniMagick::Image.open(wideimage.full_cache_path)
-        self.wideimage_width = mm['width']
-        self.wideimage_height = mm['height']
-        Rails.logger.error mm['width']
-        Rails.logger.error mm['height']
+        # mm = MiniMagick::Image.open(wideimage.full_cache_path)
+        # self.wideimage_width = mm['width']
+        # self.wideimage_height = mm['height']
+        # Rails.logger.error mm['width']
+        # Rails.logger.error mm['height']
       end
     end
   end

@@ -9,7 +9,14 @@ class BackgroundUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :aws
   # storage :fog
+  process :store_dimensions
 
+
+  def store_dimensions
+    if file && model
+      model.wideimage_width, model.wideimage_height = ::MiniMagick::Image.open(file.file)[:dimensions]
+    end
+  end
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
