@@ -35,6 +35,8 @@ class Frontitem
         self.wideimage_content_type = wideimage.file.content_type
         self.wideimage_size = wideimage.file.size
         self.wideimage_width, self.wideimage_height = `identify -format "%wx%h" #{wideimage.file.path}`.split(/x/)
+        Rails.logger.error `identify -format "%wx%h" #{wideimage.file.path}`.split(/x/)
+        Rails.logger.error i"dentify -format '%wx%h' #{wideimage.file.path}.split(/x/)"
       end
     end
   end
