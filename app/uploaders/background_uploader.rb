@@ -16,6 +16,10 @@ class BackgroundUploader < CarrierWave::Uploader::Base
     "headers/#{mounted_as}/#{model.id}"
   end
 
+  def full_cache_path
+		"#{cache_dir}/#{cache_name}"
+	end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
   #   # For Rails 3.1+ asset pipeline compatibility:
