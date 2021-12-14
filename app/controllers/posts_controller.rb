@@ -102,10 +102,6 @@ class PostsController < ApplicationController
 
         else
           # check it's right layout
-          Rails.logger.error 'OK the site is ' + @site.inspect
-          Rails.logger.error ' and the post subsite is ' + @post.subsite.inspect
-          Rails.logger.error ' and the subdomains should be ' + @site.subdomain.inspect
-          Rails.logger.error ' and ' + @post.subsite.subdomain
           if @post.subsite
             if @site != @post.subsite
               redirect_to request.url.sub(@site.subdomain, @post.subsite.subdomain)

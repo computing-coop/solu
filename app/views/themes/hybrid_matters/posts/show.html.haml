@@ -1,47 +1,47 @@
-- cache @post do
-  .post_single_container
-    .post
-      .row
+-# - cache @post do
+.post_single_container
+  .post
+    .row
 
-        .small-12.medium-8.columns.medium-offset-2
-          .row
-            .medium-2.columns.hide-for-small-only.logo
-              - if @post.user.partner.nil?
-                = image_tag 'hm_logo.png'
-              - else
-                = image_tag @post.user.partner.hmlogo.url
-            .small-12.medium-10.columns.post_info.end
-              .blue_heading= raw @post.category
-              .title= @post.title
-              - if @post.published == true
-                .date= @post.published_at.strftime("%d %B %Y")
-              - else 
-                .date NOT YET PUBLISHED
-              - if can? :edit, @post
-                .row
-                  .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
-                
-      - unless @post.photos.empty?
+      .small-12.medium-8.columns.medium-offset-2
         .row
-          .small-12.medium-8.columns.medium-offset-2
-          
-            .image_carousel{style: @post.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
-            
-              - @post.photos.each do |photo|
-                .slide[photo]
-                  = image_tag photo.image.url(:standard)
-                  .thumb= image_tag photo.image.url(:thumb)
-          
+          .medium-2.columns.hide-for-small-only.logo
+            - if @post.user.partner.nil?
+              = image_tag 'hm_logo.png'
+            - else
+              = image_tag @post.user.partner.hmlogo.url
+          .small-12.medium-10.columns.post_info.end
+            .blue_heading= raw @post.category
+            .title= @post.title
+            - if @post.published == true
+              .date= @post.published_at.strftime("%d %B %Y")
+            - else 
+              .date NOT YET PUBLISHED
+            - if can? :edit, @post
+              .row
+                .small-12.columns= link_to 'Edit post', edit_admin_post_path(@post), class: [:button, :tiny, :secondary]
+              
+    - unless @post.photos.empty?
       .row
         .small-12.medium-8.columns.medium-offset-2
-          .row
-            .small-10.columns.body= raw sanitize(@post.body.gsub(/\&nbsp;/, ' '), tags: %w{bold b img h1 h2 h3 h4 h5 h6 ul li ol strong a u p br iframe underline i italic em}, attributes: %w{target width frameborder scrolling height  src href})
-      .row
-        .small-12.medium-3.columns.small-centered
-          - unless @post.previous.nil?
-            .post_paginator{class: @post.next.nil? ? false : :noright}= link_to raw("&#8592; Prev"), @post.previous
-          - unless @post.next.nil?
-            .post_paginator= link_to raw("Next &#8594;"), @post.next        
+        
+          .image_carousel{style: @post.photos.size > 1 ? "margin-bottom: 135px" : "margin-bottom: 1rem"}
+          
+            - @post.photos.each do |photo|
+              .slide[photo]
+                = image_tag photo.image.url(:standard)
+                .thumb= image_tag photo.image.url(:thumb)
+        
+    .row
+      .small-12.medium-8.columns.medium-offset-2
+        .row
+          .small-10.columns.body= raw sanitize(@post.body.gsub(/\&nbsp;/, ' '), tags: %w{bold b img h1 h2 h3 h4 h5 h6 ul li ol strong a u p br iframe underline i italic em}, attributes: %w{target width frameborder scrolling height  src href})
+    .row
+      .small-12.medium-3.columns.small-centered
+        - unless @post.previous.nil?
+          .post_paginator{class: @post.next.nil? ? false : :noright}= link_to raw("&#8592; Prev"), @post.previous
+        - unless @post.next.nil?
+          .post_paginator= link_to raw("Next &#8594;"), @post.next        
 
 
 - if @post.photos.size > 1
